@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>轻悦文学网---个人中心</title> 
+  <link rel="stylesheet" href="../css/main.css" /> 
+  <link rel="stylesheet" href="../css/user_info.css" /> 
+  <link rel="stylesheet" href="../css/headerOrFooter.css" />
+ </head> 
+ <body id="app"> 
+  <myheader></myheader>
+  <div class="user_info_topBJ"></div> 
+  <div class="user_info clear"> 
+   <!-- 左边导航 --> 
+   <div class="user_info_left"> 
+    <div class="user_info_touxiang"></div> 
+    <div class="user_info_account">
+     huhuf5
+    </div> 
+    <div class="user_info_btn_qiandaoY btn" style="display: none;">
+     已签到
+    </div> 
+    <div class="user_info_btn_qiandao btn">
+     签到
+    </div> 
+    <div class="user_info_nva clear"> 
+     <ul> 
+      <li><i class="icon_personal_information"></i>我的信息</li> 
+      <li><i class="icon_personal_bookshelf"></i>我的书架</li> 
+      <li><i class="icon_personal_follow"></i>我的关注</li> 
+      <li><i class="icon_personal_message"></i>我的消息</li> 
+      <li><i class="icon_personal_wallet"></i>我的钱包</li> 
+      <li class="active"><i class="icon_personal_contributes active"></i>我的投稿</li> 
+     </ul> 
+    </div> 
+    <div class="user_info_nva_title"> 
+     <div class="dotted">
+      ....................................................................................
+     </div> 
+     <h2>个人设置</h2> 
+    </div> 
+   </div> 
+   
+<!-- 右边内容 --> 
+<div class="user_info_right"> 
+    <div class="user_info_title"> 
+     <div class="titleBlock">contribute</div> 
+     <div class="titleBlock_LG">个人投稿</div> 
+    </div> 
+    <div class="user_info_content"> 
+     <!-- 我的信息 --> 
+     <!-- 我的书架 --> 
+     <!-- 我的关注 --> 
+     <!-- 我的消息 --> 
+     <!-- 我的钱包 --> 
+     <!-- 个人投稿 --> 
+     <div class="contribution"> 
+      <!--<mynav><mynav> -->
+        
+      
+       <router-view></router-view>
+     
+      
+     </div> 
+    </div>
+  </div> 
+   </div> 
+ <myfooter></myfooter>
+ </body>
+ 
+ <script type="text/javascript" src="../js/jquery-1.11.1.js" ></script>
+ <link rel="stylesheet" href="../css/wangEditor.min.css" />
+ <script type="text/javascript" src="../js/wangEditor.min.js" ></script>
+ 
+ <link rel="stylesheet" href="../css/cropper.min.css" />
+ <script type="text/javascript" src="../js/cropper.min.js"></script>
+ 
+ <script type="text/javascript" src="../js/vue.min.js" ></script>
+ <script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+ <script type="text/javascript" src="../js/vue-router.min.js" ></script>
+ 
+  <script src="../js/apis/vueHttp.js"></script>
+  <script src="../js/apis/conf.js"></script>
+  
+ <script src="../js/components/works.js"></script>
+ <script src="../js/components/header.js"></script>
+ <script src="../js/components/footer.js"></script>
+ <script src="../js/components/bookBlockList.js"></script>
+ <script src="../js/components/catalogue.js"></script>
+ 
+ 
+ <script>
+   var chapter = Vue.extend({
+      template: 
+      '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works\'}"><span class="circular"></span><span class="title_name">创建作品</span></li></ul>'
+      +'<div class="content"><div class="chapter"><span>章节</span><span>chapter</span><a class="hoverBlock"  href="javascript:;"><p class="hoverBlockActive"><img src="../img/list_up.jpg"><span>收起</span></p><p class="hoverBlockNotActive"><img src="../img/list_up2.jpg"><span>收起</span></p></a><div class="labelTitle clear"><label class="label">标题:</label><input type="text" class="input" placeholder="请输入章节名"/></div><div class="inputTextarea clear"><textarea id="ipt-content-post" required="" spellcheck="false" placeholder="" class="form-control input-sm" style="display: none;"></textarea><div class="chapter_handle"><div class="handle_right"><div><span class="btn" v-on:click="submitFn">保存章节</span><span class="btn">提交审核</span></div></div></div></div></div></div>'
+    ,data:{
+        id: '',
+      }
+    ,route: { 
+        data() {
+            this.getBookListFn();
+        } 
+    },
+      ready: function() {
+        this.editorFn();
+      }
+      ,methods: {
+          submitFn: function() {
+              this.URLRoot = 'http://a8397550.eicp.net:21628';
+              var _URL = this.URLRoot + '/content/saveOrUpdateContent.shtml'
+              const href = window.location.href;
+              this.id = href.substring(href.lastIndexOf('/') + 1, href.length);
+              var _data = {
+                  formatText: this.editor.$txt.formatText(),      //文本格式化内容
+                    html: this.editor.$txt.html(),      //文本html内容
+                    contentTitle: "宅男的穿越",    // 内容名称
+                    volumeId: this.id, // 卷id
+                    contentId: null,
+              };
+              Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
+              Vue.http.post(_URL, _data).then(
+                (response) => {
+                  console.log(response);
+                },
+                (err) => {
+                  console.log(err);
+                });
+          },
+        getBookListFn: function() {
+          this.URLRoot = 'http://a8397550.eicp.net:21628';
+          var _URL = this.URLRoot + '/content/findContent.shtml'
+          var _data = {};
+          const href = window.location.href;
+          this.id = href.substring(href.lastIndexOf('/') + 1, href.length);
+          _data.contentId = this.id;
+          Vue.http.get(_URL, _data).then(
+            (response) => {
+              console.log(response);
+            },
+            (err) => {
+              console.log(err);
+            });
+        },
+        editorFn:function() {
+          var textarea = document.getElementById('ipt-content-post');
+          this.editor = new wangEditor(textarea);
+          this.editor.config.uploadImgUrl = 'http://a8397550.eicp.net:21628/content/upload.shtml';
+          this.editor.config.emotions = {
+            'default': {
+              title: '轻悦娘',
+              data: [
+                {
+                  'icon': 'http://www.qcacg.com/img/不明所以然.jpg',
+                  'value': '[不明所以然]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/伤心欲绝.jpg',
+                  'value': '[伤心欲绝]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/发呆.jpg',
+                  'value': '[发呆]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/吃惊.jpg',
+                  'value': '[吃惊]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/哭泣.jpg',
+                  'value': '[哭泣]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/害羞.jpg',
+                  'value': '[害羞]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/就是那个.jpg',
+                  'value': '[就是那个]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/微笑.jpg',
+                  'value': '[微笑]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/恼怒.jpg',
+                  'value': '[恼怒]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/悲伤.jpg',
+                  'value': '[悲伤]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/战斗力渣渣.jpg',
+                  'value': '[战斗力渣渣]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/抛媚眼.jpg',
+                  'value': '[抛媚眼]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/早就看穿一切.jpg',
+                  'value': '[早就看穿一切]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/汗.jpg',
+                  'value': '[汗]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/菜刀.jpg',
+                  'value': '[菜刀]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/那个有没有.jpg',
+                  'value': '[那个有没有]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/震惊.jpg',
+                  'value': '[震惊]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/高兴.jpg',
+                  'value': '[高兴]'
+                },
+                {
+                  'icon': 'http://www.qcacg.com/img/默默地看着.jpg',
+                  'value': '[默默地看着]'
+                }
+              ]
+            }
+    
+          };
+          this.editor.create();
+        }
+      }
+   });
+   
+   
+  var router = new VueRouter();
+  router.map({
+    '/bookBlockList': { component: bookBlockList },
+    '/works': { component: works },
+    '/catalogue/:id':{ component: catalogue },
+    '/chapter/:id':{ component: chapter },
+  })
+  var App = Vue.extend({ });
+  App.component('myfooter', footer);
+  App.component('myheader', header);
+
+  router.redirect({
+  '*': 'bookBlockList',
+  });
+  router.start(App, '#app');
+  
+ </script>
+</html>

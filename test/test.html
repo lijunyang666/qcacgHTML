@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="VerificationBtn" value="获取手机验证码" />
+		<input type="text" id="Verification" value="769183" placeholder="验证码" />
+		<input type="text" id="user" value="" placeholder="手机号码" />
+		<input type="text" id="pass1" value="" placeholder="密码" />
+		<input type="text" id="pass2" value="" placeholder="确认密码" />
+		<input type="text" id="name" value="" placeholder="昵称" />
+		<input type="button" id="submitFn" value="提交注册" />
+		
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.11.1.js" ></script>
+	<script>
+		$('#VerificationBtn').click(function(){
+			var _data = {};
+			_data.telephone = $('#user').val();
+			$.ajax({
+				url: 'http://localhost:8080/registerTelephoneCode.shtml',
+				type: "POST",
+				dataType: "JSON",
+				data: _data,
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+		})
+
+		$('#submitFn').click(function(){
+			var _data = {};
+			var registCodeId = '8c6df5ef-8ae3-466b-ad38-5ed764ab16f1';
+			_data.registCodeId = registCodeId;
+			_data.telephone = $('#user').val();
+			_data.telephoneCode = $('#Verification').val();
+			_data.userName = $('#name').val();
+			_data.passWord = $('#pass1').val();
+			_data.passWordConfirm = $('#pass2').val();
+			
+			$.ajax({
+				url: 'http://localhost:8080/register.shtml',
+				type: "POST",
+				dataType: "JSON",
+				data: _data,
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+		})
+
+		
+		
+		
+	</script>
+</html>

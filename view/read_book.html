@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轻创文学网-阅读页</title>
+<style>
+@font-face{
+	font-family:FontAwesome;
+	src:url(../font/32400f4e.eot)format('embedded-opentype');
+	src:url(../font/db812d8a.woff2) format('woff2');
+	font-weight:400;font-style:normal;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+@media (min-width: 768px)
+.modal-content {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.fa{
+	display:inline-block;
+font:normal normal normal 14px/1 FontAwesome;
+font-size:inherit;text-rendering:auto;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale}
+.fa-expand:before {
+	   content: "\F065";
+}
+.fa-list:before {
+	content: "\F03A"
+}
+.fa-cog:before, .fa-gear:before {
+    content: "\F013";
+    }
+.fa-lightbulb-o:before {
+    content: "\F0EB";
+}
+.fa-angle-left:before {
+    content: "\F104";
+}
+.fa-angle-right:before {
+    content: "\F105";
+}
+.fa-angle-right:before {
+    content: "\F105";
+}
+.fa-angle-right:before {
+    content: "\F105";
+}
+.modal-setting label {
+	color:#333;
+	margin-right:20px
+}
+.modal-setting .btn-thm {
+	display:inline-block;
+	border:1px solid #eee;
+	border-radius:40px;
+	width:40px;
+	height:40px;
+	margin-right:16px;
+	vertical-align:middle;
+	cursor:pointer;
+	text-align:center;
+	line-height:40px;
+	color:#fe6878;
+	font-size:20px;
+	text-decoration:none
+}
+.modal-setting .btn-thm .fa {
+	display:none
+}
+.modal-setting .btn-thm.active .fa {
+	display:inline
+}
+.modal-setting .btn-font,.modal-setting .btn-fsize,.modal-setting .btn-s,.modal-setting .num-fsize {
+	display:inline-block;
+	padding:2px 8px;
+	width:60px;
+	text-align:center;
+	border:1px solid #aaa;
+	color:#666;
+	text-decoration:none;
+	cursor:pointer;
+	-webkit-user-select:none;
+	-moz-user-select:none
+}
+.modal-setting .btn-font:active,.modal-setting .btn-fsize:active,.modal-setting .btn-s:active,.modal-setting .num-fsize:active {
+	background-color:#f3f3f3
+}
+.modal-setting .btn-font {
+	border-radius:4px;
+	margin-right:16px
+}
+.modal-setting .btn-font.active {
+	background-color:#fe6878;
+	border-color:#ea5464;
+	color:#fff
+}
+.modal-setting .btn-fsize,.modal-setting .num-fsize {
+	margin-left:-1px
+}
+.modal-setting .num-fsize {
+	color:#aaa
+}
+.modal-setting .btn-fsize-a {
+	border-radius:4px 0 0 4px
+}
+.modal-setting .btn-fsize-b {
+	border-radius:0 4px 4px 0
+}
+
+.modal-setting .modal-body>p {
+	margin-bottom:20px
+}
+.modal-setting .modal-title .fa {
+	margin-right:.3em
+}
+.modal-setting .modal-footer {
+	text-align:center
+}
+.modal-setting .modal-footer .btn {
+	margin:0 8px;
+	padding-left:32px;
+	padding-right:32px
+}
+.modal-backdrop {
+	opacity:0!important
+}
+.reader {
+	position:relative;
+	width:900px;
+	max-width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	background:#f6f4ec;
+	padding:0;
+	-webkit-transition:background .5s;
+	transition:background .5s;
+	overflow:hidden
+}
+.inner-reader {
+	display:-webkit-box;
+	display:flex;
+	-webkit-box-orient:vertical;
+	-webkit-box-direction:normal;
+	flex-direction:column;
+	-webkit-box-pack:justify;
+	justify-content:space-between;
+	min-height:980px;
+	width:100%
+}
+.inner-reader.nene {
+	position:absolute;
+	top:0;
+	width:100%;
+	left:100%
+}
+.book-info {
+	padding:0 16px
+}
+.book-info .info-top {
+	margin-bottom:30px;
+	color:#777
+}
+.book-info .info-top .count,.book-info .info-top .update {
+	margin-left:20px
+}
+.book-info .info-top,.book-info .title {
+	text-align:center;
+	padding:0 32px
+}
+.book-info .title {
+	font-size:28px;
+	margin:20px 0
+}
+@media (max-width:760px) {
+	.book-info {
+	padding-top:48px
+}
+.book-info .info-top,.book-info .title {
+	padding:0
+}
+}.book-nav {
+	margin-top:0;
+	margin-bottom:32px;
+	padding:16px
+}
+.book-nav a,.book-nav span {
+	color:#777
+}
+.book-nav a:hover {
+	color:#333
+}
+.book-nav .fa {
+	margin:0 8px
+}
+@media (max-width:760px) {
+	.book-nav {
+	padding:16px 0;
+	margin:0
+}
+}.book-content {
+	-webkit-box-flex:1;
+	flex-grow:1;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	padding:0 80px
+}
+@media (max-width:760px) {
+	.book-content {
+	padding:0 16px
+}
+}.book-content p {
+	text-indent:2em;
+	font-size: inherit;
+	line-height:1.7;
+	margin:.8em 0;
+	
+	word-break:break-word
+}
+.book-content .p-mobile {
+	text-align:center;
+	text-indent:0
+}
+.book-content .p-mobile a {
+	font-size:18px;
+	display:inline-block;
+	padding:2px 16px;
+	border-radius:2px;
+	border:1px solid #fe6878;
+	text-decoration:none
+}
+.book-content .p-mobile a:focus {
+	background:#fe6878;
+	color:#fff
+}
+.book-content .img {
+	text-align:center;
+	text-indent:0;
+	margin:2em 0
+}
+.book-content .img img {
+	max-width:100%;
+	padding:12px;
+	background-color:#fff;
+	border:1px solid #e3e3e3
+}
+.book-content .bg-app {
+	height:242px;
+	background:url(/static/16769f8e.png) 50% 50% no-repeat
+}
+.book-content .app-mio {
+	font-size:18px!important;
+	text-indent:0;
+	text-align:center;
+	color:#fe6878
+}
+.book-bottom {
+	padding:60px 0
+}
+.book-bottom .next-page {
+	text-align:center
+}
+.book-bottom .next-page a {
+	font-size:32px;
+	color:#333;
+	text-decoration:none;
+	-webkit-transition:all .3s;
+	transition:all .3s;
+	cursor:pointer
+}
+.book-bottom .next-page a:hover {
+	color:#fe6878
+}
+.book-bottom .next-page .fa {
+	margin:0 .3em
+}
+.book-bottom .hint-page {
+	text-align:center;
+	color:#999;
+	font-size:12px
+}
+.book-tool {
+	position:fixed;
+	bottom:100px;
+	left:-40px
+}
+.book-tool a {
+	display:block;
+	color:#5b5b5b;
+	text-align:center;
+	font-size:22px;
+	width:40px;
+	height:45px;
+	margin-top:-1px;
+	line-height:45px;
+	border:1px solid #515151;
+	cursor:pointer
+}
+.book-tool a:hover {
+	color:#eee
+}
+.book-tool a:active {
+	background:#393939
+}
+.book-tool .menu .fa {
+	font-size:18px
+}
+.book-tool .fullscreen {
+	border-radius:4px
+}
+.book-tool .fullscreen .fa {
+	font-size:21px
+}
+.book-tool .menu,.book-tool .prev {
+	border-radius:4px 4px 0 0
+}
+.book-tool .light,.book-tool .next {
+	border-radius:0 0 4px 4px
+}
+.book-tool .tool-bottom {
+	margin-top:20px
+}
+@media (max-width:760px) {
+	.book-tool {
+	position:absolute;
+	left:auto!important;
+	bottom:auto!important;
+	right:8px;
+	top:8px;
+	width:100%
+}
+.book-tool a {
+	float:left;
+	margin-top:0;
+	margin-left:-1px;
+	height:40px;
+	line-height:40px;
+	border-radius:0!important
+}
+.book-tool a:hover {
+	color:#333;
+	background:#999
+}
+.book-tool .tool-bottom {
+	margin-top:0;
+	margin-right:20px;
+	float:right
+}
+.book-tool .tool-top {
+	float:right
+}
+}.error-read,.loading-read {
+	text-align:center;
+	position:absolute;
+	width:300px;
+	left:50%;
+	top:50%;
+	margin-left:-150px;
+	margin-top:-160px
+}
+.error-read .bg,.loading-read .bg {
+	display:inline-block;
+	width:300px;
+	height:300px;
+	background:url(/static/f8b31a83.png) 50% 50% no-repeat
+}
+.error-read .info,.loading-read .info {
+	margin:0
+}
+.loading-read .bg {
+	background:url(/static/f940948c.gif) 50% 50% no-repeat
+}
+ol,ul {
+	list-style:none;
+	margin:0;
+	padding:0
+}
+body {
+	background:#333339
+}
+.content {
+	padding:0;
+	min-height:auto
+}
+body::-webkit-scrollbar {
+	width:6px
+}
+body::-webkit-scrollbar-thumb {
+	border-radius:3px;
+	background-color:hsla(0,0%,100%,.2)
+}
+body::-webkit-scrollbar-track-piece {
+	background-color:#333339
+}
+	html {
+	font-family:sans-serif;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%
+}body {
+	margin:0
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
+	display:block
+}	
+.modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+}
+.modal-dialog.modal-content {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    background-clip: padding-box;
+    outline: 0;
+    z-index: 1060;
+}
+p {
+    margin: 0 0 10px;
+}
+@media (min-width: 768px)
+.modal-content {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.fa-close:before, .fa-remove:before, .fa-times:before {
+    content: "\F00D";
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-body {
+    position: relative;
+    padding: 15px;
+}
+.modal-setting .modal-footer {
+    text-align: center;
+}
+.modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.modal-header:before {
+    content: " ";
+    display: table;
+}
+.modal-header .close {
+    margin-top: -2px;
+}
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+.modal-setting label {
+    color: #333;
+    margin-right: 20px;
+}
+
+.modal-setting.btn-thm {
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    color: #fe6878;
+    font-size: 20px;
+    text-decoration: none;
+}
+.modal-setting.btn-thm-a{
+	background-color: #FFFFFF;
+}
+.modal-setting .btn-thm-b{
+	    background-color: #f6f4ec;
+}
+.modal-setting .btn-thm-c{
+	    background-color: #e6f0e6;
+}
+.modal-setting .btn-thm-d{
+	    background-color: #e3f5fa;
+}
+.modal-setting .btn-thm-e{
+	    background-color: #f5f5f5;
+}
+.modal-setting .btn-thm-f{
+	    background-color: #f5e9ef;
+}
+.modal-setting .btn-thm-g{
+	    background-color: #323536;
+}
+.modal-setting label {
+    color: #333;
+    margin-right: 20px;
+}
+.modal-setting .btn-font {
+    border-radius: 4px;
+    margin-right: 16px;
+    display: inline-block;
+    padding: 2px 8px;
+    width: 60px;
+    text-align: center;
+    border: 1px solid #aaa;
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.modal-setting .btn-font.active {
+    background-color: #fe6878;
+    border-color: #ea5464;
+    color: #fff;
+}
+.modal-setting .btn-font {
+    border-radius: 4px;
+    margin-right: 16px;
+}
+.fa-minus:before {
+    content: "\F068";
+}
+.fa-plus:before {
+    content: "\F067";
+}
+footer:before {
+    content: " ";
+    display: table;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #ff7c8c;
+    border-color: #fa7787;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.modal-footer .btn+.btn {
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+.fa-check:hover{
+	content: "\F00C";
+}
+.fa-check:before {
+    content: "\F00C";
+}
+</style>
+<script type="text/javascript" src="../js/vue.js" ></script>
+	</head>
+	<body  id="app"
+		v-bind:style="fixed === true? 'font-family: FontAwesome;overflow:hidden':'font-family: FontAwesome;'">
+	<div class="content">
+		<div id="reader" class="reader" style="min-height: 930px;">
+			<div class="inner-reader active"
+				:style=" 'min-height: 930px; background-color:' + bj_color + ';color:' + font_color + ';' +
+				'font-family: '+ font_family + ';'
+				">
+				<div class="book-info" >
+					<p class="book-nav">
+						<a>轻文轻小说</a>
+						<i class="fa fa-angle-right"></i>
+						<a>就算变成女生也要爱你A</a>
+						<i class="fa fa-angle-right"></i>
+						<span>人物卡</span>
+					</p>
+					<h1 class="title">新月/艾尔薇（插图）</h1>
+					<p class="info-top">
+						<span class="author">
+						<span class="t">作者：</span>
+						<span class="d">满月酱</span>
+						</span>
+						<span class="count">
+							<span class="t">字数：</span>
+							<span class="d">315</span>
+						</span>
+						<span class="update">
+							<span class="t">更新日期：</span>
+							<span class="d">20天前</span>
+						</span>
+					</p>
+				</div>
+				<div id="book-content" class="book-content" :style="'font-size:' + font_size + 'px;' ">
+					<p>性别：男（根据剧情发展变为女性）</p>
+					<p>种族：人（平行时空为半精灵）</p>
+					<p>年龄：15（精灵身体起始年龄1岁）</p>
+					<p>发色：深红／精灵时为栗色</p>
+					<p>名字：新月/艾尔薇·达路克</p>
+					<p>瞳色：??／精灵时为纯白色</p>
+					<p>身高：170cm／精灵时为160</p>
+					<p>外貌特征：身体曲线几乎和女性没有差别。</p>
+					<p>喜欢的食物：各种点心甜品，牛奶混苦咖啡。</p>
+					<p>人际关系好的人：蛋糕店的老板米尔沙，失踪的妈妈。</p>
+					<p>家族中的妹妹学习和能力各方面都很优秀，表面上对新月不在乎，其实一直暗恋新月。</p>
+					<p>喜欢的人：玛茵·达路克。</p>
+					<p>兴趣和目标:证明自己是有用的人，各种形式的抽奖。</p>
+					<p>武器:弯刀</p>
+					<p>身份:学生/玛茵的契约精灵</p>
+					<p>战斗描述:敏捷的身手和动态视力，1秒等于10秒的行动速度，关键时刻能爆发出惊人的破坏力，斩断比武器自身还要坚硬的对象。</p>
+					<p class="img"><img src="../img/b0994b01-9333-4b3f-888d-a5d98e6c6961.jpg" alt="轻小说：就算变成女生也要爱你A插图"></p>
+				</div>
+				<div class="book-bottom">
+					<p class="next-page"><a href="" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a></p>
+					<p class="hint-page">按键盘上的 ←（左）键和 →（右）键可以快速切换章节</p>
+				</div>
+			</div>
+			<div class="inner-reader nene" style="min-height: 930px;">
+				<div class="loading-read"><div class="bg"></div></div>
+			</div>
+		</div>
+	</div>
+	<div id="book-tool" class="book-tool" style="left: 1427px;">
+		<div class="tool-top">
+			<a v-on:click="screenFn"  id="btn-screen-tool" title="全屏" class="fullscreen"><i class="fa fa-expand"></i></a>
+		</div>
+		<div class="tool-bottom">
+			<a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" href="javascript:;"><i class="fa fa-list"></i></a>
+			<a v-on:click="settingShow" id="btn-setting" title="设置" class="setting"><i class="fa fa-cog"></i></a>
+			<a v-on:click="lampFn" id="btn-light" title="夜间模式" class="light" ><i class="fa fa-lightbulb-o"></i></a>
+		</div>
+		<div class="tool-bottom">
+			<a id="btn-prev-tool" title="上一章" class="prev js-link-state"><i class="fa fa-angle-left"></i></a>
+			<a id="btn-next-tool" title="下一章" class="next js-link-state" href=""><i class="fa fa-angle-right"></i></a>
+		</div>
+	</div>
+	
+	<div 
+		v-if="fixed" 
+		v-on:click="fixedFn"
+		style="position: fixed;top: 0px;bottom: 0px;left: 0px;right: 0px;z-index: 1050; " class=" modal modal-setting fade in">
+		<div class="modal-dialog">
+			<div class="modal-content" v-on:click="settingFn">
+				<div class="modal-header">
+					<button data-dismiss="modal" class="close" v-on:click="fixedFn"><i class="fa fa-close"></i></button>
+					<h4 class="modal-title"><i class="fa fa-cog"></i>设置</h4>
+				</div>
+				<div class="modal-body">
+					<p id="theme-setting">
+						<label>阅读主题：</label>
+						<a v-on:click="bj_ColorFn('#FFFFFF')" data-index="0" title="白色" 
+							:class="bj_color == '#FFFFFF' ? 'btn-thm btn-thm-a active':'btn-thm btn-thm-a'"
+						><i class="fa fa-check"></i></a>
+						<a v-on:click="bj_ColorFn('#F6F4EC')" data-index="1" title="黄色" 
+							:class="bj_color == '#F6F4EC'?'btn-thm btn-thm-b active':'btn-thm btn-thm-b'"
+							><i class="fa fa-check"></i></a>
+						<a v-on:click="bj_ColorFn('#E6F0E6')" data-index="2" title="绿色" 
+							:class="bj_color == '#E6F0E6'?'btn-thm btn-thm-c active':'btn-thm btn-thm-c'"
+							><i class="fa fa-check"></i></a>
+						<a v-on:click="bj_ColorFn('#E3F5FA')" data-index="3" title="蓝色" 
+							:class="bj_color == '#E3F5FA'?'btn-thm btn-thm-d active':'btn-thm btn-thm-d'"
+							><i class="fa fa-check"></i></a>
+						<a v-on:click="bj_ColorFn('#F5F5F5')" data-index="4" title="灰色" 
+							:class="bj_color == '#F5F5F5'?'btn-thm btn-thm-e active':'btn-thm btn-thm-e'"
+							><i class="fa fa-check"></i></a>
+						<a v-on:click="bj_ColorFn('#F5E9EF')" data-index="5" title="粉色" 
+							:class="bj_color == '#F5E9EF'?'btn-thm btn-thm-f active':'btn-thm btn-thm-f'"
+							><i class="fa fa-check"></i></a>
+						<a v-on:click="bj_ColorFn('#323536')" data-index="6" title="夜间" 
+							:class="bj_color == '#323536'? 'btn-thm btn-thm-g active':'btn-thm btn-thm-g'"
+							><i class="fa fa-check"></i></a>
+					</p>
+					<p id="font-setting">
+						<label>正文字体：</label>
+						<a 	v-on:click="font_FamilyFn('Arial,Microsoft YaHei,sans-serif')"
+							data-index="0" 
+							:class="font_family === 'Arial,Microsoft YaHei,sans-serif'?'btn-font active':'btn-font'"
+							>雅黑</a>
+						<a 	v-on:click="font_FamilyFn('NSimSun,STSong,SimSun,serif')"
+							data-index="1" 
+							:class="font_family === 'NSimSun,STSong,SimSun,serif'?'btn-font active':'btn-font'"
+							>宋体</a>
+						<a 	v-on:click="font_FamilyFn('STKaiti,KaiTi,KaiTi_GB2312,sans-serif')"
+							data-index="2" 
+							:class="font_family === 'STKaiti,KaiTi,KaiTi_GB2312,sans-serif'?'btn-font active':'btn-font'"
+							>楷书</a>
+					</p>
+					<p id="fsize-setting">
+						<label>字体大小：</label>
+						<a v-on:click="smallFn" data-action="minus" class="btn-fsize btn-fsize-a"><i class="fa fa-minus"></i></a>
+						<span class="num-fsize">{{ font_size }}</span>
+						<a v-on:click="largeFn" data-action="plus" class="btn-fsize btn-fsize-b"><i class="fa fa-plus"></i></a>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<a @click="saveFixedFn" id="btn-save-setting" class="btn btn-primary">保存</a>
+					<a @click="fixedFn" id="btn-cancel-setting" data-dismiss="modal" class="btn btn-default">取消</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fa-expand"></div>
+	</body>
+	<script>
+		var vueDemo = new Vue({
+  			el: '#app',
+  			data: {
+  				fixed:false,
+  				font_size: 32,
+				font_family: 'Arial,Microsoft YaHei,sans-serif',
+  				bj_color: '#F6F4EC',
+  				font_color: '#333',
+  				temp_format:[16,'Arial,Microsoft YaHei,sans-serif','#F6F4EC','#333'], // 上一次的状态
+  				temp_format_two:['#F6F4EC','#333'], // 记录开关灯的上一次的状态
+  				lamp: true,
+  				screenV: true
+  			},
+  			methods: {
+  				settingShow: function() {
+  					this.fixed = true;
+  				},
+  				fixedFn: function() {
+  					this.fixed = false;
+	  				this.font_size = this.temp_format[0];
+	  				this.font_family = this.temp_format[1];
+	  				this.$set('bj_color', this.temp_format[2]);
+	  				this.font_color = this.temp_format[3];
+  				},
+  				saveFixedFn : function() {
+  					this.fixed = false;
+	  				this.temp_format[0] = this.font_size;
+	  				this.temp_format[1] = this.font_family;
+	  				this.temp_format[2] = this.bj_color;
+	  				this.temp_format[3] = this.font_color;
+	  				this.lamp = true;
+  				},
+  				settingFn: function(e) {
+  					e.stopPropagation();
+  				},
+  				gotoCatalogFn : function(){
+  					window.location.href = '../catalog.html';
+  				},
+  				bj_ColorFn: function(color) {
+  					this.bj_color = color;
+  					if (color === '#323536') {
+  						this.font_color = '#777';
+  					}
+  				},
+  				font_FamilyFn: function(family) {
+  					this.font_family = family;
+  				},
+  				lampFn: function(bj_color){
+  					if (this.lamp){
+  						this.temp_format_two[0] = this.temp_format[2];
+  						this.temp_format_two[1] = this.temp_format[3];
+  						this.bj_color = '#323536';
+  						this.font_color = '#777';
+  						this.temp_format[2] = this.bj_color;
+  						this.temp_format[3] = this.font_color;
+  						this.lamp = false;
+  					} else {
+  						this.temp_format[2] = this.temp_format_two[0];
+  						this.temp_format[3] = this.temp_format_two[1];
+  						this.$set('bj_color', this.temp_format[2]);
+  						this.font_color = this.temp_format[3];
+  						this.lamp = true;
+  					}
+  				},
+  				smallFn :function(){
+  					this.font_size = this.font_size - 2;
+  					if (this.font_size < 12) {
+  						this.font_size = 12;
+  					}
+  				},
+  				largeFn: function() {
+  					this.font_size = this.font_size + 2;
+  					if (this.font_size > 48) {
+  						this.font_size = 48;
+  					}
+  				},
+  				screenFn: function() {
+					    if(this.screenV) {
+					    	this.screenV = false;
+					    	var el = document.documentElement,
+					        rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen,
+					        wscript;
+						    if(typeof rfs != "undefined" && rfs) {
+						        rfs.call(el);
+						        return;
+						    }
+						    if(typeof window.ActiveXObject != "undefined") {
+						        wscript = new ActiveXObject("WScript.Shell");
+						        if(wscript) {
+						            wscript.SendKeys("{F11}");
+						        }
+						    }
+					    } else {
+					    	this.screenV = true;
+					    	var el = document,
+					        cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
+					        wscript;
+						    if (typeof cfs != "undefined" && cfs) {
+						      cfs.call(el);
+						      return;
+						    }
+						    if (typeof window.ActiveXObject != "undefined") {
+						        wscript = new ActiveXObject("WScript.Shell");
+						        if (wscript != null) {
+						            wscript.SendKeys("{F11}");
+						        }
+						  	}
+					    }
+  				}
+  				
+  			}
+  			
+		});
+	</script>
+</html>
