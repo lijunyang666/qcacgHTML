@@ -1,7 +1,6 @@
 var SZXJ = {};
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
   Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
-  console.log(Vue.http.headers);
   _URL = _url;
   // 判断是否是本地调试
   if (document.domain === '127.0.0.1' || document.domain === 'localhost') {
