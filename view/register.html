@@ -4,17 +4,12 @@
 		<meta charset="UTF-8">
 		<title>轻创文学网-注册页</title>
 	</head>
-	
+	<link rel="stylesheet" href="../css/main.css" />
 	<link rel="stylesheet" href="../css/register.css" />
 	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
-	    <link rel="stylesheet" href="../css/ranking.css" />
-	<link rel="stylesheet" href="../css/headerOrFooter.css" />
-	<link rel="stylesheet" href="../css/main.css" />
-	<link rel="stylesheet" href="../css/LOgin.css" />
-	
-	<body id="app">
-<myheader></myheader>
-		<div style="position: relative;width: 100%;min-width: 1200px;">
+	<body>
+	<myheader></myheader>
+	<div style="position: relative;width: 100%;min-width: 1200px;">
 			<img src="../img/background-jpg.jpg" style="margin-top: -55px;width: 100%;" />
 			<form class="regist" id="regist"  method="get" action="">
 				<img src="../img/logo-1.png" class="regist_img"/>
@@ -50,22 +45,23 @@
 		</div>
 	<myfooter></myfooter>
 	</body>
-	<script src="../js/apis/vueHttp.js"></script>
+
+
+<script src="../js/apis/vueHttp.js"></script>
   	<script src="../js/apis/conf.js"></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
-<script type="text/javascript" src="../js/apis/conf.js"></script>	
-<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
 
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js" ></script>
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script src="http://static.geetest.com/static/tools/gt.js"></script>
 <script>
 "use strict"
 $(function() {
-  // 主URL地址
-  var Url = "http://a8397550.eicp.net:21628";
+
 
   $('.regist').animate({
     height: '512px'
@@ -207,13 +203,14 @@ $(function() {
     var _data = {};
     _data.telephone = document.getElementsByName('user')[0].value;
     $.ajax({
-      url: PathList.registerTelephoneCode',
+      url: PathList.registerTelephoneCode,
       type: "POST",
       dataType: "JSON",
       data: _data,
       success: function(data) {
         localStorage.setItem('JSESSIONID', data.verificationId);
         location.href = Url + '/view/user_info.html';
+        console.log(data);
       },
       error: function(data) {
         alert(JSON.parse(data.responseText).msg);
@@ -221,7 +218,7 @@ $(function() {
     });
   });
 
-  localStorage.setItem('JSESSIONID', '0dbcf052-1b86-4281-8360-60abf275c017');
+
 
   $.ajax({
     // 获取id，challenge，success（是否启用failback）
@@ -261,11 +258,11 @@ $(function() {
       dataType: "JSON",
       data: _data,
       success: function(data) {
-	  	localStorage.setItem('JSESSIONID', result.msg);
-        location.href = PathList.TemprootPath + '/view/user_info.html';
+        console.log(data);
       },
       error: function(data) {
         alert(JSON.parse(data.responseText).msg);
+        console.log(data);
       }
     });
   };
