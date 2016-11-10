@@ -174,11 +174,17 @@
 .user_info .user_info_right .user_info_content {
 }
 
+
+/* 图标 START */
+
 .icon_personal_information {
   background: url(../img/personal_information.png) no-repeat;
 }
 
 .icon_personal_information.active {
+}
+.user_info .user_info_left .user_info_nva ul li:hove .icon_personal_information  {
+	
 }
 
 .icon_personal_bookshelf {
@@ -210,11 +216,16 @@
 }
 
 .icon_personal_contributes {
+	
 }
 
 .icon_personal_contributes.active {
   background: url(../img/contributes_active.png) no-repeat;
 }
+
+/* 图标 END */
+
+
 
 .contribution .nav {
   height: 57px;
