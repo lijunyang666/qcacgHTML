@@ -29,6 +29,6 @@ PathList.queryBookType = PathList.rootPath + '/bookType/queryBookType.shtml';
 // 新建与修改作品的接口
 PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
 // 读者阅读章节接口
-PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
+PathList.findContent = PathList.rootPath + '/content/findContent.shtml';
 // 新建章节接口
 PathList.saveOrUpdateContent = PathList.rootPath + '/content/saveOrUpdateContent.shtml';

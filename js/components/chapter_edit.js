@@ -1,4 +1,4 @@
-// 投稿-第四页 作者新建章节页
+// 投稿-第五页 作者编辑章节页
    var chapter = Vue.extend({
       template: 
       '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">'
@@ -9,13 +9,18 @@
     	return {
     		contentTitle: '',
     		id: -1,
+    		contentId: -1,
     	}
     }
     ,route: { 
         data() {
-        	const href = window.location.href;
-            this.id = href.substring(href.lastIndexOf('/') + 1, href.length);
+			const href = window.location.href;
+            const str = href.substring(href.lastIndexOf('/') + 1, href.length);
+            this.volumeId = str.substring(0, str.indexOf('_'));
+            this.contentId = str.substring(str.indexOf('_') + 1, str.length);
+            this.getBookListFn();
         } 
+        
     },
       ready: function() {
         this.editorFn();
@@ -27,15 +32,22 @@
                   formatText: this.editor.$txt.formatText(),      //文本格式化内容
                     content: this.editor.$txt.html(),      //文本html内容
                     contentTitle: this.contentTitle,    // 内容名称
-                    volumeId: this.id, // 卷id
-                    contentId: null,
+                    volumeId: this.volumeId, // 卷id
+                    contentId: this.contentId,
               };
-			  SZXJ.http('post', PathList.saveOrUpdateContent, _data, (response) => {
-            	history.back();
+               SZXJ.http('post', PathList.saveOrUpdateContent, _data, (response) => {
+            	 history.back();
           	  });
           },
         getBookListFn: function() {
-        	
+        	var _URL = PathList.findContent;
+        	var _data = {
+                  contentId: this.contentId,
+                };
+                SZXJ.http('get', PathList.findContent, _data, (response) => {
+            	this.contentTitle = response.data.contentTitle;
+            	this.editor.$txt.html(response.data.content);
+          	  });
         },
         editorFn:function() {
           var textarea = document.getElementById('ipt-content-post');
