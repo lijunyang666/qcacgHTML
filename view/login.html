@@ -189,7 +189,7 @@ $(function() {
       data: userEntity,
       success: function(result) {
         localStorage.setItem('JSESSIONID', result.msg);
-        location.href = '/view/user_info.html';
+        location.href = PathList.TemprootPath + '/view/user_info.html';
       },
       error: function(result) {
         var data = JSON.parse(result.responseText);
