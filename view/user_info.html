@@ -41,30 +41,15 @@
     </div> 
    </div> 
    
-<!-- 右边内容 --> 
-<div class="user_info_right"> 
-    <div class="user_info_title"> 
-     <div class="titleBlock">contribute</div> 
-     <div class="titleBlock_LG">个人投稿</div> 
-    </div> 
-    <div class="user_info_content"> 
-     <!-- 我的信息 --> 
-     <!-- 我的书架 --> 
-     <!-- 我的关注 --> 
-     <!-- 我的消息 --> 
-     <!-- 我的钱包 --> 
-     <!-- 个人投稿 --> 
-     <div class="contribution"> 
-      <!--<mynav><mynav> -->
-        
-      
-       <router-view></router-view>
-     
-      
-     </div> 
+<!-- 右边内容 -->
+	<!-- 我的信息 --> 
+    <!-- 我的书架 --> 
+    <!-- 我的关注 --> 
+    <!-- 我的消息 --> 
+    <!-- 我的钱包 --> 
+    <!-- 个人投稿 --> 
+	<router-view></router-view>
     </div>
-  </div> 
-   </div> 
  <myfooter></myfooter>
  </body>
  
@@ -79,8 +64,8 @@
  <script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  <script type="text/javascript" src="../js/vue-router.min.js" ></script>
  
-  <script src="../js/apis/vueHttp.js"></script>
-  <script src="../js/apis/conf.js"></script>
+ <script src="../js/apis/vueHttp.js"></script>
+ <script src="../js/apis/conf.js"></script>
   
  <script src="../js/components/works.js"></script>
  <script src="../js/components/header.js"></script>
@@ -88,6 +73,7 @@
  <script src="../js/components/bookBlockList.js"></script>
  <script src="../js/components/catalogue.js"></script>
  <script src="../js/components/chapter.js"></script>
+ <script src="../js/components/chapter_edit.js"></script>
  
  
  <script>
@@ -97,6 +83,7 @@
     '/works': { component: works },
     '/catalogue/:id':{ component: catalogue },
     '/chapter/:id':{ component: chapter },
+    '/chapter_edit/:id':{ component: chapter },
   })
   var App = Vue.extend({ });
   App.component('myfooter', footer);

@@ -203,7 +203,6 @@ $(function() {
       success: function(data) {
         localStorage.setItem('JSESSIONID', data.verificationId);
         location.href = Url + '/view/user_info.html';
-        console.log(data);
       },
       error: function(data) {
         alert(JSON.parse(data.responseText).msg);
@@ -251,11 +250,11 @@ $(function() {
       dataType: "JSON",
       data: _data,
       success: function(data) {
-        console.log(data);
+	  	localStorage.setItem('JSESSIONID', result.msg);
+        location.href = PathList.TemprootPath + '/view/user_info.html';
       },
       error: function(data) {
         alert(JSON.parse(data.responseText).msg);
-        console.log(data);
       }
     });
   };
