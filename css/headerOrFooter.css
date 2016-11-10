@@ -1,4 +1,5 @@
 .qcacg-header-parent {
+	z-index: 99;
   height:50px;
   width:100%;
   background-color: #ffffff;

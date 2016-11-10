@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>轻创文学网-分类页</title>
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/headerOrFooter.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/LOgin.css" />
+		<link rel="stylesheet" href="../css/jquery-ui.min.css" />
   </head>
-  <body class="class-body">
-    <iframe id="qcacg-header" style="height: 56px;width: 100%;min-width:1200px;border: 0px;overflow: hidden;" src="../public/public-header.html"></iframe>
+  <body class="class-body" id="app">
+    <myheader></myheader>
     <div class="class-content">
       <div class="class-title">
         <div class="class-title-line">
@@ -506,6 +510,13 @@
       	</ul>
       </div>
     </div>
-    <iframe style="height: 240px;width: 100%;border: 0px;min-width:1200px;overflow: hidden;" src="../public/public-footer.html"></iframe>
+   <myfooter></myfooter>
+		
   </body>
+  <script src="../js/apis/vueHttp.js"></script>
+  <script src="../js/apis/conf.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/components/header.js" ></script>
+	<script type="text/javascript" src="../js/components/footer.js" ></script>
+	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
 </html>

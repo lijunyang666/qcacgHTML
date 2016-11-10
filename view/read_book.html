@@ -3,6 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>轻创文学网-阅读页</title>
+    <link rel="stylesheet" href="../css/ranking.css" />
+	<link rel="stylesheet" href="../css/headerOrFooter.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/LOgin.css" />
+	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
 <style>
 @font-face{
 	font-family:FontAwesome;
@@ -603,6 +608,7 @@ footer:before {
 	</head>
 	<body  id="app"
 		v-bind:style="fixed === true? 'font-family: FontAwesome;overflow:hidden':'font-family: FontAwesome;'">
+		<myheader></myheader>
 	<div class="content">
 		<div id="reader" class="reader" style="min-height: 930px;">
 			<div class="inner-reader active"
@@ -742,7 +748,14 @@ footer:before {
 		</div>
 	</div>
 	<div class="fa-expand"></div>
+	<myfooter></myfooter>
 	</body>
+	<script src="../js/apis/vueHttp.js"></script>
+  	<script src="../js/apis/conf.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/components/header.js" ></script>
+	<script type="text/javascript" src="../js/components/footer.js" ></script>
+	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
 	<script>
 		var vueDemo = new Vue({
   			el: '#app',

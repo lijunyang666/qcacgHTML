@@ -4,11 +4,16 @@
 		<meta charset="UTF-8">
 		<title>轻创文学网-注册页</title>
 	</head>
-	<link rel="stylesheet" href="../css/main.css" />
+	
 	<link rel="stylesheet" href="../css/register.css" />
 	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
-	<body>
-	<iframe id="qcacg-header" style="position: relative;z-index: 2;height: 56px;width: 100%;min-width:1200px;border: 0px;overflow: hidden;" src="../public/public-header.html"></iframe>
+	    <link rel="stylesheet" href="../css/ranking.css" />
+	<link rel="stylesheet" href="../css/headerOrFooter.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/LOgin.css" />
+	
+	<body id="app">
+<myheader></myheader>
 		<div style="position: relative;width: 100%;min-width: 1200px;">
 			<img src="../img/background-jpg.jpg" style="margin-top: -55px;width: 100%;" />
 			<form class="regist" id="regist"  method="get" action="">
@@ -43,11 +48,17 @@
 				<div id="popup-captcha"></div>
 			</form>
 		</div>
-	<iframe style="height: 240px;width: 100%;min-width:1200px;border: 0px;overflow: hidden;" src="../public/public-footer.html"></iframe>
+	<myfooter></myfooter>
 	</body>
+	<script src="../js/apis/vueHttp.js"></script>
+  	<script src="../js/apis/conf.js"></script>
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/components/header.js" ></script>
+	<script type="text/javascript" src="../js/components/footer.js" ></script>
+	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
 <script type="text/javascript" src="../js/apis/conf.js"></script>	
 <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="../js/jquery-ui.min.js" ></script>
+
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script src="http://static.geetest.com/static/tools/gt.js"></script>
 <script>

@@ -146,8 +146,10 @@
 		
 	}
 	.index .main .main_title .main_More {
-		float: right;
-		overflow: auto;
+		display: inline-block;
+		padding-left: 700px;
+		padding-top: 15px;
+		
 	}
 	.index .main .main_title .main_img {
 		margin-top: 10px;
@@ -263,26 +265,27 @@
 	}
 	.index .sidebar .sidebar_content .sidebar_con ul .sidebar_name {
 		font-size: 16px;
-		width: 110px;
+		width: 180px;
 	    overflow: hidden;
-	    white-space: nowrap;
-	    text-overflow: ellipsis;
+	    
+	    
 	}
 	.index .sidebar .sidebar_content .sidebar_con ul .sidebar_surname {
-		font-size: 12px;
-		color: rgb(205, 205, 205);
-		height: 30px;
+		
+		
+		height: 10px;
 		width: 208px;
-		height: 30px;
+		
 	    overflow: hidden;
 	    white-space: nowrap;
 	    text-overflow: ellipsis;
 	}
 	.index .sidebar .sidebar_content .sidebar_con ul .sidebar_card {
 		width: 64px;
-		height: 37px;
+		height: 30px;
 		float: left;
 		color: #E74C3C;
+		font-size: 13px;
 	}
 	.index .sidebar .sidebar_content .sidebar_con ul .sidebar_card img {
 		display: block;
@@ -298,7 +301,7 @@
 	    height: 31px;
 	    text-align: center;
 	    margin-top: 15px ;
-	    border-bottom: 1px dashed #999;
+	  
 	   
 	}
 	.index .sidebar .sidebar_content .sidebar_cont ul li {
@@ -369,8 +372,9 @@
 		
 	}
 	.index .secon .secon_title .secon_More {
-		float: right;
-		overflow: auto;
+		display: inline-block;
+		padding-left: 700px;
+		padding-top: 15px;
 	}
 	.index .secon .secon_title .secon_img {
 		margin-top: 10px;
@@ -500,13 +504,19 @@
 	}
 	.index .Side .Side_content .Side_con ul .Side_card {
 		float: left;
-		width: 55px;
+		width: 80px;
 	    white-space: nowrap;
 	    overflow: hidden;
 	    text-overflow: ellipsis;
 	    font-size: 12px;
 	    line-height: 21px;
+	    padding-left: 5px;
+	    vertical-align: bottom;
 	}
+	.index .Side .Side_content .Side_con ul .Side_card img{
+		padding-right: 5px;
+		}
+		
 	.index .Side .Side_content .Side_con ul .Side_card a{
 		 color: #7d7d7d;
 	}
@@ -515,43 +525,32 @@
 	    width: 110px;
 	    float: left;
 	    text-align: center;
-	    color: #7d7d7d;
+	    color: #E74C3C;
+	    padding-top: 3px;
 	}
-	.index .Side .Side_content .Side_con ul .Side_num {
-		float: right;
-		color: #7d7d7d;
+	.index .Side .Side_content .Side_con ul .Side_Percen img{
+		padding-right: 5px;
 	}
-	.index .Side .Side_content .Side_cont ul{
-		width: 278px;
-	    height: 40px;
-	    text-align: center;
-	    margin-top: 5px ;
-	    border-bottom: 1px dashed #999;
-	   
+	.Side_content .Side_cont1  {
+		margin-top: 20px;
+		width: 280px;
+		white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
 	}
-	.index .Side .Side_content .Side_cont ul li {
-		height: 20px;
+	.Side_cont1 .Side_cont_block{
+		display: inline-block;
+		background-color:#B3B3B3;
+		border-radius: 3px;
+		text-align: center;
 		line-height: 20px;
-		float: left;
-		color: #7d7d7d;
-		margin-left: 10px;
-	}
-	.index .Side .Side_content .Side_cont ul li span {
-		display: block;
-	    width: 170px;
-	    color: #7d7d7d;
-	}
-	.index .Side .Side_content .Side_cont ul .Side_li {
-		float: right;
+		width: 20px;
+		height: 20px;
+		margin-right: 12px;
+		color: white;
 		
 	}
-	.index .Side .Side_content .Side_cont ul  .Side_tit {
-		height: 20px;
-		width: 275px;
-	    overflow: hidden;
-	    white-space: nowrap;
-	    text-overflow: ellipsis;
-	} 
+	
 	.index .Side p {
 		width: 270px;
 		height: 16px;
@@ -570,7 +569,7 @@
 	.index .New .New_title {
 		width: 853px;
 		float: left;
-		margin-top: 100px;
+		margin-top: 50px;
 	}
 	
 	.index .New .New_title a {
@@ -595,8 +594,9 @@
 		
 	}
 	.index .New .New_title .New_More {
-		float: right;
-		overflow: auto;
+		display: inline-block;
+		padding-left: 700px;
+		padding-top: 15px;
 	}
 	.index .New .New_title .New_update {
 		width: 853px;
@@ -690,7 +690,7 @@
 		width: 301px;
 		height:84px;
 		margin-top: 10px;
-		position: relative;
+		
 	}
 	.index .Word .Word_content .Word_con ul{ 
 		width: 208px;
@@ -720,12 +720,17 @@
 	}
 	.index .Word .Word_content .Word_con ul .Word_card {
 		float: left;
-		width: 55px;
+		width: 80px;
 	    white-space: nowrap;
-	    overflow: hidden;
 	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    
 	    font-size: 12px;
 	    line-height: 21px;
+	}
+	.index .Word .Word_content .Word_con ul .Word_card img {
+		padding-right: 5px;
+		margin-left: 5px;
 	}
 	.index .Word .Word_content .Word_con ul .Word_card a{
 		 color: #7d7d7d;
@@ -735,43 +740,28 @@
 	    width: 110px;
 	    float: left;
 	    text-align: center;
-	    color: #7d7d7d;
+	    color: #E74C3C;
+	    padding-top: 3px;
 	}
-	.index .Word .Word_content .Word_con ul .Word_num {
-		float: right;
-		color: #7d7d7d;
-	}
-	.index .Word .Word_content .Word_cont ul{
-		width: 278px;
-	    height: 40px;
-	    text-align: center;
-	    margin-top: 5px ;
-	    border-bottom: 1px dashed #999;
-	   
-	}
-	.index .Word .Word_content .Word_cont ul li {
-		height: 20px;
-		line-height: 20px;
-		float: left;
-		color: #7d7d7d;
-		margin-left: 10px;
-	}
-	.index .Word .Word_content .Word_cont ul li span {
-		display: block;
-	    width: 170px;
-	    color: #7d7d7d;
-	}
-	.index .Word .Word_content .Word_cont ul .Word_li {
-		float: right;
+	.index .Word .Word_content .Word_cont {
+		margin-top: 20px;
+		white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
 		
 	}
-	.index .Word .Word_content .Word_cont ul  .Word_tit {
+	.Word_cont_block{
+		display: inline-block;
+		background-color:#B3B3B3;
+		border-radius: 3px;
+		text-align: center;
+		line-height: 20px;
+		width: 20px;
 		height: 20px;
-		width: 275px;
-	    overflow: hidden;
-	    white-space: nowrap;
-	    text-overflow: ellipsis;
-	} 
+		margin-right: 12px;
+		color: white;
+		
+	}
 	.index .Word p {
 		width: 270px;
 		height: 16px;
