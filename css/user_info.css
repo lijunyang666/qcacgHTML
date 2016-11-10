@@ -182,8 +182,11 @@
 }
 
 .icon_personal_information.active {
+	background: url(../img/information_active_04.png) no-repeat;
 }
-.user_info .user_info_left .user_info_nva ul li:hove .icon_personal_information  {
+.user_info .user_info_left .user_info_nva ul li:hover .icon_personal_information  {
+	background: url(../img/information_active_04.png) no-repeat   ;
+	
 	
 }
 
@@ -192,6 +195,10 @@
 }
 
 .icon_personal_bookshelf.active {
+	background: url(../img/bookshelf_active_03.jpg) no-repeat;
+}
+.user_info .user_info_left .user_info_nva ul li:hover .icon_personal_bookshelf  {
+	background: url(../img/bookshelf_active_03.jpg) no-repeat;
 }
 
 .icon_personal_follow {
@@ -199,6 +206,10 @@
 }
 
 .icon_personal_follow.active {
+	background: url(../img/follow_active_03.jpg) no-repeat;
+}
+.user_info .user_info_left .user_info_nva ul li:hover .icon_personal_follow  {
+	background: url(../img/follow_active_03.jpg) no-repeat;
 }
 
 .icon_personal_message {
@@ -206,6 +217,10 @@
 }
 
 .icon_personal_message.active {
+	background: url(../img/message_active_03.jpg) no-repeat;
+}
+.user_info .user_info_left .user_info_nva ul li:hover .icon_personal_message  {
+	background: url(../img/message_active_03.jpg) no-repeat;
 }
 
 .icon_personal_wallet {
@@ -213,14 +228,21 @@
 }
 
 .icon_personal_wallet.active {
+	background: url(../img/wallet_active_03.jpg) no-repeat;
+}
+.user_info .user_info_left .user_info_nva ul li:hover .icon_personal_wallet {
+	background: url(../img/wallet_active_03.jpg) no-repeat;
 }
 
 .icon_personal_contributes {
-	
+	background: url(../img/contributes_active_06.jpg) no-repeat;
 }
 
 .icon_personal_contributes.active {
   background: url(../img/contributes_active.png) no-repeat;
+}
+.user_info .user_info_left .user_info_nva ul li:hover .icon_personal_contributes {
+	background: url(../img/contributes_active.png) no-repeat;
 }
 
 /* 图标 END */
