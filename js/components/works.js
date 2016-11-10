@@ -32,19 +32,19 @@ var works = Vue.extend({
       minCropBoxWidth:200,
       preview: ".img-preview",
       build: function (e) {
-            console.log(e.type);
+            //console.log(e.type);
           },
           built: function (e) {
-            console.log(e.type);
+            //console.log(e.type);
           },
           cropstart: function (e) {
-            console.log(e.type);
+            //console.log(e.type);
           },
           cropmove: function (e) {
-            console.log(e.type);
+            //console.log(e.type);
           },
           cropend: function (e) {
-            console.log(e.type);
+            //console.log(e.type);
           },
       crop: function(e) {
         $('#dataX').val(Math.round(e.x));
@@ -86,10 +86,10 @@ var works = Vue.extend({
     _data.sort = "少年";
     _data.bookTypeList = arrTemp;
     //============================================
-    var bookEntity = 'bookEntity=' + JSON.stringify(_data);
-     SZXJ.http('post', PathList.saveOrUpdateBook, bookEntity, 
+    
+     SZXJ.http('post', PathList.saveOrUpdateBook, _data, 
             (response) => {
-              localhost.href = '/bookBlockList';
+              location.href = '/bookBlockList';
             });
     },
     //============================================
