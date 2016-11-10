@@ -3,6 +3,7 @@
   width:100%;
   background-color: #ffffff;
   box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  min-width:1200px;
 }
 
 .qcacg-header-parent .qcacg-header {
@@ -84,6 +85,10 @@
 .qcacg-footer-parent {
   background-color: #f2f2f2;
   height: 240px;
+  width: 100%;
+  min-width:1200px;
+  border: 0px;
+  overflow: hidden;
 }
 .qcacg-footer-parent .qcacg-footer {
   width: 1200px;

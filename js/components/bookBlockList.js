@@ -1,3 +1,4 @@
+// 投稿-第一页 显示作者作品
 var bookBlockList = Vue.extend({
       template: 
       '<ul class="nav"><li class="active" v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works\'}"><span class="circular"></span><span class="title_name">创建作品</span></li></ul>'

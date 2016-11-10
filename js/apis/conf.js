@@ -6,6 +6,7 @@ PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML';
 
 PathList.rootPath = 'http://www.qcacg.cn/Controller';
 
+
 // 登陆的3个请求
 PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet';
 PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
@@ -27,3 +28,7 @@ PathList.bookUpload = PathList.rootPath + '/book/upload.shtml';
 PathList.queryBookType = PathList.rootPath + '/bookType/queryBookType.shtml';
 // 新建与修改作品的接口
 PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
+// 读者阅读章节接口
+PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
+// 新建章节接口
+PathList.saveOrUpdateContent = PathList.rootPath + '/content/saveOrUpdateContent.shtml';

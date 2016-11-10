@@ -5,9 +5,10 @@
 		<title>首页</title>
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/headerOrFooter.css" />
 	</head>
-	<body>
-		<iframe id="qcacg-header" style="height: 56px;width: 100%;min-width:1200px;border: 0px;overflow: hidden;" src="public/public-header.html"></iframe>
+	<body id="app">
+		<myheader></myheader>
 		<div class="index">
 			<div class="Recomm">
 				<img src="./img/index/scrollbar4.jpg" />
@@ -776,6 +777,14 @@
 					</div>
 				</div>
 		</div>
-		<iframe style="height: 240px;width: 100%;min-width:1200px;border: 0px;overflow: hidden;" src="public/public-footer.html"></iframe>
+		</div>
+		<myfooter></myfooter>
 	</body>
+	<script src="./js/apis/vueHttp.js"></script>
+  	<script src="./js/apis/conf.js"></script>
+	<script type="text/javascript" src="./js/vue.min.js" ></script>
+	<script type="text/javascript" src="js/components/header.js" ></script>
+	<script type="text/javascript" src="js/components/footer.js" ></script>
+	<script type="text/javascript" src="js/require/headerOrfooter.js"></script>
+
 </html>
