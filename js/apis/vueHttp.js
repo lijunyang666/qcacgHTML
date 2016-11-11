@@ -14,7 +14,6 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
   }
   if (_method === 'get') {
     // _URL
-    console.log('get');
     Vue.http.get(_URL, _data).then(
       (response) => {
         successfn(response);

@@ -41,7 +41,7 @@
           _data.bookId = parseInt(this.id, 10);
           _data.volumeName = this.volume;
           _data.volumeId = '';
-          SZXJ.http('get', PathList.saveOrUpdateVolume, _data, 
+          SZXJ.http('post', PathList.saveOrUpdateVolume, _data, 
             (response) => {
               this.$set('newBookChapter', false);
               this.getBookListFn();
