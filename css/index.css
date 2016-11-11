@@ -69,7 +69,7 @@
 	.index .edit span {
 		display: block;
 	    width: 80px;
-	    float: left;
+	   
 	    line-height: 35px;
 	    height: 35px;
 	}
@@ -84,9 +84,10 @@
 		color: #7d7d7d;
 	}
 	.index .edit .edit_More{
-		width: 35px;
-	    float: right;
-	    margin: 10px 0 0 0;
+		width: 40px;
+	    display: inline-block;
+	    margin: 12px 0 0 870px;
+	    
 	}
 	.index .edit .details {
 		display: block;
@@ -136,8 +137,7 @@
 		float: left;
 	}
 	.index .main .main_title .main_recomm span {
-		display: block;
-		float: left;
+		margin-left: 5px;
 		height: 35px;
 		line-height: 35px;
 		font-size: 18px;
@@ -147,7 +147,7 @@
 	}
 	.index .main .main_title .main_More {
 		display: inline-block;
-		padding-left: 700px;
+		padding-left: 680px;
 		padding-top: 15px;
 		
 	}
@@ -248,7 +248,7 @@
 	.index .sidebar .sidebar_content .sidebar_con {
 		width: 301px;
 		height:84px;
-		margin-top: 18px;
+		margin-top: 15px;
 		position: relative;
 	}
 	.index .sidebar .sidebar_content .sidebar_con .sidebar_img {
@@ -265,7 +265,7 @@
 	}
 	.index .sidebar .sidebar_content .sidebar_con ul .sidebar_name {
 		font-size: 16px;
-		width: 180px;
+		width: 200px;
 	    overflow: hidden;
 	    
 	    
@@ -295,12 +295,13 @@
 		font-size: 36px;
 		color: #e74c3c;
 		float: right;
+		margin-top:10px ;
 	}
 	.index .sidebar .sidebar_content .sidebar_cont ul{
 		width: 278px;
 	    height: 31px;
 	    text-align: center;
-	    margin-top: 15px ;
+	    margin-top: 10px ;
 	  
 	   
 	}
@@ -335,7 +336,7 @@
 		font-size: 12px;
 		text-align: center;
 		background: #efefef;
-		margin: 15px 0px 0 8px;
+		margin: 1px 0px 0 8px;
 		overflow: auto;
 		cursor: pointer;
 	}
@@ -346,7 +347,7 @@
 	.index .secon .secon_title {
 		width: 853px;
 		float: left;
-		margin-top: 100px;
+		margin-top: 60px;
 		
 	}
 	
@@ -362,8 +363,7 @@
 		float: left;
 	}
 	.index .secon .secon_title .secon_recomm span {
-		display: block;
-		float: left;
+		margin-left: 5px;
 		height: 35px;
 		line-height: 35px;
 		font-size: 18px;
@@ -373,7 +373,7 @@
 	}
 	.index .secon .secon_title .secon_More {
 		display: inline-block;
-		padding-left: 700px;
+		padding-left: 680px;
 		padding-top: 15px;
 	}
 	.index .secon .secon_title .secon_img {
@@ -473,7 +473,7 @@
 	.index .Side .Side_content .Side_con {
 		width: 301px;
 		height:84px;
-		margin-top: 10px;
+		margin-top: 15px;
 		position: relative;
 	}
 	.index .Side .Side_content .Side_con ul{ 
@@ -524,7 +524,7 @@
 		height: 14px;
 	    width: 110px;
 	    float: left;
-	    text-align: center;
+	    text-align: right;
 	    color: #E74C3C;
 	    padding-top: 3px;
 	}
@@ -584,8 +584,7 @@
 		float: left;
 	}
 	.index .New .New_title .New_recomm span {
-		display: block;
-		float: left;
+		margin-left: 5px;
 		height: 35px;
 		line-height: 35px;
 		font-size: 18px;
@@ -595,7 +594,7 @@
 	}
 	.index .New .New_title .New_More {
 		display: inline-block;
-		padding-left: 700px;
+		padding-left: 680px;
 		padding-top: 15px;
 	}
 	.index .New .New_title .New_update {
@@ -689,7 +688,7 @@
 	.index .Word .Word_content .Word_con {
 		width: 301px;
 		height:84px;
-		margin-top: 10px;
+		margin-top: 15px;
 		
 	}
 	.index .Word .Word_content .Word_con ul{ 
@@ -739,10 +738,13 @@
 		height: 14px;
 	    width: 110px;
 	    float: left;
-	    text-align: center;
+	    text-align: right;
 	    color: #E74C3C;
 	    padding-top: 3px;
 	}
+
+
+			
 	.index .Word .Word_content .Word_cont {
 		margin-top: 20px;
 		white-space: nowrap;
