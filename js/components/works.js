@@ -89,7 +89,7 @@ var works = Vue.extend({
     
      SZXJ.http('post', PathList.saveOrUpdateBook, _data, 
             (response) => {
-              location.href = '/view/user_info.html#!/bookBlockList';
+              location.href = PathList.TemprootPath + '/view/user_info.html#!/bookBlockList';
             });
     },
     //============================================
