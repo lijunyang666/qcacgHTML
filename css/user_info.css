@@ -86,7 +86,15 @@
   height: 54px;
   cursor: pointer;
 }
-
+.user_info .user_info_left .user_info_nva ul li a {
+	color: #000000;
+}
+.user_info .user_info_left .user_info_nva ul li:hover a {
+	color: #7d9c6e;
+}
+.user_info .user_info_left .user_info_nva ul li.active a {
+	color: #7d9c6e;
+}
 .user_info .user_info_left .user_info_nva ul li:hover {
   font-size: 20px;
   line-height: 64px;
@@ -1093,3 +1101,540 @@
 .cat-list-post a {
   background-color: transparent;
 }
+
+
+
+								.contribution .content .bookBlockList {
+									padding-bottom: 20px;
+									min-height: 250px;
+									margin: 20px 0 0 0;
+								}
+							
+								.contribution .content .bookBlockList  p img {
+									vertical-align: middle;
+								}
+								
+								.portrait {
+									display: inline-block;
+									background: url(../img/user_info_touxiang.jpg);
+									width: 130px;
+									height: 130px;
+									border-radius: 75px;
+									margin: 10px 10px 10px 50px;
+									float: left;
+								}
+								
+								.messageAI {
+									display: inline-block;
+									width: 652px;
+									height: 150px;
+									float: left;
+								}
+								
+								.up {
+									width: 652px;
+									display: inline-block;
+									padding: 20px 0 0 10px;
+									height: 20px;
+								}
+								.messageAI .up .up-name {
+								margin:0 15px 0 10px ; 
+								font-size:  20px; 
+								color:#03A9F4;
+								}
+								.up .up-word {
+									margin:0 0px 0 30px ; 
+									font-size:  20px;
+								
+								}
+								
+								.centreAI {
+									padding: 25px 0 0 10px;
+								}
+								
+								.centreAI .font {
+									margin: 20px 0 0 5px;
+								}
+								.centreAI .imgAI1 {
+									vertical-align: middle; padding:0px 0 0 10px ;
+								
+								}
+								.centreAI .imgAI2 {
+									vertical-align: middle; padding:0px 0 0 30px ;
+								
+								}
+								
+								.downAI {
+									padding: 25px 0 0 20px;
+									font-size: 16px;
+								}
+								
+								.change {
+									width: 80px;
+									height: 20px;
+									margin: 10px 0 0 80px;
+									position: relative;
+									border-radius: 6px;
+									background-color: #03A9F4;
+								}
+								
+								.change .font1 {
+									position: absolute;
+									left: 12px;
+									top: 2.5px;
+									color: white;
+								}
+								
+								.nameAI {
+									margin: 10px 0 0 100px;
+								}
+								 .remarkAI {
+									padding-left:30px ; 
+									font-size: 12px; 
+									color: #AAAAAA;
+								}
+								
+								.sexAI {
+									margin: 25px 0 0 100px;
+								}
+								
+								.sexAI .butt {
+									padding-left: 10px;
+								}
+								
+								.birthday {
+									margin: 25px 0 0 100px;
+								}
+								
+								.numberAI {
+									margin: 25px 0 0 68px;
+								}
+								
+								.email {
+									margin: 25px 0 0 100px;
+								}
+								
+								.name1 {
+									font-size: 16px;
+								}
+		/*.email .email_validate{
+          	display: inline-block;
+          	width: 80px;
+          	height: 20px;
+          	position: relative;
+          	background-color: #FF7C8C;
+          	border-radius: 6px;
+          	left: 10px;
+          	top: 5px;
+          }
+          .email .email_validate .email_validate_two {
+          	position: absolute;
+          	left: 10px;
+          	top: 2.5px;
+          	color: white;
+          }*/
+								
+								.change {
+									width: 80px;
+									height: 20px;
+									margin: 10px 0 0 80px;
+									color: white;
+									border-radius: 6px;
+									background-color: #03A9F4;
+									
+									padding-top: 3px;
+									text-align: center;
+								}
+								.change2 {
+									width: 80px;
+									height: 20px;
+									margin: 10px 0 0 100px;
+									color: white;
+									border-radius: 6px;
+									background-color: #03A9F4;
+									left: 100px;
+									padding-top: 3px;
+									text-align: center;
+								}
+								
+								
+								
+								.numberAItwo1 {
+									margin: 10px 0 0 68px;
+								}
+								
+								.numberAItwo2 {
+									margin: 30px 0 0 68px;
+								}
+								.remark1 {
+									margin-left: 30px; font-size: 12px; color:#AAAAAA ;
+								}
+								
+								.numberAItwo3 {
+									margin: 30px 0 0 36px;
+								}
+								
+								.numberAItwo4 {
+									margin: 30px 0 20px 52px;
+									
+								}
+								 .numberAItwo4  .verify {
+								 	color: white;
+								 	display: inline-block;
+								 	background-image: url(../img/gerenxinxi_13.jpg);
+								 	text-align: center;
+								 	width: 70px;
+								 	height: 22px;
+								 	font-size: 12px;
+								 	padding-top: 5px;
+								 	margin-left: 20px;
+								 	
+								 }
+								
+								.book-navAI .book-img {
+									padding: 10px 20px 0 80px;
+								}
+								
+								.book-navAI .book-img1 {
+									padding: 10px 20px 0 30px;
+								}
+								
+								.book-name {
+									margin-left: 100px;
+								}
+								
+								.book-name1 {
+									margin-left: 85px;
+								}
+								
+								.img-attention-head {
+									float: left;
+									margin: 10px 10px 0 50px;
+									border-radius: 40px;
+									width: 80px;
+									height: 80px;
+									background: url(../img/user_info_touxiang.jpg) center;
+								}
+								
+								.attention-name {
+									float: left;
+									width: 670px;
+									margin: 25px 15px 25px 10px;
+									vertical-align: baseline;
+								}
+								.attention-name .attention-name-sex{
+									margin-left:15px;
+								}
+								
+								.attention-name .wordAI {
+									display: inline-block;
+									width: 50px;
+									height: 20px;
+									background-color: #03A9F4;
+									border-radius: 6px;
+									text-align: center;
+									color: white;
+									margin-left: 50px;
+									padding-top: 2px;
+								}
+								
+								.attention-name span {
+									font-size: 16px;
+								}
+								
+								.wordAI-two {
+									font-size: 15px;
+									margin-left: 10px;
+								}
+								
+								.page-foot {
+									display: inline-block;
+									width: 30px;
+									height: 30px;
+									border: solid 1px #7D7D7D;
+									border-radius: 6px;
+									font-size: 16px;
+									text-align: center;
+									padding-top: 6px;
+									margin: 15px 0px 10px 700px;
+								}
+								
+								.page-foot2 {
+									display: inline-block;
+									width: 30px;
+									height: 30px;
+									border: solid 1px #7D7D7D;
+									border-radius: 6px;
+									font-size: 16px;
+									text-align: center;
+									padding-top: 6px;
+									margin: 15px 0px 10px 15px;
+								}
+								
+								.replyAI {
+									float: left;
+									margin: 18px 0 0 0;
+								}
+								
+								.replyAI .word1 {
+									font-size: 13px;
+									color: #A7A7A7;
+									padding-left: 5px;
+								}
+								
+								.replyAI .word2 {
+									padding-left: 300px;
+								}
+								
+								.replyAI1 {
+									margin: 10px 0 10px 5px;
+								}
+								
+								.replyAI2 {
+									margin: 15px 0 15px 30px;
+								}
+								
+								.replyAI .word-name {
+									color: #169BD5;
+								}
+								
+								.replyAI .word-time {
+									margin-left: 20px;
+									font-size: 12px;
+									color: #A7A7A7;
+								}
+								
+								.replyAI3 {
+									margin: 25px 0 30px 5px;
+								}
+								
+								.img-attention-word {
+									margin: 10px 0 15px 50px;
+								}
+								
+								.img-attention-word .attention-word1 {
+									padding: 0 20px;
+									font-size: 16px;
+									font-weight: 700;
+								}
+								
+								.img-attention-word .attention-word2 {
+									font-size: 13px;
+									color: #7F7E7E;
+									padding-right: 20px;
+								}
+								
+								.img-attention-word .attention-word3 {
+									padding-left: 300px;
+								}
+								
+								.bookBlockList p {
+									padding: 5px 0 0 70px;
+									margin-bottom: 10px;
+									width: 780px;
+									text-indent: 15px;
+								}
+								
+								.bookBlockList p span {
+									color: #169BD5;
+								}
+								
+								.pay-head {
+									font-size: 16px;
+									margin: 10px 0 15px 80px;
+								}
+								
+								.pay-income {
+									overflow: hidden;
+									margin: 15px 0 50px 400px;
+								}
+								
+								.pay-income li {
+									float: left;
+									font-size: 20px;
+									padding-left: 20px;
+								}
+								
+								.pay-a {
+									overflow: hidden;
+									color: #777777;
+									width: 800px;
+									margin: auto;
+									margin-bottom: 5px;
+								}
+								
+								.pay-a li {
+									float: left;
+									padding-left: 120px;
+								}
+								
+								.table-a {
+									text-align: center;
+									color: #7F7E7E;
+									margin-top: 20px;
+									margin-left: 80px;
+								}
+								
+								.table-a tr {}
+								
+								.table-a tr td {
+									width: 150px;
+									height: 50px;
+								}
+								.pay-head2 {
+									font-size: 20px;
+									margin: 20px 0 15px 80px;
+									font-weight: 600;
+								}
+								.pay-b {
+									display: inline-block;
+									width: 80px;
+									height: 30px;
+									color: white;
+									border-radius: 8px;
+									background-color: #03A9F4;
+									margin: 10px 50px 15px 320px;
+									font-size: 18px;
+								    text-align: center;
+								    padding-top: 5px;
+								    letter-spacing: 5px;
+								}
+								.pay-c {
+									display: inline-block;
+									width: 80px;
+									height: 30px;
+									color: white;
+									border-radius: 8px;
+									background-color: #03A9F4;
+									
+									font-size: 18px;
+								    text-align: center;
+								    padding-top: 5px;
+								    letter-spacing: 5px;
+								}
+								.pay-d {
+									font-size:24px ;
+									margin-left:120px ;
+									margin-bottom: 15px;
+								}
+								.pay-number {
+									display: inline-block;
+									font-size:24px ;
+									margin: 15px 120px 0 120px;
+								}
+								.pay-check {
+									display: inline-block;
+									width: 80px ;
+									height: 30px;
+									background-color: #03A9F4;
+									border-radius: 8px;
+									text-align: center;
+									padding-top: 5px;
+									font-size:17px ;
+									color: white;
+								}
+								.explain {
+									margin-left: 80px;
+									margin-top: 20px;
+								}
+								.explain li {
+									padding-top: 15px;
+								}
+								.windowAI {
+									position: absolute;
+									top: 400px;
+									left: 800px;
+									width: 350px;
+									height: 250px;
+									border: solid #7F7E7E 1px;
+									border-radius: 8px;
+									background-color: white;
+								}
+								.windowAI .win-A {
+									padding-left:30px;
+									padding-top: 20px;
+									font-size: 16px;
+									margin-bottom: 10px;
+								}
+								.windowAI .win-A img {
+									margin-right: 5px;
+								}
+								
+								.windowAI .input1 {
+									margin-left: 50px;
+									margin-top: 20px;
+								}
+								.windowAI  .win-B {
+									width: 60px ;
+									height: 20px;
+									color: white;
+									text-align: center;
+									background-color: #03A9F4;
+									border-radius: 6px;
+									margin: 15px 0 30px 120px;
+								}
+								.windowAI .win-word span {
+									padding-left: 125px;
+								}
+								/*弹窗样式*/
+								.windowA1 {
+									width: 300px;
+									height: 100px;
+									background-color: white;
+									margin: 20px 0 0 100px;
+									border: 1px white solid;
+									border-radius: 8px;          
+                                    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+								}
+								.windowA1 img {
+									margin: 25px 10px  0 30px;
+								}
+								.windowA1 ul {
+									display: inline-block;
+									font-size:18px ;
+									margin-bottom: 20px;
+								}
+								.windowA1 ul li {
+									color: #8C8C8C;
+									font-size: 12px;
+									padding-top:5px ;
+								}
+								.windowA1 .window-footer {
+									width: 300px;
+									height: 20px;
+									color: white;
+									background-color: #5BC0DE;
+									border-radius:0 0 8px 8px ;
+									text-align: center;
+									padding-top: 2px;
+								}
+								.windowA2 {
+									width: 500px;
+									height: 200px;
+									background-color: white;
+									margin: 20px 0 0 100px;
+									border: 1px white solid;
+									border-radius: 8px;          
+                                    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+								}
+								.windowA2 .windowA2-h {
+									background-color:#C8CBCC;
+									font-size: 20px;
+									padding: 10px 0 5px 15px ;
+									border-radius: 8px 8px 0 0 ;
+									height: 40px;
+								}
+								.windowA2  .windowA2-word {
+									text-indent: 20px;
+									width: 400px;
+									height: 150px;
+									margin-top: 20px;
+									margin-left: 35px;
+									font-size: 16px;
+								}
+								.windowA2 .windowA2-s {
+									width: 100px;
+									height: 25px;
+									margin: 10px 20px 0 50px;
+									background-color: #169BD5;
+								}

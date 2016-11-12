@@ -2,7 +2,7 @@
 
 PathList.TemprootPath = '';
 
-// PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML';
+PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML';
 
 PathList.rootPath = 'http://www.qcacg.cn/Controller';
 

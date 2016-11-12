@@ -25,12 +25,39 @@
     </div> 
     <div class="user_info_nva clear"> 
      <ul> 
-      <li><i class="icon_personal_information"></i>我的信息</li> 
-      <li><i class="icon_personal_bookshelf"></i>我的书架</li> 
-      <li><i class="icon_personal_follow"></i>我的关注</li> 
-      <li><i class="icon_personal_message"></i>我的消息</li> 
-      <li><i class="icon_personal_wallet"></i>我的钱包</li> 
-      <li class="active"><i class="icon_personal_contributes active"></i>我的投稿</li> 
+      <li :class="active === 'info'?'active':''" @click="setShowFlagFn | debounce 500">
+      	<a :href="path.TemprootPath + '/view/user_info.html#!/info'">
+      		<i class="icon_personal_information" :class="active === 'info'?'active':''"></i>我的信息
+      	</a>
+      </li> 
+      
+      <li @click="setShowFlagFn | debounce 500" :class="active === 'bookshelf'?'active':''">
+      	<a :href="path.TemprootPath + '/view/user_info.html#!/bookshelf'">
+      	<i class="icon_personal_bookshelf"></i>我的书架
+      	</a>
+      </li> 
+      	
+      <li @click="setShowFlagFn | debounce 500" :class="active === 'attention'?'active':''">
+      	<a :href="path.TemprootPath + '/view/user_info.html#!/attention'">
+      	<i class="icon_personal_follow"></i>我的关注</li> 
+      	</a>
+      	
+      <li @click="setShowFlagFn | debounce 500" :class="active === 'message'?'active':''">
+      	<a :href="path.TemprootPath + '/view/user_info.html#!/message'">
+      	<i class="icon_personal_message"></i>我的消息</li> 
+      	</a>
+      	
+      <li @click="setShowFlagFn | debounce 500" :class="active === 'wallet'?'active':''">
+      	<a :href="path.TemprootPath + '/view/user_info.html#!/wallet'">
+      	<i class="icon_personal_wallet"></i>我的钱包</li> 
+      	</a>
+      	
+      <li :class="active === 'bookBlockList'?'active':''" @click="setShowFlagFn | debounce 500">
+      	<a :href="path.TemprootPath + '/view/user_info.html#!/bookBlockList'">
+      		<i class="icon_personal_contributes" :class="active === 'bookBlockList'?'active':''"></i>我的投稿
+      	</a>
+      </li>
+      	
      </ul> 
     </div> 
     <div class="user_info_nva_title"> 
@@ -42,12 +69,6 @@
    </div> 
    
 <!-- 右边内容 -->
-	<!-- 我的信息 --> 
-    <!-- 我的书架 --> 
-    <!-- 我的关注 --> 
-    <!-- 我的消息 --> 
-    <!-- 我的钱包 --> 
-    <!-- 个人投稿 --> 
 	<router-view></router-view>
     </div>
  <myfooter></myfooter>
@@ -74,9 +95,23 @@
  <script src="../js/components/catalogue.js"></script>
  <script src="../js/components/chapter.js"></script>
  <script src="../js/components/chapter_edit.js"></script>
+ <script src="../js/components/info.js"></script>
+ <script src="../js/components/updatePass.js"></script>
+ <script src="../js/components/bookshelf.js"></script>
+ <script src="../js/components/record.js"></script>
+ <script src="../js/components/attention.js"></script>
+ <script src="../js/components/attentionToMe.js"></script>
+ <script src="../js/components/message.js"></script>
+ <script src="../js/components/tellMe.js"></script>
+ <script src="../js/components/relevant.js"></script>
+ <script src="../js/components/system.js"></script>
+ <script src="../js/components/official.js"></script>
+ <script src="../js/components/wallet.js"></script>
+ <script src="../js/components/bill.js"></script>
  
  
  <script>
+ 
   var router = new VueRouter();
   router.map({
     '/bookBlockList': { component: bookBlockList },
@@ -84,13 +119,48 @@
     '/catalogue/:id':{ component: catalogue },
     '/chapter/:id':{ component: chapter },
     '/chapter_edit/:id':{ component: chapter_edit },
+    '/info': { component: info },
+    '/updatePass': { component: updatePass },
+    '/bookshelf': { component: bookshelf },
+    '/record': { component: record },
+    '/attention': { component: attention },
+    '/attentionToMe': { component: attentionToMe },
+    '/message': { component: message },
+    '/tellMe': { component: tellMe },
+    '/relevant': { component: relevant },
+    '/system': { component: system },
+    '/official': { component: official },
+    '/wallet': { component: wallet },
+    '/bill': { component: bill },
+    
   })
-  var App = Vue.extend({ });
+  var App = Vue.extend({
+  	data: function() {
+  		return {
+  			path: PathList,
+  			active: 'info',
+  		}
+  		
+  	},
+  	methods: {
+      	setShowFlagFn: function() {
+		  const href = window.location.href;
+          const str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
+		  this.active = str;
+		},
+        getBookListFn: function() {
+          var _data = {};
+          SZXJ.http('get', PathList.findBookByUser, {}, (response) => {
+            this.$set('bookList', response.data);
+          });
+        },
+   },
+  });
   App.component('myfooter', footer);
   App.component('myheader', header);
 
   router.redirect({
-  '*': 'bookBlockList',
+  	'*': 'info',
   });
   router.start(App, '#app');
   
