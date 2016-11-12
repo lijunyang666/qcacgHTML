@@ -1172,21 +1172,9 @@
 									font-size: 16px;
 								}
 								
-								.change {
-									width: 80px;
-									height: 20px;
-									margin: 10px 0 0 80px;
-									position: relative;
-									border-radius: 6px;
-									background-color: #03A9F4;
-								}
 								
-								.change .font1 {
-									position: absolute;
-									left: 12px;
-									top: 2.5px;
-									color: white;
-								}
+								
+								
 								
 								.nameAI {
 									margin: 10px 0 0 100px;
@@ -1244,8 +1232,8 @@
 									color: white;
 									border-radius: 6px;
 									background-color: #03A9F4;
-									
-									padding-top: 3px;
+									line-height: 20px;
+								
 									text-align: center;
 								}
 								.change2 {
@@ -1331,14 +1319,15 @@
 								
 								.attention-name .wordAI {
 									display: inline-block;
-									width: 50px;
+									width: 55px;
 									height: 20px;
 									background-color: #03A9F4;
-									border-radius: 6px;
+									border-radius: 8px;
 									text-align: center;
 									color: white;
 									margin-left: 50px;
-									padding-top: 2px;
+									line-height: 20px;
+									font-size: 12px;
 								}
 								
 								.attention-name span {
@@ -1487,33 +1476,34 @@
 								.pay-head2 {
 									font-size: 20px;
 									margin: 20px 0 15px 80px;
-									font-weight: 600;
+									font-weight: 500;
+									
 								}
 								.pay-b {
 									display: inline-block;
-									width: 80px;
-									height: 30px;
+									width: 70px;
+									height: 25px;
 									color: white;
 									border-radius: 8px;
 									background-color: #03A9F4;
 									margin: 10px 50px 15px 320px;
-									font-size: 18px;
+									font-size: 15px;
 								    text-align: center;
-								    padding-top: 5px;
-								    letter-spacing: 5px;
+								    line-height: 25px;
+								   letter-spacing: 2px;
 								}
 								.pay-c {
 									display: inline-block;
-									width: 80px;
-									height: 30px;
+									width: 70px;
+									height: 25px;
 									color: white;
 									border-radius: 8px;
 									background-color: #03A9F4;
 									
-									font-size: 18px;
+									font-size: 15px;
 								    text-align: center;
-								    padding-top: 5px;
-								    letter-spacing: 5px;
+								    line-height: 25px;
+								    letter-spacing: 2px;
 								}
 								.pay-d {
 									font-size:24px ;
@@ -1527,13 +1517,13 @@
 								}
 								.pay-check {
 									display: inline-block;
-									width: 80px ;
-									height: 30px;
+									width: 70px ;
+									height: 25px;
 									background-color: #03A9F4;
 									border-radius: 8px;
 									text-align: center;
-									padding-top: 5px;
-									font-size:17px ;
+									line-height: 25px;
+									font-size:14px ;
 									color: white;
 								}
 								.explain {
