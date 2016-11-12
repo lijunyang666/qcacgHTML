@@ -88,6 +88,9 @@
 }
 .user_info .user_info_left .user_info_nva ul li a {
 	color: #000000;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 .user_info .user_info_left .user_info_nva ul li:hover a {
 	color: #7d9c6e;

@@ -192,7 +192,7 @@ a {
       display: block;
       width: 15px;
       height: 14px;
-      background-image: url(img/search.png);
+      background-image: url(../img/search.png);
       background-repeat: no-repeat;
       right: 32px;
       top: 6px;
