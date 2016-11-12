@@ -89,6 +89,7 @@
  <script src="../js/apis/conf.js"></script>
   
  <script src="../js/components/works.js"></script>
+  <script src="../js/components/worksUpdate.js"></script>
  <script src="../js/components/header.js"></script>
  <script src="../js/components/footer.js"></script>
  <script src="../js/components/bookBlockList.js"></script>
@@ -116,6 +117,7 @@
   router.map({
     '/bookBlockList': { component: bookBlockList },
     '/works': { component: works },
+    '/works_update/:id': { component: works_update },
     '/catalogue/:id':{ component: catalogue },
     '/chapter/:id':{ component: chapter },
     '/chapter_edit/:id':{ component: chapter_edit },
