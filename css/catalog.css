@@ -1,5 +1,5 @@
 	#search {
-		background: .rl(../img/Catalog-bj.jpg) no-repeat;
+		background: url(../img/Catalog-bj.jpg) no-repeat;
 		height: 374px;
 		min-width: 1200px;
 		width: 100%;
@@ -466,27 +466,32 @@
 			margin: 0 7px 0 0;
 		}
 		.index .text_chapter {
-			width: 669px;
-			height: 27px;
-			margin: 0 0 0 24px;
 			border-bottom: 1px solid #ececec;
+		 	
 		}
-		.index .text_chapter ul {
-			width: 600px;
-			height: 29px;
-		}
-		.index .text_chapter ul li { 
-			width: 180px;
-			height: 20px;
-			line-height: 5px;
-			float: left;
+
+		.index .text_chapter .group {
+			display:  inline-block;
+			margin-left: 20px;
 			color: #010101;
+			margin-bottom: 5px;
+			margin-left: 55px;
+			
 		}
-		.index .text_chapter .text_sign {
+		.index .text_chapter .group a {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display:  inline-block;
+			white-space: nowrap;
+			width: 150px;
+		}
+		.index .text_chapter   span {
 				width: 5px;
 				height: 8px;
 				background-color: #f79ea7;
-				margin: 0 10px 0 0;
+				display: inline-block;
+				margin-right: 5px;
+				
 		}
 		.index .text_Catalog a {
 			color: #000000;

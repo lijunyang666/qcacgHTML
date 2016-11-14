@@ -20,18 +20,16 @@
 			<img class="picture" src="../img/sss2.jpg"/>
 			<div class="text">
 			
-				<h1>夏日大作战</h1>
+				<h1>{{ title }}</h1>
 				<ul class="text_ul">
-					<li>字数: <span style="color:#7e7e7e">70万</span></li>
-					<li>点击: <span style="color:#7e7e7e">756445</span></li>
-					<li>更新: <span style="color:#7e7e7e">2016-8-16</span></li>
+					<li>字数: <span style="color:#7e7e7e">{{words}}</span></li>
+					<li>点击: <span style="color:#7e7e7e">{{cursor}}</span></li>
+					<li>更新: <span style="color:#7e7e7e">{{update}}</span></li>
 				</ul>
 				<div class="text_brief">
 						<p title="一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串
 						一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一
-						一名胆小的高二数学天才小矶健二">简介：一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串
-						一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一
-						一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一
+						一名胆小的高二数学天才小矶健二">简介：{{introduction}}
 						</p>
 					<div class="text_type">
 						<ul>
@@ -50,154 +48,23 @@
 					</div>
 				</div>
 			</div>
-				<div class="text_Catalog">
+				<div class="text_Catalog"  v-bind:class="['BookList']">
 					<ul>
 						<li class="text_mark"></li>
-						<li><b>公告栏</b></li>
+						<li ><b>{{titleName}}</b></li>
 					</ul>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
+					<div class="text_chapter" v-bind:class="['list']">
+						
+						
+							<div class="group"><span class="text_sign"></span><a href="javascript:;">{{name}}</a></div>
+							
+
 					</div>
-						<ul>
-							<li class="text_mark"></li>
-							<li><b>公告栏</b></li>
-						</ul>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					<div class="text_chapter">
-						<ul>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-							<li class="text_sign"></li>
-							<li><a href="javascript:;">宝宝生病了，请假一年</a></li>
-						</ul>
-					</div>
-					</div>
+					
+					
+				</div>
+				
+				
 				<div class="text_comment">
 						<ul>
 							<li><span>1982</span></li>
@@ -244,97 +111,12 @@
 						</ul>
 					</div>
 					<div class="text_Reply">
-						<a href="javascript:;"><img src="../img/sss24.png"/></a>
-						<ul class="Reply_ul">
-							<li><a href="javascript:;" class="Reply_a">huhuf6:</a></li>
-							<li><span class="Reply_span" title="是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我">是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我</span></li>
-						</ul>
-						<ul class="Reply_time">
-							<li><a href="javascript:;" class="input_a">回复</a></li>
-							<li>15：46</li>
-							<li>8月16日</li>
-						</ul>
-						<a href="javascript:;"><img src="../img/sss24.png"/></a>
-						<ul class="Reply_ul">
-							<li><a href="javascript:;" class="Reply_a">huhuf6:</a></li>
-							<li class="Reply_li">回复</li>
-							<li><a href="javascript:;" class="Reply_a">huhuf6:</a></li>
-							<li><span class="Reply_span" title="是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我">是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我</span></li>
-						</ul>
-						<ul class="Reply_time">
-							<li><a href="javascript:;" class="input_a">回复</a></li>
-							<li>15：46</li>
-							<li>8月16日</li>
-						</ul>
-						<ul class="Answer_See">
-							<li class="Answer_one">1</li>
-							<li>2</li>
-							<li>3</li>
-							<li>4</li>
-							<li>5</li>
-							<li>下一页</li>
-							<li>尾页</li>
-						</ul>
-							<a  class="Reply_See">还有28条回复，<span>点击查看</span></a>
-							<a  href="javascript:;" class="See_li">我也说一句</a>
+						
 					</div>
 					<div class="Reply_Underline"></div>
 				</div>
 				<div class="text_user active">
-						<a href="javascript:;"><img src="../img/sss8.jpg"/ ></a>
-						<ul>
-							<li>
-								<a href="javascript:;" class="user_a" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">huhuhf5</a>
-							<li><span class="user_comment" title="我是比企······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比%#￥%#~~~~~~~~~~~·······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡">
-									我是比企······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比%#￥%#~~~~~~~~~~~·······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比%#￥%#~幡····················！@#￥！@￥@#比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡
-								</span>
-							</li>	
-						</ul>
-					<div class="text_Open">
-							<a href="javascript:;" ><img src="../img/sss23.png"/></a>
-							<a href="javascript:;" ><text>收起全文</text></a>
-					</div>
-					<div class="text_Stop">
-						<ul>
-							<li>8月16日</li>
-							<li>15：46</li>
-							<li class="Stop_Reply">收起回复</li>
-						</ul>
-					</div>
-					<div class="text_Reply">
-						<a href="javascript:;"><img src="../img/sss24.png"/></a>
-						<ul class="Reply_ul">
-							<li><a href="javascript:;" class="Reply_a">huhuf6:</a></li>
-							<li><span class="Reply_span" title="是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我">是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我</span></li>
-						</ul>
-						<ul class="Reply_time">
-							<li><a href="javascript:;" class="input_a">回复</a></li>
-							<li>15：46</li>
-							<li>8月16日</li>
-						</ul>
-						<a href="javascript:;"><img src="../img/sss24.png"/></a>
-						<ul class="Reply_ul">
-							<li><a href="javascript:;" class="Reply_a">huhuf6:</a></li>
-							<li class="Reply_li">回复</li>
-							<li><a href="javascript:;" class="Reply_a">huhuf6:</a></li>
-							<li><span class="Reply_span" title="是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我">是我是我我是我是是我我是我是是我我是我是是我我是我是是我我是我是我我是我</span></li>
-						</ul>
-						<ul class="Reply_time">
-							<li><a href="javascript:;" class="input_a">回复</a></li>
-							<li>15：46</li>
-							<li>8月16日</li>
-						</ul>
-						<ul class="Answer_See">
-							<li class="Answer_one">1</li>
-							<li>2</li>
-							<li>3</li>
-							<li>4</li>
-							<li>5</li>
-							<li>下一页</li>
-							<li>尾页</li>
-						</ul>
-							<a  href="javascript:;" class="See_li">我也说一句</a>
-					</div>
+						
 					<div class="Reply_Underline"></div>
 				</div>
 				
@@ -516,6 +298,9 @@
 	<script src="../js/apis/vueHttp.js"></script>
   	<script src="../js/apis/conf.js"></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+ 	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
+ 	
 	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
@@ -524,16 +309,50 @@
 		var vuePractice = new Vue({
 			el: '#mask',
 			data: {
-				popup:false
+				popup:false,
+				id: '',
+				title: '111',
+				words:'70万',
+				cursor:'245466',
+				update:'2016-10-10',
+				introduction:'一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一',
+				BookList: [
+				{ titleName: '111', list: [ { name: '222' } ,{ name: '222' } ,{ name: '222' } ,{ name: '222' } ] },
+				{ titleName: '222', list: [ { name: '222' } ] },
+				{ titleName: '333', list: [ { name: '222' } ] },
+				{ titleName: '444', list: [ { name: '222' } ] },
+				],
 			},
 			methods: {
+				getValueFn: function() {
+					var href = window.location.href;
+            		this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length);
+            		var _data = {};
+            		_data.bookId = this.id;
+			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
+			        	// 取到数据渲染
+			        	 this.title = response.data.bookName;
+			        	 this.introduction =prsponse.data.bookIntroduction;
+			        	 this.words =response.data.bookWordCount;
+			        	 this.update = response.data.bookUpdate;
+			        	 this.cursor = response.data.bookHit;
+			        	 this.BookList = response.data.volumeCustomList;
+			        	 this.titleName = response.data.volumeName;	
+			        	 this.list = response.data.contentEntityList;	
+			        	 this.name = response.data.contentTitle;	
+			           console.log(response);
+			        });
+				},
 				rewardFn: function(){
 					this.popup = true;
 				},
 				rewardShow: function(){
 					this.popup = false;
 				}
-			}
+			},
+			ready: function() {
+				this.getValueFn();
+			},
 		});
 		
 	</script>
