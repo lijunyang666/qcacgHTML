@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="app">
+		<input type="button" @click="submitFn" value="提交" />
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+	<script type="text/javascript" src="../js/apis/conf.js" ></script>
+	<script type="text/javascript" src="../js/apis/vueHttp.js" ></script>
+	<script>
+
+		new Vue({
+		  el: '#app',
+		  data: {
+		  },
+		  ready: function() {
+		  },
+		  methods: {
+		  	submitFn: function() {
+			  	var _data = {};
+			  	_data.telephone = 13007230349;
+			  	SZXJ.http('get', 'http://localhost:8080/register/registerTelephoneCode.shtml', _data, 
+		        (response) => {
+		          alert(JSON.stringify(response));
+				  console.log(response);
+		        });
+		  	},
+		  },
+		  
+
+		});
+
+		
+		
+		
+	</script>
+</html>
