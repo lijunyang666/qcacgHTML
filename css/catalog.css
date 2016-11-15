@@ -88,10 +88,12 @@
 		height: 19px;
 		margin: 40px 0 0 39px;
 	}
-	.works ul{
+	.works ul {
 		width: 252px;
 		height: 140px;
 		margin: 0 0 0 42px;
+		overflow: hidden;
+		position: relative;
 	}
 	.button {
 		width: 321px;
@@ -104,9 +106,8 @@
 	.works ul li {
 		width: 84px;
 		height: 140px;
-		float: right;
 		margin: 14px 0px 0 0;
-
+    position: absolute;
 	}
 	.works li img {
 		margin: 0 0 10px 0;
@@ -317,6 +318,9 @@
 		margin: 0px 37px 0px 5px ;
 		cursor: pointer;
 	}
+	.works .button .next:hover {
+	  
+	}
 	.works .button .Previous {
 		float: right;
 		cursor: pointer;
@@ -476,9 +480,10 @@
 			color: #010101;
 			margin-bottom: 5px;
 			margin-left: 55px;
-			
+			width: 150px;
 			
 		}
+		
 		.index .text_chapter .group a {
 			text-overflow: ellipsis;
 			overflow: hidden;

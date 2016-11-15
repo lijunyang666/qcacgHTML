@@ -175,6 +175,9 @@
   				screenV: true
   			},
   			methods: {
+  			  getValueFn: function() {
+  			    
+  			  },
   				settingShow: function() {
   					this.fixed = true;
   				},
@@ -271,7 +274,15 @@
 					    }
   				}
   				
-  			}
+  			},
+  	ready: function() {
+  	  var href = window.location.href;
+      this.id = href.substring(href.lastIndexOf('?id=') + 4, href.length);
+      var str = this.id.toString();
+      if (str.search('\[^0-9]\g') === -1) {
+        this.getValueFn();
+      }
+    },
   			
 		});
 		

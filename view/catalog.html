@@ -29,12 +29,10 @@
 				<div class="text_brief">
 						<p >简介：{{introduction}}</p>
 						
-					<div class="text_type" :class="Booktype === true ? '{ typeName:  [ { ' ' } ] }' ">
+					<div class="text_type" >
 						<ul>
 							<li>分类：</li>
-							<li><span class="text_span">{{name}}</span></li>
-							<li><span class="text_span">{{name}}</span></li>
-							<li><span class="text_span">{{name}}</span></li>
+							<li v-for="obj in Booktype"><span class="text_span">{{ obj.bookTypeName}}</span></li>
 						</ul>
 					</div>
 					<div class="text_reading">
@@ -46,15 +44,25 @@
 					</div>
 				</div>
 			</div>
-				<div class="text_Catalog" :class="BookList === true ? '{ titleName: '', list: [ { name: '' } ] }', ">
-					<ul >
-						<li class="text_mark"></li>
-						<li ><b>公告栏</b></li>
-					</ul>   
-					<div class="text_chapter" >
-							<div class="group"><span class="text_sign"><a href="javascript:;">大大达到了萨克雷的卢萨卡大大达到了萨克雷的卢萨卡大大达到了萨克雷的卢萨卡大大达到了萨克雷的卢萨卡</a></span></div>	
+				<div class="text_Catalog">
+				  <div v-for="obj in BookList">
+  					<ul >
+  						<li class="text_mark"></li>
+  						<li ><b>{{ obj.volumeName }}</b></li>
+  					</ul>   
+  					<div class="text_chapter" >
+  							<div class="group" v-for="value in obj.contentEntityList">
+  							  <span class="text_sign">
+  							    <a :href="path.TemprootPath + '/view/read_book.html?id=' + value.contentId">
+  							      {{ value.contentTitle }}
+  							    </a>
+  							  </span>
+  							</div>
+  							
+  					</div>
 					</div>
 				</div>
+				
 				
 				
 				<div class="text_comment">
@@ -131,17 +139,15 @@
 				</style>
 				<div class="works">
 					<h3>其他作品</h3>
-					<div class="button"  >
-						<button class="next"><img src="../img/sss12.png"/></button>
-						<button class="Previous"><img src="../img/sss13.png"/></button>
+					<div class="button">
+						<button class="next" @click="nextWorksFn"><img src="../img/sss12.png"/></button>
+						<button class="Previous" @click="previousWorksFn"><img src="../img/sss13.png"/></button>
 					</div>
-					<ul :class="works_a === true ? '{ [worksName: '']}'>
-						<li >
+					<ul class="clear">
+						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'" v-for="obj in works_a">
 							<a href="javascript:;"><img src="../img/sss11.png"/></a>
-							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">夏日小作战</a>
+							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{ obj.worksName }}</a>
 						</li>
-						
-						
 					</ul>
 				</div>
 				<div class="list">
@@ -152,6 +158,7 @@
 						<li class="active">总</li>
 					</ul>
 					<div class="ranking">
+					  
 						<div class="relative">
 							<img src="../img/sss19.png" class="ranking_Img_line"/>
 							<a href="javascript:;"><img src="../img/sss22.png" class="ranking_head"/></a>
@@ -159,9 +166,10 @@
 								<li><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><b>比企谷八幡比企谷八幡</b></a></li>
 								<li class="name"><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
 								<li class="num"><img src="../img/sss15.png"/>好人币</li>
-								<li class="num_money"><span class="money">42357</span></li>
+								<li class="num_money"><span class="money">{{ ARRAY[0].number }}</span></li>
 							</ul>
 						</div>
+						
 						<div class="ranking_name relative">
 							<img src="../img/sss20.png" class="ranking_Img_line"/>
 							<a href="javascript:;"><img src="../img/sss10.png" class="ranking_head"/></a>
@@ -169,9 +177,10 @@
 								<li><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><b>比企谷八幡</b></a></li>
 								<li class="name"><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
 								<li class="num" style="color: #3781E7;"><img src="../img/sss16.png"/>好人币</li>
-								<li class="num_money"><span class="money" style="color: #3781E7;">42357</span></li>
+								<li class="num_money"><span class="money" style="color: #3781E7;">{{ ARRAY[1].number }}</span></li>
 							</ul>
 						</div>
+						
 						<div class="ranking_name relative">
 							<img src="../img/sss21.png" class="ranking_Img_line"/>
 							<a href="javascript:;"><img src="../img/sss14.png" class="ranking_head"/></a>
@@ -179,11 +188,12 @@
 								<li><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><b>比企谷八幡</b></a></li>
 								<li class="name"><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
 								<li class="num"style="color: #08a690;"><img src="../img/sss17.png"/>好人币</li>
-								<li class="num_money"><span class="money" style="color:#08a690;">42357</span></li>
+								<li class="num_money"><span class="money" style="color:#08a690;">{{ ARRAY[3].number }}</span></li>
 							</ul>
 						</div>
+						
 						<div class="rank">
-							<ul >
+							<ul v-for="obj in ARRAY" v-if="$index > 2 && $index >= 10">
 								<li><a class="rank_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><span class="rank_span">4</span><span class="rank_Title">封弊者</span></a></li>
 								<li class="rank_num">340</li>
 							</ul>
@@ -296,6 +306,8 @@
 		var vuePractice = new Vue({
 			el: '#mask',
 			data: {
+			  zindex: 0,
+			  path: PathList,
 				popup:false,
 				id: '',
 				title: '111',
@@ -303,25 +315,31 @@
 				cursor:'245466',
 				update:'2016-10-10',
 				introduction:'一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一',
-				BookList: [
-				{ titleName: '111', list: [ { name: '222' } ,{ name: '222' } ,{ name: '222' } ,{ name: '222' } ] },
-				{ titleName: '222', list: [ { name: '222' } ] },
-				{ titleName: '333', list: [ { name: '222' } ] },
-				{ titleName: '444', list: [ { name: '222' } ] },
-				],
+				BookList: [],
 				Booktype:[{typeName:'555'}],
 				Collection:'54545',
 				bookCopperCoins:'5656456',
 				authorName:'',
 				autograph:'',
-				works_a:[{ worksName: '111' }],
+				works_a:[{ worksName: '111' },{ worksName: '222' },{ worksName: '333' },{ worksName: '444' },{ worksName: '555' },{ worksName: '666' },{ worksName: '111' },{ worksName: '222' },{ worksName: '333' },{ worksName: '444' },{ worksName: '555' },{ worksName: '666' },],
 			},
 			methods: {
+			  nextWorksFn:function() {
+			    // <--
+          this.zindex--;
+          if (Math.abs(this.zindex) >= (this.works_a.length - 3)) {
+            this.zindex = -(this.works_a.length - 3);
+          }
+			  },
+			  previousWorksFn: function() {
+			     this.zindex++;
+          if (this.zindex >= 0) {
+            this.zindex = 0;
+          }
+			  },
 				getValueFn: function() {
-					var href = window.location.href;
-            		this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length);
-            		var _data = {};
-            		_data.bookId = this.id;
+					    var _data = {};
+            	_data.bookId = this.id;
 			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
 			        	 this.title = response.data.bookCustom.bookName;
@@ -342,9 +360,9 @@
 			           console.log(response);
 			        });
 			        
-			         SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
+			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
-			        	  this.works_a =response.data.bookCustom.userOtherBook.bookName;
+			        	 // this.works_a = response.data.bookCustom.userOtherBook.bookName;
 			           console.log(response);
 			        });
 			       
@@ -357,7 +375,12 @@
 				}
 			},
 			ready: function() {
-				this.getValueFn();
+			  var href = window.location.href;
+        this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length);
+        var str = this.id.toString();
+        if (str.search('\[^0-9]\g') === -1) {
+          this.getValueFn();
+        }
 			},
 		});
 		
