@@ -477,17 +477,19 @@
 			margin-bottom: 5px;
 			margin-left: 55px;
 			
+			
 		}
 		.index .text_chapter .group a {
 			text-overflow: ellipsis;
 			overflow: hidden;
 			display:  inline-block;
 			white-space: nowrap;
+			padding-left: 10px;
 			width: 150px;
 		}
 		.index .text_chapter   span {
 				width: 5px;
-				height: 8px;
+				height: 14px;
 				background-color: #f79ea7;
 				display: inline-block;
 				margin-right: 5px;

@@ -27,41 +27,33 @@
 					<li>更新: <span style="color:#7e7e7e">{{update}}</span></li>
 				</ul>
 				<div class="text_brief">
-						<p title="一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串
-						一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一
-						一名胆小的高二数学天才小矶健二">简介：{{introduction}}
-						</p>
-					<div class="text_type">
+						<p >简介：{{introduction}}</p>
+						
+					<div class="text_type" :class="Booktype === true ? '{ typeName:  [ { ' ' } ] }' ">
 						<ul>
 							<li>分类：</li>
-							<li><span class="text_span">恋爱</span></li>
-							<li><span class="text_span">科幻</span></li>
-							<li><span class="text_span">冒险</span></li>
+							<li><span class="text_span">{{name}}</span></li>
+							<li><span class="text_span">{{name}}</span></li>
+							<li><span class="text_span">{{name}}</span></li>
 						</ul>
 					</div>
 					<div class="text_reading">
 						<ul>
 							<li><a class="text_Read btn" href="javascript:;">开始阅读</a></li>
-							<li><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>5048</num></li>
-							<li v-on:click="rewardFn"><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>1584</num></li>
+							<li><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
+							<li v-on:click="rewardFn"><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>{{bookCopperCoins}}</num></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-				<div class="text_Catalog"  v-bind:class="['BookList']">
-					<ul>
+				<div class="text_Catalog" :class="BookList === true ? '{ titleName: '', list: [ { name: '' } ] }', ">
+					<ul >
 						<li class="text_mark"></li>
-						<li ><b>{{titleName}}</b></li>
-					</ul>
-					<div class="text_chapter" v-bind:class="['list']">
-						
-						
-							<div class="group"><span class="text_sign"></span><a href="javascript:;">{{name}}</a></div>
-							
-
+						<li ><b>公告栏</b></li>
+					</ul>   
+					<div class="text_chapter" >
+							<div class="group"><span class="text_sign"><a href="javascript:;">大大达到了萨克雷的卢萨卡大大达到了萨克雷的卢萨卡大大达到了萨克雷的卢萨卡大大达到了萨克雷的卢萨卡</a></span></div>	
 					</div>
-					
-					
 				</div>
 				
 				
@@ -129,32 +121,27 @@
 				<a href="javascript:;"><img src="../img/sss10.png"/ class="head"></a>
 				<ul class="author">
 					<li><label>作者：</label>
-						<a href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是</a>
+						<a href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{authorName}}</a>
 						<a class="a_author" href="javascript:;">关注</a>
 					</li>
-					<li><label>签名：</label><span class="span" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">巴拉拉小魔仙~~巴拉拉小魔仙~~巴拉拉小魔仙~~巴拉拉小魔仙~~巴拉拉小魔仙~~</span></li>
+					<li><label>签名：</label><span class="span" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{autograph}}</span></li>
 				</ul>
 				<style>
 					
 				</style>
 				<div class="works">
 					<h3>其他作品</h3>
-					<div class="button">
+					<div class="button"  >
 						<button class="next"><img src="../img/sss12.png"/></button>
 						<button class="Previous"><img src="../img/sss13.png"/></button>
 					</div>
-					<ul>
-						<li>
+					<ul :class="works_a === true ? '{ [worksName: '']}'>
+						<li >
 							<a href="javascript:;"><img src="../img/sss11.png"/></a>
 							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">夏日小作战</a>
 						</li>
-						<li><a href="javascript:;"><img src="../img/sss11.png"/></a>
-							<a class="works_a" href="javascript:;" title="夏日小作战夏日小作战夏日小作战">夏日小作战夏日小作战</a>
-						</li>
-						<li>
-							<a href="javascript:;"><img src="../img/sss11.png"/></a>
-						<a class="works_a" href="javascript:;" title="夏日小作战夏日小作战夏日小作战">夏日小作战</a>
-						</li>
+						
+						
 					</ul>
 				</div>
 				<div class="list">
@@ -322,6 +309,12 @@
 				{ titleName: '333', list: [ { name: '222' } ] },
 				{ titleName: '444', list: [ { name: '222' } ] },
 				],
+				Booktype:[{typeName:'555'}],
+				Collection:'54545',
+				bookCopperCoins:'5656456',
+				authorName:'',
+				autograph:'',
+				works_a:[{ worksName: '111' }],
 			},
 			methods: {
 				getValueFn: function() {
@@ -331,17 +324,30 @@
             		_data.bookId = this.id;
 			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
-			        	 this.title = response.data.bookName;
-			        	 this.introduction =prsponse.data.bookIntroduction;
-			        	 this.words =response.data.bookWordCount;
-			        	 this.update = response.data.bookUpdate;
-			        	 this.cursor = response.data.bookHit;
-			        	 this.BookList = response.data.volumeCustomList;
-			        	 this.titleName = response.data.volumeName;	
-			        	 this.list = response.data.contentEntityList;	
-			        	 this.name = response.data.contentTitle;	
+			        	 this.title = response.data.bookCustom.bookName;
+			        	 this.introduction =response.data.bookCustom.bookIntroduction;
+			        	 this.words =response.data.bookCustom.bookWordCount;
+			        	 this.update = response.data.bookCustom.bookUpdate;
+			        	 this.cursor = response.data.bookCustom.bookHit;
+			        	 this.BookList = response.data.bookCustom.volumeCustomList;
+			        	 this.titleName = response.data.bookCustom.volumeName;	
+			        	 this.list = response.data.bookCustom.contentEntityList;	
+			        	 this.name = response.data.bookCustom.contentTitle;	
+			        	 this.Booktype =response.data.bookCustom.bookTypeEntityList;
+			        	 this.typeName =response.data.bookCustom.bookTypeName;
+			        	 this.Collection =response.data.bookCustom.bookCollect;
+			        	 this.bookCopperCoins =response.data.bookCustom.bookCopperCoins;
+			        	 this.authorName =response.data.bookCustom.userEntity.userName;
+			        	 this.autograph =response.data.bookCustom.userEntity.information;
 			           console.log(response);
 			        });
+			        
+			         SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
+			        	// 取到数据渲染
+			        	  this.works_a =response.data.bookCustom.userOtherBook.bookName;
+			           console.log(response);
+			        });
+			       
 				},
 				rewardFn: function(){
 					this.popup = true;
@@ -355,5 +361,6 @@
 			},
 		});
 		
+
 	</script>
 </html>

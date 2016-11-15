@@ -274,5 +274,38 @@
   			}
   			
 		});
+		
+		vuePractice = new Vue({
+			el: '#app',
+			data: {
+				popup:false,
+				id: '',
+				
+			},
+			methods: {
+				getValueFn: function() {
+					var href = window.location.href;
+            		this.id = href.substring(href.lastIndexOf('?contentId=') + 8, href.length);
+            		var _data = {};
+            		_data.contentId = this.id;
+			        SZXJ.http('get', PathList.findContent, _data, (response) => {
+			        	// 取到数据渲染
+			        	alert("sjfsdkfjsdkf");
+			           console.log(response);
+			        });			            
+			       
+				},
+				rewardFn: function(){
+					this.popup = true;
+				},
+				rewardShow: function(){
+					this.popup = false;
+				}
+			},
+			ready: function() {
+				this.getValueFn();
+			},
+		});
+		
 	</script>
 </html>

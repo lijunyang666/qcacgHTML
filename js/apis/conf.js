@@ -36,3 +36,7 @@ PathList.queryBookType = PathList.rootPath + '/bookType/queryBookType.shtml';
 
 // 读者访问目录页
 PathList.queryBookDirectory = PathList.rootPath + '/catalog/queryBookDirectory.shtml';
+//作者其他作品的
+PathList.findUserOtherBook = PathList.rootPath + '/catalog/findUserOtherBook.shtml';
+//阅读页
+PathList.findContent = PathList.rootPath + '/catalog/findContent.shtml';
