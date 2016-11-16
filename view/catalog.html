@@ -27,7 +27,7 @@
 					<li>更新: <span style="color:#7e7e7e">{{update}}</span></li>
 				</ul>
 				<div class="text_brief">
-						<p >简介：{{introduction}}</p>
+						<p style="height: 50px;" >简介：{{introduction}}</p>
 						
 					<div class="text_type" >
 						<ul>
@@ -144,9 +144,9 @@
 						<button class="Previous" @click="previousWorksFn"><img src="../img/sss13.png"/></button>
 					</div>
 					<ul class="clear">
-						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'" v-for="obj in works_a">
-							<a href="javascript:;"><img src="../img/sss11.png"/></a>
-							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{ obj.worksName }}</a>
+						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'"  v-for="obj in booktTitle">
+							<a href="javascript:;">{{obj.bookCoverImage}}</a>
+							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{ obj.bookName }}</a>
 						</li>
 					</ul>
 				</div>
@@ -321,14 +321,14 @@
 				bookCopperCoins:'5656456',
 				authorName:'',
 				autograph:'',
-				works_a:[{ worksName: '111' },{ worksName: '222' },{ worksName: '333' },{ worksName: '444' },{ worksName: '555' },{ worksName: '666' },{ worksName: '111' },{ worksName: '222' },{ worksName: '333' },{ worksName: '444' },{ worksName: '555' },{ worksName: '666' },],
+				booktTitle:[],
 			},
 			methods: {
 			  nextWorksFn:function() {
 			    // <--
           this.zindex--;
-          if (Math.abs(this.zindex) >= (this.works_a.length - 3)) {
-            this.zindex = -(this.works_a.length - 3);
+          if (Math.abs(this.zindex) >= (this.booktTitle.length - 3)) {
+            this.zindex = -(this.booktTitle.length - 3);
           }
 			  },
 			  previousWorksFn: function() {
@@ -348,9 +348,6 @@
 			        	 this.update = response.data.bookCustom.bookUpdate;
 			        	 this.cursor = response.data.bookCustom.bookHit;
 			        	 this.BookList = response.data.bookCustom.volumeCustomList;
-			        	 this.titleName = response.data.bookCustom.volumeName;	
-			        	 this.list = response.data.bookCustom.contentEntityList;	
-			        	 this.name = response.data.bookCustom.contentTitle;	
 			        	 this.Booktype =response.data.bookCustom.bookTypeEntityList;
 			        	 this.typeName =response.data.bookCustom.bookTypeName;
 			        	 this.Collection =response.data.bookCustom.bookCollect;
@@ -362,7 +359,7 @@
 			        
 			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
-			        	 // this.works_a = response.data.bookCustom.userOtherBook.bookName;
+			        	this.booktTitle = response.data.userOtherBook.userOtherBook;
 			           console.log(response);
 			        });
 			       
@@ -376,7 +373,8 @@
 			},
 			ready: function() {
 			  var href = window.location.href;
-        this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length);
+
+        this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length); 
         var str = this.id.toString();
         if (str.search('\[^0-9]\g') === -1) {
           this.getValueFn();

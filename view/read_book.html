@@ -39,15 +39,15 @@
 					<p class="book-nav">
 						<a>轻文轻小说</a>
 						<i class="fa fa-angle-right"></i>
-						<a>就算变成女生也要爱你A</a>
+						<a>{{bookName}}</a>
 						<i class="fa fa-angle-right"></i>
 						<span>人物卡</span>
 					</p>
-					<h1 class="title">新月/艾尔薇（插图）</h1>
+					<h1 class="title">{{bookTitle}}</h1>
 					<p class="info-top">
 						<span class="author">
 						<span class="t">作者：</span>
-						<span class="d">满月酱</span>
+						<span class="d">{{name}}</span>
 						</span>
 						<span class="count">
 							<span class="t">字数：</span>
@@ -55,12 +55,12 @@
 						</span>
 						<span class="update">
 							<span class="t">更新日期：</span>
-							<span class="d">20天前</span>
+							<span class="d">{{update}}</span>
 						</span>
 					</p>
 				</div>
-				<div id="book-content" class="book-content" :style="'font-size:' + font_size + 'px;' ">
-					<p>性别：男（根据剧情发展变为女性）</p>
+				<div id="book-content" class="book-content" :style="'font-size:' + font_size + 'px;' " v-for="{obj in bookcontent}">
+					<p>{{obj.content}}</p>
 					<p>种族：人（平行时空为半精灵）</p>
 					<p>年龄：15（精灵身体起始年龄1岁）</p>
 					<p>发色：深红／精灵时为栗色</p>
@@ -159,7 +159,12 @@
 	</body>
 	<script src="../js/apis/vueHttp.js"></script>
   	<script src="../js/apis/conf.js"></script>
-	
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+ 	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
+ 		<script type="text/javascript" src="../js/components/header.js" ></script>
+	<script type="text/javascript" src="../js/components/footer.js" ></script>
+	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
 	<script>
 		var vueDemo = new Vue({
   			el: '#app',
@@ -172,12 +177,26 @@
   				temp_format:[16,'Arial,Microsoft YaHei,sans-serif','#F6F4EC','#333'], // 上一次的状态
   				temp_format_two:['#F6F4EC','#333'], // 记录开关灯的上一次的状态
   				lamp: true,
-  				screenV: true
+  				screenV: true,
+  				bookName:'44',
+  				bookcontent: [],
+  				update:'455',
+  				name:'565',
+  				bookTitle:'',
   			},
   			methods: {
-  			  getValueFn: function() {
-  			    
-  			  },
+  				getValueFn: function() {
+					    var _data = {};
+            	_data.contentId = 1;
+			        SZXJ.http('get', PathList.findContent, _data, (response) => {
+			        	this bookTitle=response.data.contentTitle;
+			        	this bookcontent=response.data.content;
+			        	this update=response.data.contentUpdate;
+			        	this name=response.data.userName;
+			        	this bookName=response.data.bookName;
+			        	console.log(response);
+			        });
+  				},
   				settingShow: function() {
   					this.fixed = true;
   				},
@@ -275,48 +294,15 @@
   				}
   				
   			},
-  	ready: function() {
-  	  var href = window.location.href;
-      this.id = href.substring(href.lastIndexOf('?id=') + 4, href.length);
-      var str = this.id.toString();
-      if (str.search('\[^0-9]\g') === -1) {
-        this.getValueFn();
-      }
-    },
-  			
+  			ready: function() {
+			  var href = window.location.href;
+       			const str = href.substring(href.lastIndexOf('?contentId=') + 11, href.length); 
+       			
+        		 this.getValueFn();
+      		},
 		});
 		
-		vuePractice = new Vue({
-			el: '#app',
-			data: {
-				popup:false,
-				id: '',
-				
-			},
-			methods: {
-				getValueFn: function() {
-					var href = window.location.href;
-            		this.id = href.substring(href.lastIndexOf('?contentId=') + 8, href.length);
-            		var _data = {};
-            		_data.contentId = this.id;
-			        SZXJ.http('get', PathList.findContent, _data, (response) => {
-			        	// 取到数据渲染
-			        	alert("sjfsdkfjsdkf");
-			           console.log(response);
-			        });			            
-			       
-				},
-				rewardFn: function(){
-					this.popup = true;
-				},
-				rewardShow: function(){
-					this.popup = false;
-				}
-			},
-			ready: function() {
-				this.getValueFn();
-			},
-		});
+
 		
 	</script>
 </html>

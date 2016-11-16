@@ -515,8 +515,35 @@
   </body>
   <script src="../js/apis/vueHttp.js"></script>
   <script src="../js/apis/conf.js"></script>
+	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+ 	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
+	
+	 <script type="text/javascript">
+	 	   new vuePrcatice = new Vue({
+	 	   	el:'#',        //绑定id
+	 	   	data:,        //绑定数据
+	 	   	methods{        //方法
+	 	   		  getValueFn: function (){
+								var _data={};
+								_data id =this.id;
+								SZXJ.http('get'数据渲染,_data,(response) =>
+								     
+								
+								
+								     console.log(response);
+								)};
+	 	   	},
+	 	   	ready function(){
+	 	   		 ver href = window.location.href;      //定义路径
+	 	   		 this id= href.substring(href.lastIndexof('Id=') + 长度 ,href.length)   //获取id
+	 	   		 this.getValueFn();   //执行getValueFn方法
+	 	   	},
+	 	   
+	 	   })
+	 </script>
+	
 </html>

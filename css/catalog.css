@@ -335,6 +335,7 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		color: #000000;
+		text-align: center;
 	}
 	.screen .rank_a {
 		display: block;
@@ -367,6 +368,7 @@
 		    display: -webkit-box;
 		    -webkit-line-clamp: 3;
 		    -webkit-box-orient: vertical;
+		    
 		}
 		.index .text_type {
 			width: 472px;
@@ -443,7 +445,7 @@
 			margin: -25px 0px 0px 45px;
 		}
 		.index .text_reading num {
-			margin: -25px 0 0 45px;
+			margin: 0px 0 0 45px;
 		}
 		.index .text_Catalog {
 			width: 711px;
@@ -479,6 +481,7 @@
 			margin-left: 20px;
 			color: #010101;
 			margin-bottom: 5px;
+			margin-top: 8px;
 			margin-left: 55px;
 			width: 150px;
 			
