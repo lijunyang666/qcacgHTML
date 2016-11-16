@@ -39,44 +39,28 @@
 					<p class="book-nav">
 						<a>轻文轻小说</a>
 						<i class="fa fa-angle-right"></i>
-						<a>{{bookName}}</a>
+						<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + bookcontent.bookId">{{bookcontent.bookName}}</a>
 						<i class="fa fa-angle-right"></i>
 						<span>人物卡</span>
 					</p>
-					<h1 class="title">{{bookTitle}}</h1>
+					<h1 class="title">{{bookcontent.contentTitle}}</h1>
 					<p class="info-top">
 						<span class="author">
 						<span class="t">作者：</span>
-						<span class="d">{{name}}</span>
+						<span class="d">{{bookcontent.userName}}</span>
 						</span>
 						<span class="count">
 							<span class="t">字数：</span>
-							<span class="d">315</span>
+							<span class="d">{{bookcontent.contentWordCount}}</span>
 						</span>
 						<span class="update">
 							<span class="t">更新日期：</span>
-							<span class="d">{{update}}</span>
+							<span class="d">{{bookcontent.contentUpdate}}</span>
 						</span>
 					</p>
 				</div>
-				<div id="book-content" class="book-content" :style="'font-size:' + font_size + 'px;' " v-for="{obj in bookcontent}">
-					<p>{{obj.content}}</p>
-					<p>种族：人（平行时空为半精灵）</p>
-					<p>年龄：15（精灵身体起始年龄1岁）</p>
-					<p>发色：深红／精灵时为栗色</p>
-					<p>名字：新月/艾尔薇·达路克</p>
-					<p>瞳色：??／精灵时为纯白色</p>
-					<p>身高：170cm／精灵时为160</p>
-					<p>外貌特征：身体曲线几乎和女性没有差别。</p>
-					<p>喜欢的食物：各种点心甜品，牛奶混苦咖啡。</p>
-					<p>人际关系好的人：蛋糕店的老板米尔沙，失踪的妈妈。</p>
-					<p>家族中的妹妹学习和能力各方面都很优秀，表面上对新月不在乎，其实一直暗恋新月。</p>
-					<p>喜欢的人：玛茵·达路克。</p>
-					<p>兴趣和目标:证明自己是有用的人，各种形式的抽奖。</p>
-					<p>武器:弯刀</p>
-					<p>身份:学生/玛茵的契约精灵</p>
-					<p>战斗描述:敏捷的身手和动态视力，1秒等于10秒的行动速度，关键时刻能爆发出惊人的破坏力，斩断比武器自身还要坚硬的对象。</p>
-					<p class="img"><img src="../img/b0994b01-9333-4b3f-888d-a5d98e6c6961.jpg" alt="轻小说：就算变成女生也要爱你A插图"></p>
+				<div id="book-content" class="book-content" :style="'font-size:' + font_size + 'px;' " v-el:bookcontent >
+					
 				</div>
 				<div class="book-bottom">
 					<p class="next-page"><a href="" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a></p>
@@ -162,16 +146,14 @@
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
- 		<script type="text/javascript" src="../js/components/header.js" ></script>
-	<script type="text/javascript" src="../js/components/footer.js" ></script>
-	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
 	<script>
 		var vueDemo = new Vue({
   			el: '#app',
   			data: {
+  			  path: PathList,
   				fixed:false,
   				font_size: 16,
-				font_family: 'Arial,Microsoft YaHei,sans-serif',
+				  font_family: 'Arial,Microsoft YaHei,sans-serif',
   				bj_color: '#F6F4EC',
   				font_color: '#333',
   				temp_format:[16,'Arial,Microsoft YaHei,sans-serif','#F6F4EC','#333'], // 上一次的状态
@@ -183,17 +165,16 @@
   				update:'455',
   				name:'565',
   				bookTitle:'',
+  				works:'',
   			},
   			methods: {
   				getValueFn: function() {
 					    var _data = {};
-            	_data.contentId = 1;
+            	_data.contentId = this.id;
 			        SZXJ.http('get', PathList.findContent, _data, (response) => {
-			        	this bookTitle=response.data.contentTitle;
-			        	this bookcontent=response.data.content;
-			        	this update=response.data.contentUpdate;
-			        	this name=response.data.userName;
-			        	this bookName=response.data.bookName;
+			        	this.bookcontent = response.data;
+			        	this.bookName =response.data;
+			        	this.$els.bookcontent.innerHTML = this.bookcontent.content;
 			        	console.log(response);
 			        });
   				},
@@ -295,10 +276,9 @@
   				
   			},
   			ready: function() {
-			  var href = window.location.href;
-       			const str = href.substring(href.lastIndexOf('?contentId=') + 11, href.length); 
-       			
-        		 this.getValueFn();
+			   var href = window.location.href;
+       	 this.id = href.substring(href.lastIndexOf('?id=') + 4, href.length); 
+       	 this.getValueFn();
       		},
 		});
 		

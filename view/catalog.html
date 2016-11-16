@@ -145,7 +145,7 @@
 					</div>
 					<ul class="clear">
 						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'"  v-for="obj in booktTitle">
-							<a href="javascript:;">{{obj.bookCoverImage}}</a>
+							<a href="javascript:;"> <img src=""/></a>
 							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{ obj.bookName }}</a>
 						</li>
 					</ul>
@@ -297,10 +297,9 @@
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
- 	
-	<script type="text/javascript" src="../js/components/header.js" ></script>
-	<script type="text/javascript" src="../js/components/footer.js" ></script>
-	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
+  <script type="text/javascript" src="../js/components/header.js" ></script>
+  <script type="text/javascript" src="../js/components/footer.js" ></script>
+  <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	</body>
 	<script>
 		var vuePractice = new Vue({
@@ -359,7 +358,7 @@
 			        
 			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
-			        	this.booktTitle = response.data.userOtherBook.userOtherBook;
+			        	this.booktTitle = response.data.userOtherBook;
 			           console.log(response);
 			        });
 			       
