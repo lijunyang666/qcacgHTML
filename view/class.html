@@ -71,23 +71,23 @@
       	时间：2016-09-12
       	描述：下面是横向导航部分
       -->
-      <ul id="transverse">
-        <li class="line active">
+      <ul id="transverse" v-for:"obj in bookTypeClass" >
+      	
+        <li class="line active" >
           <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
+          <div class="pull-left line-content" >
+            <p class="p" title="夏日大作战">{{ obj.bookName }}</p>
             <div class="div">
               <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
               <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
+              <span class="span" title="字数:3000000"><label>字数:</label>{{ obj.bookWordCount }}</span>
+              <span class="span" title="人气:3000000"><label>人气:</label>{{ obj.bookHit }}</span>
             </div>
             <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
+              <label>简介:</label>{{ obj.bookIntroduction }}</p>
             <div class="div">
               <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
+              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>{{ obj.bookUpdate }}</span>
             </div>
           </div>
         </li>
@@ -314,7 +314,7 @@
         
       </ul>
       <ul id="vertical">
-        <li class="line-vertical">
+        <li class="line-vertical" v-for:"obj in horizontalBoookClass">
         	<ul>
         		<li>
         			<div class="vertical-img">
@@ -322,13 +322,13 @@
         				<div class="vertical-img-line">
         					<img src="../img/50x50-tou.jpg" />
         					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
+        					<div class="vertical-font-size vertical-hover"><label>字数:</label>{{ obj.bookWordCount }}</div>
+        					<div class="vertical-click-size vertical-hover"><label>点击:</label>{{ obj.bookHit }}</div>
         					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
         					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
         				</div>
         			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
+        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">{{ obj.bookName }}</div>
         		</li>
         		<li>
         			<div class="vertical-img">
@@ -370,7 +370,7 @@
         					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
         				</div>
         			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
+        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">{{bookName}}</div>
         		</li>
         	</ul>
         </li>
@@ -515,35 +515,42 @@
   </body>
   <script src="../js/apis/vueHttp.js"></script>
   <script src="../js/apis/conf.js"></script>
+  <script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
-	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	
 	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
 	
-	 <script type="text/javascript">
-	 	   vuePrcatice = new Vue({
-	 	   	el:'#',        //绑定id
-	 	   	data:,        //绑定数据
-	 	   	methods{        //方法
-	 	   		  getValueFn: function (){
-								var _data={};
-								_data id =this.id;
-								SZXJ.http('get'数据渲染,_data,(response) =>
-								     
-								
-								
-								     console.log(response);
-								)};
-	 	   	},
-	 	   	ready function(){
-	 	   		 ver href = window.location.href;      //定义路径
-	 	   		 this id= href.substring(href.lastIndexof('Id=') + 长度 ,href.length)   //获取id
-	 	   		 this.getValueFn();   //执行getValueFn方法
-	 	   	},
-	 	   
-	 	   })
-	 </script>
+
+	
+<script type="text/javascript">
+	var vuePractice = new Vue({
+			el: '#app', 
+			data: {
+				bookTypeClass:[],
+				horizontalBoookClass:[],
+			},
+			methods: { 
+				getValueFn: function() {
+					var _data = {};
+					_data.bookTypeId = this.id;
+					SZXJ.http('get', PathList.queryBookTitle, _data, (response) => {
+                 
+                 this.bookTypeClass= response.data.bookEntity;
+                 this.horizontalBoookClass= response.data.bookEntity;
+						console.log(response);
+					});
+				},
+			},
+			ready: function() {
+				var href = window.location.href; 
+				 this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length); 
+				 
+				this.getValueFn(); 
+			},
+	  });
+</script>
 	
 </html>

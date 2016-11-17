@@ -297,16 +297,16 @@
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
-  <script type="text/javascript" src="../js/components/header.js" ></script>
-  <script type="text/javascript" src="../js/components/footer.js" ></script>
-  <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
+    <script type="text/javascript" src="../js/components/header.js" ></script>
+    <script type="text/javascript" src="../js/components/footer.js" ></script>
+    <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	</body>
 	<script>
 		var vuePractice = new Vue({
 			el: '#mask',
 			data: {
-			  zindex: 0,
-			  path: PathList,
+			    zindex: 0,
+			    path: PathList,
 				popup:false,
 				id: '',
 				title: '111',
@@ -373,10 +373,10 @@
 			ready: function() {
 			  var href = window.location.href;
 
-        this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length); 
-        var str = this.id.toString();
-        if (str.search('\[^0-9]\g') === -1) {
-          this.getValueFn();
+		        this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length); 
+		   	     var str = this.id.toString();
+			     	   if (str.search('\[^0-9]\g') === -1) {
+			           this.getValueFn();
         }
 			},
 		});

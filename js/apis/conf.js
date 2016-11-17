@@ -40,3 +40,5 @@ PathList.queryBookDirectory = PathList.rootPath + '/catalog/queryBookDirectory.s
 PathList.findUserOtherBook = PathList.rootPath + '/catalog/findUserOtherBook.shtml';
 //阅读页
 PathList.findContent = PathList.rootPath + '/catalog/findContent.shtml';
+
+PathList.queryBookTitle = PathList.rootPath + '/bookType/queryBook.shtml';
