@@ -16,52 +16,39 @@
         <div class="class-title-line">
           <label class="class-label">排序:</label>
           <div class="pull-left">
-            <span class="active">最新</span>
-            <span>最热</span>
+            <span @click="newbookFn(obj.id)" :class="RequestObj.newBookId == obj.id ? 'active': '' " v-for="obj in obj.newBook">{{obj.name}}</span>
+            
           </div>
           <ol class="pull-right vertical-transverse">
-            <li><img src="../img/class1-1.png" /></li>
-            <li><img src="../img/class2-2.png" /></li>
+            <li v-if="RequestObj.hengshuId == 1"><img src="../img/class1-1.png" /></li>
+            <li v-if="RequestObj.hengshuId == 1"><img src="../img/class2-2.png" / ></li>
+            
+            <li v-if="RequestObj.hengshuId == 2"><img src="../img/class1-2.png" /></li>
+            <li v-if="RequestObj.hengshuId == 2"><img src="../img/class2-1.png" / ></li>
           </ol>
         </div>
         <div class="class-title-line">
           <label class="class-label" >分类:</label>
           <ul class="class-label-ul">
-            <li class="active">战斗</li>
-            <li>幻想</li>
-            <li>恋爱</li>
-            <li>异界</li>
-            <li>搞笑</li>
-            <li>日常</li>
-            <li>校园</li>
-            <li>后宫</li>
-            <li>推理</li>
-            <li>科幻</li>
-            <li>治愈</li>
-            <li>超能力</li>
-            <li>恐怖</li>
-            <li>伪娘</li>
-            <li>乙女</li>
-            <li>同人</li>
-            <li>悬疑</li>
-            <li>网游</li>
+            <li 
+              @click="sortFn(obj.id)" 
+              :class="RequestObj.sortId == obj.id ? 'active': ''" 
+              v-for="obj in obj.sort"
+              >{{ obj.name }}</li>
+           
           </ul>
         </div>
         <div class="class-title-line">
           <label class="class-label">字数:</label>
           <ul class="class-label-ul">
-            <li>10万字以上</li>
-            <li class="active">10-30万字</li>
-            <li>30-50万字</li>
-            <li>50-100万字</li>
-            <li>100万以上</li>
+            <li @click="fontsizeFn(obj.id)" :class="RequestObj.fontsizeId == obj.id ? 'active':''"  v-for="obj in obj.fontsize">{{obj.name}}</li>
+           
           </ul>
         </div>
        <div class="class-title-line">
           <label class="class-label" >签约:</label>
           <div class="pull-left">
-          <span class="active">精品作品</span>
-          <span>签约作品</span>
+          <span @click="qianyueFn(obj.id)" :class="RequestObj.qianyueId == obj.id ? 'active': ''"  v-for="obj in obj.qianyue">{{obj.name}}</span>
           </div>
           <div class="pull-right relative"><input type="text" class="class-btn-search-input" /><i class="class-search-img"></i><a class="btn class-btn-search">搜索</a></div>
         </div>
@@ -71,7 +58,7 @@
       	时间：2016-09-12
       	描述：下面是横向导航部分
       -->
-      <ul id="transverse" v-for:"obj in bookTypeClass" >
+      <ul id="transverse" v-if="RequestObj.hengshuId === 1">
       	
         <li class="line active" >
           <img src="../img/100x140.png" class="line-img pull-left">
@@ -313,7 +300,7 @@
         </li>
         
       </ul>
-      <ul id="vertical">
+      <ul id="vertical" v-if="RequestObj.hengshuId === 2">
         <li class="line-vertical" v-for:"obj in horizontalBoookClass">
         	<ul>
         		<li>
@@ -374,7 +361,7 @@
         		</li>
         	</ul>
         </li>
-        <li class="line-vertical">
+        <li class="line-vertical" v-if="">
         	<ul>
         		<li>
         			<div class="vertical-img">
@@ -519,9 +506,9 @@
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
 	
-	<script type="text/javascript" src="../js/components/header.js" ></script>
+	<!--<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
-	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
+	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>-->
 	
 
 	
@@ -531,23 +518,52 @@
 			data: {
 				bookTypeClass:[],
 				horizontalBoookClass:[],
+				RequestObj: {
+				  sortId: 0,
+				  newBookId: 1,
+				  fontsizeId:0,
+				  qianyueId:0,
+				  hengshuId:2,
+				  value: '', // 搜索的书名
+          p: 12, // 页码
+          n: 10,
+				},
+				obj: {
+				  newBook: [{name: '最新', id: 1} ,{name: '最热', id: 2} ],
+				  sort:[{name: '战斗', id: 1},{name: '幻想', id: 2},{name: '恋爱', id: 3},{name: '异界', id: 4},{name: '搞笑', id: 5},{name: '日常', id: 5},{name: '校园', id: 6},{name: '后宫', id: 7},{name: '推理', id: 8},{name: '幻想', id: 9},{name: '治愈', id:10},{name: '超能力', id: 11},{name: '恐怖', id: 12},{name: '伪娘', id: 13},{name: '乙女', id: 14},{name: '同人', id: 15},{name: '悬疑', id: 16},{name: '网游', id: 17}], // 分类
+				  fontsize:[{name: '10万字以下', id: 1},{name: '10-30万字', id: 2},{name: '50-100万字', id: 4},{name: '一百万字以上', id: 5}], // 字数
+				  qianyue:[{name: '精品作品', id: 1},{name: '签约作品', id: 2}], // 签约 
+				  hengshu:[{name: '横', id: 1},{name: '竖', id: 2}], // 横竖
+				  value: '', // 搜索的书名
+				  p: 1, // 页码
+				  n: 12,
+				}
 			},
-			methods: { 
+			methods: {
 				getValueFn: function() {
-					var _data = {};
-					_data.bookTypeId = this.id;
-					SZXJ.http('get', PathList.queryBookTitle, _data, (response) => {
-                 
-                 this.bookTypeClass= response.data.bookEntity;
-                 this.horizontalBoookClass= response.data.bookEntity;
-						console.log(response);
-					});
+				  alert(JSON.stringify(this.RequestObj));
+//        SZXJ.http('get', PathList.queryBookTitle, RequestObj, (response) => {
+//          console.log(response);
+//					});
+				},
+				sortFn: function(id) {
+				  this.RequestObj.sortId = id;
+				  this.getValueFn(); // 请求
+				},
+				newbookFn: function(id) {
+				  this.RequestObj.newBookId = id;
+				  this.getValueFn();
+				},
+				fontsizeFn: function (id) {
+				  this.RequestObj.fontsizeId =id;
+				  this.getValueFn();
+				},
+				qianyueFn: function(id) {
+				  this.RequestObj.qianyueId= id;
+				  this.getValueFn();
 				},
 			},
 			ready: function() {
-				var href = window.location.href; 
-				 this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length); 
-				 
 				this.getValueFn(); 
 			},
 	  });
