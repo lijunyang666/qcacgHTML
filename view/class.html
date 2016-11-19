@@ -16,41 +16,42 @@
         <div class="class-title-line">
           <label class="class-label">排序:</label>
           <div class="pull-left">
-            <span @click="newbookFn(obj.id)" :class="RequestObj.newBookId == obj.id ? 'active': '' " v-for="obj in obj.newBook">{{obj.name}}</span>
+            <span @click="newbookFn(obj.id)" :class="RequestObj.sort == obj.id ? 'active': '' " v-for="obj in obj.newBook">{{obj.name}}</span>
             
           </div>
           <ol class="pull-right vertical-transverse">
-            <li v-if="RequestObj.hengshuId == 1"><img src="../img/class1-1.png" /></li>
-            <li v-if="RequestObj.hengshuId == 1"><img src="../img/class2-2.png" / ></li>
-            
-            <li v-if="RequestObj.hengshuId == 2"><img src="../img/class1-2.png" /></li>
-            <li v-if="RequestObj.hengshuId == 2"><img src="../img/class2-1.png" / ></li>
+            <li v-if="hengshuId == 2" @click="setHengshu(1)"><img src="../img/class1-1.png" /></li>
+            <li v-if="hengshuId == 2" ><img src="../img/class2-2.png" / ></li>
+            <li v-if="hengshuId == 1" ><img src="../img/class1-2.png" /></li>  
+            <li v-if="hengshuId == 1" @click="setHengshu(2)"><img src="../img/class2-1.png" / ></li>
           </ol>
         </div>
         <div class="class-title-line">
           <label class="class-label" >分类:</label>
           <ul class="class-label-ul">
             <li 
-              @click="sortFn(obj.id)" 
-              :class="RequestObj.sortId == obj.id ? 'active': ''" 
+              @click="sortFn(obj.bookTypeId)" 
+              :class="RequestObj.bookTypeId == obj.bookTypeId ? 'active': ''" 
               v-for="obj in obj.sort"
-              >{{ obj.name }}</li>
+              >{{ obj.bookTypeName }}</li>
            
           </ul>
         </div>
         <div class="class-title-line">
           <label class="class-label">字数:</label>
           <ul class="class-label-ul">
-            <li @click="fontsizeFn(obj.id)" :class="RequestObj.fontsizeId == obj.id ? 'active':''"  v-for="obj in obj.fontsize">{{obj.name}}</li>
+            <li @click="fontsizeFn(obj.min, obj.max, obj.id)" :class="fontsizeId == obj.id ? 'active':''"  v-for="obj in obj.fontsize">{{obj.name}}</li>
            
           </ul>
         </div>
        <div class="class-title-line">
           <label class="class-label" >签约:</label>
           <div class="pull-left">
-          <span @click="qianyueFn(obj.id)" :class="RequestObj.qianyueId == obj.id ? 'active': ''"  v-for="obj in obj.qianyue">{{obj.name}}</span>
+          <span @click="qianyueFn(obj.id)" :class="RequestObj.isSign === obj.id ? 'active': ''"  v-for="obj in obj.qianyue">{{obj.name}}</span>
           </div>
-          <div class="pull-right relative"><input type="text" class="class-btn-search-input" /><i class="class-search-img"></i><a class="btn class-btn-search">搜索</a></div>
+          <div class="pull-right relative">
+          	<input type="text" class="class-btn-search-input" v-model="RequestObj.Keyword" />
+          	<i class="class-search-img"></i><a class="btn class-btn-search" @click="getValueFn">搜索</a></div>
         </div>
       </div>
       <!--
@@ -58,258 +59,45 @@
       	时间：2016-09-12
       	描述：下面是横向导航部分
       -->
-      <ul id="transverse" v-if="RequestObj.hengshuId === 1">
+      <ul id="transverse" v-if="hengshuId === 2" >
       	
-        <li class="line active" >
-          <img src="../img/100x140.png" class="line-img pull-left">
+        <li class="line active" v-for="obj in bookInfo" >
+          <img :src="page.rootPath + ''" class="line-img pull-left" :herf="PathList.TemprootPath+ '/view/catalog.html?bookId='bookName.id">
           <div class="pull-left line-content" >
-            <p class="p" title="夏日大作战">{{ obj.bookName }}</p>
+            <p class="p" title="夏日大作战" :herf="PathList.TemprootPath+ '/view/catalog.html?bookId='bookName.id">{{ obj.bookName }}</p>
             <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
+              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>{{obj.author}}</span>
+              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>dhjshdjshj</span>
               <span class="span" title="字数:3000000"><label>字数:</label>{{ obj.bookWordCount }}</span>
               <span class="span" title="人气:3000000"><label>人气:</label>{{ obj.bookHit }}</span>
             </div>
             <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
               <label>简介:</label>{{ obj.bookIntroduction }}</p>
             <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
+              <span class="span" title="最新卷:78卷"><label>最新卷:</label>{{obj.volumeEntity.volumeName}}</span>
               <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>{{ obj.bookUpdate }}</span>
             </div>
           </div>
         </li>
         
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
         
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
-        
-        <li class="line">
-          <img src="../img/100x140.png" class="line-img pull-left">
-          <div class="pull-left line-content">
-            <p class="p" title="夏日大作战">夏日大作战</p>
-            <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>paipi酱我我我我我我我</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>paipi酱</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>30000000</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>90000000</span>
-            </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的 一连串故事。健二在偶然的机遇下解开一个奇……
-            </p>
-            <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>78卷</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>2016-9-13</span>
-            </div>
-          </div>
-        </li>
         
       </ul>
-      <ul id="vertical" v-if="RequestObj.hengshuId === 2">
-        <li class="line-vertical" v-for:"obj in horizontalBoookClass">
+      
+      
+      
+ 
+      
+      <ul id="vertical" v-if="hengshuId === 1">
+        <li class="line-vertical" v-for="obj in verticalBoookClass">
         	<ul>
-        		<li>
+        		<li v-for="temp in obj">
         			<div class="vertical-img">
         				<img src="../img/150x210.jpg" class="cover"/>
         				<div class="vertical-img-line">
         					<img src="../img/50x50-tou.jpg" />
         					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>{{ obj.bookWordCount }}</div>
+        					<div class="vertical-font-size vertical-hover"><label>字数:</label>{{ obj[0].bookWordCount }}</div>
         					<div class="vertical-click-size vertical-hover"><label>点击:</label>{{ obj.bookHit }}</div>
         					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
         					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
@@ -317,183 +105,17 @@
         			</div>
         			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">{{ obj.bookName }}</div>
         		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">{{bookName}}</div>
-        		</li>
-        	</ul>
+        	</ul>	
         </li>
-        <li class="line-vertical" v-if="">
-        	<ul>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        	</ul>
-        </li>
-        <li class="line-vertical">
-        	<ul>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        		<li>
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
-        				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>28.7万我我我我我我我</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>49.5万我我我我我我</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
-        				</div>
-        			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">夏日大作战夏日大作战夏日大作战</div>
-        		</li>
-        	</ul>
-        </li>
-        	</ul>
-        </li>
-      </ul>
+        </ul>
+
       <div id="page" class="page">
       	<ul>
-      		<li><a>上一页</a></li>
-      		<li><a>1</a></li>
-      		<li class="active"><a>2</a></li>
-      		<li><a>3</a></li>
-      		<li><a>4</a></li>
-      		<li><a>5</a></li>
-      		<li><a>下一页</a></li>
-      		<li class="goto"><input type="text"  value="" /><span>/1211</span><a>转页</a></li>
+      		<li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li>
+      		<li v-if="(($index + 1) <= 5 && RequestObj.pageNo < 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index < RequestObj.pageNo)) || ( (($index + 1) <= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )"
+      			:class="objTemp == RequestObj.pageNo? 'active':''" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li>
+      		<li class="btn" @click="setPage((RequestObj.pageNo + 1) <= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li>
+      		<li class="goto"><input type="text" v-el:gotoPage /><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn">转页</a></li>
       	</ul>
       </div>
     </div>
@@ -514,56 +136,124 @@
 	
 <script type="text/javascript">
 	var vuePractice = new Vue({
-			el: '#app', 
+			el: '#app',
 			data: {
+				page: PathList,
+				hengshuId:2, // 横竖显示
+				fontsizeId: 0,
 				bookTypeClass:[],
 				horizontalBoookClass:[],
+				verticalBoookClass: [],
+				page: [],
+				bookInfo:[],
 				RequestObj: {
-				  sortId: 0,
-				  newBookId: 1,
-				  fontsizeId:0,
-				  qianyueId:0,
-				  hengshuId:2,
-				  value: '', // 搜索的书名
-          p: 12, // 页码
-          n: 10,
-				},
+				  sort: 0, // 排序 ： id
+				  bookTypeId: '', // 分类 id
+				  wordMin: 0,
+				  wordMax: '',
+				  isSign: 0,
+				  Keyword: '', // 搜索的书名
+          pageNo: 1, // 页码
+          pageSize: 11,
+        },
 				obj: {
-				  newBook: [{name: '最新', id: 1} ,{name: '最热', id: 2} ],
-				  sort:[{name: '战斗', id: 1},{name: '幻想', id: 2},{name: '恋爱', id: 3},{name: '异界', id: 4},{name: '搞笑', id: 5},{name: '日常', id: 5},{name: '校园', id: 6},{name: '后宫', id: 7},{name: '推理', id: 8},{name: '幻想', id: 9},{name: '治愈', id:10},{name: '超能力', id: 11},{name: '恐怖', id: 12},{name: '伪娘', id: 13},{name: '乙女', id: 14},{name: '同人', id: 15},{name: '悬疑', id: 16},{name: '网游', id: 17}], // 分类
-				  fontsize:[{name: '10万字以下', id: 1},{name: '10-30万字', id: 2},{name: '50-100万字', id: 4},{name: '一百万字以上', id: 5}], // 字数
-				  qianyue:[{name: '精品作品', id: 1},{name: '签约作品', id: 2}], // 签约 
+				  newBook: [{name: '最新', id: 0} ,{name: '最热', id: 1} ],
+				  sort:[], // 分类
+				  fontsize:[
+				  {name: '全部', min: 0, max: '' , id : 0 }
+				  ,{name: '10万字以下', min: 0, max: 100000 , id : 1 }
+				  ,{name: '10-30万字', min: 100000, max: 300000 , id : 2 }
+				  ,{name: '50-100万字', min:500000, max: 1000000  , id : 3 }
+				  ,{name: '一百万字以上', min: 1000000, max: ""  , id : 4 }
+				  ], // 字数
+				  qianyue:[{name: '精品作品', id: 0},{name: '签约作品', id: 1}], // 签约 
 				  hengshu:[{name: '横', id: 1},{name: '竖', id: 2}], // 横竖
 				  value: '', // 搜索的书名
 				  p: 1, // 页码
 				  n: 12,
+				  pageCount: 0,
 				}
 			},
 			methods: {
+				setPageCount: function(v) {
+					var obj = this.obj;
+         	obj.pageCount =  v;
+          this.page = [];
+          for (var i = 0; i < obj.pageCount; i++) {
+          	this.page.push(i+1);
+          }
+          this.$set('obj', obj);
+				},
+				setPage: function(v) {
+					var obj = this.RequestObj;
+					obj.pageNo = v;
+					this.$set('RequestObj', obj);
+					this.getValueFn(); // 请求
+				},
+				setHengshu: function(v) { // 横竖切换显示
+					this.$set('hengshuId', v);
+				},
 				getValueFn: function() {
-				  alert(JSON.stringify(this.RequestObj));
-//        SZXJ.http('get', PathList.queryBookTitle, RequestObj, (response) => {
-//          console.log(response);
-//					});
+				  // alert(JSON.stringify(this.RequestObj));
+          SZXJ.http('get', PathList.queryBookClass, this.RequestObj, (response) => {
+          	this.bookInfo = response.data.bookInfo;
+          	this.horizontalBoookClass = response.data.bookInfo;
+          	console.log(response.data.bookInfo.length);
+          	var arr = [];
+          	if (response.data.bookInfo.length % 4 === 0) {
+         			for (var i = 1; i <= response.data.bookInfo.length;i++) {
+         				arr.push(response.data.bookInfo[i]);
+         				if (i % 4 === 0) {
+         					this.verticalBoookClass.push(arr);
+         					arr = [];
+         				}
+        			}
+        		} else {
+        			for (var i = 1; i <= response.data.bookInfo.length;i++) {
+         				arr.push(response.data.bookInfo[i]);
+         				if (i % 4 === 0) {
+         					this.verticalBoookClass.push(arr);
+         					arr = [];
+         				}
+         				if (i === response.data.bookInfo.length) {
+         					this.verticalBoookClass.push(arr);
+         				}
+        			}
+        		}
+          	console.log(this.verticalBoookClass);
+          	this.setPageCount(response.data.totalPage);
+					});
 				},
 				sortFn: function(id) {
-				  this.RequestObj.sortId = id;
+				  this.RequestObj.bookTypeId = id;
 				  this.getValueFn(); // 请求
 				},
-				newbookFn: function(id) {
-				  this.RequestObj.newBookId = id;
+				newbookFn: function(id) { // 排序方法
+				  this.RequestObj.sort = id;
 				  this.getValueFn();
 				},
-				fontsizeFn: function (id) {
-				  this.RequestObj.fontsizeId =id;
+				fontsizeFn: function (min, max, id) { // 请求字数区间的
+					this.fontsizeId = id;
+					this.RequestObj.wordMin = min;
+					this.RequestObj.wordMax = max;
 				  this.getValueFn();
 				},
-				qianyueFn: function(id) {
-				  this.RequestObj.qianyueId= id;
+				qianyueFn: function(id) { // 签约与否的
+				  this.RequestObj.isSign= id;
 				  this.getValueFn();
 				},
 			},
 			ready: function() {
+				SZXJ.http('get', PathList.queryBookType, {}, (response) => {
+          var obj = this.obj;
+					obj.sort = response.data;
+					var temp = {};          
+					temp.bookTypeName = '全部'
+          temp.bookTypeId = '';
+          temp.bookTypeDescription = '';
+					obj.sort.unshift(temp);
+					this.$set('obj', obj);
+				});
 				this.getValueFn(); 
 			},
 	  });

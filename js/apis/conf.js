@@ -1,10 +1,10 @@
 ﻿var PathList = {};
 
 PathList.TemprootPath = '';
-PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML';
+PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
-PathList.rootPath = 'http://www.qcacg.cn/Controller';
+PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
 
 
 // 登陆的3个请求
@@ -42,3 +42,6 @@ PathList.findUserOtherBook = PathList.rootPath + '/catalog/findUserOtherBook.sht
 PathList.findContent = PathList.rootPath + '/catalog/findContent.shtml';
 
 PathList.queryBookTitle = PathList.rootPath + '/bookType/queryBook.shtml';
+
+// 分类页面
+PathList.queryBookClass = PathList.rootPath + '/bookType/filter.shtml';
