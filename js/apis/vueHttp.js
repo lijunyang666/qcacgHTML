@@ -1,4 +1,9 @@
 var SZXJ = {};
+
+SZXJ.getLocalTime =  function(nS) { 
+	return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17)
+}
+
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
   Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
   _URL = _url;

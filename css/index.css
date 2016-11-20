@@ -65,6 +65,7 @@
 	}
 	.index .edit .edit_Small span {
 		float: right;
+	    margin-left: 5px;
 	}
 	.index .edit span {
 		display: block;
@@ -137,7 +138,7 @@
 		float: left;
 	}
 	.index .main .main_title .main_recomm span {
-		margin-left: 5px;
+		margin-left: 10px;
 		height: 35px;
 		line-height: 35px;
 		font-size: 18px;
@@ -363,7 +364,7 @@
 		float: left;
 	}
 	.index .secon .secon_title .secon_recomm span {
-		margin-left: 5px;
+		margin-left: 10px;
 		height: 35px;
 		line-height: 35px;
 		font-size: 18px;
@@ -584,7 +585,7 @@
 		float: left;
 	}
 	.index .New .New_title .New_recomm span {
-		margin-left: 5px;
+		margin-left: 10px;
 		height: 35px;
 		line-height: 35px;
 		font-size: 18px;

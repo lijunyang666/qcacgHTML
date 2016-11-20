@@ -31,24 +31,26 @@
 		position: absolute;
 		top: 46px;
 		left: 34px;
+		padding-top:20px;
 	}
 	.text {
 		width: 550px;
-		height: 298px;;
+		height: 290px;;
 		margin: 47px 0 0 264px;
 	}
 	.text h1{
-		height: 60px;
+		
 	}
 	.text .text_ul  {
 		width: 470px;
-		height: 60px;
+		height: 20px;
 		font-size: 15px;
-		line-height: 30px;
+		line-height: 20px;
+		margin-top: 10px;
 	}
 	.text .text_ul li {
-		width: 145px;
-		height: ;
+		width: 130px;
+		height: auto;
 		float: left;
 	}
 	.screen h2 {
@@ -112,6 +114,8 @@
 	.works li img {
 		margin: 0 0 10px 0;
 		display: block;
+		width: 70px;
+		height: 100px;
 	}
 	.list {
 		width: 300px;
@@ -359,21 +363,23 @@
 	}
 		.index .text_brief {
 			width: 472px;
-			height: 55px;
+			height: 100px;
 			border-bottom: 1px dashed #999;
+			margin-top: 15px;
 		}	
-		.index .text_brief p {
+		.index .text_brief .text_brief_p {
 			width: 463px;
 		    overflow: hidden;
 		    display: -webkit-box;
 		    -webkit-line-clamp: 3;
 		    -webkit-box-orient: vertical;
+		    height: 100px;
 		    
 		}
 		.index .text_type {
 			width: 472px;
-			height: 50px;
-			padding: 21px 0 0 0;
+			
+			padding: 15px 0 0 0;
 			
 		}
 		.index .text_type ul {
@@ -403,7 +409,7 @@
 		.index .text_reading {
 			width: 420px;
 			height: 110px;
-			padding: 18px 0 0 0;
+			padding: 15px 0 0 0;
 		}
 		.index .text_reading ul {
 			height: 40px;

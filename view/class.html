@@ -17,7 +17,6 @@
           <label class="class-label">排序:</label>
           <div class="pull-left">
             <span @click="newbookFn(obj.id)" :class="RequestObj.sort == obj.id ? 'active': '' " v-for="obj in obj.newBook">{{obj.name}}</span>
-            
           </div>
           <ol class="pull-right vertical-transverse">
             <li v-if="hengshuId == 2" @click="setHengshu(1)"><img src="../img/class1-1.png" /></li>
@@ -41,7 +40,6 @@
           <label class="class-label">字数:</label>
           <ul class="class-label-ul">
             <li @click="fontsizeFn(obj.min, obj.max, obj.id)" :class="fontsizeId == obj.id ? 'active':''"  v-for="obj in obj.fontsize">{{obj.name}}</li>
-           
           </ul>
         </div>
        <div class="class-title-line">
@@ -54,56 +52,56 @@
           	<i class="class-search-img"></i><a class="btn class-btn-search" @click="getValueFn">搜索</a></div>
         </div>
       </div>
-      <!--
-      	作者：275120399@qq.com
-      	时间：2016-09-12
-      	描述：下面是横向导航部分
-      -->
+      
+      <div v-if="bookInfo.length === 0" style="height: 420px;text-align: center;margin-top: 30px;padding-top: 50px;border-top: 1px solid #999999;" >
+      	没有内容
+      </div>
+      
       <ul id="transverse" v-if="hengshuId === 2" >
-      	
-        <li class="line active" v-for="obj in bookInfo" >
-          <img :src="page.rootPath + ''" class="line-img pull-left" :herf="PathList.TemprootPath+ '/view/catalog.html?bookId='bookName.id">
-          <div class="pull-left line-content" >
-            <p class="p" title="夏日大作战" :herf="PathList.TemprootPath+ '/view/catalog.html?bookId='bookName.id">{{ obj.bookName }}</p>
+      	<li class="line active" v-for="obj in bookInfo" >
+          <img class="line-img pull-left" 
+          	v-if="obj.bookCoverImage" 
+          	:src="path.rootPath + obj.bookCoverImage" 
+          	 @click="gotoBook(obj.bookId)">
+          <img @click="gotoBook(obj.bookId)" v-else class="line-img pull-left">
+          <div class="pull-left line-content">
+            <p class="p" title="{{ obj.bookName }}" @click="gotoBook(obj.bookId)">{{ obj.bookName }}&nbsp;</p>
             <div class="div">
-              <span class="span" title="作者:paipi酱我我我我我我我"><label>作者:</label>{{obj.author}}</span>
-              <span class="span" title="画师:paipi酱我我我我我我我"><label>画师:</label>dhjshdjshj</span>
-              <span class="span" title="字数:3000000"><label>字数:</label>{{ obj.bookWordCount }}</span>
-              <span class="span" title="人气:3000000"><label>人气:</label>{{ obj.bookHit }}</span>
+              <span class="span" title="{{obj.author}}"><label>作者:</label>{{obj.author}}</span>
+              <span class="span" title="{{ obj.bookCoverImage }}"><label>画师:</label></span>
+              <span class="span" title="{{ obj.bookWordCount }}"><label>字数:</label>{{ obj.bookWordCount }}</span>
+              <span class="span" title="{{ obj.bookHit }}"><label>人气:</label>{{ obj.bookHit }}</span>
             </div>
-            <p class="p-2"title="一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一连串故事。健二在偶然的机遇下解开一个">
-              <label>简介:</label>{{ obj.bookIntroduction }}</p>
+            <p class="p-2"title="{{ obj.bookIntroduction }}">
+              <label>简介:</label>{{ obj.bookIntroduction }}&nbsp;</p>
             <div class="div">
-              <span class="span" title="最新卷:78卷"><label>最新卷:</label>{{obj.volumeEntity.volumeName}}</span>
-              <span class="span" title="最新更新:2016-9-13"><label>最新更新:</label>{{ obj.bookUpdate }}</span>
+              <span class="span" title="最新卷:{{obj.volumeEntity.volumeName}}"><label>最新卷:</label>{{obj.volumeEntity.volumeName}}</span>
+              <span class="span" title="最新更新:{{ szxj.getLocalTime(obj.bookUpdate / 1000) }}" style="width: 240px;">
+              	<label>最新更新:</label>{{ szxj.getLocalTime(obj.bookUpdate / 1000) }}
+              </span>
             </div>
           </div>
         </li>
-        
-        
-        
       </ul>
       
-      
-      
- 
-      
       <ul id="vertical" v-if="hengshuId === 1">
-        <li class="line-vertical" v-for="obj in verticalBoookClass">
+        <li class="line-vertical" v-for="obj in verticalBoookInfo">
         	<ul>
         		<li v-for="temp in obj">
-        			<div class="vertical-img">
-        				<img src="../img/150x210.jpg" class="cover"/>
+        			<div class="vertical-img" @click="gotoBook(temp.bookId)">
+        				<img :src="path.rootPath + temp.bookCoverImage"  class="cover" />
         				<div class="vertical-img-line">
         					<img src="../img/50x50-tou.jpg" />
-        					<div class="vertical-Author-name vertical-hover">huhuf6我我我我我我我我我</div>
-        					<div class="vertical-font-size vertical-hover"><label>字数:</label>{{ obj[0].bookWordCount }}</div>
-        					<div class="vertical-click-size vertical-hover"><label>点击:</label>{{ obj.bookHit }}</div>
-        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>16万我我我我我我我我我</div>
-        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>50000我s我s我s我s我s我s我s我s我s我s我s我s我</div>
+        					<div class="vertical-Author-name vertical-hover">{{temp.author}}</div>
+        					<div class="vertical-font-size vertical-hover"><label>字数:</label>{{ temp.bookWordCount }}</div>
+        					<div class="vertical-click-size vertical-hover"><label>点击:</label>{{ temp.bookHit }}</div>
+        					<div class="vertical-collection-size vertical-hover"><label>收藏:</label>{{ temp.bookCollect}}</div>
+        					<div class="vertical-a-reward vertical-hover"><label>打赏:</label>{{ temp.bookCopperCoins}}</div>
         				</div>
         			</div>
-        			<div class="vertical-title" title="夏日大作战夏日大作战夏日大作战">{{ obj.bookName }}</div>
+        			<div class="vertical-title" title="{{ temp.bookName }}"
+        				@click="gotoBook(temp.bookId)"
+        				>{{ temp.bookName }}</div>
         		</li>
         	</ul>	
         </li>
@@ -115,7 +113,11 @@
       		<li v-if="(($index + 1) <= 5 && RequestObj.pageNo < 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index < RequestObj.pageNo)) || ( (($index + 1) <= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )"
       			:class="objTemp == RequestObj.pageNo? 'active':''" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li>
       		<li class="btn" @click="setPage((RequestObj.pageNo + 1) <= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li>
-      		<li class="goto"><input type="text" v-el:gotoPage /><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn">转页</a></li>
+      		<li class="goto">
+      			<input type="text" v-model="pageNo" style="text-align: center;"/>
+      			<span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span>
+      			<a class="btn" @click="setPage(pageNo)">转页</a>
+      		</li>
       	</ul>
       </div>
     </div>
@@ -128,9 +130,9 @@
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
 	
-	<!--<script type="text/javascript" src="../js/components/header.js" ></script>
+	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
-	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>-->
+	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
 	
 
 	
@@ -138,12 +140,13 @@
 	var vuePractice = new Vue({
 			el: '#app',
 			data: {
-				page: PathList,
-				hengshuId:2, // 横竖显示
+				pageNo: '',
+				szxj: SZXJ,
+				path: PathList,
+				hengshuId: 2, // 横竖显示
 				fontsizeId: 0,
 				bookTypeClass:[],
-				horizontalBoookClass:[],
-				verticalBoookClass: [],
+				verticalBoookInfo: [],
 				page: [],
 				bookInfo:[],
 				RequestObj: {
@@ -154,7 +157,7 @@
 				  isSign: 0,
 				  Keyword: '', // 搜索的书名
           pageNo: 1, // 页码
-          pageSize: 11,
+          pageSize: 12,
         },
 				obj: {
 				  newBook: [{name: '最新', id: 0} ,{name: '最热', id: 1} ],
@@ -175,6 +178,9 @@
 				}
 			},
 			methods: {
+				gotoBook: function(id) {
+					location.href = this.path.TemprootPath + '/view/catalog.html?bookId=' + id;
+				},
 				setPageCount: function(v) {
 					var obj = this.obj;
          	obj.pageCount =  v;
@@ -185,42 +191,50 @@
           this.$set('obj', obj);
 				},
 				setPage: function(v) {
+					if (!v || v > this.obj.pageCount || v <= 0 || v.toString().search(/[^0-9]/g) !== -1 ) {
+						return;
+					}
 					var obj = this.RequestObj;
 					obj.pageNo = v;
 					this.$set('RequestObj', obj);
 					this.getValueFn(); // 请求
 				},
 				setHengshu: function(v) { // 横竖切换显示
+					localStorage.setItem('hengshuId', v);
 					this.$set('hengshuId', v);
 				},
 				getValueFn: function() {
-				  // alert(JSON.stringify(this.RequestObj));
-          SZXJ.http('get', PathList.queryBookClass, this.RequestObj, (response) => {
+					this.$set('verticalBoookInfo', []);
+					this.$set('bookInfo', []);
+					SZXJ.http('get', PathList.queryBookClass, this.RequestObj, (response) => {
           	this.bookInfo = response.data.bookInfo;
-          	this.horizontalBoookClass = response.data.bookInfo;
-          	console.log(response.data.bookInfo.length);
+          	if (!response.data.bookInfo) {
+							this.$set('bookInfo', []);
+							this.$set('verticalBoookInfo', []);
+							this.setPageCount(1);
+          		return;
+          	}
           	var arr = [];
           	if (response.data.bookInfo.length % 4 === 0) {
          			for (var i = 1; i <= response.data.bookInfo.length;i++) {
-         				arr.push(response.data.bookInfo[i]);
+         				arr.push(response.data.bookInfo[i - 1]);
          				if (i % 4 === 0) {
-         					this.verticalBoookClass.push(arr);
+         					this.verticalBoookInfo.push(arr);
          					arr = [];
          				}
         			}
         		} else {
         			for (var i = 1; i <= response.data.bookInfo.length;i++) {
-         				arr.push(response.data.bookInfo[i]);
+         				arr.push(response.data.bookInfo[i - 1]);
          				if (i % 4 === 0) {
-         					this.verticalBoookClass.push(arr);
+         					this.verticalBoookInfo.push(arr);
          					arr = [];
          				}
          				if (i === response.data.bookInfo.length) {
-         					this.verticalBoookClass.push(arr);
+         					this.verticalBoookInfo.push(arr);
          				}
         			}
         		}
-          	console.log(this.verticalBoookClass);
           	this.setPageCount(response.data.totalPage);
 					});
 				},
@@ -244,6 +258,12 @@
 				},
 			},
 			ready: function() {
+				if (localStorage.getItem('hengshuId')) {
+					this.hengshuId = parseInt(localStorage.getItem('hengshuId'), 10);
+				} else {
+					this.hengshuId = 2;
+				}
+				
 				SZXJ.http('get', PathList.queryBookType, {}, (response) => {
           var obj = this.obj;
 					obj.sort = response.data;

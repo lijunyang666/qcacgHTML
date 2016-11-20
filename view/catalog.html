@@ -24,10 +24,10 @@
 				<ul class="text_ul">
 					<li>字数: <span style="color:#7e7e7e">{{words}}</span></li>
 					<li>点击: <span style="color:#7e7e7e">{{cursor}}</span></li>
-					<li>更新: <span style="color:#7e7e7e">{{update}}</span></li>
+					<li style="width: 200px">更新: <span style="color:#7e7e7e;">{{szxj.getLocalTime(update / 1000) }}</span></li>
 				</ul>
 				<div class="text_brief">
-						<p style="height: 50px;" >简介：{{introduction}}</p>
+						<p class="text_brief_p" title="{{introduction}}">简介：{{introduction}}</p>
 						
 					<div class="text_type" >
 						<ul>
@@ -145,7 +145,7 @@
 					</div>
 					<ul class="clear">
 						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'"  v-for="obj in booktTitle">
-							<a href="javascript:;"> <img src=""/></a>
+							<a href="javascript:;"> <img :src="path.rootPath + obj.bookCoverImage" /></a>
 							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{ obj.bookName }}</a>
 						</li>
 					</ul>
@@ -307,22 +307,24 @@
 			data: {
 			    zindex: 0,
 			    path: PathList,
+			    szxj: SZXJ,
 				popup:false,
 				id: '',
-				title: '111',
-				words:'70万',
-				cursor:'245466',
-				update:'2016-10-10',
-				introduction:'一名胆小的高二数学天才小矶健二在学一名胆小的高二数学天才小矶健二在学姊筱原夏希的拜托之下，一 同前往她祖母位于上田市的宅邸来庆祝曾祖母的90岁生日所发生的一',
+				title: '',
+				words:'',
+				cursor:'',
+				update:'',
+				introduction:'',
 				BookList: [],
-				Booktype:[{typeName:'555'}],
-				Collection:'54545',
-				bookCopperCoins:'5656456',
+				Booktype:[{typeName:''}],
+				Collection:'',
+				bookCopperCoins:'',
 				authorName:'',
 				autograph:'',
 				booktTitle:[],
 			},
 			methods: {
+				
 			  nextWorksFn:function() {
 			    // <--
           this.zindex--;
