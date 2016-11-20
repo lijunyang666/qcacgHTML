@@ -742,7 +742,10 @@
 	<script type="text/javascript" src="js/require/headerOrfooter.js"></script>
 	<script>
 		var indexHtml = new Vue({
-			el: '#app'
+			el: '#app',
+			data: {
+				path: PathList,
+			},
 		})
 	</script>
 </html>

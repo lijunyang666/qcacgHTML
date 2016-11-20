@@ -1,10 +1,10 @@
 ﻿var PathList = {};
 
 PathList.TemprootPath = '';
-// PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML'; // 页面跳转用这个
+PathList.TemprootPath = 'http://127.0.0.1:8020/qcacgHTML'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
-// PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
+PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
 
 
 // 登陆的3个请求
