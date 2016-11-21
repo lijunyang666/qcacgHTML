@@ -38,101 +38,21 @@
 				</div>
 				<div class="edit_More"><a href="javascript:;">更多></a></div>
 			<div class="details">
-				<figure>
+				<figure v-for="obj in theHot">
 					<div class="display">
-						<a href="javascript:;"><img src="./img/index/novel_1.jpg" class="details_img"/></a>
+						<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img"/></a>
 						<div class="hide">
 							<img src="img/sss10.png"/>
 							<label>asdas5</label>
 							<ul class="hide_ul">
-								<li>字数：29.4万</li>
-								<li>点击：29.4万</li>
-								<li>收藏：32.2万</li>
-								<li>打赏：32.2万这里最多个字这里</li>
+								<li>字数：{{obj.bookWordCount}}</li>
+								<li>点击：{{obj.bookHit}}</li>
+								<li>收藏：{{obj.bookCollect}}</li>
+								<li>打赏：{{obj.bookCopperCoins}}</li>
 							</ul>
 						</div>
 					</div>
-					<figcaption><a href="javascript:;">这里最多个字这里最多个字这里最多个字</a></figcaption>
-				</figure>
-				<figure>
-					<div class="display">
-						<a href="javascript:;"><img src="./img/index/novel_1.jpg" class="details_img"/></a>
-						<div class="hide">
-							<img src="img/sss10.png"/>
-							<label>asdas5</label>
-							<ul class="hide_ul">
-								<li>字数：29.4万</li>
-								<li>点击：29.4万</li>
-								<li>收藏：32.2万</li>
-								<li>打赏：32.2万这里最多个字这里</li>
-							</ul>
-						</div>
-					</div>
-					<figcaption><a href="javascript:;">这里最多个字这里最多个字这里最多个字</a></figcaption>
-				</figure>
-				<figure>
-					<div class="display">
-						<a href="javascript:;"><img src="./img/index/novel_1.jpg" class="details_img"/></a>
-						<div class="hide">
-							<img src="img/sss10.png"/>
-							<label>asdas5</label>
-							<ul class="hide_ul">
-								<li>字数：29.4万</li>
-								<li>点击：29.4万</li>
-								<li>收藏：32.2万</li>
-								<li>打赏：32.2万这里最多个字这里</li>
-							</ul>
-						</div>
-					</div>
-					<figcaption><a href="javascript:;">这里最多个字这里最多个字这里最多个字</a></figcaption>
-				</figure>
-				<figure>
-					<div class="display">
-						<a href="javascript:;"><img src="./img/index/novel_1.jpg" class="details_img"/></a>
-						<div class="hide">
-							<img src="img/sss10.png"/>
-							<label>asdas5</label>
-							<ul class="hide_ul">
-								<li>字数：29.4万</li>
-								<li>点击：29.4万</li>
-								<li>收藏：32.2万</li>
-								<li>打赏：32.2万这里最多个字这里</li>
-							</ul>
-						</div>
-					</div>
-					<figcaption><a href="javascript:;">这里最多个字这里最多个字这里最多个字</a></figcaption>
-				</figure>
-				<figure>
-					<div class="display">
-						<a href="javascript:;"><img src="./img/index/novel_1.jpg" class="details_img"/></a>
-						<div class="hide">
-							<img src="img/sss10.png"/>
-							<label>asdas5</label>
-							<ul class="hide_ul">
-								<li>字数：29.4万</li>
-								<li>点击：29.4万</li>
-								<li>收藏：32.2万</li>
-								<li>打赏：32.2万这里最多个字这里</li>
-							</ul>
-						</div>
-					</div>
-					<figcaption><a href="javascript:;">这里最多个字这里最多个字这里最多个字</a></figcaption>
-				</figure>
-				<figure>
-					<div class="display">
-						<a href="javascript:;"><img src="./img/index/novel_1.jpg" class="details_img"/></a>
-						<div class="hide">
-							<img src="img/sss10.png"/>
-							<label>asdas5</label>
-							<ul class="hide_ul">
-								<li>字数：29.4万</li>
-								<li>点击：29.4万</li>
-								<li>收藏：32.2万</li>
-								<li>打赏：32.2万这里最多个字这里</li>
-							</ul>
-						</div>
-					</div>
-					<figcaption><a href="javascript:;">这里最多个字这里最多个字这里最多个字</a></figcaption>
+					<figcaption><a href="javascript:;">{{obj.bookName}}</a></figcaption>
 				</figure>
 			</div>
 			</div>
@@ -145,137 +65,23 @@
 					</div>
 					<div>
 						<div class="main_picture">
-							<figure>
+							<figure v-for="obj in allbook">
 								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
+									<a href="javascript:;"><img  class="details_img"/ :src="path.rootPath + obj.bookCoverImage" ></a>
 									<div class="Small">
 										<img src="img/sss10.png"/>
 										<label>asdas5</label>
 										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
+											<li>字数：{{obj.bookWordCount}}</li>
+											<li>点击：{{obj.bookHit}}</li>
+											<li>收藏：{{obj.bookCollect}}</li>
+											<li>打赏：{{obj.bookCopperCoins}}</li>
 										</ul>
 									</div>
 								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
+								<figcaption><a href="javascript:;">{{obj.bookName}}</a></figcaption>
 							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-						</div>
-						<img src="./img/index/icon-4.jpg" style="float: right;margin:  20px -24px 0 0;"/>
-						<div class="main_pictu">
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
+						
 						</div>
 							<a href="javascript:;"><img src="./img/index/max-img1.jpg" class="main_img"/></a>
 						<p class="main_p" title="这里最多个字这里最多个字这里最多个字这里最多个字">这里最多23个字</p>	
@@ -291,65 +97,45 @@
 							<li>周</li>
 						</ul>
 					</div>
-					<div class="sidebar_content">
+					<div class="sidebar_content" v-for="obj in weekBookByBookWordCount">
 						<div class="sidebar_con">
 							<a href="javascript:;"><img src="./img/index/headportrait1.jpg"/></a>
 							<img src="img/sss19.png" class="sidebar_img"/>
 							<ul>
-								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事</a></li>
+								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[0].bookName}}</a></li>
 								
 								<li class="sidebar_card"><img src="./img/index/icon-1.png"/>好人卡</li>
-								<li class="sidebar_num">423475</li>
+								<li class="sidebar_num">{{obj[0].bookCopperCoins}}</li>
 							</ul>
 						</div>
 						<div class="sidebar_con">
 							<a href="javascript:;"><img src="./img/index/headportrait1.jpg"/></a>
 							<img src="img/sss20.png" class="sidebar_img"/>
 							<ul>
-								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事</a></li>
+								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[1].bookName}}</a></li>
 								
 								<li class="sidebar_card"><img src="./img/index/icon-1.png"/>好人卡</li>
-								<li class="sidebar_num">423475</li>
+								<li class="sidebar_num">{{obj[1].bookCopperCoins}}</li>
 							</ul>
 						</div>
 						<div class="sidebar_con">
 							<a href="javascript:;"><img src="./img/index/headportrait1.jpg"/></a>
 							<img src="img/sss21.png" class="sidebar_img"/>
 							<ul>
-								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事</a></li>
+								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[2].bookName}}</a></li>
 								
 								<li class="sidebar_card"><img src="./img/index/icon-1.png"/>好人卡</li>
-								<li class="sidebar_num">423475</li>
+								<li class="sidebar_num">{{obj[2].bookCopperCoins}}</li>
 							</ul>
 						</div>
 						<div class="sidebar_cont">
 							<ul>
 								<li><span>4</span></li>
 								<li class="sidebar_tit" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">封弊者封弊</a></li>
-								<li class="sidebar_li">412</li>
+								<li class="sidebar_li">{{obj.bookCopperCoins}}</li>
 							</ul>
 						</div>
-						<div class="sidebar_cont">
-							<ul>
-								<li><span>5</span></li>
-								<li class="sidebar_tit" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">封弊者封弊</a></li>
-								<li class="sidebar_li">412</li>
-							</ul>
-						</div>
-						<div class="sidebar_cont">
-							<ul>
-								<li><span>6</span></li>
-								<li class="sidebar_tit" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">封弊者封弊</a></li>
-								<li class="sidebar_li">412</li>
-							</ul>
-						</div>
-						<div class="sidebar_cont">
-							<ul>
-								<li><span>7</span></li>
-								<li class="sidebar_tit"><a href="javascript:;">封弊者封弊</a></li>
-								<li class="sidebar_li">412</li>
-							</ul>
-						</div>
+					
 						<p>查看更多</p>
 					</div>
 				</div>
@@ -363,136 +149,21 @@
 					</div>
 					<div>
 						<div class="secon_picture">
-							<figure>
+							<figure v-for = "obj in newBookRecom">
 								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
+									<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img"/></a>
 									<div class="Small">
 										<img src="img/sss10.png"/>
 										<label>asdas5</label>
 										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
+											<li>字数：{{obj.bookWordCount}}</li>
+											<li>点击：{{obj.bookHit}}</li>
+											<li>收藏：{{obj.bookCollect}}</li>
+											<li>打赏：{{obj.bookCopperCoins}}</li>
 										</ul>
 									</div>
 								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-						</div>
-						<img src="./img/index/icon-4.jpg" style="float: right;margin:  20px -24px 0 0;"/>
-						<div class="secon_pictu">
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
-							</figure>
-							<figure>
-								<div class="display">
-									<a href="javascript:;"><img src="./img/index/min-img1.jpg" class="details_img"/></a>
-									<div class="Small">
-										<img src="img/sss10.png"/>
-										<label>asdas5</label>
-										<ul class="Small_ul">
-											<li>字数：29.4万</li>
-											<li>点击：29.4万</li>
-											<li>收藏：32.2万</li>
-											<li>打赏：32.2万这里最多个字这里</li>
-										</ul>
-									</div>
-								</div>
-								<figcaption><a href="javascript:;">这里最多18个字</a></figcaption>
+								<figcaption><a href="javascript:;">{{obj.bookName}}</a></figcaption>
 							</figure>
 						</div>
 						<a href="javascript:;"><img src="./img/index/max-img1.jpg" class="secon_img"/></a>
@@ -509,64 +180,44 @@
 							<li>周</li>
 						</ul>
 					</div>
-					<div class="Side_content">
+					<div class="Side_content" v-for="obj in weekBookByBookHit">
 						<div class="Side_con">
 							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
 							<ul>
-								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li>
+								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[0].bookName}}</a></li>
 								<li class="Side_surname"></li>
 							     
 								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Side_Percen"><img src="img/Side_card_06.png"/>13212</li>
+								<li class="Side_Percen"><img src="img/Side_card_06.png"/>{{obj[0].bookWordCount}}</li>
 								
 							</ul>
 						</div>
 						<div class="Side_con">
 							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
 							<ul>
-								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li>
+								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[1].bookName}}</a></li>
 								<li class="Side_surname"></li>
 								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Side_Percen" style="color: #3781E7;"><img src="img/Side_card_06.png"/>12212</li>
+								<li class="Side_Percen" style="color: #3781E7;"><img src="img/Side_card_06.png"/>{{obj[1].bookWordCount}}</li>
 								
 							</ul>
 						</div>
 						<div class="Side_con">
 							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
 							<ul>
-								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li>
+								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[2].bookName}}</a></li>
 								<li class="Side_surname"></li>
 								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Side_Percen" style="color:#1BBC9B;"><img src="img/Side_card_06.png"/>10222</li>
+								<li class="Side_Percen" style="color:#1BBC9B;"><img src="img/Side_card_06.png"/>{{obj[2].bookWordCount}}</li>
 								
 							</ul>
 						</div>
 						
 						<div class="Side_cont1">
 							<div class="Side_cont_block">4</div>
-							<a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a></li>
+							<a href="javascript:;">{{obj.bookName}}</a></li>
 							
 						</div>
-						<div class="Side_cont1">
-							<div class="Side_cont_block">5</div>
-						<a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a></li>
-								
-							
-						</div>
-						<div class="Side_cont1">
-							<div class="Side_cont_block">6</div>
-							<a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a></li>
-								
-							
-						</div>
-						<div class="Side_cont1">
-							<div class="Side_cont_block">7</div>
-							<a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a></li>
-								
-							
-						</div>
-						
-					
 						<p>查看更多</p>
 					</div>
 				</div>
@@ -584,72 +235,12 @@
 							<li class="update_time">更新时间</li>
 							<li class="update_author">作者</li>
 						</ul>
-						<div class="New_content">
+						<div class="New_content" v-for="obj in lastUpdate">
 							<ul>
 								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
-							</ul>
-							<ul>
-								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">呀！勇者大人放过这些魔王吧！(第八卷)</a></li>
-								<li class="content_time">2016.02.02 14:02:48</li>
-								<li class="content_name"><a href="javascipt:;">电磁风帆</a></li>
+								<li><a href="javascipt:;">{{obj.bookName}}</a></li>
+								<li class="content_time">{{obj.bookUpdate}}</li>
+								<li class="content_name"><a href="javascipt:;">{{obj.userEntity.userName}}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -664,14 +255,24 @@
 							<li>周</li>
 						</ul>
 					</div>
-					<div class="Word_content">
+					<div class="Word_content" v-for="obj in weekBookByBookCopperCoins">
 						<div class="Word_con">
 							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
 							<ul>
-								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li>
+								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[0].bookName}}</a></li>
 								<li class="Word_surname"></li>
 								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Word_Percen">456456465字</li>
+								<li class="Word_Percen">{{obj[0].bookWordCount}}</li>
+							</ul>
+						</div>
+						<div class="Word_content">
+						<div class="Word_con">
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<ul>
+								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[1].bookName}}</a></li>
+								<li class="Word_surname"></li>
+								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Word_Percen" style="color: #3781E7;"><span>{{obj[1].bookWordCount}}</span></li>
 								
 							</ul>
 						</div>
@@ -679,47 +280,16 @@
 						<div class="Word_con">
 							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
 							<ul>
-								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li>
+								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[2].bookName}}</a></li>
 								<li class="Word_surname"></li>
 								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Word_Percen" style="color: #3781E7;"><span>465456545字</span></li>
+								<li class="Word_Percen" style="color:#1BBC9B;">{{obj[2].bookWordCount}}</li>
 								
 							</ul>
 						</div>
-						<div class="Word_content">
-						<div class="Word_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
-							<ul>
-								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li>
-								<li class="Word_surname"></li>
-								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Word_Percen" style="color:#1BBC9B;">1445644字</li>
-								
-							</ul>
-						</div>
-						<div class="Word_cont">
+						<div class="Word_cont" >
 							<div class="Word_cont_block">4</div>
-							<a href="javascript:;">这件事比我小事比我小</a>
-								
-							
-						</div>
-						<div class="Word_cont">
-							<div class="Word_cont_block">5</div>
-							<a href="javascript:;">星这件事比我小事比我小</a>
-								
-							
-						</div>
-						<div class="Word_cont">
-							<div class="Word_cont_block">6</div>
-							<a href="javascript:;">这件事比我小事比我小</a>
-								
-							
-						</div>
-						<div class="Word_cont">
-							<div class="Word_cont_block">7</div>
-							<a href="javascript:;">这件事比我小事比我小</a>
-								
-							
+							<a href="javascript:;">{{obj.bookName}}</a>
 						</div>
 						
 						
@@ -734,18 +304,47 @@
 		
 		<myfooter></myfooter>
 	</body>
-	<script src="./js/apis/vueHttp.js"></script>
+
+	
+    <script src="./js/apis/vueHttp.js"></script>
   	<script src="./js/apis/conf.js"></script>
 	<script type="text/javascript" src="./js/vue.min.js" ></script>
-	<script type="text/javascript" src="js/components/header.js" ></script>
-	<script type="text/javascript" src="js/components/footer.js" ></script>
-	<script type="text/javascript" src="js/require/headerOrfooter.js"></script>
+	<script type="text/javascript" src="./js/vue-resource.min.js" ></script>
+ 	<script type="text/javascript" src="./js/vue-router.min.js" ></script>
+    <script type="text/javascript" src="js/components/header.js" ></script>
+    <script type="text/javascript" src="js/components/footer.js" ></script>
+    <script type="text/javascript" src="js/require/headerOrfooter.js"></script>  
 	<script>
 		var indexHtml = new Vue({
 			el: '#app',
 			data: {
 				path: PathList,
+				allbook:[],
+				lastUpdate:[],
+				newBookRecom:[],
+				theHot:[],
+				weekBookByBookCopperCoins:[],
+				weekBookByBookHit:[],
+				weekBookByBookWordCount:[],
 			},
-		})
+			methods: {
+				getValueFn: function() {
+					    var _data = {};
+			        SZXJ.http('get', PathList.getIndexData, _data, (response) => {
+			        	this.allbook = response.data.allBook;
+			        	this.lastUpdate = response.data.lastUpdate;
+			        	this.newBookRecom = response.data.newBookRecom;
+			        	this.theHot = response.data.theHot;
+			        	this.weekBookByBookCopperCoins = response.data.weekBookByBookCopperCoins;
+			        	this.weekBookByBookHit = response.data.weekBookByBookHit;
+			        	this.weekBookByBookWordCount = response.data.weekBookByBookWordCount;
+			        	console.log(response);
+			        });
+  				},
+			},
+			ready: function() {
+		        this.getValueFn();
+			},
+		});
 	</script>
 </html>

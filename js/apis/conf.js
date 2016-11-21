@@ -45,3 +45,8 @@ PathList.queryBookTitle = PathList.rootPath + '/bookType/queryBook.shtml';
 
 // 分类页面
 PathList.queryBookClass = PathList.rootPath + '/bookType/filter.shtml';
+
+//主页
+PathList.getIndexData = PathList.rootPath + '/index/getIndexData.shtml';
+//小编推荐
+PathList.nextBatch = PathList.rootPath + '/index/nextBatch.shtml';

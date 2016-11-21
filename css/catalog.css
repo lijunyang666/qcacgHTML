@@ -692,159 +692,42 @@
 			margin: -7px 0 0 33px;
 			
 		}
-		.index .text_Reply .text_Reply_uesr img{
-			margin: 15px 0  0 20px;
-			vertical-align: middle;
-			width: 45px;
-			height: 45px;
+		.index .text_Reply .text_Reply_user {
+			width: 633px;
+			min-width: 100px;
 		}
-		.index .text_Reply .text_Reply_uesr .text_Reply_uesr_name {
+		.index .text_Reply .text_Reply_user .text_Reply_uesr_img {
+			margin: 15px  0  0 20px;
+			width: 54px;
+			height: 54px;
 			display: inline-block;
-			
+			border-radius: 350px;
+			background-image: url(../img/sss8.jpg);
+		    float: left;
 		}
-		.index .text_Reply .text_Reply_uesr .text_Reply_uesr_name  {
+
+		.index .text_Reply .text_Reply_user  .text_Reply_uesr_name {
+			display: inline-block;
+		    margin : 15px  0  0 10px;
+		   float: left;
+		    
+		}
+		.index .text_Reply .text_Reply_user  .text_Reply_uesr_name .text_Reply_content {
+			width: 500px;
+			min-height: 30px;
+			display: inline-block;
+		}
 		
-		}
-        .index .text_Reply .text_Reply_uesr .text_Reply_uesr_name a {
+        .index .text_Reply .text_Reply_user  .text_Reply_uesr_name a {
         	margin-left: 10px ;
           	color: #169BD5;
-          	margin-right: 5px ;
-          	
+          	margin-right: 5px ; 	
         }
-        .index .text_Reply .text_Reply_uesr .text_Reply_uesr_name span {
-        	margin-left: 5px ;
-        	font-size: 15px;
+        .index .text_Reply .text_Reply_user  .text_Reply_uesr_name .text_Reply_content_time {
+        	margin-left: 10px;
+        	color: #BEBEBE;
         }
-		.index .text_Reply .text_Reply_uesr .text_Reply_updata {
-			display: inline-block;
-		}
-
-
-		.index .text_user .Reply_Underline {
-			margin: 29px 0 0 0;
-			border-bottom: 1px solid #d5d5d5;
-		}
-		.index .text_Respond {
-		 	width: 678px;
-		 }
-		 .index .text_Respond .Respond_img {
-		 	margin: 37px  0 0 0;
-		 }
-		.index .text_Respond .Respond_ul {
-		 	width: 583px;
-		 	height: 351px;
-		 	margin: -54px 0 0 67px;
-		 }
-		.index .text_Respond .Respond_ul li {
-			width: 578px;
-			height: 37px;
-		}
-		.index .text_Respond .reply_a {
-			display: block;
-			color: #3d9def;
-			width: 80px;
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			float: left;
-		}
-		.index .text_Respond .reply_comment {
-			width: 530px;
-			height: 43px;
-		}
-		.index .reply_Open {
-			width: 660px;
-			height: 34px;
-			position: relative;
-		}
-		.index .reply_Open img {
-			position: absolute;
-			top: 0;
-			right: 120px;
-		}
-		.index .reply_Open text{
-			width: 110px;;
-			margin: 0px 0px 0 546px;
-			color: #000000;
-		}
-		.index .replyt_Stop {
-			width: 633px;
-			height: 25px;
-		}
-		.index .replyt_Stop ul {
-			float: right;
-			width: 633px;
-			height: 30px;
-			text-align: center;
-			margin: 0 -420px 0 0;
-		}
-		.index .replyt_Stop ul li {
-			width: 67px;
-			height: 25px;
-			color: #bebebe;
-			line-height: 25px;
-		}
-		.index .replyt_Stop .replyt_Reply {
-			display: block;
-			width: 87px;
-			height: 25px;
-			margin: 0 0px 0 5px;
-			line-height: 25px;
-			background-color: #fafafa;
-			text-align: center;
-			border-radius: 5px;
-			color: #222222;
-			cursor: pointer;
-		}
-		.index .text_Answer  .See_li {
-			width: 65px;
-			height: 16px;
-			line-height: 16px;
-			float: right;
-			text-align: center;
-			font-size: 11px;
-			background-color: #FFFFFF;
-			margin: -20px 21px 0 0;
-			border-radius: 8px;
-			color: #000000;
-		}
-		.index .text_user .Answer_See {
-			width: 594px;
-			height: 20px;
-			margin: 21px 11px 0 0;
-			color: #6cabf0;
-		}
-		.index .text_user.Answer_See .Answer_one {
-			color: #000000;
-		}
-		.index .text_user .Answer_See li {
-			cursor: pointer;
-			text-align: center;
-			width: 50px;
-		}
-		.index .text_user .Answer_See li:hover {
-			color: #000000;
-		}
-		.index .text_input .text_user .active {
-			display: none;
-		}
-		.index .text_Answer a  {
-			width: 200px;
-			height: 20px;
-			line-height: 20px;
-		}
-		.index .text_Answer  .say_li {
-			width: 65px;
-			height: 16px;
-			line-height: 16px;
-			float: right;
-			text-align: center;
-			font-size: 11px;
-			background-color: #FFFFFF;
-			margin: -20px 21px 0 0;
-			border-radius: 8px;
-			color: #000000;
-		}
+        
 		.index .text_input .input_a {
 			color: #808080;
 		}
