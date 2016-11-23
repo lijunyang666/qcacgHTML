@@ -219,6 +219,18 @@
 			data: {
 				path: PathList,
 			},
-		})
+			methods: {
+				getValueFn: function() {
+					    var _data = {};
+			        SZXJ.http('get', PathList.getIndexData, _data, (response) => {
+			        
+			        	console.log(response);
+			        });
+  				},
+			},
+			ready: function() {
+		        this.getValueFn();
+			},
+		});
 	</script>
 </html>

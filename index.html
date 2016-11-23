@@ -40,7 +40,7 @@
 			<div class="details">
 				<figure v-for="obj in theHot">
 					<div class="display">
-						<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img"/></a>
+						<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img" @click="gotoBook(obj.bookId)"/></a>
 						<div class="hide">
 							<img src="img/sss10.png"/>
 							<label>asdas5</label>
@@ -52,7 +52,7 @@
 							</ul>
 						</div>
 					</div>
-					<figcaption><a href="javascript:;">{{obj.bookName}}</a></figcaption>
+					<figcaption><a href="javascript:;" @click="gotoBook(obj.bookId)" >{{obj.bookName}}</a></figcaption>
 				</figure>
 			</div>
 			</div>
@@ -67,7 +67,7 @@
 						<div class="main_picture">
 							<figure v-for="obj in allbook">
 								<div class="display">
-									<a href="javascript:;"><img  class="details_img"/ :src="path.rootPath + obj.bookCoverImage" ></a>
+									<a href="javascript:;"><img  class="details_img"/ :src="path.rootPath + obj.bookCoverImage"  @click="gotoBook(obj.bookId)"></a>
 									<div class="Small">
 										<img src="img/sss10.png"/>
 										<label>asdas5</label>
@@ -79,7 +79,7 @@
 										</ul>
 									</div>
 								</div>
-								<figcaption><a href="javascript:;">{{obj.bookName}}</a></figcaption>
+								<figcaption><a href="javascript:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a></figcaption>
 							</figure>
 						
 						</div>
@@ -97,42 +97,42 @@
 							<li>周</li>
 						</ul>
 					</div>
-					<div class="sidebar_content" v-for="obj in weekBookByBookWordCount">
+					<div class="sidebar_content" >
 						<div class="sidebar_con">
-							<a href="javascript:;"><img src="./img/index/headportrait1.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/headportrait1.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<img src="img/sss19.png" class="sidebar_img"/>
 							<ul>
-								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[0].bookName}}</a></li>
+								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{weekBookByBookWordCount[0].bookName}}</a></li>
 								
 								<li class="sidebar_card"><img src="./img/index/icon-1.png"/>好人卡</li>
-								<li class="sidebar_num">{{obj[0].bookCopperCoins}}</li>
+								<li class="sidebar_num" @click="gotoBook(obj.bookId)">{{weekBookByBookWordCount[0].bookCopperCoins}}</li>
 							</ul>
 						</div>
 						<div class="sidebar_con">
-							<a href="javascript:;"><img src="./img/index/headportrait1.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/headportrait1.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<img src="img/sss20.png" class="sidebar_img"/>
 							<ul>
-								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[1].bookName}}</a></li>
+								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{weekBookByBookWordCount[1].bookName}}</a></li>
 								
 								<li class="sidebar_card"><img src="./img/index/icon-1.png"/>好人卡</li>
-								<li class="sidebar_num">{{obj[1].bookCopperCoins}}</li>
+								<li class="sidebar_num" @click="gotoBook(obj.bookId)">{{weekBookByBookWordCount[1].bookCopperCoins}}</li>
 							</ul>
 						</div>
 						<div class="sidebar_con">
-							<a href="javascript:;"><img src="./img/index/headportrait1.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/headportrait1.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<img src="img/sss21.png" class="sidebar_img"/>
 							<ul>
-								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[2].bookName}}</a></li>
+								<li class="sidebar_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{weekBookByBookWordCount[2].bookName}}</a></li>
 								
 								<li class="sidebar_card"><img src="./img/index/icon-1.png"/>好人卡</li>
-								<li class="sidebar_num">{{obj[2].bookCopperCoins}}</li>
+								<li class="sidebar_num" @click="gotoBook(obj.bookId)">{{weekBookByBookWordCount[2].bookCopperCoins}}</li>
 							</ul>
 						</div>
-						<div class="sidebar_cont">
+						<div class="sidebar_cont" v-for="obj in weekBookByBookWordCount">
 							<ul>
-								<li><span>4</span></li>
+								<li><span v-el="$index+4">4</span></li>
 								<li class="sidebar_tit" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">封弊者封弊</a></li>
-								<li class="sidebar_li">{{obj.bookCopperCoins}}</li>
+								<li class="sidebar_li" @click="gotoBook(obj.bookId)">{{obj.bookCopperCoins}}</li>
 							</ul>
 						</div>
 					
@@ -151,7 +151,7 @@
 						<div class="secon_picture">
 							<figure v-for = "obj in newBookRecom">
 								<div class="display">
-									<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img"/></a>
+									<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img" @click="gotoBook(obj.bookId)"/></a>
 									<div class="Small">
 										<img src="img/sss10.png"/>
 										<label>asdas5</label>
@@ -163,7 +163,7 @@
 										</ul>
 									</div>
 								</div>
-								<figcaption><a href="javascript:;">{{obj.bookName}}</a></figcaption>
+								<figcaption><a href="javascript:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a></figcaption>
 							</figure>
 						</div>
 						<a href="javascript:;"><img src="./img/index/max-img1.jpg" class="secon_img"/></a>
@@ -180,42 +180,42 @@
 							<li>周</li>
 						</ul>
 					</div>
-					<div class="Side_content" v-for="obj in weekBookByBookHit">
+					<div class="Side_content" >
 						<div class="Side_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<ul>
-								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[0].bookName}}</a></li>
+								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookHit[0].bookName}}</a></li>
 								<li class="Side_surname"></li>
 							     
 								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Side_Percen"><img src="img/Side_card_06.png"/>{{obj[0].bookWordCount}}</li>
+								<li class="Side_Percen" ><img src="img/Side_card_06.png"/>{{weekBookByBookHit[0].bookWordCount}}</li>
 								
 							</ul>
 						</div>
 						<div class="Side_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<ul>
-								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[1].bookName}}</a></li>
+								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookHit[1].bookName}}</a></li>
 								<li class="Side_surname"></li>
 								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Side_Percen" style="color: #3781E7;"><img src="img/Side_card_06.png"/>{{obj[1].bookWordCount}}</li>
+								<li class="Side_Percen" style="color: #3781E7;"><img src="img/Side_card_06.png"/>{{weekBookByBookHit[1].bookWordCount}}</li>
 								
 							</ul>
 						</div>
 						<div class="Side_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<ul>
-								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[2].bookName}}</a></li>
+								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookHit[2].bookName}}</a></li>
 								<li class="Side_surname"></li>
 								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Side_Percen" style="color:#1BBC9B;"><img src="img/Side_card_06.png"/>{{obj[2].bookWordCount}}</li>
+								<li class="Side_Percen" style="color:#1BBC9B;"><img src="img/Side_card_06.png"/>{{weekBookByBookHit[2].bookWordCount}}</li>
 								
 							</ul>
 						</div>
 						
-						<div class="Side_cont1">
-							<div class="Side_cont_block">4</div>
-							<a href="javascript:;">{{obj.bookName}}</a></li>
+						<div class="Side_cont1" v-for="obj in weekBookByBookHit">
+							<div class="Side_cont_block" v-el="$index+4">4</div>
+							<a href="javascript:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a></li>
 							
 						</div>
 						<p>查看更多</p>
@@ -238,7 +238,7 @@
 						<div class="New_content" v-for="obj in lastUpdate">
 							<ul>
 								<li class="content_classi">[校园类]</li>
-								<li><a href="javascipt:;">{{obj.bookName}}</a></li>
+								<li><a href="javascipt:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a></li>
 								<li class="content_time">{{obj.bookUpdate}}</li>
 								<li class="content_name"><a href="javascipt:;">{{obj.userEntity.userName}}</a></li>
 							</ul>
@@ -255,41 +255,40 @@
 							<li>周</li>
 						</ul>
 					</div>
-					<div class="Word_content" v-for="obj in weekBookByBookCopperCoins">
+					<div class="Word_content" >
 						<div class="Word_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<ul>
-								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[0].bookName}}</a></li>
+								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookCopperCoins[0].bookName}}</a></li>
 								<li class="Word_surname"></li>
 								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Word_Percen">{{obj[0].bookWordCount}}</li>
+								<li class="Word_Percen">{{weekBookByBookCopperCoins[0].bookWordCount}}</li>
 							</ul>
 						</div>
 						<div class="Word_content">
 						<div class="Word_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<ul>
-								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[1].bookName}}</a></li>
+								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookCopperCoins[1].bookName}}</a></li>
 								<li class="Word_surname"></li>
 								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Word_Percen" style="color: #3781E7;"><span>{{obj[1].bookWordCount}}</span></li>
-								
+								<li class="Word_Percen" style="color: #3781E7;"><span>{{weekBookByBookCopperCoins[1].bookWordCount}}</span></li>
 							</ul>
 						</div>
 						<div class="Word_content">
 						<div class="Word_con">
-							<a href="javascript:;"><img src="./img/index/x-min-img.jpg"/></a>
+							<a href="javascript:;"><img src="./img/index/x-min-img.jpg" @click="gotoBook(obj.bookId)"/></a>
 							<ul>
-								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">{{obj[2].bookName}}</a></li>
+								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookCopperCoins[2].bookName}}</a></li>
 								<li class="Word_surname"></li>
 								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
-								<li class="Word_Percen" style="color:#1BBC9B;">{{obj[2].bookWordCount}}</li>
+								<li class="Word_Percen" style="color:#1BBC9B;">{{weekBookByBookCopperCoins[2].bookWordCount}}</li>
 								
 							</ul>
 						</div>
-						<div class="Word_cont" >
-							<div class="Word_cont_block">4</div>
-							<a href="javascript:;">{{obj.bookName}}</a>
+						<div class="Word_cont" v-for="obj in weekBookByBookCopperCoins" >
+							<div class="Word_cont_block" v-el="$index+4">4</div>
+							<a href="javascript:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a>
 						</div>
 						
 						
@@ -340,6 +339,10 @@
 			        	this.weekBookByBookWordCount = response.data.weekBookByBookWordCount;
 			        	console.log(response);
 			        });
+			        gotoBook: function(id) {
+					location.href = this.path.TemprootPath + '/view/catalog.html?bookId=' + id;
+				},
+			       
   				},
 			},
 			ready: function() {
