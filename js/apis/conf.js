@@ -50,3 +50,10 @@ PathList.queryBookClass = PathList.rootPath + '/bookType/filter.shtml';
 PathList.getIndexData = PathList.rootPath + '/index/getIndexData.shtml';
 //小编推荐
 PathList.nextBatch = PathList.rootPath + '/index/nextBatch.shtml';
+//排行榜
+PathList.getRankingList = PathList.rootPath + '/rank/getRankingList.shtml';
+
+//我的书架 -我的收藏
+PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
+//我的书架-我的浏览记录
+PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';

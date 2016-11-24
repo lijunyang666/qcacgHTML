@@ -169,7 +169,7 @@
   			},
   			methods: {
   				getValueFn: function() {
-					    var _data = {};
+					    var _data.rankList = 0;
             	_data.contentId = this.id;
 			        SZXJ.http('get', PathList.findContent, _data, (response) => {
 			        	this.bookcontent = response.data;

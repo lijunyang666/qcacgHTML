@@ -36,9 +36,9 @@
 					<img src="./img/index/icon-2.jpg"/>
 					<span><a href="javascript:;">换一批</a></span>
 				</div>
-				<div class="edit_More"><a href="javascript:;">更多></a></div>
+				<div class="edit_More"><a href="javascript:;" @click="gotoRank()">更多></a></div>
 			<div class="details">
-				<figure v-for="obj in theHot">
+				<figure v-for="obj in theHot">  
 					<div class="display">
 						<a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img" @click="gotoBook(obj.bookId)"/></a>
 						<div class="hide">
@@ -61,7 +61,7 @@
 					<div class="main_recomm">
 						<img src="./img/index/icon-3.jpg"/>
 						<span>全站推荐</span>
-						<div class="main_More"><a href="javascript:;">更多></a></div>
+						<div class="main_More"><a href="javascript:;" @click="gotoRank()">更多></a></div>
 					</div>
 					<div>
 						<div class="main_picture">
@@ -91,7 +91,7 @@
 				<div class="sidebar">
 					<div class="sidebar_Title">
 						<ul>
-							<label>好人榜</label>
+							<label @click="gotoBook(obj.bookId)">好人榜</label>
 							<li class="Title_li">总</li>
 							<li>月</li>
 							<li>周</li>
@@ -136,7 +136,7 @@
 							</ul>
 						</div>
 					
-						<p>查看更多</p>
+						<p @click="gotoRank()">查看更多</p>
 					</div>
 				</div>
 			</div>
@@ -144,8 +144,8 @@
 				<div class="secon_title">
 					<div class="secon_recomm">
 						<img src="./img/index/icon-6.jpg"/>
-						<span>新书推荐</span>
-						<div class="secon_More"><a href="javascript:;">更多></a></div>
+						<span @click="gotoBook(obj.bookId)">新书推荐</span>
+						<div class="secon_More"><a href="javascript:;" @click="gotoRank()">更多></a></div>
 					</div>
 					<div>
 						<div class="secon_picture">
@@ -174,7 +174,7 @@
 				<div class="Side">
 					<div class="Side_Title">
 						<ul>
-							<label>点击榜</label>
+							<label @click="gotoBook(obj.bookId)">点击榜</label>
 							<li>总</li>
 							<li class="Title_li">月</li>
 							<li>周</li>
@@ -187,7 +187,7 @@
 								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookHit[0].bookName}}</a></li>
 								<li class="Side_surname"></li>
 							     
-								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>{{weekBookByBookHit[0].author}}</a></li>
 								<li class="Side_Percen" ><img src="img/Side_card_06.png"/>{{weekBookByBookHit[0].bookWordCount}}</li>
 								
 							</ul>
@@ -197,7 +197,7 @@
 							<ul>
 								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookHit[1].bookName}}</a></li>
 								<li class="Side_surname"></li>
-								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>{{weekBookByBookHit[1].author}}</a></li>
 								<li class="Side_Percen" style="color: #3781E7;"><img src="img/Side_card_06.png"/>{{weekBookByBookHit[1].bookWordCount}}</li>
 								
 							</ul>
@@ -207,7 +207,7 @@
 							<ul>
 								<li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookHit[2].bookName}}</a></li>
 								<li class="Side_surname"></li>
-								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>{{weekBookByBookHit[2].author}}</a></li>
 								<li class="Side_Percen" style="color:#1BBC9B;"><img src="img/Side_card_06.png"/>{{weekBookByBookHit[2].bookWordCount}}</li>
 								
 							</ul>
@@ -218,7 +218,7 @@
 							<a href="javascript:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a></li>
 							
 						</div>
-						<p>查看更多</p>
+						<p @click="gotoRank()">查看更多</p>
 					</div>
 				</div>
 			</div>
@@ -227,7 +227,7 @@
 					<div class="New_recomm">
 						<img src="./img/index/icon-9.jpg"/>
 						<span>最新小说更新列表</span>
-						<div class="New_More"><a href="javascript:;">更多></a></div>
+						<div class="New_More"><a href="javascript:;" @click="gotoBook(obj.bookId)">更多></a></div>
 					</div>
 					<div class="New_update">
 						<ul class="update_title">
@@ -240,7 +240,7 @@
 								<li class="content_classi">[校园类]</li>
 								<li><a href="javascipt:;" @click="gotoBook(obj.bookId)">{{obj.bookName}}</a></li>
 								<li class="content_time">{{obj.bookUpdate}}</li>
-								<li class="content_name"><a href="javascipt:;">{{obj.userEntity.userName}}</a></li>
+								<li class="content_name"><a href="javascipt:;">{{obj.author}}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -249,7 +249,7 @@
 				<div class="Word">
 					<div class="Word_Title">
 						<ul>
-							<label>字数榜</label>
+							<label @click="gotoRank()">字数榜</label>
 							<li>总</li>
 							<li class="Title_li">月</li>
 							<li>周</li>
@@ -261,7 +261,7 @@
 							<ul>
 								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookCopperCoins[0].bookName}}</a></li>
 								<li class="Word_surname"></li>
-								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>{{weekBookByBookCopperCoins[0].author}}</a></li>
 								<li class="Word_Percen">{{weekBookByBookCopperCoins[0].bookWordCount}}</li>
 							</ul>
 						</div>
@@ -271,7 +271,7 @@
 							<ul>
 								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookCopperCoins[1].bookName}}</a></li>
 								<li class="Word_surname"></li>
-								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>{{weekBookByBookCopperCoins[1].author}}</a></li>
 								<li class="Word_Percen" style="color: #3781E7;"><span>{{weekBookByBookCopperCoins[1].bookWordCount}}</span></li>
 							</ul>
 						</div>
@@ -281,7 +281,7 @@
 							<ul>
 								<li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;" @click="gotoBook(obj.bookId)">{{weekBookByBookCopperCoins[2].bookName}}</a></li>
 								<li class="Word_surname"></li>
-								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>凤凰院真凶</a></li>
+								<li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png"/>{{weekBookByBookCopperCoins[2].author}}</a></li>
 								<li class="Word_Percen" style="color:#1BBC9B;">{{weekBookByBookCopperCoins[2].bookWordCount}}</li>
 								
 							</ul>
@@ -293,7 +293,7 @@
 						
 						
 					
-						<p>查看更多</p>
+						<p @click="gotoRank()">查看更多</p>
 					</div>
 				</div>
 		</div>
@@ -314,6 +314,7 @@
     <script type="text/javascript" src="js/components/footer.js" ></script>
     <script type="text/javascript" src="js/require/headerOrfooter.js"></script>  
 	<script>
+	
 		var indexHtml = new Vue({
 			el: '#app',
 			data: {
@@ -327,6 +328,12 @@
 				weekBookByBookWordCount:[],
 			},
 			methods: {
+				gotoBook: function(id) {
+					location.href = this.path.TemprootPath + '/view/catalog.html?bookId=' + id;
+				},
+				gotoRank: function(id) {
+					location.href = this.path.TemprootPath + '/view/ranking.html';
+				},
 				getValueFn: function() {
 					    var _data = {};
 			        SZXJ.http('get', PathList.getIndexData, _data, (response) => {
@@ -339,9 +346,7 @@
 			        	this.weekBookByBookWordCount = response.data.weekBookByBookWordCount;
 			        	console.log(response);
 			        });
-			        gotoBook: function(id) {
-					location.href = this.path.TemprootPath + '/view/catalog.html?bookId=' + id;
-				},
+			        
 			       
   				},
 			},

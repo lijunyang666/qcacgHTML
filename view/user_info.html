@@ -158,6 +158,12 @@
             this.$set('bookList', response.data);
           });
         },
+        getBookListFn: function() {
+          var _data = {};
+          SZXJ.http('get', PathList.findBookCollectByUser, {}, (response) => {
+            console.log(response);
+          });
+        },
    },
    ready : function (){
       	this.setShowFlagFn();
