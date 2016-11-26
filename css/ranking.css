@@ -27,6 +27,10 @@
 		text-align: center;
 		font-weight:bold;
 	}
+	#Title ul li.active {
+	  color: #2d72e6;
+    border-bottom: 2px solid #2d72e6;
+	}
 	#Title ul li:hover {
 		color: #2d72e6;
 		border-bottom: 2px solid #2d72e6;
@@ -203,6 +207,20 @@
 		color: #FFFFFF;
 		text-align: center;
 	}
+	#content .ranking_AddToCollection  {
+    display: block;
+    width: 85px;
+    height: 30px;
+    line-height: 30px;
+    float: right;
+    margin: 89px 63px 0 0;
+    background-color: #3781E7;
+    color: white ;
+    text-align: center;
+    border-radius: 3px;
+  }
+	
+	
 	#content .content_a {
 		display: block;
 		color: #000000;
