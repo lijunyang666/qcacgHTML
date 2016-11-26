@@ -23,24 +23,8 @@
 	  <div id="content">
 	  	<div class="content_Label">
 		  	<ul>
-		  		<li class="active">全部</li>
-		  		<li>幻想</li>
-		  		<li>恋爱</li>
-		  		<li>异界</li>
-		  		<li>搞笑</li>
-		  		<li>日常</li>
-		  		<li>校园</li>
-		  		<li>后宫</li>
-		  		<li>推理</li>
-		  		<li>科幻</li>
-		  		<li>治愈</li>
-		  		<li>超能力</li>
-		  		<li>恐怖</li>
-		  		<li>伪娘</li>
-		  		<li>乙女</li>
-		  		<li>同人</li>
-		  		<li>悬疑</li>
-		  		<li>网游</li>
+		  		<li class="active" :class="RequestObj.bookTypeId == obj.bookTypeId ? 'active': ''"  v-for="obj in bookInfo.sort">{{ obj.bookTypeName }}</li>
+		  		
 		  	</ul>
 	  	</div>
 	  	<div class="content_Draft">
@@ -62,163 +46,99 @@
 	  			<li class="List_li">月排行</li>
 	  		</ul>
 	  	</div>
-	  	<div class="content_ranking active">
+	  	<div class="content_ranking active" v-for="obj in result">
 	  		<h1>1</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
+	  		<a href="javascript:;"><img src="../img/Cover-map.jpg" :src="path.rootPath + obj.bookCoverImage" @click="gotoBook(obj.bookId)"/></a>
 	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
+	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span @click="gotoBook(obj.bookId)">{{obj.bookName}}</span></a></li>
+	  			<li>作者：{{obj.author}}</li>
 	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
+	  			<li>点击：{{obj.bookHit}}</li>
+	  			<li>好人卡：{{obj.bookCopperCoins}}</li>
+	  			<li>字数：{{obj.bookWordCount}}</li>
 	  		</ul>
 	  		<a class="ranking_Collection" href="javascript:;">已收藏</a>
 	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>2</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>3</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>4</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>5</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>6</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>7</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>8</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  	<div class="content_ranking ">
-	  		<h1>9</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
-	  		<div class="content_ranking ">
-	  		<h1>10</h1>
-	  		<a href="javascript:;"><img src="../img/Cover-map.jpg"/></a>
-	  		<ul>
-	  			<li><a href="javascript:;" class="content_a" title="巴拉拉老魔仙巴拉拉老魔仙巴拉拉老魔仙巴拉拉"><span>巴拉拉老魔仙</span></a></li>
-	  			<li>作者：huhuf5</li>
-	  			<li></li>
-	  			<li>点击：34.4万</li>
-	  			<li>好人卡：70万</li>
-	  			<li>字数：50万</li>
-	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">点击收藏</a>
-	  	</div>
+
 	  </div>
-	  <div id="page" class="page">
-	      	<ul>
-	      		<li><a>上一页</a></li>
-	      		<li><a>1</a></li>
-	      		<li class="active"><a>2</a></li>
-	      		<li><a>3</a></li>
-	      		<li><a>4</a></li>
-	      		<li><a>5</a></li>
-	      		<li><a>下一页</a></li>
-	      		<li class="goto"><input type="text"  value="" /><span>/1211</span><a>转页</a></li>
-	      	</ul>
-      	</div>
+	 <div id="page" class="page">
+      	<ul>
+      		<li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li>
+      		<li v-if="(($index + 1) <= 5 && RequestObj.pageNo < 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index < RequestObj.pageNo)) || ( (($index + 1) <= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )"
+      			:class="objTemp == RequestObj.pageNo? 'active':''" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li>
+      		<li class="btn" @click="setPage((RequestObj.pageNo + 1) <= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li>
+      		<li class="goto">
+      			<input type="text" v-model="pageNo" style="text-align: center;"/>
+      			<span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span>
+      			<a class="btn" @click="setPage(pageNo)">转页</a>
+      		</li>
+      	</ul>
+      </div>
 	<myfooter></myfooter>
 	</body>
-    <script src="../js/apis/vueHttp.js"></script>
+	<script src="../js/apis/vueHttp.js"></script>
   	<script src="../js/apis/conf.js"></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
-	<script type="text/javascript" src="../js/components/header.js" ></script>
-	<script type="text/javascript" src="../js/components/footer.js" ></script>
-	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
+	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+ 	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
+    <script type="text/javascript" src="../js/components/header.js" ></script>
+    <script type="text/javascript" src="../js/components/footer.js" ></script>
+    <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	<script>
 		var indexHtml = new Vue({
 			el: '#app',
 			data: {
 				path: PathList,
+				result:[],	
+				pageNo: 1,
+				RequestObj: {
+					bookTypeId: '',
+				},
 			},
-		})
+			obj: {
+				 p: 1, // 页码
+				 n: 12,
+				 pageCount: 1,
+			},
+			methods: {
+				gotoBook: function(id) {
+					location.href = this.path.TemprootPath + '/view/catalog.html?bookId=' + id;
+				},
+				setPageCount: function(v) {
+						var obj = this.obj;
+	         			obj.pageCount =  v;
+	        			  this.page = [];
+	        		  for (var i = 0; i < obj.pageCount; i++) {
+	          			this.page.push(i+1);
+	        		  }
+	        		    this.$set('obj', obj);
+				},
+				setPage: function(v) {
+					if (!v || v > this.obj.pageCount || v <= 0 || v.toString().search(/[^0-9]/g) !== -1 ) {
+						return;
+					}
+					var obj = this.RequestObj;
+					obj.pageNo = v;
+					this.$set('RequestObj', obj);
+					this.getValueFn(); // 请求
+				},
+				getValueFn: function() {
+					    var _data = {};
+			        SZXJ.http('get', PathList.getRankingList, _data, (response) => {
+			        	this.result=response.data.result;
+			        	console.log(response);
+			        });
+			        
+			        SZXJ.http('get', PathList.queryBookClass, _data, (response) => {
+			        	this.bookInfo=response.data.bookInfo;
+			        	console.log(response);
+			        });
+  				},
+  				
+			},
+			ready: function() {
+		        this.getValueFn();
+			},
+		});
 	</script>
 </html>
