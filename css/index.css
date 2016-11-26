@@ -214,6 +214,7 @@
 	.index .sidebar {
 		width: 301px;
 		float: right;
+		height: 507px;
 		margin: 50px -20px 0 0;
 	}
 	.index .sidebar .sidebar_Title {
@@ -252,6 +253,7 @@
 		height:84px;
 		margin-top: 15px;
 		position: relative;
+		margin-bottom: 20px;
 	}
 	.index .sidebar .sidebar_content .sidebar_con .sidebar_img {
 		position: absolute;
@@ -301,7 +303,7 @@
 	}
 	.index .sidebar .sidebar_content .sidebar_cont ul{
 		width: 278px;
-	    height: 31px;
+	    height: 25px;
 	    text-align: center;
 	    margin-top: 10px ;
 	  
@@ -333,14 +335,15 @@
 	} 
 	.index .sidebar p {
 		width: 270px;
-		height: 16px;
-		line-height: 16px;
-		font-size: 12px;
+		height: 20px;
+		line-height: 20px;
+		font-size: 10px;
 		text-align: center;
 		background: #efefef;
-		margin: 1px 0px 0 8px;
+    border-radius: 4px;
 		overflow: auto;
 		cursor: pointer;
+		
 	}
 	
 	.index .secon {
@@ -441,6 +444,7 @@
 	.index .Side {
 		width: 301px;
 		float: right;
+		height: 517px;
 		margin: 50px -20px 0 0;
 	}
 	.index .Side .Side_Title {
@@ -537,6 +541,7 @@
 	}
 	.Side_content .Side_cont1  {
 		margin-top: 20px;
+		margin-bottom: 10px;
 		width: 280px;
 		white-space: nowrap;
 	    text-overflow: ellipsis;
@@ -557,14 +562,14 @@
 	
 	.index .Side p {
 		width: 270px;
-		height: 16px;
-		line-height: 16px;
-		font-size: 12px;
-		text-align: center;
-		background: #efefef;
-		margin: 10px 0px 0 8px;
-		overflow: auto;
-		cursor: pointer;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    text-align: center;
+    background: #efefef;
+    border-radius: 4px;
+    overflow: auto;
+    cursor: pointer;
 	}
 	
 	.index .New {
@@ -657,6 +662,7 @@
 	.index .Word {
 		width: 301px;
 		float: right;
+		height: 517px;
 		margin: 50px -20px 0 0;
 	}
 	.index .Word .Word_Title {
@@ -753,6 +759,7 @@
 	.index .Word .Word_content .Word_cont {
 		margin-top: 20px;
 		white-space: nowrap;
+		margin-bottom: 10px;
 	    text-overflow: ellipsis;
 	    overflow: hidden;
 		
@@ -771,14 +778,14 @@
 	}
 	.index .Word p {
 		width: 270px;
-		height: 16px;
-		line-height: 16px;
-		font-size: 12px;
-		text-align: center;
-		background: #efefef;
-		margin: 10px 0px 0 8px;
-		overflow: auto;
-		cursor: pointer;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    text-align: center;
+    background: #efefef;
+    border-radius: 4px;
+    overflow: auto;
+    cursor: pointer;
 	}	
 	.index .display:hover .hide,
 	.index .display:hover .Small{
@@ -855,19 +862,24 @@
 	.imgHeadPortrait {
 	  height: 64px;
 	  width: 64px;
+	  border:  solid 1px  #C4C4C4;
 	}
 	.bookImg_Sl {
 	  height: 84px;
     width: 60px;
+    border:  solid 1px  #C4C4C4;
 	}
 	.bookImg_S {
 	  width: 128px;
-    height: 174px
+    height: 174px;
+    border:  solid 1px  #C4C4C4;
 	}
 	.bookImg_L {
-    width:157px;height: 236px
+    width:157px;height: 236px;
+    border:  solid 1px  #C4C4C4;
   }
 	.bookImg_X {
     width: 319px;
     height: 435px;
+    border:  solid 1px  #C4C4C4;
   }

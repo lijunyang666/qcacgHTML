@@ -57,7 +57,7 @@
         </div> </a> 
       </div> 
       <figcaption> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{obj.bookName}}">{{ obj.bookName }}</a> 
       </figcaption> 
      </figure> 
     </div> 
@@ -91,7 +91,7 @@
          </a>
         </div> 
         <figcaption>
-         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a> 
+         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName }}">{{ obj.bookName }}</a> 
         </figcaption> 
        </figure> 
       
@@ -116,7 +116,7 @@
          </a>
         </div> 
         <figcaption>
-         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a> 
+         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName }}">{{ obj.bookName }}</a> 
         </figcaption> 
        </figure> 
       
@@ -196,7 +196,7 @@
       <div class="sidebar_cont" v-for="obj in indexList.weekBookByBookCopperCoins" v-if="$index >= 3"> 
        <ul> 
         <li><span>{{ $index + 1 }}</span></li> 
-        <li class="sidebar_tit" title="{{ obj.bookName }}">
+        <li class="sidebar_tit" title="{{ obj.bookName }}" >
           <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a>
         </li> 
         <li class="sidebar_li">{{ obj.bookCopperCoins }}</li> 
@@ -265,7 +265,7 @@
         <figcaption>
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a> 
         </figcaption> 
-       </figure> 
+       </figure>
        
        
        
@@ -291,55 +291,65 @@
      </div> 
      <div class="Side_content"> 
       <div class="Side_con"> 
-       <a href="javascript:;"><img src="./img/index/x-min-img.jpg" /></a> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[0].bookId">
+         <img :src="path.rootPath + indexList.weekBookByBookHit[0].bookCoverImage" class="bookImg_Sl"/>
+       </a> 
        <ul> 
-        <li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li> 
+        <li class="Side_name" title="{{indexList.weekBookByBookHit[0].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[0].bookId"">
+            {{ indexList.weekBookByBookHit[0].bookName }}
+          </a>
+        </li> 
         <li class="Side_surname"></li> 
-        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />凤凰院真凶</a></li> 
-        <li class="Side_Percen"><img src="img/Side_card_06.png" />13212</li> 
+        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[0].author }}</a></li> 
+        <li class="Side_Percen" style="color: #3781E7;">
+          <img src="img/Side_card_06.png" />
+          {{ indexList.weekBookByBookHit[0].bookHit }}
+        </li> 
        </ul> 
       </div> 
       <div class="Side_con"> 
-       <a href="javascript:;"><img src="./img/index/x-min-img.jpg" /></a> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[1].bookId">
+         <img :src="path.rootPath + indexList.weekBookByBookHit[1].bookCoverImage" class="bookImg_Sl"/>
+       </a> 
        <ul> 
-        <li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li> 
+        <li class="Side_name" title="{{ indexList.weekBookByBookHit[1].bookName }}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[1].bookId"">
+            {{ indexList.weekBookByBookHit[1].bookName }}
+          </a>
+        </li> 
         <li class="Side_surname"></li> 
-        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />凤凰院真凶</a></li> 
-        <li class="Side_Percen" style="color: #3781E7;"><img src="img/Side_card_06.png" />12212</li> 
+        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[1].author }}</a></li> 
+        <li class="Side_Percen" style="color: #3781E7;">
+          <img src="img/Side_card_06.png" />
+          {{ indexList.weekBookByBookHit[1].bookHit }}
+        </li> 
        </ul> 
       </div> 
       <div class="Side_con"> 
-       <a href="javascript:;"><img src="./img/index/x-min-img.jpg" /></a> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[2].bookId">
+         <img :src="path.rootPath + indexList.weekBookByBookHit[2].bookCoverImage" class="bookImg_Sl"/>
+       </a> 
        <ul> 
-        <li class="Side_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li> 
+        <li class="Side_name" title="{{indexList.weekBookByBookHit[2].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[2].bookId"">
+            {{ indexList.weekBookByBookHit[2].bookName }}
+          </a>
+        </li> 
         <li class="Side_surname"></li> 
-        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />凤凰院真凶</a></li> 
-        <li class="Side_Percen" style="color:#1BBC9B;"><img src="img/Side_card_06.png" />10222</li> 
+        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[2].author }}</a></li> 
+        <li class="Side_Percen" style="color: #3781E7;">
+          <img src="img/Side_card_06.png" />
+          {{ indexList.weekBookByBookHit[2].bookHit }}
+        </li> 
        </ul> 
       </div> 
-      <div class="Side_cont1"> 
+      
+      <div class="Side_cont1" v-for="obj in indexList.weekBookByBookHit" v-if="$index >= 3"> 
        <div class="Side_cont_block">
-        4
+        {{$index + 1}}
        </div> 
-       <a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a> 
-      </div> 
-      <div class="Side_cont1"> 
-       <div class="Side_cont_block">
-        5
-       </div> 
-       <a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a> 
-      </div> 
-      <div class="Side_cont1"> 
-       <div class="Side_cont_block">
-        6
-       </div> 
-       <a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a> 
-      </div> 
-      <div class="Side_cont1"> 
-       <div class="Side_cont_block">
-        7
-       </div> 
-       <a href="javascript:;">比我小十岁的女友是扫把星这件事比我小事比我小</a> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName}}</a> 
       </div> 
       <p style="margin: 0px;">
         <a :href="path.TemprootPath + '/view/ranking.html?type=2'">查看更多</a>
@@ -367,7 +377,7 @@
        <ul v-for="obj in indexList.lastUpdate"> 
         <li class="content_classi">[精品作品]</li> 
         <li>
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName +':'+ obj.volumeEntity.volumeName }}">
             &nbsp;&nbsp;<span style="font-weight: 600;font-size: 14px;">{{ obj.bookName }}</span>&nbsp;
             <span>最新卷:{{ obj.volumeEntity.volumeName }}</span>
           </a>
@@ -389,58 +399,66 @@
       </ul> 
      </div> 
      <div class="Word_content"> 
-      <div class="Word_con"> 
-       <a href="javascript:;"><img src="./img/index/x-min-img.jpg" /></a> 
+<div class="Word_con"> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[0].bookId">
+         <img :src="path.rootPath + indexList.weekBookByBookWordCount[0].bookCoverImage" class="bookImg_Sl"/>
+       </a> 
        <ul> 
-        <li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li> 
+        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[0].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[0].bookId"">
+            {{ indexList.weekBookByBookWordCount[0].bookName }}
+          </a>
+        </li> 
         <li class="Word_surname"></li> 
-        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />凤凰院真凶</a></li> 
-        <li class="Word_Percen">456456465字</li> 
+        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[0].author }}</a></li> 
+        <li class="Word_Percen" style="color: #3781E7;">
+         
+          {{ indexList.weekBookByBookWordCount[0].bookWordCount }}字
+        </li> 
        </ul> 
       </div> 
-      <div class="Word_content"> 
-       <div class="Word_con"> 
-        <a href="javascript:;"><img src="./img/index/x-min-img.jpg" /></a> 
-        <ul> 
-         <li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li> 
-         <li class="Word_surname"></li> 
-         <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />凤凰院真凶</a></li> 
-         <li class="Word_Percen" style="color: #3781E7;"><span>465456545字</span></li> 
-        </ul> 
-       </div> 
-       <div class="Word_content"> 
-        <div class="Word_con"> 
-         <a href="javascript:;"><img src="./img/index/x-min-img.jpg" /></a> 
-         <ul> 
-          <li class="Word_name" title="比我小十岁的女友是扫把星这件比我小十岁的女友是扫把星这件"><a href="javascript:;">比我小十岁的女友是扫把星这件事是扫把星这件事</a></li> 
-          <li class="Word_surname"></li> 
-          <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />凤凰院真凶</a></li> 
-          <li class="Word_Percen" style="color:#1BBC9B;">1445644字</li> 
-         </ul> 
-        </div> 
-        <div class="Word_cont"> 
+       
+      <div class="Word_con"> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[1].bookId">
+         <img :src="path.rootPath + indexList.weekBookByBookWordCount[1].bookCoverImage" class="bookImg_Sl"/>
+       </a> 
+       <ul> 
+        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[1].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[1].bookId"">
+            {{ indexList.weekBookByBookWordCount[1].bookName }}
+          </a>
+        </li> 
+        <li class="Word_surname"></li> 
+        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[1].author }}</a></li> 
+        <li class="Word_Percen" style="color: #3781E7;">
+          {{ indexList.weekBookByBookWordCount[1].bookWordCount }}字
+        </li> 
+       </ul> 
+      </div>
+      
+      <div class="Word_con"> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[2].bookId">
+         <img :src="path.rootPath + indexList.weekBookByBookWordCount[2].bookCoverImage" class="bookImg_Sl"/>
+       </a> 
+       <ul> 
+        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[2].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[2].bookId"">
+            {{ indexList.weekBookByBookWordCount[2].bookName }}
+          </a>
+        </li> 
+        <li class="Word_surname"></li> 
+        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[2].author }}</a></li> 
+        <li class="Word_Percen" style="color: #3781E7;">
+          {{ indexList.weekBookByBookWordCount[2].bookWordCount }}字
+        </li> 
+       </ul> 
+      </div>
+        
+        <div class="Word_cont" v-for="obj in indexList.weekBookByBookWordCount" v-if="$index >= 3"> 
          <div class="Word_cont_block">
-          4
+          {{ $index + 1 }}
          </div> 
-         <a href="javascript:;">这件事比我小事比我小</a> 
-        </div> 
-        <div class="Word_cont"> 
-         <div class="Word_cont_block">
-          5
-         </div> 
-         <a href="javascript:;">星这件事比我小事比我小</a> 
-        </div> 
-        <div class="Word_cont"> 
-         <div class="Word_cont_block">
-          6
-         </div> 
-         <a href="javascript:;">这件事比我小事比我小</a> 
-        </div> 
-        <div class="Word_cont"> 
-         <div class="Word_cont_block">
-          7
-         </div> 
-         <a href="javascript:;">这件事比我小事比我小</a> 
+         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{obj.bookName}}</a> 
         </div> 
         <p style="margin: 0px;">
           <a :href="path.TemprootPath + '/view/ranking.html?type=3'">查看更多</a>

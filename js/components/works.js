@@ -27,7 +27,8 @@ var works = Vue.extend({
       $('#cropper-img').cropper({
       center:true,
       aspectRatio:1 / 1.4,
-      viewMode:2,
+      zoomable: false,
+      viewMode:3,
       minContainerHeight: 220,
       minCropBoxWidth:200,
       preview: ".img-preview",
