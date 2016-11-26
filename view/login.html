@@ -40,7 +40,7 @@
 		<myfooter></myfooter>
 	</body>
 	<script src="../js/apis/vueHttp.js"></script>
-  	<script src="../js/apis/conf.js"></script>
+  <script src="../js/apis/conf.js"></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
@@ -52,6 +52,15 @@
 <script type="text/javascript" src="../js/jquery.validate.js"></script>
 <script src="http://static.geetest.com/static/tools/gt.js"></script>
 <script>
+
+var indexHtml = new Vue({
+      el: '#app',
+      data: {
+        path: PathList,
+      },
+    });
+
+
 "use strict"
 $(function() {
   // 主URL地址
