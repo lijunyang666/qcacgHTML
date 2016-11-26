@@ -23,7 +23,7 @@
      <span><img src="img/nav_button_04.png" /></span> 
     </div> 
     <div class="Recomm_intro"> 
-     <p><a href="javascript:;" >我的青春恋爱物语果然有问题11卷</a></p> 
+     <p><a href="javascript:;">我的青春恋爱物语果然有问题11卷</a></p> 
     </div> 
    </div> 
    <div class="edit"> 
@@ -265,7 +265,7 @@
         <figcaption>
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a> 
         </figcaption> 
-       </figure> 
+       </figure>
        
        
        
@@ -351,7 +351,6 @@
        </div> 
        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName}}</a> 
       </div> 
-      
       <p style="margin: 0px;">
         <a :href="path.TemprootPath + '/view/ranking.html?type=2'">查看更多</a>
       </p>
@@ -400,8 +399,7 @@
       </ul> 
      </div> 
      <div class="Word_content"> 
-       
-      <div class="Word_con"> 
+<div class="Word_con"> 
        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[0].bookId">
          <img :src="path.rootPath + indexList.weekBookByBookWordCount[0].bookCoverImage" class="bookImg_Sl"/>
        </a> 
@@ -462,8 +460,6 @@
          </div> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{obj.bookName}}</a> 
         </div> 
-       
-       
         <p style="margin: 0px;">
           <a :href="path.TemprootPath + '/view/ranking.html?type=3'">查看更多</a>
         </p> 
@@ -494,8 +490,6 @@
         pageNo: 0,
         newBookimg: 0, // 全站推荐的切换下标
         newBookimg1: 0, // 新书推荐的切换下标
-        weekBookByBookHit:[],
-        weekBookByBookWordCount:[]
       },
       methods: {
         getValueFn: function() {
