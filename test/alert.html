@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/main.css" />
+	</head>
+	<body>
+	  <style>
+	   body {
+	     background-color: #ffffff;
+	   }
+	    .confirm-Block {
+	      display: block;
+	      position: fixed;
+	      top: 0px;
+	      bottom: 0px;
+	      left: 0px;
+	      right: 0px;
+	      width: 100%;
+	      height: 100%;
+	      background-color: rgba(0,0,0,0.3);
+	    }
+	    .confirm-Block .confirm_parent{
+        display: block;
+        position: absolute;
+        top: 30%;
+        width: 320px;
+        height: 112px;
+        left: 50%;
+      }
+      .confirm-Block .confirm_sub{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: -50%;
+        background-color: white;
+        border-radius: 4px 4px 8px 8px;
+      }
+      .confirm-Block .confirm_sub .confirm_foot {
+        width: 320px ;
+        height: 30px ;
+        position: absolute;
+        border-radius: 0 0 8px 8px;
+        background-color: #a7d4f7;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        font-size: 16px;
+        top: 85px;
+        cursor: pointer;
+      }
+      .confirm-Block .confirm_sub .confirm_foot:hover {
+        background-color: #6cb8f1;
+      }
+      .confirm-Block .confirm_sub .confirm_img {
+        
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 30px;
+      }
+      .confirm-Block .confirm_sub ul {
+        display: inline-block;
+      }
+      .confirm-Block .confirm_sub ul .alert {
+        font-size: 18px;
+      }
+	  </style>
+	  
+	  
+	  <div class="confirm-Block">
+	    <div class="confirm_parent">
+	      <div class="confirm_sub">
+	        <div class="confirm_img"><img src="../img/confirm_ture.png" alt="" /></div>
+	        <ul>
+	          <li class="alert">操作完成</li>
+	          <li>因僧问我西来意，我话山居不记年。</li>
+	        </ul>
+	        <div class="confirm_foot">确认</div>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  
+	</body>
+</html>

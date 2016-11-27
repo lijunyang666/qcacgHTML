@@ -488,7 +488,7 @@
 		width: 208px;
 		height: 84px;
 		float: right;
-		margin: 0 27px 0 0;
+		margin: 0 30px 0 0;
 	}
 	.index .Side .Side_content .Side_con ul .Side_name {
 		font-size: 16px;
@@ -511,15 +511,16 @@
 	    -webkit-box-orient: vertical;
 	}
 	.index .Side .Side_content .Side_con ul .Side_card {
-		float: left;
-		width: 80px;
+		  float: left;
+		  width: 80px;
 	    white-space: nowrap;
 	    overflow: hidden;
 	    text-overflow: ellipsis;
 	    font-size: 12px;
 	    line-height: 21px;
 	    padding-left: 5px;
-	    vertical-align: bottom;
+	    
+	    vertical-align:middle;
 	}
 	.index .Side .Side_content .Side_con ul .Side_card img{
 		padding-right: 5px;
@@ -529,13 +530,17 @@
 		 color: #7d7d7d;
 	}
 	.index .Side .Side_content .Side_con ul .Side_Percen {
-		height: 14px;
+      text-align:right;
 	    width: 110px;
-	    float: left;
-	    text-align: right;
-	    color: #E74C3C;
-	    padding-top: 3px;
+	    padding-top: 5px;
 	}
+	.index .Side .Side_content .Side_con ul .Side_Percen_Side {
+	   display: inline-block;
+	   width: 90px ;
+	   margin-left:35px ;
+	   text-align: right;
+	   
+	 }
 	.index .Side .Side_content .Side_con ul .Side_Percen img{
 		padding-right: 5px;
 	}

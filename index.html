@@ -276,10 +276,9 @@
         <li class="Side_card"><a href="javascript:;">
         <img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[$index].author }}</a></li> 
         <li class="Side_Percen" style="color: #3781E7;">
-          <img src="img/Side_card_06.png" />
-          <li v-if="rankingList.clickSize === 0">{{indexList.weekBookByBookHit[$index].everyWeekHit}}</li>
-          <li v-if="rankingList.clickSize === 1">{{indexList.weekBookByBookHit[$index].everyMonthHit}}</li>
-          <li v-if="rankingList.clickSize === 2">{{indexList.weekBookByBookHit[$index].bookHit}}</li>
+          <li v-if="rankingList.clickSize === 0" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}"><img src="img/Side_card_06.png" />{{indexList.weekBookByBookHit[$index].everyWeekHit}}</li>
+          <li v-if="rankingList.clickSize === 1" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}"><img src="img/Side_card_06.png" />{{indexList.weekBookByBookHit[$index].everyMonthHit}}</li>
+          <li v-if="rankingList.clickSize === 2" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}"><img src="img/Side_card_06.png" />{{indexList.weekBookByBookHit[$index].bookHit}}</li>
         </li>
       </ul> 
     </div> 
