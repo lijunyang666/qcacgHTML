@@ -53,6 +53,7 @@
 		width: 1152px;
 		height: 24px;
 		margin: 0 auto;
+		padding-left: 20px;
 	}
 	#content .content_Label ul li {
 		width: 44px;
@@ -129,7 +130,7 @@
 		height: 21px;
 		border-radius: 4px;
 		border: 1px solid #e3e6ea;
-		padding: 3px 0 0 3px;
+		padding: 3px 0 0 15px;
 		color:#676767;
 	}
 	#content .content_List:hover .List_li{

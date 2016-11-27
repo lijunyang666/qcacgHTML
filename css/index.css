@@ -314,7 +314,7 @@
 		line-height: 20px;
 		float: left;
 	}
-	.index .sidebar .sidebar_content .sidebar_cont ul  span {
+	.index .sidebar .sidebar_content .sidebar_cont ul  .span {
 		display: block;
 		width: 20px;
 		height: 20px;
@@ -334,7 +334,7 @@
 	    text-overflow: ellipsis;
 	} 
 	.index .sidebar p {
-		width: 270px;
+		width: 278px;
 		height: 20px;
 		line-height: 20px;
 		font-size: 10px;
@@ -561,7 +561,7 @@
 	}
 	
 	.index .Side p {
-		width: 270px;
+		width: 278px;
     height: 20px;
     line-height: 20px;
     font-size: 10px;
@@ -777,7 +777,7 @@
 		
 	}
 	.index .Word p {
-		width: 270px;
+		width: 278px;
     height: 20px;
     line-height: 20px;
     font-size: 10px;

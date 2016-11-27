@@ -131,85 +131,57 @@
       </p> 
      </div> 
     </div> 
-    <div class="sidebar"> 
-     <div class="sidebar_Title"> 
-      <ul> 
-       <label>好人榜</label> 
-       <li>总</li> 
-       <li>月</li> 
-       <li class="Title_li">周</li> 
-      </ul> 
-     </div> 
-     <div class="sidebar_content"> 
-      
-      <div class="sidebar_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[0].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookCopperCoins[0].bookCoverImage"class="bookImg_Sl" />
-       </a> 
-       <img src="img/sss19.png" class="sidebar_img" /> 
-       <ul> 
-        <li class="sidebar_name" title="{{ indexList.weekBookByBookCopperCoins[0].bookName }}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[0].bookId">
-            {{ indexList.weekBookByBookCopperCoins[0].bookName }}
-          </a>
-        </li> 
-        <li class="sidebar_card">
-          <img src="./img/index/icon-1.png" />好人卡</li> 
-        <li class="sidebar_num">{{ indexList.weekBookByBookCopperCoins[0].bookCopperCoins }}</li>
-       </ul> 
-      </div> 
-      
-      <div class="sidebar_con"> 
-        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[1].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookCopperCoins[1].bookCoverImage"class="bookImg_Sl" />
-       </a> 
-       <img src="img/sss20.png" class="sidebar_img" /> 
-       <ul> 
-        <li class="sidebar_name" title="{{ indexList.weekBookByBookCopperCoins[1].bookName }}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[1].bookId">
-            {{ indexList.weekBookByBookCopperCoins[1].bookName }}
-          </a>
-        </li> 
-        <li class="sidebar_card">
-          <img src="./img/index/icon-1.png" />好人卡</li> 
-        <li class="sidebar_num">{{ indexList.weekBookByBookCopperCoins[1].bookCopperCoins }}</li>
-       </ul> 
-      </div> 
-      
-      <div class="sidebar_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[2].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookCopperCoins[2].bookCoverImage"class="bookImg_Sl" />
-       </a> 
-       <img src="img/sss21.png" class="sidebar_img" /> 
-       <ul> 
-        <li class="sidebar_name" title="{{ indexList.weekBookByBookCopperCoins[2].bookName }}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[2].bookId">
-            {{ indexList.weekBookByBookCopperCoins[2].bookName }}
-          </a>
-        </li> 
-        <li class="sidebar_card">
-          <img src="./img/index/icon-1.png" />好人卡</li> 
-        <li class="sidebar_num">{{ indexList.weekBookByBookCopperCoins[2].bookCopperCoins }}</li>
-       </ul> 
-      </div> 
-      
-      <div class="sidebar_cont" v-for="obj in indexList.weekBookByBookCopperCoins" v-if="$index >= 3"> 
-       <ul> 
-        <li><span>{{ $index + 1 }}</span></li> 
-        <li class="sidebar_tit" title="{{ obj.bookName }}" >
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a>
-        </li> 
-        <li class="sidebar_li">{{ obj.bookCopperCoins }}</li> 
-       </ul> 
-      </div> 
-      
-      <p style="margin: 0px;">
-        <a :href="path.TemprootPath + '/view/ranking.html?type=1'">查看更多</a>
-      </p> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="secon"> 
+<div class="sidebar"> 
+  <div class="sidebar_Title"> 
+  <ul> 
+    <label>好人榜</label> 
+    <li :class="rankingList.copperCoins === 2 ? 'Title_li' : ''" @click="setCopperCoins(2)">总</li> 
+    <li :class="rankingList.copperCoins === 1 ? 'Title_li' : ''" @click="setCopperCoins(1)">月</li> 
+    <li :class="rankingList.copperCoins === 0 ? 'Title_li' : ''" @click="setCopperCoins(0)">周</li> 
+  </ul> 
+</div> 
+<div class="sidebar_content"> 
+  <div class="sidebar_con" v-for="obj in indexList.weekBookByBookCopperCoins" v-if="$index < 3"> 
+    <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[$index].bookId">
+      <img :src="path.rootPath + indexList.weekBookByBookCopperCoins[$index].bookCoverImage"class="bookImg_Sl" />
+    </a> 
+    <img :src="'img/sss' + (19 + $index) + '.png'" class="sidebar_img" />
+    <ul> 
+      <li class="sidebar_name" title="{{ indexList.weekBookByBookCopperCoins[$index].bookName }}">
+        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[$index].bookId">
+          {{ indexList.weekBookByBookCopperCoins[$index].bookName }}
+        </a>
+      </li> 
+      <li class="sidebar_card">
+        <img src="./img/index/icon-1.png" />好人卡</li> 
+      <li class="sidebar_num">
+        <span v-if="rankingList.copperCoins === 0">{{indexList.weekBookByBookCopperCoins[$index].everyWeekCopperCoins}}</span>
+        <span v-if="rankingList.copperCoins === 1">{{indexList.weekBookByBookCopperCoins[$index].everyMonthCopperCoins}}</span>
+        <span v-if="rankingList.copperCoins === 2">{{indexList.weekBookByBookCopperCoins[$index].bookCopperCoins}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="sidebar_cont" v-for="obj in indexList.weekBookByBookCopperCoins" v-if="$index >= 3"> 
+    <ul> 
+      <li><span class="span">{{ $index + 1 }}</span></li> 
+      <li class="sidebar_tit" title="{{ obj.bookName }}" >
+        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName }}</a>
+      </li>
+      <li class="sidebar_li">
+        <span v-if="rankingList.copperCoins === 0">{{ obj.everyWeekCopperCoins }}</span>
+        <span v-if="rankingList.copperCoins === 1">{{ obj.everyMonthCopperCoins }}</span>
+        <span v-if="rankingList.copperCoins === 2">{{ obj.bookCopperCoins }}</span>
+      </li> 
+    </ul> 
+  </div> 
+  <p style="margin: 0px;">
+    <a :href="path.TemprootPath + '/view/ranking.html?type=1'">查看更多</a>
+  </p> 
+</div> 
+</div> 
+</div> 
+   
+<div class="secon"> 
     <div class="secon_title"> 
      <div class="secon_recomm"> 
       <img src="./img/index/icon-6.jpg" /> 
@@ -220,7 +192,6 @@
      </div> 
      <div> 
       <div class="secon_picture"> 
-       
        <figure v-for="obj in indexList.newBookRecom" v-if="$index < 4" @mouseover="setMouseOutTwo($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
@@ -279,95 +250,70 @@
         </a>  
       </p> 
      </div> 
-    </div> 
-    <div class="Side"> 
-     <div class="Side_Title"> 
+    </div>
+
+<div class="Side"> 
+  <div class="Side_Title"> 
+    <ul> 
+    <label>点击榜</label> 
+    <li :class="rankingList.clickSize === 2 ? 'Title_li' : ''" @click="setClickSize(2)">总</li> 
+    <li :class="rankingList.clickSize === 1 ? 'Title_li' : ''" @click="setClickSize(1)">月</li> 
+    <li :class="rankingList.clickSize === 0 ? 'Title_li' : ''" @click="setClickSize(0)">周</li> 
+    </ul> 
+  </div> 
+  <div class="Side_content"> 
+    <div class="Side_con" v-for="obj in indexList.weekBookByBookHit" v-if="$index < 3"> 
+      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[$index].bookId">
+        <img :src="path.rootPath + indexList.weekBookByBookHit[$index].bookCoverImage" class="bookImg_Sl"/>
+      </a> 
       <ul> 
-       <label>点击榜</label> 
-       <li>总</li> 
-       <li>月</li> 
-       <li class="Title_li">周</li> 
+        <li class="Side_name" title="{{indexList.weekBookByBookHit[$index].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[$index].bookId">
+            {{ indexList.weekBookByBookHit[$index].bookName }}
+          </a>
+        </li> 
+        <li class="Side_surname"></li> 
+        <li class="Side_card"><a href="javascript:;">
+        <img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[$index].author }}</a></li> 
+        <li class="Side_Percen" style="color: #3781E7;">
+          <img src="img/Side_card_06.png" />
+          <li v-if="rankingList.clickSize === 0">{{indexList.weekBookByBookHit[$index].everyWeekHit}}</li>
+          <li v-if="rankingList.clickSize === 1">{{indexList.weekBookByBookHit[$index].everyMonthHit}}</li>
+          <li v-if="rankingList.clickSize === 2">{{indexList.weekBookByBookHit[$index].bookHit}}</li>
+        </li>
       </ul> 
-     </div> 
-     <div class="Side_content"> 
-      <div class="Side_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[0].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookHit[0].bookCoverImage" class="bookImg_Sl"/>
-       </a> 
-       <ul> 
-        <li class="Side_name" title="{{indexList.weekBookByBookHit[0].bookName}}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[0].bookId"">
-            {{ indexList.weekBookByBookHit[0].bookName }}
-          </a>
-        </li> 
-        <li class="Side_surname"></li> 
-        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[0].author }}</a></li> 
-        <li class="Side_Percen" style="color: #3781E7;">
-          <img src="img/Side_card_06.png" />
-          {{ indexList.weekBookByBookHit[0].bookHit }}
-        </li> 
-       </ul> 
+    </div> 
+    <div class="Side_cont1" v-for="obj in indexList.weekBookByBookHit" v-if="$index >= 3"> 
+      <div class="Side_cont_block">
+       {{$index + 1}}
       </div> 
-      <div class="Side_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[1].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookHit[1].bookCoverImage" class="bookImg_Sl"/>
-       </a> 
-       <ul> 
-        <li class="Side_name" title="{{ indexList.weekBookByBookHit[1].bookName }}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[1].bookId"">
-            {{ indexList.weekBookByBookHit[1].bookName }}
-          </a>
-        </li> 
-        <li class="Side_surname"></li> 
-        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[1].author }}</a></li> 
-        <li class="Side_Percen" style="color: #3781E7;">
-          <img src="img/Side_card_06.png" />
-          {{ indexList.weekBookByBookHit[1].bookHit }}
-        </li> 
-       </ul> 
-      </div> 
-      <div class="Side_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[2].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookHit[2].bookCoverImage" class="bookImg_Sl"/>
-       </a> 
-       <ul> 
-        <li class="Side_name" title="{{indexList.weekBookByBookHit[2].bookName}}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookHit[2].bookId"">
-            {{ indexList.weekBookByBookHit[2].bookName }}
-          </a>
-        </li> 
-        <li class="Side_surname"></li> 
-        <li class="Side_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[2].author }}</a></li> 
-        <li class="Side_Percen" style="color: #3781E7;">
-          <img src="img/Side_card_06.png" />
-          {{ indexList.weekBookByBookHit[2].bookHit }}
-        </li> 
-       </ul> 
-      </div> 
-      
-      <div class="Side_cont1" v-for="obj in indexList.weekBookByBookHit" v-if="$index >= 3"> 
-       <div class="Side_cont_block">
-        {{$index + 1}}
-       </div> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName}}</a> 
+      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{ obj.bookName}}</a>
+      <div style="width: 120px;float: right;text-align: end;padding-right: 23px;">
+        <li v-if="rankingList.clickSize === 0">{{obj.everyWeekHit}}</li>
+        <li v-if="rankingList.clickSize === 1">{{obj.everyMonthHit}}</li>
+        <li v-if="rankingList.clickSize === 2">{{obj.bookHit}}</li>
+      </div>
       </div> 
       <p style="margin: 0px;">
         <a :href="path.TemprootPath + '/view/ranking.html?type=2'">查看更多</a>
       </p>
-     </div> 
     </div> 
-   </div> 
-   <div class="New"> 
-    <div class="New_title"> 
-     <div class="New_recomm"> 
+</div>
+
+</div> 
+
+<div class="New">
+
+<div class="New_title"> 
+    <div class="New_recomm"> 
       <img src="./img/index/icon-9.jpg" /> 
       <span>最新小说更新列表</span> 
       <div class="New_More">
        <a :href="path.TemprootPath + '/view/class.html'">更多&gt;</a> 
       </div> 
-     </div> 
-     
-     <div class="New_update"> 
+    </div> 
+    
+    <div class="New_update"> 
       <ul class="update_title"> 
        <li>类别/书名</li> 
        <li class="update_time">更新时间</li> 
@@ -386,100 +332,72 @@
         <li class="content_name"><a href="javascipt:;">{{ obj.author }}</a></li> 
        </ul> 
       </div> 
-     </div> 
-     
     </div> 
-    <div class="Word"> 
-     <div class="Word_Title"> 
+</div> 
+    
+<div class="Word"> 
+  <div class="Word_Title"> 
+    <ul> 
+    <label>字数榜</label> 
+    <li :class="rankingList.fontSize === 2 ? 'Title_li' : ''" @click="setFontSize(2)">总</li> 
+    <li :class="rankingList.fontSize === 1 ? 'Title_li' : ''" @click="setFontSize(1)">月</li> 
+    <li :class="rankingList.fontSize === 0 ? 'Title_li' : ''" @click="setFontSize(0)">周</li> 
+    </ul> 
+  </div> 
+  <div class="Word_content">
+    
+    <div class="Word_con" v-for="obj in indexList.weekBookByBookWordCount" v-if="$index < 3"> 
+      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[$index].bookId">
+        <img :src="path.rootPath + indexList.weekBookByBookWordCount[$index].bookCoverImage" class="bookImg_Sl"/>
+      </a> 
       <ul> 
-       <label>字数榜</label> 
-       <li>总</li> 
-       <li>月</li> 
-       <li class="Title_li">周</li> 
+        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[$index].bookName}}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[$index].bookId">
+            {{ indexList.weekBookByBookWordCount[$index].bookName }}
+          </a>
+        </li>
+        <li class="Word_surname"></li> 
+        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[$index].author }}</a></li> 
+        <li class="Word_Percen" style="color: #3781E7;">
+          <span v-if="rankingList.fontSize === 0">{{indexList.weekBookByBookWordCount[$index].everyWeekWordCount}}字</span>
+          <span v-if="rankingList.fontSize === 1">{{indexList.weekBookByBookWordCount[$index].everyMonthWordCount}}字</span>
+          <span v-if="rankingList.fontSize === 2">{{indexList.weekBookByBookWordCount[$index].bookWordCount}}字</span>
+        </li> 
       </ul> 
-     </div> 
-     <div class="Word_content"> 
-<div class="Word_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[0].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookWordCount[0].bookCoverImage" class="bookImg_Sl"/>
-       </a> 
-       <ul> 
-        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[0].bookName}}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[0].bookId"">
-            {{ indexList.weekBookByBookWordCount[0].bookName }}
-          </a>
-        </li> 
-        <li class="Word_surname"></li> 
-        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[0].author }}</a></li> 
-        <li class="Word_Percen" style="color: #3781E7;">
-         
-          {{ indexList.weekBookByBookWordCount[0].bookWordCount }}字
-        </li> 
-       </ul> 
+    </div>
+    
+    <div class="Word_cont" v-for="obj in indexList.weekBookByBookWordCount" v-if="$index >= 3"> 
+      <div class="Word_cont_block">
+       {{ $index + 1 }}
       </div> 
-       
-      <div class="Word_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[1].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookWordCount[1].bookCoverImage" class="bookImg_Sl"/>
-       </a> 
-       <ul> 
-        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[1].bookName}}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[1].bookId"">
-            {{ indexList.weekBookByBookWordCount[1].bookName }}
-          </a>
-        </li> 
-        <li class="Word_surname"></li> 
-        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[1].author }}</a></li> 
-        <li class="Word_Percen" style="color: #3781E7;">
-          {{ indexList.weekBookByBookWordCount[1].bookWordCount }}字
-        </li> 
-       </ul> 
+      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{obj.bookName}}</a>
+      <div style="width: 120px;float: right;color: #3781E7;text-align: end;padding-right: 45px;">
+          <span v-if="rankingList.fontSize === 0">{{indexList.weekBookByBookWordCount[$index].everyWeekWordCount}}字</span>
+          <span v-if="rankingList.fontSize === 1">{{indexList.weekBookByBookWordCount[$index].everyMonthWordCount}}字</span>
+          <span v-if="rankingList.fontSize === 2">{{indexList.weekBookByBookWordCount[$index].bookWordCount}}字</span>
       </div>
-      
-      <div class="Word_con"> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[2].bookId">
-         <img :src="path.rootPath + indexList.weekBookByBookWordCount[2].bookCoverImage" class="bookImg_Sl"/>
-       </a> 
-       <ul> 
-        <li class="Word_name" title="{{indexList.weekBookByBookWordCount[2].bookName}}">
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[2].bookId"">
-            {{ indexList.weekBookByBookWordCount[2].bookName }}
-          </a>
-        </li> 
-        <li class="Word_surname"></li> 
-        <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[2].author }}</a></li> 
-        <li class="Word_Percen" style="color: #3781E7;">
-          {{ indexList.weekBookByBookWordCount[2].bookWordCount }}字
-        </li> 
-       </ul> 
-      </div>
-        
-        <div class="Word_cont" v-for="obj in indexList.weekBookByBookWordCount" v-if="$index >= 3"> 
-         <div class="Word_cont_block">
-          {{ $index + 1 }}
-         </div> 
-         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{obj.bookName}}</a> 
-        </div> 
-        <p style="margin: 0px;">
-          <a :href="path.TemprootPath + '/view/ranking.html?type=3'">查看更多</a>
-        </p> 
-       </div> 
-      </div> 
-     </div> 
     </div> 
-   </div> 
-  </div>	
-		<myfooter></myfooter>
-	</body>
-	<script src="./js/apis/vueHttp.js"></script>
-  <script src="./js/apis/conf.js"></script>
-	<script type="text/javascript" src="./js/vue.min.js" ></script>
-  <script type="text/javascript" src="./js/vue-resource.min.js" ></script>
-  <script type="text/javascript" src="./js/vue-router.min.js" ></script>
-	<script type="text/javascript" src="js/components/header.js" ></script>
-	<script type="text/javascript" src="js/components/footer.js" ></script>
-	<script type="text/javascript" src="js/require/headerOrfooter.js"></script>
-	<script>
+    <p style="margin: 0px;">
+      <a :href="path.TemprootPath + '/view/ranking.html?type=3'">查看更多</a>
+    </p> 
+  </div> 
+</div>
+      
+</div>
+</div> 
+</div> 
+</div>	
+<myfooter></myfooter>
+</body>
+<script src="./js/apis/vueHttp.js"></script>
+<script src="./js/apis/conf.js"></script>
+<script type="text/javascript" src="./js/vue.min.js" ></script>
+<script type="text/javascript" src="./js/vue-resource.min.js" ></script>
+<script type="text/javascript" src="./js/vue-router.min.js" ></script>
+<script type="text/javascript" src="js/components/header.js" ></script>
+<script type="text/javascript" src="js/components/footer.js" ></script>
+<script type="text/javascript" src="js/require/headerOrfooter.js"></script>
+<script>
     var indexHtml = new Vue({
       el: '#app',
       data: {
@@ -490,8 +408,66 @@
         pageNo: 0,
         newBookimg: 0, // 全站推荐的切换下标
         newBookimg1: 0, // 新书推荐的切换下标
+        RequestObj: {
+          rankList: 0, // 好人 字数 点击
+          timeRank: 0, // 周 月 总
+          date: 1, // 0 近期 1远期
+          bookTypeId: '',
+          pageNo: 1,
+          pageSize: 7,
+        },
+        rankingList: {
+          copperCoinsList: [],
+          copperCoins: 0,
+          clickSizeList: [],
+          clickSize: 0,
+          fontSizeList: [],
+          fontSize: 0,
+        }
       },
       methods: {
+        setCopperCoins: function(v) {
+          var Temp = this.rankingList;
+          Temp.copperCoins = v;
+          this.$set('rankingList', Temp);
+          this.RequestObj.rankList = 0;
+          this.RequestObj.timeRank = v;
+          this.getReOrderFn();
+        },
+        setFontSize:function(v) {
+          var Temp = this.rankingList;
+          Temp.fontSize = v;
+          this.$set('rankingList', Temp);
+          this.RequestObj.rankList = 1;
+          this.RequestObj.timeRank = v;
+          this.getReOrderFn();
+        },
+        setClickSize: function(v) {
+          var Temp = this.rankingList;
+          Temp.clickSize = v;
+          this.$set('rankingList', Temp);
+          this.RequestObj.rankList = 2;
+          this.RequestObj.timeRank = v;
+          this.getReOrderFn();
+        },
+        getReOrderFn: function() {
+          SZXJ.http('get', PathList.getRankingList, this.RequestObj, (response) => {
+            switch (this.RequestObj.rankList){
+              case 0:
+                this.indexList.weekBookByBookCopperCoins = response.data.result;
+                break;
+              case 1:
+                this.indexList.weekBookByBookWordCount = response.data.result;
+                break;
+              case 2:
+                this.indexList.weekBookByBookHit = response.data.result;
+                break;
+              default:
+                break;
+            }
+            console.log(response);
+          });
+        },
         setMouseOut: function(v, e) {
           this.newBookimg = v;
         },
@@ -516,5 +492,5 @@
         this.getValueFn();
       },
     });
-    </script>
+</script>
 </html>

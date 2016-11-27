@@ -28,15 +28,15 @@
 		  		  v-for="obj in bookInfo">{{ obj.bookTypeName }}</li>
 		  	</ul>
 	  	</div>
-	  	<div class="content_Draft">
-	  		<ul>
+	  	<!--<div class="content_Draft">
+	  		<ul>  砍掉
 	  			<img src="../img/arrow1.png"/>
 	  			<li v-if="RequestObj.date == 0">近期投稿</li>
           <li v-if="RequestObj.date == 1">全部投稿</li>
 	  			<li class="content_li" @click="setDate(0)">近期投稿</li>
 	  			<li class="content_li" @click="setDate(1)">全部投稿</li>
 	  		</ul>
-	  	</div>
+	  	</div>-->
 	  	<div class="content_List">
 	  		<ul>
 	  			<img src="../img/arrow1.png"/>
@@ -55,18 +55,16 @@
 	  			<li><a href="javascript:;" class="content_a" title="{{obj.bookName}}"><span @click="gotoBook(obj.bookId)">{{obj.bookName}}</span></a></li>
 	  			<li>作者：{{obj.author}}</li>
 	  			<li><!-- 占位符 --></li>
+	  			
 	  			<li v-if="RequestObj.timeRank === 0">点击：{{obj.everyWeekHit}}</li>
 	  			<li v-if="RequestObj.timeRank === 1">点击：{{obj.everyMonthHit}}</li>
 	  			<li v-if="RequestObj.timeRank === 2">点击：{{obj.bookHit}}</li>
 	  			
-	  			
-	  			
-          <li v-if="RequestObj.timeRank === 0">好人卡：{{obj.everyWeekCopperCoins}}</li>
+	  			<li v-if="RequestObj.timeRank === 0">好人卡：{{obj.everyWeekCopperCoins}}</li>
           <li v-if="RequestObj.timeRank === 1">好人卡：{{obj.everyMonthCopperCoins}}</li>
           <li v-if="RequestObj.timeRank === 2">好人卡：{{obj.bookCopperCoins}}</li>
           
-          
-	  			<li v-if="RequestObj.timeRank === 0">字数：{{obj.everyWeekWordCount}}</li>
+          <li v-if="RequestObj.timeRank === 0">字数：{{obj.everyWeekWordCount}}</li>
 	  			<li v-if="RequestObj.timeRank === 1">字数：{{obj.everyMonthWordCount}}</li>
 	  			<li v-if="RequestObj.timeRank === 2">字数：{{obj.bookWordCount}}</li>
 	  			
@@ -111,7 +109,7 @@
         RequestObj: {
           rankList: 0, // 好人 字数 点击
           timeRank: 0, // 周 月 总
-          date: 0, // 0 近期 1远期
+          date: 1, // 0 近期 1远期 砍掉
           bookTypeId: '',
           pageNo: 1,
           pageSize: 12,
@@ -172,8 +170,7 @@
 			      console.log(response);
 			      this.setPageCount(response.data.totalPage);
 			    });
-			    
-  		  },
+			  },
   		},
 			ready: function() {
 			  SZXJ.http('get', PathList.queryBookType, {}, (response) => {
