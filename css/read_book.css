@@ -240,10 +240,7 @@ font-size:inherit;text-rendering:auto;
 	background-color:#fff;
 	border:1px solid #e3e3e3
 }
-.book-content .bg-app {
-	height:242px;
-	background:url(/static/16769f8e.png) 50% 50% no-repeat
-}
+
 .book-content .app-mio {
 	font-size:18px!important;
 	text-indent:0;
@@ -354,18 +351,11 @@ font-size:inherit;text-rendering:auto;
 	margin-left:-150px;
 	margin-top:-160px
 }
-.error-read .bg,.loading-read .bg {
-	display:inline-block;
-	width:300px;
-	height:300px;
-	background:url(/static/f8b31a83.png) 50% 50% no-repeat
-}
+ 
 .error-read .info,.loading-read .info {
 	margin:0
 }
-/*.loading-read .bg {
-	background:url(/static/f940948c.gif) 50% 50% no-repeat
-}*/
+ 
 ol,ul {
 	list-style:none;
 	margin:0;
