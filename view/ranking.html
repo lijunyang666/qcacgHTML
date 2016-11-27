@@ -69,8 +69,8 @@
 	  			<li v-if="RequestObj.timeRank === 2">字数：{{obj.bookWordCount}}</li>
 	  			
 	  		</ul>
-	  		<a class="ranking_Collection" href="javascript:;">已收藏</a>
-	  		<a class="ranking_AddToCollection btn" href="javascript:;">添加收藏</a>
+	  		<a @click="setCollect(obj.bookId)" v-if="obj.collect" class="ranking_Collection btn" href="javascript:;">取消收藏</a>
+	  		<a @click="setCollect(obj.bookId)" v-else class="ranking_AddToCollection btn" href="javascript:;">添加收藏</a>
 	  	</div>
 
 	  </div>
@@ -122,6 +122,11 @@
         // 分页
 			},
 			methods: {
+			  setCollect: function(v) {
+			    SZXJ.http('post', PathList.saveOrDeleteBookCollect, { bookId: v }, (response) => {
+             this.getValueFn();
+          });
+			  },
 			  setDate:function(v) {
 			    var Temp = this.RequestObj;
           Temp.date = v;

@@ -24,7 +24,9 @@ SZXJ.getLocalTime =  function(nS) {
 }
 
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
-  Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
+  if (localStorage.getItem('JSESSIONID')) {
+    Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
+  }
   _URL = _url;
   if (_method === 'get') {
     // _URL
