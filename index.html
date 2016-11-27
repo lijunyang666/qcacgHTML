@@ -74,7 +74,7 @@
      <div> 
       <div class="main_picture"> 
         
-       <figure v-for="obj in indexList.allBook" v-if="$index < 4">
+       <figure v-for="obj in indexList.allBook" v-if="$index < 4" @mouseover="setMouseOut($index, $event)">
         <div class="display"> 
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
@@ -99,7 +99,7 @@
       <img src="./img/index/icon-4.jpg" style="float: right;margin:  20px -24px 0 0;" />
       <div class="main_pictu"> 
         
-       <figure v-for="obj in indexList.allBook" v-if="$index >= 4"> 
+       <figure v-for="obj in indexList.allBook" v-if="$index >= 4"  @mouseover="setMouseOut($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
@@ -221,7 +221,7 @@
      <div> 
       <div class="secon_picture"> 
        
-       <figure v-for="obj in indexList.newBookRecom" v-if="$index < 4"> 
+       <figure v-for="obj in indexList.newBookRecom" v-if="$index < 4" @mouseover="setMouseOutTwo($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
@@ -246,7 +246,7 @@
       <img src="./img/index/icon-4.jpg" style="float: right;margin:  20px -24px 0 0;" /> 
       <div class="secon_pictu"> 
         
-       <figure v-for="obj in indexList.newBookRecom" v-if="$index >= 4"> 
+       <figure v-for="obj in indexList.newBookRecom" v-if="$index >= 4" @mouseover="setMouseOutTwo($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
@@ -270,12 +270,12 @@
        
        
       </div> 
-      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg].bookId">
-        <img :src="path.rootPath + indexList.newBookRecom[newBookimg].bookCoverImage" class="secon_img bookImg_X" />
+      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg1].bookId">
+        <img :src="path.rootPath + indexList.newBookRecom[newBookimg1].bookCoverImage" class="secon_img bookImg_X" />
       </a>
-      <p class="secon_p" title="{{ indexList.newBookRecom[newBookimg].bookName }}">
-        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg].bookId">
-          {{ indexList.newBookRecom[newBookimg].bookName }}
+      <p class="secon_p" title="{{ indexList.newBookRecom[newBookimg1].bookName }}">
+        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg1].bookId">
+          {{ indexList.newBookRecom[newBookimg1].bookName }}
         </a>  
       </p> 
      </div> 
@@ -492,6 +492,12 @@
         newBookimg1: 0, // 新书推荐的切换下标
       },
       methods: {
+        setMouseOut: function(v, e) {
+          this.newBookimg = v;
+        },
+        setMouseOutTwo: function(v, e) {
+          this.newBookimg1 = v;
+        },
         getValueFn: function() {
           var _data = {};
           SZXJ.http('get', PathList.getIndexData, _data, (response) => {
