@@ -37,7 +37,7 @@
 	</div>
 				<div class="book-info" >
 					<p class="book-nav">
-						<a>轻文轻小说</a>
+						<a>轻小说</a>
 						<i class="fa fa-angle-right"></i>
 						<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + bookcontent.bookId">{{bookcontent.bookName}}</a>
 						<i class="fa fa-angle-right"></i>
@@ -169,14 +169,15 @@
   			},
   			methods: {
   				getValueFn: function() {
-					    var _data.rankList = 0;
-            	_data.contentId = this.id;
-			        SZXJ.http('get', PathList.findContent, _data, (response) => {
-			        	this.bookcontent = response.data;
-			        	this.bookName =response.data;
-			        	this.$els.bookcontent.innerHTML = this.bookcontent.content;
-			        	console.log(response);
-			        });
+  				var _data = {};
+  				_data.rankList = 0;
+          _data.contentId = this.id;
+			    SZXJ.http('get', PathList.findContent, _data, (response) => {
+			      this.bookcontent = response.data;
+			      this.bookName =response.data;
+			      this.$els.bookcontent.innerHTML = this.bookcontent.content;
+			     	console.log(response);
+			    });
   				},
   				settingShow: function() {
   					this.fixed = true;
