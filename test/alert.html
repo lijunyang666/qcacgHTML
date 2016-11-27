@@ -25,8 +25,8 @@
         display: block;
         position: absolute;
         top: 30%;
-        width: 320px;
-        height: 112px;
+        width: 400px;
+        height: 140px;
         left: 50%;
       }
       .confirm-Block .confirm_sub{
@@ -38,7 +38,7 @@
         border-radius: 4px 4px 8px 8px;
       }
       .confirm-Block .confirm_sub .confirm_foot {
-        width: 320px ;
+        width: 400px ;
         height: 30px ;
         position: absolute;
         border-radius: 0 0 8px 8px;
@@ -47,25 +47,39 @@
         line-height: 30px;
         color: white;
         font-size: 16px;
-        top: 85px;
+        top: 115px;
         cursor: pointer;
       }
       .confirm-Block .confirm_sub .confirm_foot:hover {
         background-color: #6cb8f1;
       }
       .confirm-Block .confirm_sub .confirm_img {
-        
         width: 60px;
         height: 60px;
-        display: inline-block;
-        margin-top: 10px;
-        margin-left: 30px;
+        display:block;
+        margin-top: 30px;
+        margin-left: 65px;
+        vertical-align: middle;
+        float: left;
       }
       .confirm-Block .confirm_sub ul {
         display: inline-block;
+        margin-left: 10px;
+        line-height: 30px;
+        float: left;
+        margin-top: 35px ;
       }
       .confirm-Block .confirm_sub ul .alert {
-        font-size: 18px;
+        font-size: 20px;
+        padding-left: 5px;
+      }
+      .confirm-Block .confirm_sub ul .alertToo {
+        color: #d6d6d6;
+      }
+      .confirm-Block .confirm_sub ul .alert3 {
+        display: none;
+        font-size: 20px;
+        margin: 45px;
       }
 	  </style>
 	  
@@ -73,16 +87,19 @@
 	  <div class="confirm-Block">
 	    <div class="confirm_parent">
 	      <div class="confirm_sub">
-	        <div class="confirm_img"><img src="../img/confirm_ture.png" alt="" /></div>
+	        <div class="confirm_img"><img src="../img/confirm_flast.png" alt="" /></div>
+	        <!--<div class="confirm_img"><img src="../img/confirm_ture.png" alt="" /></div>-->
 	        <ul>
-	          <li class="alert">操作完成</li>
-	          <li>因僧问我西来意，我话山居不记年。</li>
+	          <li class="alert">操作失败</li>
+	          <li class="alert3">操作成功</li>
+	          <li class="alertToo">因僧问我西来意，我话山居不记年。</li>
+	          
 	        </ul>
 	        <div class="confirm_foot">确认</div>
 	      </div>
 	    </div>
 	  </div>
 	  
-	  
+	 
 	</body>
 </html>
