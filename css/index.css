@@ -868,6 +868,7 @@
 	  height: 64px;
 	  width: 64px;
 	  border:  solid 1px  #C4C4C4;
+	  border-radius: 64px;
 	}
 	.bookImg_Sl {
 	  height: 84px;

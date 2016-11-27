@@ -39,6 +39,7 @@
 		color: #000000;
 	}
 	#content {
+	  min-height: 700px;
 		width: 1120px;
 		margin: 0 auto;
 		position: relative;
@@ -153,8 +154,8 @@
 		text-align: center;
 	}
 	#content .content_ranking.active .ranking_Collection{
-		color: #E3E6EA !important;
-		background-color: #FFFFFF !important;
+		color: #FFFFFF !important;
+		background-color: #E3E6EA !important;
 		border: 1px solid #E3E6EA !important;
 	}
 	#content .content_ranking:hover {

@@ -57,3 +57,7 @@ PathList.getRankingList = PathList.rootPath + '/rank/getRankingList.shtml';
 PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
 //我的书架-我的浏览记录
 PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
+// 判断是否登入
+PathList.getStatus = PathList.rootPath + '/getStatus.shtml';
+// 添加或取消收藏
+PathList.saveOrDeleteBookCollect =  PathList.rootPath + '/bookCollect/saveOrDeleteBookCollect.shtml';
