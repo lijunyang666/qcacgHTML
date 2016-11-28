@@ -368,7 +368,7 @@
 			margin-top: 15px;
 		}	
 		.index .text_brief .text_brief_p {
-			width: 463px;
+		  	width: 463px;
 		    overflow: hidden;
 		    display: -webkit-box;
 		    -webkit-line-clamp: 3;
@@ -411,6 +411,7 @@
 			height: 110px;
 			padding: 15px 0 0 0;
 		}
+
 		.index .text_reading ul {
 			height: 40px;
 		}
@@ -427,10 +428,14 @@
 			line-height: 37px;
 			text-align: center;
 			font-size: 18px;
-			background-color: #3379da;
+			background-color: #448cef;
 			color: #FFFFFF;
 			
 		}
+		    .index .text_reading .text_Read:hover {
+		      background-color: #099CEF;
+		      
+		    }
 		.index .text_reading span {
 			width: 97px;
 			height: 37px;
@@ -441,6 +446,9 @@
 			color: #535353;
 			cursor: pointer;
 		}
+		    .index .text_reading span:hover {
+		       background-color: #EEEEEE;
+		       }
 		.index .text_reading .text_card {
 			margin: 5px 0 0 8px ;
 		}

@@ -12,32 +12,36 @@
 </style>
 <script type="text/javascript" src="../js/vue.js" ></script>
 	</head>
-	<body  id="app"
+	<body  id="app" 
 		v-bind:style="fixed === true? 'font-family: FontAwesome;overflow:hidden':'font-family: FontAwesome;'">
+		<div class="hezi" style="float: right; position: relative; right: 480px; top: 450px;">
+		<div id="book-tool" class="book-tool">
+    <div class="tool-top">
+      <a v-on:click="screenFn"  id="btn-screen-tool" title="全屏" class="fullscreen"><i class="fa fa-expand"></i></a>
+    </div>
+    <div class="tool-bottom">
+      <a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" href="javascript:;"><i class="fa fa-list"></i></a>
+      <a v-on:click="settingShow" id="btn-setting" title="设置" class="setting"><i class="fa fa-cog"></i></a>
+      <a v-on:click="lampFn" id="btn-light" title="夜间模式" class="light" ><i class="fa fa-lightbulb-o"></i></a>
+    </div>
+    <div class="tool-bottom">
+      <a id="btn-prev-tool" title="上一章" class="prev js-link-state"><i class="fa fa-angle-left"></i></a>
+      <a id="btn-next-tool" title="下一章" class="next js-link-state" href=""><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+	</div>	
+		
 		
 	<div class="content">
-		<div id="reader" class="reader" style="min-height: 930px;">
+		<div id="reader" class="reader" style="min-height: 950px; ">
 			<div class="inner-reader active"
 				:style=" 'min-height: 930px; background-color:' + bj_color + ';color:' + font_color + ';' +
 				'font-family: '+ font_family + ';'
 				">
-	<div id="book-tool" class="book-tool">
-		<div class="tool-top">
-			<a v-on:click="screenFn"  id="btn-screen-tool" title="全屏" class="fullscreen"><i class="fa fa-expand"></i></a>
-		</div>
-		<div class="tool-bottom">
-			<a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" href="javascript:;"><i class="fa fa-list"></i></a>
-			<a v-on:click="settingShow" id="btn-setting" title="设置" class="setting"><i class="fa fa-cog"></i></a>
-			<a v-on:click="lampFn" id="btn-light" title="夜间模式" class="light" ><i class="fa fa-lightbulb-o"></i></a>
-		</div>
-		<div class="tool-bottom">
-			<a id="btn-prev-tool" title="上一章" class="prev js-link-state"><i class="fa fa-angle-left"></i></a>
-			<a id="btn-next-tool" title="下一章" class="next js-link-state" href=""><i class="fa fa-angle-right"></i></a>
-		</div>
-	</div>
+	
 				<div class="book-info" >
 					<p class="book-nav">
-						<a>轻小说</a>
+						<a>轻创轻小说</a>
 						<i class="fa fa-angle-right"></i>
 						<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + bookcontent.bookId">{{bookcontent.bookName}}</a>
 						<i class="fa fa-angle-right"></i>
@@ -59,11 +63,11 @@
 						</span>
 					</p>
 				</div>
-				<div id="book-content" class="book-content" :style="'font-size:' + font_size + 'px;' " v-el:bookcontent >
+				<div id="book-content" class="book-content"  :style="'font-size:' + font_size + 'px;' " v-el:bookcontent >
 					
 				</div>
 				<div class="book-bottom">
-					<p class="next-page"><a href="" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a></p>
+					<p class="next-page" ><a href="" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a></p>
 					<p class="hint-page">按键盘上的 ←（左）键和 →（右）键可以快速切换章节</p>
 				</div>
 			</div>

@@ -83,7 +83,8 @@ font-size:inherit;text-rendering:auto;
 }
 .modal-setting .btn-font {
 	border-radius:4px;
-	margin-right:16px
+	margin-right:16px;
+	
 }
 .modal-setting .btn-font.active {
 	background-color:#fe6878;
@@ -165,7 +166,7 @@ font-size:inherit;text-rendering:auto;
 	padding:0 32px
 }
 .book-info .title {
-	font-size:28px;
+	font-size:25px;
 	margin:20px 0
 }
 @media (max-width:760px) {
@@ -248,13 +249,14 @@ font-size:inherit;text-rendering:auto;
 	color:#fe6878
 }
 .book-bottom {
-	padding:60px 0
+	padding:60px 0;
+	
 }
 .book-bottom .next-page {
 	text-align:center
 }
 .book-bottom .next-page a {
-	font-size:32px;
+	font-size:24px;
 	color:#333;
 	text-decoration:none;
 	-webkit-transition:all .3s;
@@ -270,12 +272,12 @@ font-size:inherit;text-rendering:auto;
 .book-bottom .hint-page {
 	text-align:center;
 	color:#999;
-	font-size:12px
+	font-size:12px;
+  
 }
 .book-tool {
-	position:absolute;
-	top:300px;
-	right:20px
+	
+	
 }
 .book-tool a {
 	display:block;
@@ -290,7 +292,7 @@ font-size:inherit;text-rendering:auto;
 	cursor:pointer
 }
 .book-tool a:hover {
-	color:#000000
+	color:#eaeaea;
 }
 .book-tool a:active {
 	background:#393939
@@ -366,7 +368,8 @@ body {
 }
 .content {
 	padding:0;
-	min-height:auto
+	min-height:auto;
+	
 }
 body::-webkit-scrollbar {
 	width:6px

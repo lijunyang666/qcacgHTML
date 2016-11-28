@@ -17,7 +17,7 @@
 		<div id="search"></div>
 		<div class="index" >
 			<div class="index_Line"></div>
-			<img class="picture" src="../img/sss2.jpg"/>
+			<img class="picture" :src="path.rootPath + bookCustom.bookCoverImage" />
 			<div class="text">
 			
 				<h1>{{ title }}</h1>
@@ -28,7 +28,7 @@
 				</ul>
 				<div class="text_brief">
 						<p class="text_brief_p" title="{{introduction}}">简介：
-							<span style="font-size: 12px;">{{introduction}}</p>
+							<span style="font-size: 12px; display: inline-block;width: 410px;height: 112px; ">{{introduction}}</p>
 						</span>
 					<div class="text_type" >
 						<ul>
@@ -329,6 +329,7 @@
 				authorName:'',
 				autograph:'',
 				booktTitle:[],
+				bookCustom:[],
 			},
 			methods: {
 				nextWorksFn:function() {
@@ -349,6 +350,7 @@
             	_data.bookId = this.id;
 			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
+			        	 this.bookCustom=response.data.bookCustom;
 			        	 this.title = response.data.bookCustom.bookName;
 			        	 this.introduction =response.data.bookCustom.bookIntroduction;
 			        	 this.words =response.data.bookCustom.bookWordCount;

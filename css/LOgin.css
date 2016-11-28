@@ -8,8 +8,8 @@ body li{
 	border-radius: 10px;
 	box-shadow: 0 3px 9px rgba(0,0,0,.5);
 	position: absolute;
-	top: 80px ;
-	right: 100px;
+	top: 180px ;
+	right: 330px;
 	display: none;
 }	
 .Login .Login_img {
