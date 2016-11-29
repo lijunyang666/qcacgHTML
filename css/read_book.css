@@ -568,8 +568,12 @@ footer:before {
 }
 .btn-primary {
     color: #fff;
-    background-color: #ff7c8c;
-    border-color: #fa7787;
+    background-color: #6ebae5;
+    border-color: #6ebae5;
+}
+.btn-primary:hover{
+  background-color: #5ec0f7;
+  border-color: #5ec0f7;
 }
 .btn-default {
     color: #333;
