@@ -818,8 +818,11 @@
 	.index  .hide label {
 		position: absolute;
 		top: 34px;
-		right: 30px;
 		
+		
+		white-space: nowrap;
+    
+    text-overflow: ellipsis;
 	}
 	.index  .hide .hide_ul {
 		position: absolute;
@@ -827,11 +830,11 @@
 		left: 16px;
 	}
 	.index  .hide .hide_ul li {
-		height:30px;
+		height:35px;
 		line-height: 30px;
 		width: 120px;
 	    white-space: nowrap;
-	    overflow: hidden;
+	   
 	    text-overflow: ellipsis;
 	}
 	.index  .Small {
@@ -850,6 +853,10 @@
 		position: absolute;
 		top: 34px;
 		right: 5px;
+		width: 50px;
+		overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 	}
 	.index  .Small .Small_ul {
 		position: absolute;
