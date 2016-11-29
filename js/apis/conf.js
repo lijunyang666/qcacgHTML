@@ -68,3 +68,5 @@ PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findComm
 PathList.queryUser = PathList.rootPath + '/user/queryUser.shtml';
 // 修改个人信息
 PathList.updateUser = PathList.rootPath + '/user/updateUser.shtml';
+// 头像上传
+PathList.userUpload = PathList.rootPath + '/user/upload.shtml';

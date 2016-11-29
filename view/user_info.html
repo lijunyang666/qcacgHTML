@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="../css/headerOrFooter.css" />
  </head> 
  <body id="app"> 
-  <myheader></myheader>
-  <div class="user_info_topBJ"></div> 
+  <myheader :user-name.sync="userName" :login-img.sync="loginImg"></myheader>
+  <div class="user_info_topBJ"></div>
   <div class="user_info clear"> 
    <!-- 左边导航 --> 
    <div class="user_info_left"> 
-    <div class="user_info_touxiang"></div> 
+    <div class="user_info_touxiang" :style="loginImg"></div> 
     <div class="user_info_account">
-     huhuf5
+     {{ userName }}
     </div> 
     <div class="user_info_btn_qiandaoY btn" style="display: none;">
      已签到
@@ -143,6 +143,8 @@
   		return {
   			path: PathList,
   			active: '',
+  			userName: '',
+  			loginImg:'',
   		}
   		
   	},

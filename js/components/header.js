@@ -4,12 +4,18 @@ var header = Vue.extend({
   +'<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>'
   +'<li class="publication"><a style="color:#FFFFFF" :href="path.TemprootPath + \'/view/user_info.html\'">投&nbsp;稿</a></li></ul></div></header>',
   components: {},
+  props: {
+  	userName: {
+      type: String,
+    },
+    loginImg: {
+      type: String,
+    },
+  },
   data:function(){
   	return {
   		path: PathList,
   		loginFlag: false,
-  		loginImg: '',
-  		userName: '',
   	}
   },
   methods: {
