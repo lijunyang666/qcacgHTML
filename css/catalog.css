@@ -21,7 +21,7 @@
 		height: 1621px;
 		position: absolute;
 		top: 50px;
-		left: 768px;
+		left: 802px;
 		background-color: #fdfdfd;
 		
 	}
@@ -29,24 +29,26 @@
 		width: 194px;
 		height: 271px;
 		position: absolute;
-		top: 46px;
-		left: 34px;
+		top: 30px;
+		left: 15px;
 		padding-top:20px;
 	}
 	.text {
 		width: 550px;
 		height: 290px;;
-		margin: 47px 0 0 264px;
+		margin: 20px 0 0 230px;
 	}
-	.text h1{
+	.text h3{
+	  font-size: 20px;
+	  
 		
 	}
 	.text .text_ul  {
 		width: 470px;
 		height: 20px;
-		font-size: 15px;
+		font-size: 13px;
 		line-height: 20px;
-		margin-top: 10px;
+		margin-top: 25px;
 	}
 	.text .text_ul li {
 		width: 130px;
@@ -72,7 +74,7 @@
 	}
 	.screen .a_author {
 		text-align: center;
-		width: 72px;
+		width: 90px;
 		height: 20px;
 		font-size: 14px;
 		margin: 0 0 0 30px;
@@ -89,6 +91,7 @@
 		width: 285px;
 		height: 19px;
 		margin: 40px 0 0 39px;
+		
 	}
 	.works ul {
 		width: 252px;
@@ -97,6 +100,7 @@
 		overflow: hidden;
 		position: relative;
 	}
+	
 	.button {
 		width: 321px;
 		height: 10px;
@@ -119,7 +123,7 @@
 	}
 	.list {
 		width: 300px;
-		height: 600px;
+		
 	}
 	.list_ul {
 		width: 100px;
@@ -147,13 +151,13 @@
 		background-color: #E74C3C;
 	}
 	.ranking {
-		height: 565px;
+		height: 560px;
 	}
 	.ranking_head {
 		width: 64px;
 		height: 65px;
 		display: block;
-		margin: 46px 0 0 45px ;
+		margin: 55px 0 0 45px ;
 	}
 	.ranking ul{
 		width: 200px;
@@ -177,6 +181,7 @@
 		height: 29px;
 		color: red;
 		float: left;
+		margin-left: 10px;
 	}
 	.num img {
 		margin-left: 15px;
@@ -196,14 +201,14 @@
 	}
 	.rank {
 		width: 243px;
-		height: 295px;
+		
 	}
 	.rank ul {
 		width: 216px;
 		height: 31px;
 		position: relative;
 		text-align: center;	
-		margin: 10px -16px 0 0;
+		margin: 13px -16px 0 0;
 		border-bottom: 1px dashed #999;
 	}
 	.rank ul li {
@@ -339,8 +344,23 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		color: #000000;
-		text-align: center;
+		text-align:left;
+		padding-left:10px ;
+		
+		
 	}
+	 .screen .works_b {
+    display: block;
+    width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000000;
+    text-align:left;
+    padding-top: 5px;
+    padding-left: 15px;
+  
+  }
 	.screen .rank_a {
 		display: block;
 		width: 170px;
@@ -353,6 +373,8 @@
 	}
 	.relative {
 		position: relative;
+		
+		
 	}
 	.ranking .ranking_Img_line {
 		position: absolute;
@@ -362,18 +384,19 @@
     	left: 40px;
 	}
 		.index .text_brief {
-			width: 472px;
+			width: 540px;
 			height: 120px;
 			border-bottom: 1px dashed #E1E1E1;
-			margin-top: 15px;
+			margin-top: 10px;
 		}	
 		.index .text_brief .text_brief_p {
-			width: 463px;
+		  	width: 540px;
 		    overflow: hidden;
 		    display: -webkit-box;
 		    -webkit-line-clamp: 3;
 		    -webkit-box-orient: vertical;
 		    height: 112px;
+		    font-size: 13px;
 		    
 		}
 		.index .text_type {
@@ -397,25 +420,26 @@
 			display: block;
 			text-align: center;
 			border-radius: 4px;
-			color: #ff4242;
-			border: 1px solid #ff0000;
+			color: #ff8E8E;
+			border: 1px solid #ff8E8E;
 		}
 		.index .text_type .text_span:hover {
-			background-color: red;
+			background-color: #FF7A7A;
 			cursor: pointer;
 			color: #FFFFFF;
 		}
 			
 		.index .text_reading {
 			width: 420px;
-			height: 110px;
+			height: 55px;
 			padding: 15px 0 0 0;
 		}
+
 		.index .text_reading ul {
 			height: 40px;
 		}
 		.index .text_reading ul li {
-			width: 125px;
+			width: 140px;
 			height: 37px;
 			float: left;
 		}
@@ -426,14 +450,18 @@
 			display:block;
 			line-height: 37px;
 			text-align: center;
-			font-size: 18px;
-			background-color: #3379da;
+			font-size: 16px;
+			background-color: #5697F1;
 			color: #FFFFFF;
 			
 		}
+		    .index .text_reading .text_Read:hover {
+		      background-color: #448cef;
+		      
+		    }
 		.index .text_reading span {
-			width: 97px;
-			height: 37px;
+			width: 105px;
+			height: 40px;
 			border: 1px solid #dddddd;
 			border-radius: 10px;
 			display:block;
@@ -441,6 +469,9 @@
 			color: #535353;
 			cursor: pointer;
 		}
+		    .index .text_reading span:hover {
+		       background-color: #EEEEEE;
+		       }
 		.index .text_reading .text_card {
 			margin: 5px 0 0 8px ;
 		}
@@ -454,10 +485,10 @@
 			margin: 0px 0 0 45px;
 		}
 		.index .text_Catalog {
-			width: 711px;
+			width: 755px;
 			height: 775px;
 			border: 1px solid #dddddd;
-			margin: 0 0 0 30px;
+			margin: 10px 0 0 15px;
 			border-radius: 8px;
 		}
 		.index .text_Catalog ul {

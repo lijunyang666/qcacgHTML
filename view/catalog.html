@@ -17,18 +17,18 @@
 		<div id="search"></div>
 		<div class="index" >
 			<div class="index_Line"></div>
-			<img class="picture" src="../img/sss2.jpg"/>
+			<img class="picture" :src="path.rootPath + bookCustom.bookCoverImage" />
 			<div class="text">
 			
-				<h1>{{ title }}</h1>
+				<h2>{{ title }}</h2>
 				<ul class="text_ul">
-					<li>字数: <span style="color:#7e7e7e">{{words}}</span></li>
-					<li>点击: <span style="color:#7e7e7e">{{cursor}}</span></li>
-					<li style="width: 200px">更新: <span style="color:#7e7e7e;">{{szxj.getLocalTime(update / 1000) }}</span></li>
+					<li>字数: <span style="color:#7e7e7e">&nbsp &nbsp{{words}}</span></li>
+					<li>点击: <span style="color:#7e7e7e">&nbsp &nbsp{{cursor}}</span></li>
+					<li style="width: 200px">更新: <span style="color:#7e7e7e;">&nbsp &nbsp{{szxj.getLocalTime(update / 1000) }}</span></li>
 				</ul>
 				<div class="text_brief">
 						<p class="text_brief_p" title="{{introduction}}">简介：
-							<span style="font-size: 12px;">{{introduction}}</p>
+							<span style="font-size: 12px; display: inline-block;">{{introduction}}</p>
 						</span>
 					<div class="text_type" >
 						<ul>
@@ -38,7 +38,7 @@
 					</div>
 					<div class="text_reading">
 						<ul>
-							<li><a class="text_Read btn" href="javascript:;">开始阅读</a></li>
+							<li><a class="text_Read" href="javascript:;">开始阅读</a></li>
 							<li><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
 							<li v-on:click="rewardFn"><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>{{bookCopperCoins}}</num></li>
 						</ul>
@@ -86,7 +86,7 @@
 						<ul>
 							<li class="active">默认排序</li>
 							<li>按回复数量</li>
-							<li>按赞同数</li>
+							
 						</ul>
 					</div>
 					<div class="text_user">
@@ -132,14 +132,14 @@
 			
 			
 			<div class="screen">
-				<h2>作者相关</h2>
+				<h3>作者相关</h3>
 				<a href="javascript:;"><img src="../img/sss10.png"/ class="head"></a>
 				<ul class="author">
 					<li><label>作者：</label>
-						<a href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{authorName}}</a>
+						<a href="javascript:;" class="span span_author" title="{{authorName}}">{{authorName}}</a>
 						<a class="a_author" href="javascript:;">关注</a>
 					</li>
-					<li><label>签名：</label><span class="span" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{autograph}}</span></li>
+					<li><label>签名：</label><span class="span" title="{{autograph}}">{{autograph}}</span></li>
 				</ul>
 				<style>
 					
@@ -153,7 +153,7 @@
 					<ul class="clear">
 						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'"  v-for="obj in booktTitle">
 							<a href="javascript:;"> <img :src="path.rootPath + obj.bookCoverImage" /></a>
-							<a class="works_a" href="javascript:;" class="span span_author" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">{{ obj.bookName }}</a>
+							<a class="works_a"  href="javascript:;" class="span span_author" title="{{ obj.bookName }}">{{ obj.bookName }}</a>
 						</li>
 					</ul>
 				</div>
@@ -170,8 +170,8 @@
 							<img src="../img/sss19.png" class="ranking_Img_line"/>
 							<a href="javascript:;"><img src="../img/sss22.png" class="ranking_head"/></a>
 							<ul>
-								<li><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><b>比企谷八幡比企谷八幡</b></a></li>
-								<li class="name"><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
+								<li><a class="works_b" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡比企谷八幡</a></li>
+								<li class="name"></li>
 								<li class="num"><img src="../img/sss15.png"/>好人币</li>
 								<li class="num_money"><span class="money">{{ ARRAY[0].number }}</span></li>
 							</ul>
@@ -181,8 +181,8 @@
 							<img src="../img/sss20.png" class="ranking_Img_line"/>
 							<a href="javascript:;"><img src="../img/sss10.png" class="ranking_head"/></a>
 							<ul>
-								<li><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><b>比企谷八幡</b></a></li>
-								<li class="name"><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
+								<li><a class="works_b" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
+								<li class="name"></li>
 								<li class="num" style="color: #3781E7;"><img src="../img/sss16.png"/>好人币</li>
 								<li class="num_money"><span class="money" style="color: #3781E7;">{{ ARRAY[1].number }}</span></li>
 							</ul>
@@ -192,8 +192,8 @@
 							<img src="../img/sss21.png" class="ranking_Img_line"/>
 							<a href="javascript:;"><img src="../img/sss14.png" class="ranking_head"/></a>
 							<ul>
-								<li><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><b>比企谷八幡</b></a></li>
-								<li class="name"><a class="works_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
+								<li><a class="works_b" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">比企谷八幡</a></li>
+								<li class="name"></li>
 								<li class="num"style="color: #08a690;"><img src="../img/sss17.png"/>好人币</li>
 								<li class="num_money"><span class="money" style="color:#08a690;">{{ ARRAY[3].number }}</span></li>
 							</ul>
@@ -329,6 +329,7 @@
 				authorName:'',
 				autograph:'',
 				booktTitle:[],
+				bookCustom:[],
 			},
 			methods: {
 				nextWorksFn:function() {
@@ -349,6 +350,7 @@
             	_data.bookId = this.id;
 			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
+			        	 this.bookCustom=response.data.bookCustom;
 			        	 this.title = response.data.bookCustom.bookName;
 			        	 this.introduction =response.data.bookCustom.bookIntroduction;
 			        	 this.words =response.data.bookCustom.bookWordCount;
