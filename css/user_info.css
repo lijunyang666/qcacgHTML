@@ -21,8 +21,9 @@
 }
 
 .user_info .user_info_left .user_info_touxiang {
-	margin: 0 auto;
-	margin-top: 20px;
+	margin: 20px  30px  0  100px;
+
+	
 	width: 136px;
 	height: 136px;
 	background: url(../img/user_info_touxiang.jpg) no-repeat;
@@ -30,29 +31,33 @@
 }
 
 .user_info .user_info_left .user_info_account {
-	color: #3491d6;
+	color: black;
 	width: 80%;
-	margin: 0 auto;
+	margin: 20px  30px  0  50px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	font-family: "微软雅黑";
 	text-align: center;
 	font-size: 20px;
-	margin-top: 10px;
+	
 }
 
 .user_info .user_info_left .user_info_btn_qiandao {
 	width: 60px;
 	height: 23px;
-	margin: 0 auto;
-	margin-top: 10px;
-	background-color: #3491d6;
+	margin: 20px  30px  0  140px;
+	
+	background-color: #3db2d8;
 	color: #FFFFFF;
 	font-size: 15px;
 	line-height: 23px;
 	text-align: center;
 	border-radius: 8px;
+	cursor: pointer;
+}
+.user_info .user_info_left .user_info_btn_qiandao:hover {
+  background-color: #00A1D6;
 }
 
 .user_info .user_info_left .user_info_btn_qiandaoY {
@@ -66,6 +71,7 @@
 	line-height: 23px;
 	text-align: center;
 	border-radius: 8px;
+	cursor: pointer;
 }
 
 .user_info .user_info_left .user_info_nva {
@@ -76,15 +82,17 @@
 }
 
 .user_info .user_info_left .user_info_nva ul {
+  
 }
 
 .user_info .user_info_left .user_info_nva ul li {
 	position: relative;
 	text-align: center;
 	font-size: 14px;
-	line-height: 54px;
-	height: 54px;
+	line-height: 60px;
+	height: 60px;
 	cursor: pointer;
+	
 }
 
 .user_info .user_info_left .user_info_nva ul li a {
@@ -155,7 +163,7 @@
 .user_info .user_info_left .user_info_nva_title h2 {
 	height: 35px;
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 15px;
 	color: #564c4c;
 	font-weight: 500;
 	font-family: "微软雅黑";
@@ -856,10 +864,13 @@
 	line-height: 20px;
 	margin: 0 7px;
 	text-align: center;
-	background: #ff8793;
+	background: #3db2d8;
 	color: #FFFFFF;
 	border-radius: 6px;
 	cursor: pointer;
+}
+.user_info .user_info_right .works .works_name p .span:hover {
+  background: #00A1D6;
 }
 
 .user_info .user_info_right .works .works_name p span {
@@ -886,13 +897,15 @@
 	height: 25px;
 	line-height: 25px;
 	text-align: center;
-	background: #169bd5;
+	background: #3db2d8;
 	color: #FFFFFF;
 	border-radius: 5px;
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	cursor: pointer;
 }
-
+.user_info .user_info_right .works .works_name .works_Deposit:hover {
+  background-color: #00A1D6;
+}
 .user_info .user_info_right .works .works_chart {
 	position: absolute;
 	right: 140px;
@@ -900,17 +913,19 @@
 }
 
 .user_info .user_info_right .works .works_chart p {
-	width: 73px;
-	height: 20px;
-	line-height: 20px;
+	width: 80px;
+	height: 25px;
+	line-height: 25px;
 	margin: 22px 45px;
 	text-align: center;
-	background: #ff8793;
+	background: #3db2d8;
 	color: #FFFFFF;
 	border-radius: 6px;
 	cursor: pointer;
 }
-
+.user_info .user_info_right .works .works_chart p:hover {
+  background-color: #00A1D6;
+}
 .user_info .user_info_right .works .works_chart .works_notes {
 	color: #797979;
 	margin: 0 -13px 0 14px;
@@ -1152,7 +1167,7 @@
 .messageAI .up .up-name {
 	margin: 0 15px 0 10px;
 	font-size: 20px;
-	color: #03A9F4;
+	color: #3db2d8;
 }
 
 .up .up-word {
@@ -1240,7 +1255,7 @@
 	margin: 10px 0 0 80px;
 	color: white;
 	border-radius: 6px;
-	background-color: #00A1D6;
+	background-color: #3db2d8;
 	line-height: 20px;
 	cursor: pointer;
 	text-align: center;
@@ -1252,7 +1267,7 @@
 	margin: 10px 0 0 100px;
 	color: white;
 	border-radius: 6px;
-	background-color: #00A1D6;
+	background-color: #3db2d8;
 	left: 100px;
 	padding-top: 3px;
 	text-align: center;
@@ -1260,11 +1275,11 @@
 }
 
 .change:hover {
-	background-color: #03A9F4;
+	background-color: #00A1D6;
 }
 
 .change2:hover {
-	background-color: #03A9F4;
+	background-color: #00A1D6;
 }
 
 .numberAItwo1 {
@@ -1292,7 +1307,7 @@
 .numberAItwo4  .verify {
 	color: white;
 	display: inline-block;
-	background-color: #169BD5;
+	background-color: #3db2d8;
 	text-align: center;
 	width: 70px;
 	height: 22px;
@@ -1303,7 +1318,7 @@
 	cursor: pointer;
 }
 .numberAItwo4  .verify:hover {
-  background-color: #03A9F4;
+  background-color: #00A1D6;
 }
 
 .book-navAI .book-img {
@@ -1350,7 +1365,7 @@
 	display: inline-block;
 	width: 55px;
 	height: 20px;
-	background-color: #00A1D6;
+	background-color: #3db2d8;
 	border-radius: 8px;
 	text-align: center;
 	color: white;
@@ -1362,7 +1377,7 @@
 }
 
 .attention-name .wordAI:hover {
-	background-color: #03A9F4;
+	background-color: #00A1D6;
 }
 
 .attention-name span {
@@ -1545,7 +1560,7 @@
 	height: 25px;
 	color: white;
 	border-radius: 8px;
-	background-color: #00A1D6;
+	background-color: #3db2d8;
 	margin: 10px 50px 15px 320px;
 	font-size: 15px;
 	text-align: center;
@@ -1555,7 +1570,7 @@
 }
 
 .pay-b:hover {
-	background-color: #03A9F4;
+	background-color: #00A1D6;
 }
 
 .pay-c {
@@ -1564,7 +1579,7 @@
 	height: 25px;
 	color: white;
 	border-radius: 8px;
-	background-color: #00A1D6;
+	background-color: #3db2d8;
 	cursor: pointer;
 	font-size: 15px;
 	text-align: center;
@@ -1573,7 +1588,7 @@
 }
 
 .pay-c:hover {
-	background-color: #03A9F4;
+	background-color: #00A1D6;
 }
 
 .pay-d {
@@ -1592,7 +1607,7 @@
 	display: inline-block;
 	width: 70px;
 	height: 25px;
-	background-color: #00A1D6;
+	background-color: #3db2d8;
 	border-radius: 8px;
 	text-align: center;
 	line-height: 25px;
@@ -1602,7 +1617,7 @@
 }
 
 .pay-check:hover {
-	background-color: #03A9F4;
+	background-color: #00A1D6;
 }
 
 .explain {
@@ -1646,7 +1661,7 @@
 	height: 20px;
 	color: white;
 	text-align: center;
-	background-color: #03A9F4;
+	background-color: #3db2d8;
 	border-radius: 6px;
 	margin: 15px 0 30px 120px;
 }

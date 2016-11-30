@@ -20,7 +20,7 @@
 			<img class="picture" :src="path.rootPath + bookCustom.bookCoverImage" />
 			<div class="text">
 			
-				<h2>{{ title }}</h2>
+				<h4>{{ title }}</h4>
 				<ul class="text_ul">
 					<li>字数: <span style="color:#7e7e7e">&nbsp &nbsp{{words}}</span></li>
 					<li>点击: <span style="color:#7e7e7e">&nbsp &nbsp{{cursor}}</span></li>
@@ -139,13 +139,13 @@
 						<a href="javascript:;" class="span span_author" title="{{authorName}}">{{authorName}}</a>
 						<a class="a_author" href="javascript:;">关注</a>
 					</li>
-					<li><label>签名：</label><span class="span" title="{{autograph}}">{{autograph}}</span></li>
+					<li><p class="span_autograph" title="{{autograph}}"><label style="color: black;">签名：</label>{{autograph}}</p></li>
 				</ul>
 				<style>
 					
 				</style>
 				<div class="works">
-					<h3>其他作品</h3>
+					<h3 class="titile_tow">其他作品</h3>
 					<div class="button">
 						<button class="next" @click="nextWorksFn"><img src="../img/sss12.png"/></button>
 						<button class="Previous" @click="previousWorksFn"><img src="../img/sss13.png"/></button>
@@ -158,7 +158,7 @@
 					</ul>
 				</div>
 				<div class="list">
-					<h2>好人榜</h2>
+					<h3>好人榜</h3>
 					<ul class="list_ul">
 						<li>周</li>
 						<li>月</li>
@@ -237,14 +237,14 @@
 					<div id="more"><a>查看更多</a></div>
 				</div>
 				<div id="recommed">
-					<h2>同类作品推荐</h2>
+					<h3>同类作品推荐</h3>
 					<ul class="many">
 						<li><a  href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡" style="color: #000000;">更多</a></li>
 					</ul>
 					<div class="recommed_works">
 						<div>
 							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img src="../img/sss18.png"/></a>
-							<h4>夏日小作战</h4>
+							<span class="h4">夏日小作战</span>
 							<ul>
 								<li>字数：<span style="color:#7e7e7e">50万</span></li>
 								<li>人气：<span style="color:#7e7e7e">155443</span></li>
@@ -255,7 +255,7 @@
 					<div class="recommed_works">
 						<div>
 							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img src="../img/sss18.png"/></a>
-							<h4>夏日小作战</h4>
+							<span class="h4">夏日小作战</span>
 							<ul>
 								<li>字数：<span style="color:#7e7e7e">50万</span></li>
 								<li>人气：<span style="color:#7e7e7e">155443</span></li>

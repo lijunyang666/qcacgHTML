@@ -38,9 +38,9 @@
 		height: 290px;;
 		margin: 20px 0 0 230px;
 	}
-	.text h3{
+	.text h4{
 	  font-size: 20px;
-	  
+	  font-family: "幼圆";
 		
 	}
 	.text .text_ul  {
@@ -77,7 +77,7 @@
 		width: 90px;
 		height: 20px;
 		font-size: 14px;
-		margin: 0 0 0 30px;
+		margin: 0 0 0 px;
 		background-color: #099cef;
 		border-radius: 4px;
 		color: #FFFFFF;
@@ -90,8 +90,16 @@
 	.screen h3{
 		width: 285px;
 		height: 19px;
-		margin: 40px 0 0 39px;
-		
+		margin: 40px 0 0 18px;
+		font-family: "幼圆";
+		font-size: 18px;
+	}
+	.screen .titile_tow{
+	  width: 285px;
+    height: 19px;
+    margin: 40px 0 0 18px;
+    font-family: "幼圆";
+    font-size: 16px;
 	}
 	.works ul {
 		width: 252px;
@@ -268,18 +276,23 @@
 	}
 	#recommed .recommed_works ul{
 		width: 100px;
-		height: 100px;
-		margin: -80px 0 -24px 146px;
+		height: 70px;
+		margin: -65px 0 -24px 146px;
 		float: left;
 	}
 	#recommed .recommed_works ul li {
 		width: 150px;
-		height: 33px;
-		line-height: 17px;
+		height: 25px;
+		line-height: 25px;
+		font-size: 13px;
+		
 	}
-	#recommed .recommed_works h4 {
+	#recommed .recommed_works .h4 {
 		float: right;
-		margin: -120px 100px 0 0px;
+		margin: -115px 98px 0px 0px;
+		font-size: 16px;
+	  
+	  font:"微软雅黑" ;
 	}
 	#recommed .recommed_Title {
 		width: 300px;
@@ -302,13 +315,13 @@
 		color: #000000;
 	}
 	.recommed_works .works_span {
-		display: block;
-		width: 42px;
+		display:inline-block;
+		width: 60px;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
-		float: right;
-		margin: 0 65px 0 0;
+    vertical-align: middle;
+		padding-bottom: 3px;
 	}
 	.screen .author label {
 		display: block;
@@ -317,11 +330,22 @@
 	.screen .author .span {
 		display: block;
 		float: left;
-		width: 68px;
+		width: 80px;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 	}
+	 .screen .author .span_autograph {
+    display: block;
+    float: left;
+    width: 160px;
+    height: 40px ;
+    overflow: hidden;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    color: #666666;
+  }
 	.works .button .next {
 		float: right;
 		margin: 0px 37px 0px 5px ;
@@ -558,7 +582,7 @@
 			float: left;
 		}
 		.index .text_comment ul li span {
-			color: #ea4d5c;
+			color: black;
 			font-size: 18px;
 			line-height: 5px;
 		}
@@ -778,6 +802,7 @@
 			height: 61px;
 			line-height: 61px;
 			margin:0 auto;
+			
 		}
 		.reward h4 span {
 			color: #f26a81;
