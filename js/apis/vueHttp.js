@@ -22,7 +22,11 @@ SZXJ.getLocalTime =  function(nS) {
   return time.Format("yyyy-MM-dd hh:mm:ss");
 	// return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
 }
-
+SZXJ.getLocalDate =  function(nS) { 
+  var time = new Date(nS);
+  return time.Format("yyyy-MM-dd");
+	// return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
+}
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
   if (localStorage.getItem('JSESSIONID')) {
     Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
@@ -40,6 +44,12 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         if (errorfn) {
             errorfn(err);
         }
+        if(err.data.code == 9002) { // 未登入
+          location.href = PathList.TemprootPath + '/view/login.html';
+        }
+        if(err.data.code == 1000) { // 登入超时
+          location.href = PathList.TemprootPath + '/view/login.html';
+        }
       }
     );
   }
@@ -55,6 +65,12 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         console.log(err);
         if (errorfn) {
             errorfn(err);
+        }
+        if(err.data.code == 9002) { // 未登入
+          location.href = PathList.TemprootPath + '/view/login.html';
+        }
+        if(err.data.code == 1000) { // 登入超时
+          location.href = PathList.TemprootPath + '/view/login.html';
         }
       }
     );

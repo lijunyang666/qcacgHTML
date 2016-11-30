@@ -1,10 +1,18 @@
 ﻿var PathList = {};
 
 PathList.TemprootPath = '';
+<<<<<<< HEAD
   //PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
   //PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
+=======
+// PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
+
+PathList.rootPath = '/Controller';
+// PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
+
+>>>>>>> ad487934f43c66abafc816383e31e7362c78bb5e
 
 
 // 登陆的3个请求
@@ -61,3 +69,11 @@ PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookColle
 PathList.getStatus = PathList.rootPath + '/getStatus.shtml';
 // 添加或取消收藏
 PathList.saveOrDeleteBookCollect =  PathList.rootPath + '/bookCollect/saveOrDeleteBookCollect.shtml';
+// 获取评论
+PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
+// 获取个人信息
+PathList.queryUser = PathList.rootPath + '/user/queryUser.shtml';
+// 修改个人信息
+PathList.updateUser = PathList.rootPath + '/user/updateUser.shtml';
+// 头像上传
+PathList.userUpload = PathList.rootPath + '/user/upload.shtml';
