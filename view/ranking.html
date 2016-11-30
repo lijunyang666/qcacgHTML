@@ -99,13 +99,13 @@
   <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	<script>
 		var indexHtml = new Vue({
-			el: '#app',
-			data: {
-				path: PathList,
-				result:[],	
-				bookInfo: [],
-				// 分页
-				page: [],
+		el: '#app',
+		data: {
+		path: PathList,
+		result:[],	
+		bookInfo: [],
+		// 分页
+		page: [],
         RequestObj: {
           rankList: 0, // 好人 字数 点击
           timeRank: 0, // 周 月 总
@@ -114,19 +114,19 @@
           pageNo: 1,
           pageSize: 12,
         },
-				obj: {
+		obj: {
          p: 1, // 页码
          n: 12,
          pageCount: 1,
         },
         // 分页
 			},
-			methods: {
-			  setCollect: function(v) {
+		methods: {
+		  setCollect: function(v) {
 			    SZXJ.http('post', PathList.saveOrDeleteBookCollect, { bookId: v }, (response) => {
-             this.getValueFn();
+            this.getValueFn();
           });
-			  },
+			},
 			  setDate:function(v) {
 			    var Temp = this.RequestObj;
           Temp.date = v;
@@ -140,8 +140,8 @@
 			  setRankList: function(v) {
           this.RequestObj.rankList = v;
           this.getValueFn(); // 请求
-        },
-			  setTimeRank: function(v) {
+       	},
+       setTimeRank: function(v) {
 			    var Temp = this.RequestObj;
           Temp.timeRank = v;
           this.$set('RequestObj', Temp)

@@ -44,7 +44,7 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         if (errorfn) {
             errorfn(err);
         }
-        if(err.data.code == 9002) { // 未登入
+        if(err.data.code == 900) { // 未登入
           location.href = PathList.TemprootPath + '/view/login.html';
         }
         if(err.data.code == 1000) { // 登入超时
@@ -66,7 +66,7 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         if (errorfn) {
             errorfn(err);
         }
-        if(err.data.code == 9002) { // 未登入
+        if(err.data.code == 900) { // 未登入
           location.href = PathList.TemprootPath + '/view/login.html';
         }
         if(err.data.code == 1000) { // 登入超时

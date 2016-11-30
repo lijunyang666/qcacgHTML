@@ -1322,23 +1322,41 @@
 }
 
 .book-navAI .book-img {
-	padding: 10px 20px 0 80px;
+  height: 126px;
+  width: 90px;
+	margin: 10px 20px 0px 80px;
 	cursor: pointer;
 }
 
 .book-navAI .book-img1 {
-	padding: 10px 20px 0 30px;
+  height: 126px;
+  width: 90px;
+	margin: 10px 20px 0 30px;
 	cursor: pointer;
 }
 
 .book-name {
-	margin-left: 100px;
-	cursor: pointer;
+  text-align: center;
+  color: #000000;
+  margin-top: 10px;
+	margin-left: 80px;
+  cursor: pointer;
+  width: 90px;
+  height: 28px;
+  overflow: hidden;
+  display: inline-block;
 }
 
 .book-name1 {
-	margin-left: 85px;
-	cursor: pointer;
+  text-align: center;
+  color: #000000;
+  margin-top: 10px;
+  display: inline-block;
+  width: 90px;
+  height: 28px;
+  overflow: hidden;
+  margin-left: 50px;
+  cursor: pointer;
 }
 
 .img-attention-head {
@@ -1347,7 +1365,6 @@
 	border-radius: 40px;
 	width: 80px;
 	height: 80px;
-	background: url(../img/user_info_touxiang.jpg) center;
 }
 
 .attention-name {

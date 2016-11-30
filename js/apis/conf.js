@@ -1,18 +1,11 @@
 ﻿var PathList = {};
 
 PathList.TemprootPath = '';
-<<<<<<< HEAD
-  //PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
+PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
-  //PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
-=======
-// PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
+PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
 
-PathList.rootPath = '/Controller';
-// PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
-
->>>>>>> ad487934f43c66abafc816383e31e7362c78bb5e
 
 
 // 登陆的3个请求
@@ -64,7 +57,7 @@ PathList.getRankingList = PathList.rootPath + '/rank/getRankingList.shtml';
 //我的书架 -我的收藏
 PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
 //我的书架-我的浏览记录
-PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
+PathList.findBookHitByUser = PathList.rootPath + '/bookHit/findBookHitByUser.shtml';
 // 判断是否登入
 PathList.getStatus = PathList.rootPath + '/getStatus.shtml';
 // 添加或取消收藏
@@ -77,3 +70,5 @@ PathList.queryUser = PathList.rootPath + '/user/queryUser.shtml';
 PathList.updateUser = PathList.rootPath + '/user/updateUser.shtml';
 // 头像上传
 PathList.userUpload = PathList.rootPath + '/user/upload.shtml';
+// 获取关注我的 和 我的关注  0表示我关注的人，status 1表示关注我的人  pageNo 当前页码数 pageSize 每页显示的数据量
+PathList.myCareOrCareMe = PathList.rootPath + '/relation/myCareOrCareMe.shtml';
