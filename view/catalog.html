@@ -17,7 +17,7 @@
 		<div id="search"></div>
 		<div class="index" >
 			<div class="index_Line"></div>
-			<img class="picture" :src="path.rootPath + bookCustom.bookCoverImage" />
+			<img class="picture" :src="bookCustom.bookCoverImage ? path.rootPath + bookCustom.bookCoverImage : ''" />
 			<div class="text">
 			
 				<h4>{{ title }}</h4>
@@ -295,13 +295,13 @@
 
 	  <myfooter></myfooter>
 	<script src="../js/apis/vueHttp.js"></script>
-  	<script src="../js/apis/conf.js"></script>
+  <script src="../js/apis/conf.js"></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
-    <script type="text/javascript" src="../js/components/header.js" ></script>
-    <script type="text/javascript" src="../js/components/footer.js" ></script>
-    <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
+  <script type="text/javascript" src="../js/components/header.js" ></script>
+  <script type="text/javascript" src="../js/components/footer.js" ></script>
+  <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	</body>
 	<script>
 		var vuePractice = new Vue({
@@ -364,7 +364,7 @@
 			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
 			        	this.booktTitle = response.data.userOtherBook;
-			           console.log(response);
+			          console.log(response);
 			        });
 			       
 				},
@@ -382,7 +382,7 @@
 	      if (str.search(/[^0-9]/g) === -1) {
 			    this.getValueFn();
         } else {
-			   window.location.href = PathList.TemprootPath + '/index.html';
+			    window.location.href = PathList.TemprootPath + '/index.html';
         }
 			},
 		});
