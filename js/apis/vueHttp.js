@@ -27,6 +27,12 @@ SZXJ.getLocalDate =  function(nS) {
   return time.Format("yyyy-MM-dd");
 	// return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
 }
+SZXJ.getQueryString = function(name) { 
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+  var r = window.location.search.substr(1).match(reg); 
+  if (r != null) return unescape(r[2]); 
+  return null;
+} 
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
   if (localStorage.getItem('JSESSIONID')) {
     Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');

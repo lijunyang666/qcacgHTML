@@ -54,7 +54,7 @@
   					<div class="text_chapter" >
   							<div class="group" v-for="value in obj.contentEntityList">
   							  <span class="text_sign">
-  							    <a :href="path.TemprootPath + '/view/read_book.html?id=' + value.contentId + '&bookId='+value.bookId">
+  							    <a :href="path.TemprootPath + '/view/read_book.html?contentId=' + value.contentId + '&bookId='+ obj.bookId">
   							      {{ value.contentTitle }}
   							    </a>
   							  </span>
