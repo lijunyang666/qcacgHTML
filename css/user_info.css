@@ -451,13 +451,17 @@
 .user_info .user_info_right .user_info_content .contribution .content .catalogue  .newBookChapter .btn-addBookChapter {
 	width: 86px;
 	height: 18px;
-	background-color: #3491d6;
+	background-color: #3db2d8;
+	line-height: 18px;
 	border-radius: 6px;
 	color: #FFFFFF;
 	font-size: 14px;
 	display: block;
 	margin: 0 auto;
 	text-align: center;
+}
+.user_info .user_info_right .user_info_content .contribution .content .catalogue  .newBookChapter .btn-addBookChapter:hover {
+  background-color: #00A1D6;
 }
 
 .user_info .user_info_right .user_info_content .contribution .content .catalogue  .hr {
@@ -613,6 +617,9 @@
 	color: black;
 	margin-right: 20px;
 }
+.user_info .user_info_right .user_info_content .contribution .content .catalogue .catalogue_list .list_title .list_action a:hover {
+  color: #92C202;
+}
 
 .user_info .user_info_right .user_info_content .contribution .content .catalogue .catalogue_list .create_chapter {
 	padding: 26px 26px 0 28px;
@@ -712,9 +719,12 @@
 	width: 90px;
 	height: 22px;
 	line-height: 22px;
-	background-color: #169bd5;
-	border: 1px solid #169bd5;
+	background-color: #3db2d8;
+	border: 1px solid #3db2d8;
 	border-radius: 5px;
+}
+.user_info .user_info_right .user_info_content .contribution .content .catalogue  .chapter_handle .handle_right > div span:hover {
+  background-color: #00A1D6;
 }
 
 .user_info .user_info_right .user_info_content .contribution .content .chapter {

@@ -63,25 +63,25 @@
        <div class="works_name">
         <p>书名：<input type="text" maxlength="64" v-model="bookName" /></p>
         <p>画师：<input type="text" v-model="ulName" placeholder="没有可不填写" /></p>
-        <p>分类：<span id="area-cat-info" class="text-primary">{{ classList }}</span><span v-on:click="classListFn" class="span btn" style="padding: 2px 8px 3px 8px;">选择分类</span> </p>
+        <p>分类：<span id="area-cat-info" class="text-primary">{{ classList }}</span><span v-on:click="classListFn" class="span " style="padding: 2px 8px 3px 8px;">选择分类</span> </p>
         <div class="cat-list-post" v-if="classFlag" style="display:block">
          <div class="btn-block clear">
           <a v-for="obj in classArr" v-on:click="clickClassFn($index)" :class="classArr[$index].flag === true?\'btn btn-xs btn-primary\':\'btn btn-xs btn-default\'" data-id="obj.bookTypeId" data-name="{{obj.bookTypeName}}">{{obj.bookTypeName}}</a>
          </div>
          <div class="bottom-block">
-          <a data-type="submit" class="btn btn-wide btn-xs btn-primary" v-on:click="primaryFn">确定</a>
+          <a data-type="submit" class=" btn-wide btn-xs btn-primary" v-on:click="primaryFn">确定</a>
          </div>
         </div> 
         <p></p>
         <span>简介：</span>
         <textarea placeholder="0/500字" v-model="textArea"></textarea>
-        <div class="works_Deposit btn" v-on:click="submitFn">
+        <div class="works_Deposit " v-on:click="submitFn">
          保存
         </div>
        </div>
        <div class="works_chart">
         <img style="width:150px;height:210px" src="../img/user_inco.jpg" v-el:img="" />
-        <p class="btn" v-on:click="clickFileActiveFn">选择封面</p>
+        <p  v-on:click="clickFileActiveFn">选择封面</p>
         <div class="works_notes">
          <span>注：</span>
          <ul>

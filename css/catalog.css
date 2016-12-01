@@ -568,7 +568,7 @@
 			color: #000000;
 		}
 		.index .text_comment {
-			width: 680px;
+			width: 720px;
 			height: 29px;
 			margin: 42px 0 0 40px;
 			border-bottom: 1px solid #d7d7d7;
@@ -587,95 +587,121 @@
 			line-height: 5px;
 		}
 		.index .text_input {
-			width: 672px;
-			margin: 21px 0 0 66px;
+			width: 675px;
+			margin: 25px 0 0 50px;
 		}
 		.index .text_input ul {
-			width: 669px;
-			height: 122px;
+			width: 650px;
+			height: 120px;
+		}
+		.index .text_input ul .user_head {
+			margin-right: 20px;
+			float: left;
+			padding-top: 4px;
 		}
 		.index .text_input ul li {
-			width: 83px;
-			float: left;
-			
+		  float: left;
 		}
+		.index .text_input ul .MessageBtn {
+		  width: 56px;
+		  height: 56px;
+		  border-radius: 6px;
+		  background-color: #00A1D6;
+		  margin-left: 15px;
+		  color: white;
+		  text-align: center;
+		  margin-top: 2px; 
+		  cursor: pointer;
+		}
+		.index .text_input ul .MessageBtn:hover {
+		  background-color: #3DB2D8;
+		}
+		.index .text_input ul .MessageBtn span{
+		   width: 40px;
+		   display: inline-block;
+		   height: 40px;
+		   padding-top: 15px;
+		   cursor: pointer;
+		}
+
 		.index .text_input ul textarea {
-			width: 550px;
-			height: 116px;
-			margin: 6px 0 0 0;
+			width: 500px;
+			height: 60px;
 			border-radius: 8px;
 			resize:none;
 		}
-		.index .text_input .text_Submit {
-			text-align: center;
-			border-radius: 4px;
-			width: 46px;
-			height: 23px;
-			line-height: 23px;
-			float: right;
-			margin: 17px 19px 0 0;
-			background-color: #f4616f;
-			color: #FFFFFF;
-		}
+
 		.index .text_input .text_chart {
 			width: 380px;
 			height:35px;
 			margin: 20px 0px 0 83px;
 		}
 		.index .text_sort {
-			width: 678px;
+			width: 580px;
 			height: 27px;
-			border-bottom: 2px solid #d9d9d9 ;
+			border-bottom: 1px solid #d9d9d9 ;
+			margin-left: 60px;
 		}
 		.index .text_sort ul {
-			width: 600px;
+			margin-left: 10px;
 			height: 27px;
-			margin: 23px 0 0 26px;
 			
 		}
 		.index .text_sort ul li {
-			width:90px;
+			width:75px;
 			height: 27px;
 			cursor: pointer;
 			text-align: center;
-			
+			float:left ;
+			margin-right: 20px;
 		}
 		.index .text_sort .active{
-			border-bottom: 2px solid #1686ef;
+			border-bottom: 1px solid #00A1D6;
 			height: 27px;
+			color:#00A1D6 ;
 		}
 		.index .text_sort ul li:hover {
-			color: #1686ef;
-			width: 90px;
+			color: #00A1D6;
+			width: 75px;
 			height: 27px;
 			text-align: center;
-			border-bottom: 2px solid #1686ef;
+			border-bottom: 1px solid #00A1D6;
 		}
 		.index .text_user {
 		 	width: 678px;
-		 	
+		 	margin-top: 10px;
 		 }
 		 .index .text_user img {
-		 	margin: 18px  0 0 0;
+		 	margin: 18px  0 0 15px;
 		 }
-		.index .text_user ul {
+		.index .text_user .mes_head {
 		 	width: 583px;
-		 	height: 101px;
+		 	height: 80px;
 		 	float: right;
 		 	margin: 20px 13px 0 0px;
 		 }
 		.index .text_user ul li {
-			width: 578px;
-			height: 37px;
+			width: 580px;
+			height: 20px;
+			margin-bottom: 10px;
+		}
+		.index .text_user ul li .updata_mes{
+		  height: 30px;
+		}
+		.index .text_user ul li .updata_mes .mess1{
+		  float: left;
+		  
 		}
 		.index .text_user .user_a {
 			display: block;
-			color: #3d9def;
-			width: 80px;
+			color: #00A1D6;
+			width: 100px;
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			float: left;
+			font-weight: 600;
+			font-size: 14px;
 		}
 		.index .text_user .user_Top {
 			width: 50px;
@@ -686,64 +712,23 @@
 			border-radius: 4px;
 			float: left;
 			color: #FFFFFF;
-			margin: -5px 0 0 0;
+			margin: -3px 0 0 0;
+			font-size: 13px;
 		}
 		.index .text_user .user_comment {
-			width: 530px;
+		  	width: 530px;
 		    overflow: hidden;
 		    display: -webkit-box;
 		    -webkit-line-clamp: 2;
 		    -webkit-box-orient: vertical;
+		    line-height: 1.5;
+		    min-height: 40px;
 		}
-		.index .text_Open {
-			height: 51px;
-			position: relative;
-		}
-		.index .text_Open img {
-			position: absolute;
-			top: 30px;
-			right: 97px;
-		}
-		.index .text_Open text{
-			width: 623px;
-			float: right;
-			margin: 0 -530px 0 0px;
-			color: #000000;
-		}
-		.index .text_Stop {
-			width: 633px;
-			height: 25px;
-			margin: 30px 0 0 20px;
-		}
-		.index .text_Stop ul {
-			float: right;
-			width: 633px;
-			height: 30px;
-			text-align: center;
-			margin: 0 -420px 0 0;
-		}
-		.index .text_Stop ul li {
-			width: 67px;
-			height: 25px;
-			color: #bebebe;
-			line-height: 25px;
-		}
-		.index .text_Stop .Stop_Reply {
-			display: block;
-			width: 87px;
-			height: 25px;
-			margin: 0 0px 0 5px;
-			line-height: 25px;
-			background-color: #fafafa;
-			text-align: center;
-			border-radius: 5px;
-			color: #222222;
-			cursor: pointer;
-		} 
+
+
 		.index .text_Reply {
 			width: 633px;
 			height: 240px;
-			background-color: #fafafa;
 			margin: -7px 0 0 33px;
 			
 		}
@@ -761,9 +746,9 @@
 		    float: left;
 		}
 
-		.index .text_Reply .text_Reply_user  .text_Reply_uesr_name {
+		.index .text_Reply .text_Reply_user .text_Reply_uesr_name {
 			display: inline-block;
-		    margin : 15px  0  0 10px;
+		    margin : 24px  0  0 5px;
 		   float: left;
 		    
 		}
