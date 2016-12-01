@@ -138,16 +138,19 @@
 
 .qcacg-footer-parent {
   background-color: #f2f2f2;
+  
   height: 240px;
   width: 100%;
   min-width:1200px;
   border: 0px;
   overflow: hidden;
+ 
 }
 .qcacg-footer-parent .qcacg-footer {
   width: 1200px;
   height: 100%;
   margin: 0 auto;
+ 
 }
 .qcacg-footer-parent .qcacg-footer .qcacg-top {
   height: 210px;
