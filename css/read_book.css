@@ -142,7 +142,7 @@ font-size:inherit;text-rendering:auto;
 	flex-direction:column;
 	-webkit-box-pack:justify;
 	justify-content:space-between;
-	min-height:980px;
+	min-height:1200px;
 	width:100%
 }
 .inner-reader.nene {
@@ -276,8 +276,10 @@ font-size:inherit;text-rendering:auto;
   
 }
 .book-tool {
+	position: fixed;
+	bottom: 150px;
 	
-	
+
 }
 .book-tool a {
 	display:block;

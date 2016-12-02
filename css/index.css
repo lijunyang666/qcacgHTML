@@ -98,10 +98,10 @@
 	}
 	.index .edit .details figure {
 		float: left;
-		width: 161px;
-		height: 240px;
+		width: 157px;
+		height: 235px;
 		margin: 17px;
-		border: 2px solid #e7e5e6;
+		
 	}
 	.index .edit .details figure figcaption {
 	    width: 157px;
@@ -792,6 +792,9 @@
 	}
 	.index  .display {
 		position: relative;
+		background-color: #F0F0F0;
+		background: url(../img/LOG0.png) no-repeat ;
+    background-position:center center;
 	}
 	.index  .hide {
 		width: 161px;
@@ -864,25 +867,35 @@
 	.imgHeadPortrait {
 	  height: 46px;
 	  width: 46px;
-	  border:  solid 1px  #C4C4C4;
+	  background: url(../img/LOG0.png) no-repeat ;
+    background-position:center center;
+	  background-color: #F0F0F0;
 	  border-radius: 64px;
 	}
 	.bookImg_Sl {
 	  height: 84px;
     width: 60px;
-    border:  solid 1px  #C4C4C4;
+    background: url(../img/LOG0.png) no-repeat ;
+    background-position:center center;
+    background-color: #F0F0F0;
 	}
 	.bookImg_S {
 	  width: 128px;
     height: 174px;
-    border:  solid 1px  #C4C4C4;
+    background: url(../img/LOG0.png) no-repeat ;
+    background-position:center center;
+    background-color: #F0F0F0;
 	}
 	.bookImg_L {
     width:157px;height: 236px;
-    border:  solid 1px  #C4C4C4;
+    background: url(../img/LOG0.png) no-repeat ;
+    background-position:center center;
+    background-color: #F0F0F0;
   }
 	.bookImg_X {
     width: 319px;
     height: 435px;
-    border:  solid 1px  #C4C4C4;
+    background: url(../img/LOG0.png) no-repeat ;
+    background-position:center center;
+    background-color: #F0F0F0;
   }

@@ -667,31 +667,81 @@
 			text-align: center;
 			border-bottom: 1px solid #00A1D6;
 		}
+		.index .CommentArea {
+		  width: 678px;
+		 
+		}
 		.index .text_user {
 		 	width: 678px;
-		 	margin-top: 10px;
+		 	margin-top: 20px; 
+		 	margin-left: 60px;
+		 	margin-bottom: 15px;
+		 	height: 100%;
+		 	position: relative;
 		 }
+
 		 .index .text_user img {
-		 	margin: 18px  0 0 15px;
+		 	position: relative;
+		 	top: 5px;
+		 left: 15px;
 		 }
 		.index .text_user .mes_head {
 		 	width: 583px;
-		 	height: 80px;
+		 	min-height: 80px;
 		 	float: right;
-		 	margin: 20px 13px 0 0px;
+		 	margin: 0px 13px 0 0px;
 		 }
-		.index .text_user ul li {
+		.index .text_user ul .mes_head_user {
 			width: 580px;
 			height: 20px;
-			margin-bottom: 10px;
+			margin-bottom: 5px;
+			margin-top: 5px;
 		}
 		.index .text_user ul li .updata_mes{
-		  height: 30px;
+		  height: 16px;
+      width: 530px;
+		  margin-top:10px ;
+		  color: #7D7D7D;
+		  font-size: 12px; 
+		}
+		.index .text_user ul li .updata_mes li{
+		  padding-top: 2px;
 		}
 		.index .text_user ul li .updata_mes .mess1{
-		  float: left;
-		  
+		  float: left;	  
+		  margin-right: 15px;
 		}
+		.index .text_user ul li .updata_mes .mess2{
+      float: left;    
+      margin-right: 15px;
+      cursor: pointer;
+      width: 40px;
+      border-radius: 4px;
+      height: 16px;
+      text-align: center;
+    }
+    .index .text_user ul li .updata_mes .mess3{
+      float: left;    
+      margin-right: 15px;
+      cursor: pointer;
+      
+      width: 40px;
+      border-radius: 4px;
+      height: 16px;  
+      text-align: center; 
+    }
+
+    .index .text_user ul li .updata_mes:hover .mess3{
+      display: block;
+    }
+    .index .text_user ul li .updata_mes .mess2:hover{
+      color: #00A1D6;
+      background-color: #D9D9D9;
+    }
+    .index .text_user ul li .updata_mes .mess3:hover{
+      color: #00A1D6;
+      background-color: #D9D9D9;
+    }
 		.index .text_user .user_a {
 			display: block;
 			color: #00A1D6;
@@ -712,61 +762,114 @@
 			border-radius: 4px;
 			float: left;
 			color: #FFFFFF;
-			margin: -3px 0 0 0;
+			margin: -3px 0 0 15px;
 			font-size: 13px;
 		}
 		.index .text_user .user_comment {
 		  	width: 530px;
-		    overflow: hidden;
+		    
 		    display: -webkit-box;
-		    -webkit-line-clamp: 2;
+		    
 		    -webkit-box-orient: vertical;
 		    line-height: 1.5;
-		    min-height: 40px;
-		}
-
-
-		.index .text_Reply {
-			width: 633px;
-			height: 240px;
-			margin: -7px 0 0 33px;
-			
-		}
-		.index .text_Reply .text_Reply_user {
-			width: 633px;
-			min-width: 100px;
-		}
-		.index .text_Reply .text_Reply_user .text_Reply_uesr_img {
-			margin: 15px  0  0 20px;
-			width: 54px;
-			height: 54px;
-			display: inline-block;
-			border-radius: 350px;
-			background-image: url(../img/sss8.jpg);
-		    float: left;
-		}
-
-		.index .text_Reply .text_Reply_user .text_Reply_uesr_name {
-			display: inline-block;
-		    margin : 24px  0  0 5px;
-		   float: left;
-		    
-		}
-		.index .text_Reply .text_Reply_user  .text_Reply_uesr_name .text_Reply_content {
-			width: 500px;
-			min-height: 30px;
-			display: inline-block;
+		    min-height: 14px;
 		}
 		
-        .index .text_Reply .text_Reply_user  .text_Reply_uesr_name a {
-        	margin-left: 10px ;
-          	color: #169BD5;
-          	margin-right: 5px ; 	
-        }
-        .index .text_Reply .text_Reply_user  .text_Reply_uesr_name .text_Reply_content_time {
-        	margin-left: 10px;
-        	color: #BEBEBE;
-        }
+		/*楼中楼*/
+     .index .text_userTow {
+      width: 678px;
+      margin-bottom: 15px;
+      margin-left: 120px;
+      height: 100%;
+      position: relative;
+     }
+     .index .text_userTow img {
+      position: relative;
+      top: 3px;
+      left: 18px;
+     }
+    .index .text_userTow .mes_head {
+      width: 583px;
+      min-height: 80px;
+      float: right;
+      margin: 0px 30px 0 0px;
+      
+     }
+    .index .text_userTow ul .mes_head_user {
+      width: 580px;
+      height: 20px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    .index .text_userTow ul li .updata_mes{
+      height: 16px;
+      width: 530px;
+      margin-top:10px ;
+      color: #7D7D7D;
+      font-size: 12px;
+    }
+    .index .text_userTow ul li .updata_mes li{
+      padding-top: 2px;
+    }
+    .index .text_userTow ul li .updata_mes .mess1{
+      float: left;    
+      margin-right: 15px;
+    }
+    .index .text_userTow ul li .updata_mes .mess2{
+      float: left;    
+      margin-right: 15px;
+      cursor: pointer;
+      width: 40px;
+      border-radius: 4px;
+      height: 16px;
+      text-align: center;
+    }
+    .index .text_userTow ul li .updata_mes .mess3{
+      float: left;    
+      margin-right: 15px;
+      cursor: pointer;
+      display: none;
+      width: 40px;
+      border-radius: 4px;
+      height: 16px;
+      text-align: center;
+    }
+    .index .text_userTow ul li .updata_mes:hover .mess3{
+      display: block;
+    }
+    .index .text_userTow ul li .updata_mes .mess2:hover{
+      color: #00A1D6;
+      background-color: #D9D9D9;
+    }
+    .index .text_userTow ul li .updata_mes .mess3:hover{
+      color: #00A1D6;
+      background-color: #D9D9D9;
+    }
+    .index .text_userTow .user_a {
+      display: block;
+      color: #00A1D6;
+      width: 100px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      float: left;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .index .text_userTow .user_comment {
+        width: 530px;        
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        line-height: 1.5;
+        min-height: 14px;
+    }
+		.index .text_userTow .user_comment .aite_user {
+		  color: #00A1D6;
+		  margin-right: 5px;
+		  margin-left: 3px;
+		  font-family: "微软雅黑";
+		}
         
 		.index .text_input .input_a {
 			color: #808080;
