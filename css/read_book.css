@@ -12,11 +12,12 @@
     box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
 .fa{
-	display:inline-block;
+display:inline-block;
 font:normal normal normal 14px/1 FontAwesome;
 font-size:inherit;text-rendering:auto;
 -webkit-font-smoothing:antialiased;
--moz-osx-font-smoothing:grayscale}
+-moz-osx-font-smoothing:grayscale;
+}
 .fa-expand:before {
 	   content: "\F065";
 }

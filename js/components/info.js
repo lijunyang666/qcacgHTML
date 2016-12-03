@@ -10,7 +10,10 @@ var info = Vue.extend({
       +'<input type="text" v-model="userInfoList.information" v-else placeholder="请输入个人简介" style="width:440PX;margin-right:20px;padding-left:10px;border: 2px solid rgba(0,0,0,0);" readonly="readonly" />'
       +'<img src="../img/新个人信息_14.jpg" style="cursor:pointer" @click="setInputFlag" /></div></div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="change " @click="clickFileActiveFn">更换头像</div></div>'
       +'<div class="bookBlockList relative"><div v-if="infoFlag" style="position: absolute;top: 0px;left: 0px;bottom:0px;right: 0px;width: 100%;height: 230px;z-index: 999;"></div><div class="bookBlockList_title"><span class="hr"></span><span class="title">详细信息</span><span class="titleTwo">detailed information</span></div>'
-      +'<div class="nameAI"><span class="name1">昵称：</span><input type="text" v-model="userName" /><span class="remarkAI">注： 修改名称需要600张好人卡</span></div><div class="sexAI"><span class="name1">性别：</span><label class="butt"><input type="radio" name="sex" v-model="userInfoList.sex"  value="男生" />男</label><label class="butt"><input type="radio" name="sex" value="女生" v-model="userInfoList.sex" />女</label></div><div class="birthday"><span class="name1">生日：</span><input type="text" readonly="readonly" placeholder="请选择生日时间" v-model="userInfoList.birthday" /></div><div class="numberAI"><span class="name1">手机号码：</span><input type="text" v-model="userInfoList.telephone" style="border: none;" /><span class="remarkAI">注： 手机号码暂不支持修改</span></div><hr style="width:90%;border: 1px dotted #E1E1E1 ; margin:20px 0 0 5%;"/>'
+      +'<div class="nameAI"><span class="name1">昵称：</span><input type="text" v-model="userName" /><span class="remarkAI">注： 修改名称需要600张好人卡</span></div><div class="sexAI"><span class="name1">性别：</span><label class="butt"><input type="radio" name="sex" v-model="userInfoList.sex"  value="男生" />男</label><label class="butt"><input type="radio" name="sex" value="女生" v-model="userInfoList.sex" />女</label></div>'
+      +'<div class="birthday"><span class="name1">生日：</span><input type="text" placeholder="请选择生日时间" v-model="userInfoList.birthday" index="0" readonly="readonly" style="cursor: pointer;" @click="showDate" />'
+      +'<date-time :type.sync="Datetype" :show.sync="showA" :value.sync="userInfoList.birthday" :x="x" :y="y" :begin="begin" :end="end" :range="range"></date-time>'
+      +'</div><div class="numberAI"><span class="name1">手机号码：</span><input type="text" v-model="userInfoList.telephone" style="border: none;" /><span class="remarkAI">注： 手机号码暂不支持修改</span></div><hr style="width:90%;border: 1px dotted #E1E1E1 ; margin:20px 0 0 5%;"/>'
       +'<div class="change2 " v-if="infoFlag" @click="setInfoFlag">修改</div><div class="change2 " v-else @click="submitInfoFlag">保存</div></div>'
       +'</div></div></div>'
       ,
@@ -26,7 +29,20 @@ var info = Vue.extend({
 	        Imgbase64: '',
 	        imgUrl: '',
 	        loginImg: '',
+	        // 时间控件
+          showA: false,
+          showB: false,
+          Datetype: 'date', // date datetime datetime24
+          begin: '',
+          end: '',
+          x: 0,
+          y: 0,
+          range: false,
+          // 时间控件结束
         };
+      },
+      components: {
+        dateTime,
       },
       route: {
         data() {
@@ -34,6 +50,32 @@ var info = Vue.extend({
         } 
       },
       methods: {
+        showDate(e) {
+          e.stopPropagation();
+          const that = this;
+          that.showA = false;
+          that.showB = false;
+          if (e.target.getAttribute('index') === '0') {
+            that.showA = true;
+          } else if (e.target.getAttribute('index') === '1') {
+            that.showB = true;
+          }
+          that.x = e.target.offsetLeft;
+          that.y = e.target.offsetTop + e.target.offsetHeight + 8;
+          const bindHide = (_event) => {
+            _event.stopPropagation();
+            if (e.target.getAttribute('index') === '0') {
+              that.showA = false;
+            } else if (e.target.getAttribute('index') === '1') {
+              that.showB = false;
+            }
+            document.removeEventListener('click', bindHide, false);
+          };
+          setTimeout(() => {
+            document.addEventListener('click', bindHide, false);
+          }, 500);
+          return false;
+        },
       	// 图片上传 start
 	    	dataURLtoBlob: function(dataurl) {
 			    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
@@ -125,7 +167,7 @@ var info = Vue.extend({
       		}
       		// _data.Information = this.userInfoList.information;
       		SZXJ.http('post', PathList.updateUser, _data, (response) => {
-            if (response.data === 'success') {
+            if (response.data.msg === 'success') {
             	this.infoFlag = true;
             	this.getBookListFn();
             }

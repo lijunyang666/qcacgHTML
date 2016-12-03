@@ -32,7 +32,18 @@ SZXJ.getQueryString = function(name) {
   var r = window.location.search.substr(1).match(reg); 
   if (r != null) return unescape(r[2]); 
   return null;
-} 
+}
+SZXJ.loadImg = function(url, event) {
+  var dom = event.target;
+  if (url && dom.src !== url) {
+    var img = new Image();
+    var This = this;
+    img.src = url;
+    img.addEventListener('load', function() {
+      dom.src = img.src;
+    });
+  }
+};
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
   if (localStorage.getItem('JSESSIONID')) {
     Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');

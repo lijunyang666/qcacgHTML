@@ -42,11 +42,11 @@
      <figure v-for="obj in theHotList"> 
       <div class="display"> 
        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
-         <img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_L" />
+         <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_L" />
        </a> 
        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
         <div class="hide"> 
-         <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+         <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
          <label>{{ obj.author }}</label> 
          <ul class="hide_ul"> 
           <li>字数：{{ obj.bookWordCount }}</li> 
@@ -79,7 +79,7 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
           <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
@@ -104,7 +104,7 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
           <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
@@ -197,7 +197,7 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
           <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
@@ -222,7 +222,7 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
           <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 

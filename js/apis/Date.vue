@@ -1,31 +1,51 @@
-/*
- *  使用方式
- *  showDate(e) {
-      e.stopPropagation();
-      const that = this;
-      that.showA = false;
-      that.showB = false;
-      if (e.target.getAttribute('index') === '0') {
-        that.showA = true;
-      } else if (e.target.getAttribute('index') === '1') {
-        that.showB = true;
-      }
-      that.x = e.target.offsetLeft;
-      that.y = e.target.offsetTop + e.target.offsetHeight + 8;
-      const bindHide = (_event) => {
-        _event.stopPropagation();
-        if (e.target.getAttribute('index') === '0') {
-          that.showA = false;
-        } else if (e.target.getAttribute('index') === '1') {
-          that.showB = false;
-        }
-        document.removeEventListener('click', bindHide, false);
-      };
-      setTimeout(() => {
-        document.addEventListener('click', bindHide, false);
-      }, 500);
-      return false;
-    },
+<template>
+    <div @click.stop=""  @touchstart.stop="" class="calendar" v-show="show" :style="{'left':x+'px','top':y+'px'}" transition="calendar" transition-mode="out-in">
+        <div class="calendar-tools" v-if="type != 'time'">
+            <i class="fa fa-angle-left float left" @click="prev"  @touchstart="prev"></i>
+            <i class="fa fa-angle-right float right" @click="next"  @touchstart="next"></i>
+            <div class="text center">
+                <input type="number" v-model="year" value="{{year}}" @change="render(year,month)" min="1970" max="2100" maxlength="4" number>/ {{month+1}}
+            </div>
+        </div>
+        <table cellpadding="5" v-if="type != 'time'">
+        <thead>
+            <tr>
+                <td v-for="week in weeks" class="week">{{week}}</td>
+            </tr>
+         </thead>
+        <tr v-for="(k1,day) in days">
+            <td 
+            v-for="(k2,child) in day" 
+            :class="{'today':child.today,'disabled':child.disabled}"
+            @click="select(k1,k2,$event)" @touchstart="select(k1,k2,$event)">
+            {{child.day}}
+            <div class="lunar" v-if="showLunar">{{child.lunar}}</div>
+            </td>
+        </tr>
+        </table>
+        <div class="calendar-time" v-show="type=='datetime24'||type=='datetime'||type=='time'">
+ 
+            <div class="timer">
+                <input type="number" v-model="hour" value="{{hour}}" min="0" max="23" maxlength="2" number>
+                <span>时</span>
+                <input v-show="type != 'datetime24'" type="number" v-model="minute" value="{{minute}}" min="0" max="59" maxlength="2" number>
+                <span v-show="type != 'datetime24'">分</span>
+                <input v-show="type != 'datetime24'" type="number" v-model="second" value="{{second}}" min="0" max="59" maxlength="2" number>
+                <span v-show="type != 'datetime24'">秒</span>
+            </div>
+        </div>
+        <div class="calendar-button" v-show="type=='datetime24'||type==='datetime'||type==='time'||range">
+            <button @click="ok">确定</button>
+            <button @click="cancel" class="cancel">取消</button>
+        </div>
+    </div>
+</template>
+<!--
+  statisticeList: {
+        startTime: '',
+        endTime: '',
+        type: '-1',
+      },
       // 时间控件
       showA: false,
       showB: false,
@@ -36,14 +56,12 @@
       y: 0,
       range: false,
       // 时间控件结束
-      <date-time :type.sync="Datetype" :show.sync="showB" :value.sync="statisticeList.endTime" :x="x" :y="y" :begin="begin" :end="end" :range="range"></date-time>
-                
- * */
-
-var dateTime = Vue.extend({
-  template:'<div @click.stop=""  @touchstart.stop="" class="calendar" v-show="show" :style="{\'left\':x+\'px\',\'top\':y+\'px\'}" transition="calendar" transition-mode="out-in"><div class="calendar-tools" v-if="type != \'time\'"><i class="fa fa-angle-left float left" @click="prev"  @touchstart="prev"></i><i class="fa fa-angle-right float right" @click="next"  @touchstart="next"></i><div class="text center"><input type="number" v-model="year" value="{{year}}" @change="render(year,month)" min="1970" max="2100" maxlength="4" number>/ {{month+1}}</div></div><table cellpadding="5" v-if="type != \'time\'"><thead><tr><td v-for="week in weeks" class="week">{{week}}</td></tr></thead><tr v-for="(k1,day) in days"><td             v-for="(k2,child) in day"             :class="{\'today\':child.today,\'disabled\':child.disabled}"            @click="select(k1,k2,$event)" @touchstart="select(k1,k2,$event)">            {{child.day}}<div class="lunar" v-if="showLunar">{{child.lunar}}</div></td></tr></table><div class="calendar-time" v-show="type==\'datetime24\'||type==\'datetime\'||type==\'time\'"><div class="timer"><input type="number" v-model="hour" value="{{hour}}" min="0" max="23" maxlength="2" number><span>时</span><input v-show="type != \'datetime24\'" type="number" v-model="minute" value="{{minute}}" min="0" max="59" maxlength="2" number><span v-show="type != \'datetime24\'">分</span><input v-show="type != \'datetime24\'" type="number" v-model="second" value="{{second}}" min="0" max="59" maxlength="2" number><span v-show="type != \'datetime24\'">秒</span></div></div><div class="calendar-button" v-show="type==\'datetime24\'||type===\'datetime\'||type===\'time\'||range"><button @click="ok">确定</button><button @click="cancel" class="cancel">取消</button></div></div>'
-  ,components: {},
-  props: {
+  
+-->
+<script>
+module.exports = {
+    /* eslint-disable */
+    props: {
         show: {
             type: Boolean,
             twoWay: true,
@@ -87,8 +105,8 @@ var dateTime = Vue.extend({
             default:Array
         }
     },
-  data:function(){
-    return {
+    data:function(){
+        return {
             year:0,
             month:0,
             day:0,
@@ -98,12 +116,12 @@ var dateTime = Vue.extend({
             days:[],
             today:[],
             currentMonth:Number,
-            sep:"-",
+            sep:"/",
             weeks:['日', '一', '二', '三', '四', '五', '六'],
             months:['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
         }
-  },
-  created:function(){
+    },
+    created:function(){
         var that=this;
         var now = new Date();
         if(that.value!=""){
@@ -343,4 +361,164 @@ var dateTime = Vue.extend({
             }
         }
     }
-});
+    /* eslint-enable */
+};
+</script>
+ 
+<style scope>
+.calendar {
+    width: 300px;
+    padding: 10px;
+    background: #fff;
+    position: absolute;
+    border: 1px solid #DEDEDE;
+    border-radius: 2px;
+    opacity:.95;
+    transition: all .5s ease;
+    z-index: 10;
+}
+ 
+.calendar-enter, .calendar-leave {
+    opacity: 0;
+    transform: translate3d(0,-10px, 0);
+}
+
+.calendar:before {
+    position: absolute;
+    left:30px;
+    top: -10px;
+    content: "";
+    border:5px solid rgba(0, 0, 0, 0);
+    border-bottom-color: #DEDEDE;
+}
+.calendar:after {
+    position: absolute;
+    left:30px;
+    top: -9px;
+    content: "";
+    border:5px solid rgba(0, 0, 0, 0);
+    border-bottom-color: #fff;
+}
+
+.calendar-tools{
+    height:32px;
+    font-size: 20px;
+    line-height: 32px;
+    color:#5e7a88;
+}
+.calendar-tools .float.left{
+    float:left;
+}
+.calendar-tools .float.right{
+    float:right;
+}
+.calendar-tools input{
+    font-size: 20px;
+    line-height: 32px;
+    color: #5e7a88;
+    /*width: 70px;*/
+    width: 65px;
+    text-align: center;
+    border:none;
+    background-color: transparent;
+}
+.calendar-tools>i{
+    margin:0 16px;
+    line-height: 32px;
+    cursor: pointer;
+    color:#707070;
+}
+.calendar-tools>i:hover{
+    color:#5e7a88;
+}
+.calendar table {
+    clear: both;
+    width: 100%;
+    margin-bottom:10px;
+    border-collapse: collapse;
+    color: #444444;
+}
+.calendar td {
+    margin:2px !important;
+    padding:8px 0;
+    width: 14.28571429%;
+    text-align: center;
+    vertical-align: middle;
+    font-size:16px;
+    line-height: 125%;
+    cursor: pointer;
+}
+.calendar td:hover{
+    background:#f3f8fa;
+}
+.calendar td.week{
+    pointer-events:none !important;
+    cursor: default !important;    
+}
+.calendar td.disabled {
+    color: #c0c0c0;
+    pointer-events:none !important;
+    cursor: default !important;
+}
+.calendar td.today {
+    background-color: #5e7a88;
+    color: #fff;
+    font-size:16px;
+}
+.calendar thead td {
+  text-transform: uppercase;
+}
+.calendar .timer{
+    margin:10px 0;
+    text-align: center;
+}
+.calendar .timer input{
+    border-radius: 2px;
+    padding:5px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #5e7a88;
+    width: 50px;
+    text-align: center;
+    border:1px solid #efefef;
+}
+.calendar .timer input:focus{
+    border:1px solid #5e7a88;
+}
+.calendar-button{
+    text-align: center;
+}
+
+.calendar-button button{
+    border:none;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    min-width: 8em;
+    vertical-align: baseline;
+    background:#5e7a88;
+    color:#fff;
+    margin: 0 .25em 0 0;
+    padding: .8em 2.5em;
+    font-size: 1em;
+    line-height: 1em;
+    text-align: center;
+    border-radius: .3em;
+}
+.calendar-button button.cancel{
+    background:#efefef;
+    color:#666;
+}
+
+.calendar .lunar{
+     font-size:11px;
+     line-height: 150%;
+     color:#aaa;   
+}
+.calendar td.today .lunar{
+     color:#fff;   
+}
+.text.center{
+    text-align: center;
+}
+</style>
