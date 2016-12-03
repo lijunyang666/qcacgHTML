@@ -792,9 +792,7 @@
 	}
 	.index  .display {
 		position: relative;
-		background-color: #F0F0F0;
-		background: url(../img/LOG0.png) no-repeat ;
-    background-position:center center;
+
 	}
 	.index  .hide {
 		width: 161px;
@@ -872,31 +870,15 @@
 	.bookImg_Sl {
 	  height: 84px;
     width: 60px;
-    background: url(../img/LOG0.png) no-repeat ;
-    background-position:center center;
-    background-size: contain;
-    background-color: #F0F0F0;
 	}
 	.bookImg_S {
 	  width: 128px;
     height: 174px;
-    background: url(../img/LOG0.png) no-repeat ;
-    background-position:center center;
-    background-size: contain;
-    background-color: #F0F0F0;
 	}
 	.bookImg_L {
     width:157px;height: 236px;
-    background: url(../img/LOG0.png) no-repeat ;
-    background-position:center center;
-    background-size: contain;
-    background-color: #F0F0F0;
   }
 	.bookImg_X {
     width: 319px;
     height: 435px;
-    background: url(../img/LOG0.png) no-repeat ;
-    background-position:center center;
-    background-size: contain;
-    background-color: #F0F0F0;
   }

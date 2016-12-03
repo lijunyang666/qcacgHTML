@@ -1,11 +1,19 @@
 ﻿var PathList = {};
 
+<<<<<<< HEAD
 PathList.TemprootPath = '';
 PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
 PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
 // PathList.rootPath = 'http://192.168.126.25:8080'; // 封面 头像
+=======
+//PathList.TemprootPath = '';
+PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
+
+//PathList.rootPath = '/Controller';
+ PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
+>>>>>>> b5e3094096dbe7296e8dd4ffef6d9e6f7fa875a5
 
 
 

@@ -591,7 +591,7 @@
 			margin: 25px 0 0 50px;
 		}
 		.index .text_input ul {
-			width: 650px;
+			width: 700px;
 			height: 120px;
 		}
 		.index .text_input ul .user_head {
@@ -625,18 +625,61 @@
 		}
 
 		.index .text_input ul textarea {
-			width: 500px;
+			width: 550px;
 			height: 60px;
 			border-radius: 8px;
 			resize:none;
 		}
+		
+		/*楼中楼回复*/
+    .index .CommentArea  .Publish {
+      width: 630px;
+      height: 100px;
+      margin-left:120px ;
+    }
+    .index .CommentArea  .Publish .user_head {
+      margin-right: 20px;
+      float: left;
+      padding-top: 4px;
+    }
+    .index .CommentArea  .Publish li {
+      float: left;
+    }
+    .index .CommentArea  .Publish .MessageBtn {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      background-color: #00A1D6;
+      margin-left: 15px;
+      color: white;
+      text-align: center;
+      margin-top:5px ;
+      cursor: pointer;
+    }
+    .index  .CommentArea  .Publish .MessageBtn:hover {
+      background-color: #3DB2D8;
+    }
+    .index .CommentArea  .Publish .MessageBtn span{
+       width: 40px;
+       display: inline-block;
+       height: 40px;
+       padding-top: 12px;
+       cursor: pointer;
+    }
 
-		.index .text_input .text_chart {
-			width: 380px;
-			height:35px;
-			margin: 20px 0px 0 83px;
-		}
-		.index .text_sort {
+    .index .CommentArea  .Publish textarea {
+      width: 450px;
+      height: 50px;
+      border-radius: 8px;
+      resize:none;
+      margin-top: 5px;
+    }
+    .index .CommentArea hr {
+      margin: 0 4% 0 15%  ;
+    }
+
+
+		.index  .text_sort {
 			width: 580px;
 			height: 27px;
 			border-bottom: 1px solid #d9d9d9 ;
@@ -671,12 +714,18 @@
 		  width: 678px;
 		 
 		}
+		.index .CommentArea .hr {
+		 border-bottom: 1px solid #d9d9d9 ;
+	   width: 600px;
+	   height: 1px;
+	   margin-left: 100px;
+		}
 		.index .text_user {
 		 	width: 678px;
 		 	margin-top: 20px; 
 		 	margin-left: 60px;
 		 	margin-bottom: 15px;
-		 	height: 100%;
+		  min-height: 70px;
 		 	position: relative;
 		 }
 
@@ -724,7 +773,6 @@
       float: left;    
       margin-right: 15px;
       cursor: pointer;
-      
       width: 40px;
       border-radius: 4px;
       height: 16px;  
