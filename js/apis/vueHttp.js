@@ -40,7 +40,7 @@ SZXJ.loadImg = function(url, event) {
     var This = this;
     img.src = url;
     img.addEventListener('load', function() {
-      //dom.src = img.src;
+      // dom.src = img.src;
     });
   }
 };

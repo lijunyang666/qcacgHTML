@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../css/Date.css"  />
   <link rel="stylesheet" href="../css/font-awesome.min.css"  />
  </head> 
- <body id="app"> 
+ <body id="app" v-show="bodyFlag" style="display: none;"> 
   <myheader :user-name.sync="userName" :login-img.sync="loginImg" :active.sync="active"></myheader>
   <div class="user_info_topBJ"></div>
   <div class="user_info clear"> 
@@ -143,6 +143,7 @@
   	el: '#app',
   	data: function() {
   		return {
+  		  bodyFlag: false,
   			path: PathList,
   			active: '',
   			userName: '',
@@ -170,6 +171,7 @@
     },
    },
    ready : function (){
+      this.bodyFlag = true;
       this.setShowFlagFn();
     },
   });
