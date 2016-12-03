@@ -56,7 +56,10 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         successfn(response);
       },
       (err) => {
-        alert(err.data.msg)
+        if (!err.status) {
+          return;
+        }
+        alert(JSON.stringify(err.data.msg));
         console.log(err);
         if (errorfn) {
             errorfn(err);
@@ -78,7 +81,10 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         successfn(response);
       },
       (err) => {
-        alert(err.data.msg)
+        if (!err.status) {
+          return;
+        }
+        alert(JSON.stringify(err.data.msg));
         console.log(err);
         if (errorfn) {
             errorfn(err);

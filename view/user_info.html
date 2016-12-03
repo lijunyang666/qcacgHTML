@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/font-awesome.min.css"  />
  </head> 
  <body id="app"> 
-  <myheader :user-name.sync="userName" :login-img.sync="loginImg"></myheader>
+  <myheader :user-name.sync="userName" :login-img.sync="loginImg" :active.sync="active"></myheader>
   <div class="user_info_topBJ"></div>
   <div class="user_info clear"> 
    <!-- 左边导航 --> 
@@ -153,24 +153,24 @@
   	methods: {
     setShowFlagFn: function() {
 		  const href = window.location.href;
-          const str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
-		  this.active = str;
+      const str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
+		  this.$set('active', str);
 		},
-        getBookListFn: function() {
-          var _data = {};
-          SZXJ.http('get', PathList.findBookByUser, {}, (response) => {
-            this.$set('bookList', response.data);
-          });
-        },
-        getBookListFn: function() {
-          var _data = {};
-          SZXJ.http('get', PathList.findBookCollectByUser, {}, (response) => {
-            console.log(response);
-          });
-        },
+    getBookListFn: function() {
+      var _data = {};
+      SZXJ.http('get', PathList.findBookByUser, {}, (response) => {
+      this.$set('bookList', response.data);
+      });
+    },
+    getBookListFn: function() {
+      var _data = {};
+      SZXJ.http('get', PathList.findBookCollectByUser, {}, (response) => {
+        console.log(response);
+      });
+    },
    },
    ready : function (){
-      	this.setShowFlagFn();
+      this.setShowFlagFn();
     },
   });
   App.component('myfooter', footer);
