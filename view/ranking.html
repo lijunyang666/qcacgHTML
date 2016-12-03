@@ -49,7 +49,7 @@
 	  		</ul>
 	  	</div>
 	  	<div class="content_ranking active" v-for="obj in result">
-	  		<h1>{{ $index + 1 }}</h1>
+	  		<h1>{{ ($index + 1) + ((RequestObj.pageNo - 1) * 12) }}</h1>
 	  		<a href="javascript:;"><img src="../img/Cover-map.jpg" :src="path.rootPath + obj.bookCoverImage" @click="gotoBook(obj.bookId)"/></a>
 	  		<ul>
 	  			<li><a href="javascript:;" class="content_a" title="{{obj.bookName}}"><span @click="gotoBook(obj.bookId)">{{obj.bookName}}</span></a></li>

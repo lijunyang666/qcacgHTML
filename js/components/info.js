@@ -1,7 +1,8 @@
 // 个人信息-基本信息
 var info = Vue.extend({
       template: 
-      '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">'
+      '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution relative">'
+      +'<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container { margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"><img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div class="btn" style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="clickFileActiveFn">重新选择</div></div><div class="btn" style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="clearImgFn">取消上传</div></div><div class="btn" style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>'
       +'<ul class="nav"><li class="active" v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>'
       +'<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">基本信息</span><span class="titleTwo">essential information</span></div><div class="portrait"></div><div class="messageAI"><div class="up"><span class="up-name ">{{ userInfoList.userName }}</span><span>uid:&nbsp;{{ userInfoList.userId }}</span><span class="up-word">关注：1000</span><span class="up-word">粉丝：1000</span><span class="up-word">好人卡：1222</span></div><div class="centreAI"><img class="imgAI1" src="../img/新个人信息_09.gif"/><span class="font">注册于<span class="font">{{ szxj.getLocalDate(userInfoList.createDate) }}</span></span></div><div class="downAI"><span>简介：</span>'
       +'<input type="text" v-model="userInfoList.information" v-if="inputFlag"  placeholder="最多保存30个字符" style="width:440PX;margin-right:20px;padding-left:10px" />'
@@ -40,7 +41,7 @@ var info = Vue.extend({
       		} else {
       			_data.sex = 1;
       		}
-      		_data.Information = this.userInfoList.information;
+      		// _data.Information = this.userInfoList.information;
       		SZXJ.http('post', PathList.updateUser, _data, (response) => {
             if (response.data === 'success') {
             	this.infoFlag = true;
@@ -50,12 +51,22 @@ var info = Vue.extend({
       	},
       	setInputFlag: function(v) {
       		if (this.inputFlag) {
-      			this.inputFlag = false;
+      			this.setInformation();      			
       		} else {
       			this.inputFlag = true;
       		}
       	},
-	      setShowFlagFn: function(v) {
+      	setInformation: function(v) {
+      		var _data = {};
+      		_data.information = this.userInfoList.information;
+          SZXJ.http('post', PathList.updateUser, _data, (response) => {
+          	if (response.data === 'success') {
+            	this.inputFlag = false;
+            	this.getBookListFn();
+            }
+          });
+      	},
+      	setShowFlagFn: function(v) {
 					this.showFlag = v;
 				},
         getBookListFn: function() {
@@ -68,6 +79,37 @@ var info = Vue.extend({
         },
       },
       ready : function (){
-      	
+      	$('#cropper-img').cropper({
+		      center:true,
+		      aspectRatio:1 / 1.4,
+		      // zoomable: false,
+		      viewMode:2,
+		      minContainerHeight: 220,
+		      minCropBoxWidth:200,
+		      preview: ".img-preview",
+      		build: function (e) {
+            //console.log(e.type);
+          },
+          built: function (e) {
+            //console.log(e.type);
+          },
+          cropstart: function (e) {
+            //console.log(e.type);
+          },
+          cropmove: function (e) {
+            //console.log(e.type);
+          },
+          cropend: function (e) {
+            //console.log(e.type);
+          },
+		      crop: function(e) {
+		        $('#dataX').val(Math.round(e.x));
+		        $('#dataY').val(Math.round(e.y));
+		        $('#dataHeight').val(Math.round(e.height));
+		        $('#dataWidth').val(Math.round(e.width));
+		        $('#dataRotate').val(Math.round(e.rtate));
+		        $('#dataScaleX').val(Math.round(e.scaleX));
+		        $('#dataScaleY').val(Math.round(e.scaleY));
+		      }});
       },
    });
