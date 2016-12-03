@@ -11,13 +11,14 @@
 	</head>
 	<script type="text/javascript" src="../js/vue.js"></script>
 	<body id="mask" id="app"
+	  v-show="bodyFlag" style="display: none;"
 			v-bind:style="popup === true? 'overflow:hidden':''">
 
 	  <myheader></myheader>
 		<div id="search"></div>
 		<div class="index" >
 			<div class="index_Line"></div>
-			<img class="picture" :src="bookCustom.bookCoverImage ? path.rootPath + bookCustom.bookCoverImage : ''" />
+			<img v-for="obj in bookCustom" id="{{obj.bookCoverImage}}"  class="picture" src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" />
 			<div class="text">
 			
 				<h4>{{ title }}</h4>
@@ -128,7 +129,7 @@
               <ul class="mes_head">
                 <li class="mes_head_user" >
                   <a href="javascript:;" class="user_a" title="">明珠求瑕</a>
-                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>笑看嫣红染半山，逐风万里白云间，逍遥此身不为客，天地三才任平凡。</span> </li> 
+                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>思亘七险，点落九宫，神游八极，纵横十方。</span> </li> 
                 <li>
                   <ul class="updata_mes">
                       <li class="mess1">2016-12-12</li>
@@ -175,7 +176,7 @@
 					</div>
 					<ul class="clear">
 						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'"  v-for="obj in booktTitle">
-							<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> <img :src="path.rootPath + obj.bookCoverImage"  /></a>
+							<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> <img src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)"  /></a>
 							<a class="works_a"  :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" class="span span_author" title="{{ obj.bookName }}">{{ obj.bookName }}</a>
 						</li>
 					</ul>
@@ -266,7 +267,7 @@
 					</ul>
 					<div class="recommed_works">
 						<div>
-							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img src="../img/sss18.png"/></a>
+							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img style="width: 91; height: 127px;" src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: '', $event)"/></a>
 							<span class="h4">夏日小作战</span>
 							<ul>
 								<li>字数：<span style="color:#7e7e7e">50万</span></li>
@@ -277,7 +278,7 @@
 					</div>
 					<div class="recommed_works">
 						<div>
-							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img src="../img/sss18.png"/></a>
+							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img style="width: 91; height: 127px;" src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: '', $event)"/></a>
 							<span class="h4">夏日小作战</span>
 							<ul>
 								<li>字数：<span style="color:#7e7e7e">50万</span></li>
@@ -335,9 +336,9 @@
 		var vuePractice = new Vue({
 			el: '#mask',
 			data: {
-			    zindex: 0,
-			    path: PathList,
-			    szxj: SZXJ,
+			  zindex: 0,
+			  path: PathList,
+			  szxj: SZXJ,
 				popup:false,
 				id: '',
 				title: '',
@@ -373,7 +374,8 @@
             	_data.bookId = this.id;
 			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
-			        	 this.bookCustom=response.data.bookCustom;
+			        	  this.bookCustom = [];
+			        	 this.bookCustom.push(response.data.bookCustom);
 			        	 this.title = response.data.bookCustom.bookName;
 			        	 this.introduction =response.data.bookCustom.bookIntroduction;
 			        	 this.words =response.data.bookCustom.bookWordCount;
@@ -404,6 +406,7 @@
 				}
 			},
 			ready: function() {
+			  this.bodyFlag = true;
 			  var href = window.location.href;
         this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length); 
 	      var str = this.id.toString();

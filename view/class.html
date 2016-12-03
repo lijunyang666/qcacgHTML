@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="../css/LOgin.css" />
 		<link rel="stylesheet" href="../css/jquery-ui.min.css" />
   </head>
-  <body class="class-body" id="app">
+  <body class="class-body" id="app" v-show="bodyFlag" style="display: none;">
     <myheader></myheader>
     <div class="class-content" style="min-height: 700px;">
       <div class="class-title">
@@ -62,7 +62,7 @@
       	<li class="line active" v-for="obj in bookInfo" >
           <img class="line-img pull-left" 
           	v-if="obj.bookCoverImage" 
-          	:src="path.rootPath + obj.bookCoverImage" 
+          	src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)"
           	 @click="gotoBook(obj.bookId)">
           <img @click="gotoBook(obj.bookId)" v-else class="line-img pull-left">
           <div class="pull-left line-content">
@@ -90,7 +90,7 @@
         	<ul>
         		<li v-for="temp in obj">
         			<div class="vertical-img" @click="gotoBook(temp.bookId)">
-        				<img :src="path.rootPath + temp.bookCoverImage"  class="cover" />
+        				<img src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: '', $event)"  class="cover" />
         				<div class="vertical-img-line">
         					<img src="../img/50x50-tou.jpg" />
         					<div class="vertical-Author-name vertical-hover">{{temp.author}}</div>
@@ -259,6 +259,7 @@
 				},
 			},
 			ready: function() {
+			  this.bodyFlag = true;
 				if (localStorage.getItem('hengshuId')) {
 					this.hengshuId = parseInt(localStorage.getItem('hengshuId'), 10);
 				} else {
