@@ -122,7 +122,7 @@
       
       </div> 
       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.allBook[newBookimg].bookId">
-        <img :src="path.rootPath + indexList.allBook[newBookimg].bookCoverImage" class="main_img bookImg_X" />
+        <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="main_img bookImg_X" />
       </a>
       <p class="main_p" title="{{ indexList.allBook[newBookimg].bookName }}">
         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.allBook[newBookimg].bookId">
@@ -143,7 +143,7 @@
 <div class="sidebar_content"> 
   <div class="sidebar_con" v-for="obj in indexList.weekBookByBookCopperCoins" v-if="$index < 3"> 
     <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[$index].bookId">
-      <img :src="path.rootPath + indexList.weekBookByBookCopperCoins[$index].bookCoverImage"class="bookImg_Sl" />
+      <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="bookImg_Sl" />
     </a> 
     <img :src="'img/sss' + (19 + $index) + '.png'" class="sidebar_img" />
     <ul> 
