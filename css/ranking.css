@@ -208,6 +208,7 @@
 		background-color: #1d67e4;
 		color: #FFFFFF;
 		text-align: center;
+		border-radius: 3px;
 	}
 	#content .ranking_AddToCollection  {
     display: block;
@@ -216,12 +217,14 @@
     line-height: 30px;
     float: right;
     margin: 89px 63px 0 0;
-    background-color: #3781E7;
+    background-color: #3db2d8;
     color: white ;
     text-align: center;
     border-radius: 3px;
   }
-	
+ #content .ranking_AddToCollection:hover {
+    background-color: #00A1D6;
+ }
 	
 	#content .content_a {
 		display: block;

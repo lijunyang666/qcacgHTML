@@ -46,8 +46,8 @@
        </a> 
        <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
         <div class="hide"> 
-         <img :src="path.rootPath + obj.userEntity.userHead" class="imgHeadPortrait" /> 
-         <label>{{ obj.userEntity.userName }}</label> 
+         <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+         <label>{{ obj.author }}</label> 
          <ul class="hide_ul"> 
           <li>字数：{{ obj.bookWordCount }}</li> 
           <li>点击：{{ obj.bookHit }}</li> 
@@ -79,8 +79,8 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userEntity.userHead" class="imgHeadPortrait" /> 
-          <label>{{ obj.userEntity.userName }}</label> 
+          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
             <li>点击：{{ obj.bookHit }}</li> 
@@ -104,8 +104,8 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userEntity.userHead" class="imgHeadPortrait" /> 
-          <label>{{ obj.userEntity.userName }}</label> 
+          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
             <li>点击：{{ obj.bookHit }}</li> 
@@ -197,8 +197,8 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userEntity.userHead" class="imgHeadPortrait" /> 
-          <label>{{ obj.userEntity.userName }}</label> 
+          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
             <li>点击：{{ obj.bookHit }}</li> 
@@ -222,8 +222,8 @@
          <a href="javascript:;"><img :src="path.rootPath + obj.bookCoverImage" class="details_img bookImg_S" /></a> 
          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
-          <img :src="path.rootPath + obj.userEntity.userHead" class="imgHeadPortrait" /> 
-          <label>{{ obj.userEntity.userName }}</label> 
+          <img :src="path.rootPath + obj.userHead" class="imgHeadPortrait" /> 
+          <label>{{ obj.author }}</label> 
           <ul class="Small_ul"> 
             <li>字数：{{ obj.bookWordCount }}</li> 
             <li>点击：{{ obj.bookHit }}</li> 
@@ -321,7 +321,7 @@
         <li>
           <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName +':'+ obj.volumeEntity.volumeName }}">
             &nbsp;&nbsp;<span style="font-weight: 600;font-size: 14px;">{{ obj.bookName }}</span>&nbsp;
-            <span>最新卷:{{ obj.volumeEntity.volumeName }}</span>
+            <span>最新章节:{{ obj.contentTitle }}</span>
           </a>
         </li> 
         <li class="content_time"> {{ szxj.getLocalTime(obj.bookUpdate / 1000) }}</li> 
@@ -354,7 +354,7 @@
         </li>
         <li class="Word_surname"></li> 
         <li class="Word_card"><a href="javascript:;"><img src="img/Side_card_03.png" />{{ indexList.weekBookByBookWordCount[$index].author }}</a></li> 
-        <li class="Word_Percen" style="color: #3781E7;">
+        <li class="Word_Percen" ">
           <span v-if="rankingList.fontSize === 0">{{indexList.weekBookByBookWordCount[$index].everyWeekWordCount}}字</span>
           <span v-if="rankingList.fontSize === 1">{{indexList.weekBookByBookWordCount[$index].everyMonthWordCount}}字</span>
           <span v-if="rankingList.fontSize === 2">{{indexList.weekBookByBookWordCount[$index].bookWordCount}}字</span>
@@ -367,7 +367,7 @@
        {{ $index + 1 }}
       </div> 
       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId">{{obj.bookName}}</a>
-      <div style="width: 120px;float: right;color: #3781E7;text-align: end;padding-right: 45px;">
+      <div style="width: 120px;float: right;color: black;text-align: end;padding-right: 45px;">
           <span v-if="rankingList.fontSize === 0">{{indexList.weekBookByBookWordCount[$index].everyWeekWordCount}}字</span>
           <span v-if="rankingList.fontSize === 1">{{indexList.weekBookByBookWordCount[$index].everyMonthWordCount}}字</span>
           <span v-if="rankingList.fontSize === 2">{{indexList.weekBookByBookWordCount[$index].bookWordCount}}字</span>

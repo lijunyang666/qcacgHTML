@@ -17,10 +17,10 @@
 		<div id="search"></div>
 		<div class="index" >
 			<div class="index_Line"></div>
-			<img class="picture" :src="path.rootPath + bookCustom.bookCoverImage" />
+			<img class="picture" :src="bookCustom.bookCoverImage ? path.rootPath + bookCustom.bookCoverImage : ''" />
 			<div class="text">
 			
-				<h2>{{ title }}</h2>
+				<h4>{{ title }}</h4>
 				<ul class="text_ul">
 					<li>字数: <span style="color:#7e7e7e">&nbsp &nbsp{{words}}</span></li>
 					<li>点击: <span style="color:#7e7e7e">&nbsp &nbsp{{cursor}}</span></li>
@@ -54,7 +54,7 @@
   					<div class="text_chapter" >
   							<div class="group" v-for="value in obj.contentEntityList">
   							  <span class="text_sign">
-  							    <a :href="path.TemprootPath + '/view/read_book.html?id=' + value.contentId">
+  							    <a :href="path.TemprootPath + '/view/read_book.html?contentId=' + value.contentId + '&bookId='+ obj.bookId">
   							      {{ value.contentTitle }}
   							    </a>
   							  </span>
@@ -74,61 +74,77 @@
 					</div>
 				<div class="text_input">
 					<ul>
-						<li><a href="javascript:;"><img src="../img/sss8.jpg"/></a></li>
-						<li><textarea></textarea></li>
+						<li class="user_head"><a href="javascript:;"><img src="../img/sss8.jpg"/></a></li>
+						<li ><textarea></textarea></li>
+						<li class="MessageBtn"><span>发表评论</span></li>
 					</ul>
-					<a class="text_Submit" href="javascript:;">评论</a>
-					<div class="text_chart">
-						<a href="javascript:;"><img src="../img/sss6.jpg" style="padding: 0 12px 0 0;"/></a>
-						<a href="javascript:;"><img src="../img/sss5.jpg" /></a>
-					</div>	
+					
+					
 					<div class="text_sort active">
 						<ul>
 							<li class="active">默认排序</li>
-							<li>按回复数量</li>
+							<li>按回复数</li>
 							
 						</ul>
 					</div>
-					<div class="text_user">
-						<a href="javascript:;"><img src="../img/sss8.jpg"/ ></a>
-						<ul>
-							<li>
-								<a href="javascript:;" class="user_a" title="我是我是我我是我是我我是我是我我是我是我我是我是我我是我是我我是">huhuhf5</a>
-								<a href="javascript:;" class="user_Top">置顶</a></li>
-							<li><span class="user_comment" title="我是比企······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比%#￥%#~~~~~~~~~~~·······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡">
-									我是比企······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比%#￥%#~~~~~~~~~~~·······我是比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比%#￥%#~幡····················！@#￥！@￥@#比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡比企谷八幡
-								</span>
-							</li>	
-						</ul>
-					<div class="text_Open">
-							<a href="javascript:;" ><img src="../img/sss23.png"/></a>
-							<a href="javascript:;" ><text>展开全文</text></a>
-					</div>
-					<div class="text_Stop">
-						<ul>
-							<li>8月16日</li>
-							<li>15：46</li>
-							<li class="Stop_Reply">收起回复</li>
-						</ul>
-					</div>
-					<div class="text_Reply">
-						<div  class="text_Reply_user">
-							<div class="text_Reply_uesr_img"></div>		
-						    <div class="text_Reply_uesr_name" >
-						    	<div class="text_Reply_content"><a>huhuf5</a>:<span>许为知己犹按剑，纵使负心敌难为。</span></div>
-						    	<div class="text_Reply_content_time"><span>8月6日12：31</span></div>
-						    </div>
-						</div>
-					</div>
-					<div class="Reply_Underline"></div>
 				</div>
-				<div class="text_user active">
-						
-					<div class="Reply_Underline"></div>
+				<div class="CommentArea">
+				 <div class="text_user">
+						<a href="javascript:;"><img src="../img/sss8.jpg"/ ></a>
+						<ul class="mes_head">
+							<li class="mes_head_user" >
+								<a href="javascript:;" class="user_a" title="">纷纷扰扰扰红尘</a>
+								<a href="javascript:;" class="user_Top">置顶</a></li>
+							<li><span class="user_comment" title="">我是比企······我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八我是比企谷八幡比企谷八幡比企谷八幡比企谷八</span></li>	
+							<li>
+							  <ul class="updata_mes">
+							      <li class="mess1">1楼</li>
+							      <li class="mess1">2016-12-12</li>
+							      <li class="mess1">18：00</li>
+							      <li class="mess2">回复</li>
+							      <li class="mess3">举报</li>
+							  </ul>
+							</li>
+						</ul>
+				  </div >
+				  <div class="text_userTow">
+				      <a href="javascript:;"><img src="../img/smallHead.png"/ ></a>
+              <ul class="mes_head">
+                <li class="mes_head_user" >
+                  <a href="javascript:;" class="user_a" title="">浩浩荡荡荡乾坤</a>
+                <li><span class="user_comment"  title="">我是比企······我是比企谷八幡比企谷骄傲是看了的就爱上看了就快乐的骄傲是看了打赏谷八幡比企谷八</span> </li> 
+                <li>
+                  <ul class="updata_mes">
+                      <li class="mess1">2016-12-12</li>
+                      <li class="mess1">18：00</li>
+                      <li class="mess2">回复</li>
+                      <li class="mess3">举报</li>
+                  </ul>
+                </li>
+              </ul>
+					</div>
+					<div class="text_userTow">
+              <a href="javascript:;"><img src="../img/smallHead.png"/ ></a>
+              <ul class="mes_head">
+                <li class="mes_head_user" >
+                  <a href="javascript:;" class="user_a" title="">明珠求瑕</a>
+                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>·我是比企谷八幡比企谷骄傲是看了的就爱上看了就快乐的骄傲是看了打赏谷八幡比企谷八</span> </li> 
+                <li>
+                  <ul class="updata_mes">
+                      <li class="mess1">2016-12-12</li>
+                      <li class="mess1">18：00</li>
+                      <li class="mess2">回复</li>
+                      <li class="mess3">举报</li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
 				</div>
 				
+				<div style="height: 300px;"></div>
+				
 					
-			</div>
+			
 			
 			
 			<div class="screen">
@@ -139,26 +155,26 @@
 						<a href="javascript:;" class="span span_author" title="{{authorName}}">{{authorName}}</a>
 						<a class="a_author" href="javascript:;">关注</a>
 					</li>
-					<li><label>签名：</label><span class="span" title="{{autograph}}">{{autograph}}</span></li>
+					<li><p class="span_autograph" title="{{autograph}}"><label style="color: black;">签名：</label>{{autograph}}</p></li>
 				</ul>
 				<style>
 					
 				</style>
 				<div class="works">
-					<h3>其他作品</h3>
+					<h3 class="titile_tow">其他作品</h3>
 					<div class="button">
 						<button class="next" @click="nextWorksFn"><img src="../img/sss12.png"/></button>
 						<button class="Previous" @click="previousWorksFn"><img src="../img/sss13.png"/></button>
 					</div>
 					<ul class="clear">
 						<li :style="'left:' + $index * 84 + 'px;' + 'transform:translateX(' + 84 * zindex +'px);'"  v-for="obj in booktTitle">
-							<a href="javascript:;"> <img :src="path.rootPath + obj.bookCoverImage" /></a>
-							<a class="works_a"  href="javascript:;" class="span span_author" title="{{ obj.bookName }}">{{ obj.bookName }}</a>
+							<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> <img :src="path.rootPath + obj.bookCoverImage"  /></a>
+							<a class="works_a"  :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" class="span span_author" title="{{ obj.bookName }}">{{ obj.bookName }}</a>
 						</li>
 					</ul>
 				</div>
 				<div class="list">
-					<h2>好人榜</h2>
+					<h3>好人榜</h3>
 					<ul class="list_ul">
 						<li>周</li>
 						<li>月</li>
@@ -237,14 +253,14 @@
 					<div id="more"><a>查看更多</a></div>
 				</div>
 				<div id="recommed">
-					<h2>同类作品推荐</h2>
+					<h3>同类作品推荐</h3>
 					<ul class="many">
 						<li><a  href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡" style="color: #000000;">更多</a></li>
 					</ul>
 					<div class="recommed_works">
 						<div>
 							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img src="../img/sss18.png"/></a>
-							<h4>夏日小作战</h4>
+							<span class="h4">夏日小作战</span>
 							<ul>
 								<li>字数：<span style="color:#7e7e7e">50万</span></li>
 								<li>人气：<span style="color:#7e7e7e">155443</span></li>
@@ -255,7 +271,7 @@
 					<div class="recommed_works">
 						<div>
 							<a href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡"><img src="../img/sss18.png"/></a>
-							<h4>夏日小作战</h4>
+							<span class="h4">夏日小作战</span>
 							<ul>
 								<li>字数：<span style="color:#7e7e7e">50万</span></li>
 								<li>人气：<span style="color:#7e7e7e">155443</span></li>
@@ -300,13 +316,13 @@
 
 	  <myfooter></myfooter>
 	<script src="../js/apis/vueHttp.js"></script>
-  	<script src="../js/apis/conf.js"></script>
+  <script src="../js/apis/conf.js"></script>
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
-    <script type="text/javascript" src="../js/components/header.js" ></script>
-    <script type="text/javascript" src="../js/components/footer.js" ></script>
-    <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
+  <script type="text/javascript" src="../js/components/header.js" ></script>
+  <script type="text/javascript" src="../js/components/footer.js" ></script>
+  <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	</body>
 	<script>
 		var vuePractice = new Vue({
@@ -369,7 +385,7 @@
 			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
 			        	this.booktTitle = response.data.userOtherBook;
-			           console.log(response);
+			          console.log(response);
 			        });
 			       
 				},
@@ -387,7 +403,7 @@
 	      if (str.search(/[^0-9]/g) === -1) {
 			    this.getValueFn();
         } else {
-			   window.location.href = PathList.TemprootPath + '/index.html';
+			    window.location.href = PathList.TemprootPath + '/index.html';
         }
 			},
 		});
