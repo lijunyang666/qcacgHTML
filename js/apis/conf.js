@@ -6,7 +6,7 @@ PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
 PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
-//PathList.rootPath = 'http://192.168.126.25:8080'; // 封面 头像
+// PathList.rootPath = 'http://192.168.126.25:8080'; // 封面 头像
 
 
 
@@ -14,8 +14,10 @@ PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
 // 登陆的3个请求
 PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet';
 PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
+
 PathList.login = PathList.rootPath + '/login.shtml';
 // 注册的2个请求
+
 PathList.registerTelephoneCode = PathList.rootPath + '/registerTelephoneCode.shtml';
 PathList.register = PathList.rootPath + '/register.shtml';
 

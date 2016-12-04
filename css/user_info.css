@@ -22,11 +22,10 @@
 
 .user_info .user_info_left .user_info_touxiang {
 	margin: 20px  30px  0  100px;
-
-	
-	width: 136px;
+  width: 136px;
 	height: 136px;
 	background: url(../img/user_info_touxiang.jpg) no-repeat;
+	background-size: contain;
 	border-radius: 100px;
 }
 
@@ -1152,7 +1151,8 @@
 
 .portrait {
 	display: inline-block;
-	background: url(../img/user_info_touxiang.jpg);
+	background: url(../img/user_info_touxiang.jpg) no-repeat;
+	background-size: contain;
 	width: 130px;
 	height: 130px;
 	border-radius: 75px;

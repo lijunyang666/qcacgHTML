@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="../css/Date.css"  />
   <link rel="stylesheet" href="../css/font-awesome.min.css"  />
  </head> 
- <body id="app" v-show="bodyFlag" style="display: none;"> 
+ <body id="app" v-show="bodyFlag" style="display: none;">
+  <alert v-ref:alert></alert>
   <myheader :user-name.sync="userName" :login-img.sync="loginImg" :active.sync="active"></myheader>
   <div class="user_info_topBJ"></div>
   <div class="user_info clear"> 
@@ -87,18 +88,21 @@
  <script type="text/javascript" src="../js/vue.min.js" ></script>
  <script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  <script type="text/javascript" src="../js/vue-router.min.js" ></script>
- <script src="../js/apis/vueHttp.js"></script>
- <script src="../js/apis/conf.js"></script>
+ <script src="../js/components/header.js"></script>
+ <script src="../js/components/footer.js"></script>
  <script src="../js/apis/Data.js"></script>
  <script src="../js/apis/alert.js"></script>
  <script src="../js/apis/confirm.js"></script>
  
+ 
+ <script src="../js/apis/vueHttp.js"></script>
+ <script src="../js/apis/conf.js"></script>
+ 
+ 
+ <script src="../js/components/bookBlockList.js"></script>
  <script src="../js/components/works.js"></script> 
  <script src="../js/components/works.js"></script>
  <script src="../js/components/worksUpdate.js"></script>
- <script src="../js/components/header.js"></script>
- <script src="../js/components/footer.js"></script>
- <script src="../js/components/bookBlockList.js"></script>
  <script src="../js/components/catalogue.js"></script>
  <script src="../js/components/chapter.js"></script>
  <script src="../js/components/chapter_edit.js"></script>
@@ -140,7 +144,6 @@
     '/official': { component: official },
     '/wallet': { component: wallet },
     '/bill': { component: bill },
-    
   })
   var App = Vue.extend({
   	el: '#app',
@@ -152,27 +155,17 @@
   			userName: '',
   			loginImg:'',
   		}
-  		
   	},
   	methods: {
-    setShowFlagFn: function() {
-		  const href = window.location.href;
-      const str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
-		  this.$set('active', str);
-		},
-    getBookListFn: function() {
-      var _data = {};
-      SZXJ.http('get', PathList.findBookByUser, {}, (response) => {
-      this.$set('bookList', response.data);
-      });
+      setShowFlagFn: function() {
+  		  const href = window.location.href;
+        const str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
+  		  this.$set('active', str);
+  		},
+  		setMessage(flag,message,Fn) {
+  		  this.$refs.alert.setMessage(flag,message,Fn);
+  		}
     },
-    getBookListFn: function() {
-      var _data = {};
-      SZXJ.http('get', PathList.findBookCollectByUser, {}, (response) => {
-        console.log(response);
-      });
-    },
-   },
    ready : function (){
       this.bodyFlag = true;
       this.setShowFlagFn();
@@ -180,7 +173,7 @@
   });
   App.component('myfooter', footer);
   App.component('myheader', header);
-
+  App.component('alert', alert);
   router.redirect({
   	'*': 'info',
   });

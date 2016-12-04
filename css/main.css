@@ -464,6 +464,7 @@ a {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.3);
+  z-index: 999999;
 }
 
 .alert-Block .alert_parent {
@@ -554,6 +555,7 @@ a {
 }
 
 .confirmBlock {
+  z-index: 999999;
   overflow: auto;
   display: block;
   position: fixed;

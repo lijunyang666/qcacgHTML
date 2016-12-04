@@ -1,6 +1,6 @@
 var alert = Vue.extend({
   template: 
-  '<div v-if="" class="alert-Block">'
+  '<div v-if="flag" class="alert-Block">'
     +  '<div class="alert_parent">'
     +   '<div class="alert_sub">'
     +     '<div class="words">'
@@ -19,26 +19,32 @@ var alert = Vue.extend({
     +'</div>',
   components: {},
   props: {
-    flag: {
-      type: Boolean,
-    }
+//  flag: {
+//    type: Boolean,
+//  }
   },
   data:function(){
     return {
-      trueFlag: false,
+      flag: false,
+      trueFlag: true,
       message: '',
+      Fn: 0,
     }
   },
   methods: {
-    setMessage(flag,trueFlag,message) {
-      this.flag = flag;
+    setMessage(trueFlag,message,Fn) {
+      this.flag = true;
       this.trueFlag = trueFlag;
       this.message = message;
+      this.Fn = Fn;
     },
     cloneMessage: function() {
       this.flag = false;
       this.trueFlag = false;
       this.message = '';
+      if (this.Fn) {
+        this.Fn();
+      }
     }
   },
   ready: function() {
