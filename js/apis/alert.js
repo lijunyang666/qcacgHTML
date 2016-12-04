@@ -1,4 +1,4 @@
-var alert = Vue.extend({
+var VueAlert = Vue.extend({
   template: 
   '<div v-if="flag" class="alert-Block">'
     +  '<div class="alert_parent">'
