@@ -21,7 +21,7 @@ var record = Vue.extend({
       methods: {
         getBookListTwoFn: function() { // 获取我的收藏的数据
           var _data = {};
-          SZXJ.http('get', PathList.findBookHitByUser, {}, (response) => {
+          SZXJ.http(this,'get', PathList.findBookHitByUser, {}, (response) => {
             this.$set('bookList', response.data);
             var arr = [];
             var list = [];

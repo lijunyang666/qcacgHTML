@@ -94,7 +94,7 @@ var indexHtml = new Vue({
         verificationBtn :function() {
           var formData = new FormData();
           formData.append("telephone", this.telephone);
-          SZXJ.http('post', PathList.registerTelephoneCode, formData, (data) => {
+          SZXJ.http(this,'post', PathList.registerTelephoneCode, formData, (data) => {
             this.verificationBtnFlag = false;
             this.verificationTimeFn();
             localStorage.setItem('verificationId', data.data.verificationId);
@@ -124,7 +124,7 @@ var indexHtml = new Vue({
 //        if (this.uid !== '') {
 //          formData.append("invitePeople", this.uid);
 //        }
-          SZXJ.http('get', PathList.register, _data, (response) => {
+          SZXJ.http(this,'get', PathList.register, _data, (response) => {
               location.href = this.path.TemprootPath + '/view/login.html';
           });
         },
@@ -237,7 +237,7 @@ var indexHtml = new Vue({
             
             if (data && (data.status === "success")) {
               
-              // This.register();
+              This.register();
 
             } else {
               alert('服务端验证异常！');
@@ -258,7 +258,7 @@ var indexHtml = new Vue({
     // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
         },
         getGeetestFn : function () { // 获取就极验验证码
-          SZXJ.http('get', PathList.StartCaptchaServlet, {}, (data) => {
+          SZXJ.http(this,'get', PathList.StartCaptchaServlet, {}, (data) => {
               // 使用initGeetest接口
               // 参数1：配置参数
               // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件

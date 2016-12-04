@@ -365,7 +365,7 @@
 			setAttention: function(){
 			  var _data = {};
 			  _data.receiveId = this.userId;
-			  SZXJ.http('post', PathList.saveOrCancelAttention, _data, (response) => {
+			  SZXJ.http(this,'post', PathList.saveOrCancelAttention, _data, (response) => {
 			    if (this.attention) {
 			      this.attention = false;
 			    } else {
@@ -376,7 +376,7 @@
 			setCollect: function() {
 			  var _data = {};
         _data.bookId = this.bookId;
-        SZXJ.http('post', PathList.saveOrDeleteBookCollect, _data, (response) => {
+        SZXJ.http(this,'post', PathList.saveOrDeleteBookCollect, _data, (response) => {
           this.getValueFn()
         });
       },
@@ -396,7 +396,7 @@
 				getValueFn: function() {
 					    var _data = {};
             	_data.bookId = this.id;
-			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
+			        SZXJ.http(this,'get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
 			        	 this.bookCustom = [];
 			        	 this.userHead = response.data.bookCustom.userEntity.userHead;
@@ -420,7 +420,7 @@
 			           console.log(response);
 			        });
 			        
-			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
+			        SZXJ.http(this,'get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
 			        	this.booktTitle = response.data.userOtherBook;
 			          console.log(response);

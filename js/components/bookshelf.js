@@ -22,7 +22,7 @@ var bookshelf = Vue.extend({
       methods: {
 	      getBookListTwoFn: function() { // 获取我的收藏的数据
 	        var _data = {};
-	        SZXJ.http('get', PathList.findBookCollectByUser, {}, (response) => {
+	        SZXJ.http(this,'get', PathList.findBookCollectByUser, {}, (response) => {
 	        	this.$set('bookList', response.data);
 	        	var arr = [];
 	        	var list = [];

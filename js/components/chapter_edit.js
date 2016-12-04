@@ -35,7 +35,7 @@
                     volumeId: this.volumeId, // 卷id
                     contentId: this.contentId,
               };
-               SZXJ.http('post', PathList.saveOrUpdateContent, _data, (response) => {
+               SZXJ.http(this,'post', PathList.saveOrUpdateContent, _data, (response) => {
             	 history.back();
           	  });
           },
@@ -44,7 +44,7 @@
         	var _data = {
                   contentId: this.contentId,
                 };
-                SZXJ.http('get', PathList.findContent, _data, (response) => {
+                SZXJ.http(this,'get', PathList.findContent, _data, (response) => {
             	this.contentTitle = response.data.contentTitle;
             	this.editor.$txt.html(response.data.content);
           	  });

@@ -448,7 +448,7 @@
           this.getReOrderFn();
         },
         getReOrderFn: function() {
-          SZXJ.http('get', PathList.getRankingList, this.RequestObj, (response) => {
+          SZXJ.http(this,'get', PathList.getRankingList, this.RequestObj, (response) => {
             switch (this.RequestObj.rankList){
               case 0:
                 this.indexList.weekBookByBookCopperCoins = response.data.result;
@@ -473,14 +473,14 @@
         },
         getValueFn: function() {
           var _data = {};
-          SZXJ.http('get', PathList.getIndexData, _data, (response) => {
+          SZXJ.http(this,'get', PathList.getIndexData, _data, (response) => {
             this.indexList = response.data;
             this.theHotList = response.data.theHot;
             console.log(this.indexList);
           });
         },
         changeFn: function() {
-          SZXJ.http('get', PathList.nextBatch, { pageNo: ++this.pageNo }, (response) => {
+          SZXJ.http(this,'get', PathList.nextBatch, { pageNo: ++this.pageNo }, (response) => {
             this.theHotList = response.data.theHot;
           });
         },

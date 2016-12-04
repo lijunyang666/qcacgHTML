@@ -30,7 +30,7 @@ var message = Vue.extend({
         },
         getBookListFn: function() {
           var _data = {};
-          SZXJ.http('get', PathList.findBookByUser, {}, (response) => {
+          SZXJ.http(this,'get', PathList.findBookByUser, {}, (response) => {
             this.$set('bookList', response.data);
           });
         },

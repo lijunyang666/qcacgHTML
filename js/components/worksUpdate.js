@@ -67,7 +67,7 @@ var works_update = Vue.extend({
       this.id = href.substring(href.lastIndexOf('/') + 1, href.length);
       var _data = {};
       _data.bookId = parseInt(this.id, 10);
-      SZXJ.http('get', PathList.queryBook, _data, 
+      SZXJ.http(this,'get', PathList.queryBook, _data, 
       (response) => {
         console.log(response);
 		    this.id = response.data.bookCustom.bookId;
@@ -121,7 +121,7 @@ var works_update = Vue.extend({
     _data.bookTypeList = arrTemp;
     //============================================
     
-     SZXJ.http('post', PathList.saveOrUpdateBook, _data, 
+     SZXJ.http(this,'post', PathList.saveOrUpdateBook, _data, 
             (response) => {
               location.href = PathList.TemprootPath + '/view/user_info.html#!/bookBlockList';
             });
@@ -205,7 +205,7 @@ var works_update = Vue.extend({
       classListFn: function() {
         //============================================
         console.log('11');
-        SZXJ.http('get', PathList.queryBookType, {}, 
+        SZXJ.http(this,'get', PathList.queryBookType, {}, 
             (response) => {
               this.$set('classFlag', true);
               var classArr = response.data;

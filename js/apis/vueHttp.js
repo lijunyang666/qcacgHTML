@@ -44,7 +44,7 @@ SZXJ.loadImg = function(url, event) {
     });
   }
 };
-SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
+SZXJ.http = (This,_method, _url, _data, successfn, errorfn) => {
   // 设置登入请求头
   if (localStorage.getItem('JSESSIONID')) {
     Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
@@ -61,15 +61,20 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         if (!err.status) {
           return;
         }
+        if (This.$refs.alert || This.$parent.$refs.alert) {
+           var Utils = This.$parent.setMessage ? This.$parent : This;
+           Utils.setMessage(true, err.data.msg, function(){
+            if(err.data.code == 900) { // 未登入
+              location.href = PathList.TemprootPath + '/view/login.html';
+            }
+            if(err.data.code == 1000) { // 登入超时
+              location.href = PathList.TemprootPath + '/view/login.html';
+            }
+           });
+        }
         if (errorfn) {
             errorfn(err);
         }
-//      if(err.data.code == 900) { // 未登入
-//        location.href = PathList.TemprootPath + '/view/login.html';
-//      }
-//      if(err.data.code == 1000) { // 登入超时
-//        location.href = PathList.TemprootPath + '/view/login.html';
-//      }
       }
     );
   }
@@ -82,6 +87,18 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
       (err) => {
         if (!err.status) {
           return;
+        }
+        // console.log(This.$parent.$refs.alert);
+        if (This.$refs.alert || This.$parent.$refs.alert) {
+           var Utils = This.$parent.setMessage ? This.$parent : This;
+           Utils.setMessage(true, err.data.msg, function(){
+            if(err.data.code == 900) { // 未登入
+              location.href = PathList.TemprootPath + '/view/login.html';
+            }
+            if(err.data.code == 1000) { // 登入超时
+              location.href = PathList.TemprootPath + '/view/login.html';
+            }
+           });
         }
         if (errorfn) {
             errorfn(err);

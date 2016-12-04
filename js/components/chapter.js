@@ -30,7 +30,7 @@
                     volumeId: this.id, // 卷id
                     contentId: null,
               };
-			  SZXJ.http('post', PathList.saveOrUpdateContent, _data, (response) => {
+			  SZXJ.http(this,'post', PathList.saveOrUpdateContent, _data, (response) => {
             	history.back();
           	  });
           },

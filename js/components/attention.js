@@ -54,12 +54,12 @@ var attention = Vue.extend({
           this.getValueFn(); // 请求
         },
         setAttention: function(v){
-          SZXJ.http('post', PathList.saveOrCancelAttention, { receiveId: v }, (response) => {
+          SZXJ.http(this,'post', PathList.saveOrCancelAttention, { receiveId: v }, (response) => {
             this.getValueFn();
           });
         },
         getValueFn: function() {
-          SZXJ.http('get', PathList.myCareOrCareMe, this.RequestObj, (response) => {
+          SZXJ.http(this,'get', PathList.myCareOrCareMe, this.RequestObj, (response) => {
             this.$set('bookList', response.data);
             console.log(this.bookList);
             this.setPageCount(response.data.totalPage);

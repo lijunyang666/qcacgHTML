@@ -125,7 +125,7 @@
 			},
 		methods: {
 		  setCollect: function(v) {
-			    SZXJ.http('post', PathList.saveOrDeleteBookCollect, { bookId: v }, (response) => {
+			    SZXJ.http(this,'post', PathList.saveOrDeleteBookCollect, { bookId: v }, (response) => {
             this.getValueFn();
           });
 			},
@@ -172,7 +172,7 @@
 				},
 				getValueFn: function() {
 				  this.result = [];
-			    SZXJ.http('get', PathList.getRankingList, this.RequestObj, (response) => {
+			    SZXJ.http(this,'get', PathList.getRankingList, this.RequestObj, (response) => {
 			      this.result = response.data.result;
 			      console.log(response);
 			      this.setPageCount(response.data.totalPage);
@@ -181,7 +181,7 @@
   		},
 			ready: function() {
 			  this.bodyFlag = true;
-			  SZXJ.http('get', PathList.queryBookType, {}, (response) => {
+			  SZXJ.http(this,'get', PathList.queryBookType, {}, (response) => {
           this.bookInfo = response.data;
         });
         var href = window.location.href;

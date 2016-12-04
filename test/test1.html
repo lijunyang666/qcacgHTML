@@ -24,7 +24,7 @@
 		  	submitFn: function() {
 			  	var _data = {};
 			  	_data.replyId = 1;
-			  	SZXJ.http('get', PathList.findCommentAndReplyByReplyUserId, _data, 
+			  	SZXJ.http(this,'get', PathList.findCommentAndReplyByReplyUserId, _data, 
 		        (response) => {
 		          alert(JSON.stringify(response));
 				  console.log(response);

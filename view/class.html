@@ -208,7 +208,7 @@
 				getValueFn: function() {
 					this.$set('verticalBoookInfo', []);
 					this.$set('bookInfo', []);
-					SZXJ.http('get', PathList.queryBookClass, this.RequestObj, (response) => {
+					SZXJ.http(this,'get', PathList.queryBookClass, this.RequestObj, (response) => {
           	this.bookInfo = response.data.bookInfo;
           	if (!response.data.bookInfo) {
 							this.$set('bookInfo', []);
@@ -267,7 +267,7 @@
 					this.hengshuId = 2;
 				}
 				
-				SZXJ.http('get', PathList.queryBookType, {}, (response) => {
+				SZXJ.http(this,'get', PathList.queryBookType, {}, (response) => {
           var obj = this.obj;
 					obj.sort = response.data;
 					var temp = {};          

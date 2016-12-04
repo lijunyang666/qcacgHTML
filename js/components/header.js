@@ -28,7 +28,7 @@ var header = Vue.extend({
     backLoginFn: function() {
       this.loginFlag = false;
       localStorage.removeItem('JSESSIONID');
-      location.reload();
+      window.location.href = this.path.TemprootPath + '/index.html';
     },
     setHref(v) {
       location.href = v;
@@ -38,7 +38,7 @@ var header = Vue.extend({
     },
   },
   ready: function() {
-    SZXJ.http('get', PathList.getStatus, {}, (response) => {
+    SZXJ.http(this,'get', PathList.getStatus, {}, (response) => {
       console.log(response);
       this.loginImg = 'background-image: url('+ this.path.rootPath + response.data.status.userImage +')';
       this.loginFlag = response.data.status.flag;

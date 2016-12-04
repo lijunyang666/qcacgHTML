@@ -95,7 +95,7 @@ var works = Vue.extend({
 		    _data.sort = "少年";
 		    _data.bookTypeList = arrTemp;
 	    	//============================================
-	    	SZXJ.http('post', PathList.saveOrUpdateBook, _data, 
+	    	SZXJ.http(this,'post', PathList.saveOrUpdateBook, _data, 
 	        (response) => {
 	        location.href = PathList.TemprootPath + '/view/user_info.html#!/bookBlockList';
 	      });
@@ -179,7 +179,7 @@ var works = Vue.extend({
         },
       classListFn: function() {
         //============================================
-        SZXJ.http('get', PathList.queryBookType, {}, 
+        SZXJ.http(this,'get', PathList.queryBookType, {}, 
             (response) => {
               this.$set('classFlag', true);
               var classArr = response.data;

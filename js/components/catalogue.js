@@ -24,7 +24,7 @@
             this.id = href.substring(href.lastIndexOf('/') + 1, href.length);
             var _data = {};
             _data.bookId = parseInt(this.id, 10);
-            SZXJ.http('get', PathList.queryBook, _data, 
+            SZXJ.http(this,'get', PathList.queryBook, _data, 
             (response) => {
             	console.log(response);
                 this.$set('volumeCustomList', response.data.bookCustom.volumeCustomList);
@@ -41,7 +41,7 @@
           _data.bookId = parseInt(this.id, 10);
           _data.volumeName = this.volume;
           _data.volumeId = '';
-          SZXJ.http('post', PathList.saveOrUpdateVolume, _data, 
+          SZXJ.http(this,'post', PathList.saveOrUpdateVolume, _data, 
             (response) => {
               this.$set('newBookChapter', false);
               this.getBookListFn();

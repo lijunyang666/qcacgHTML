@@ -194,7 +194,7 @@
   				_data.rankList = 0;
           _data.contentId = this.contentId;
           _data.bookId = this.bookId;
-			    SZXJ.http('get', PathList.findContent, _data, (response) => {
+			    SZXJ.http(this,'get', PathList.findContent, _data, (response) => {
 			      console.log(response);
 			      this.nextContent = response.data.nextContent;
 			      this.previousContent = response.data.previousContent;
