@@ -89,7 +89,7 @@ SZXJ.http = (This,_method, _url, _data, successfn, errorfn) => {
           return;
         }
         // console.log(This.$parent.$refs.alert);
-        if (This.$refs.alert || This.$parent.$refs.alert) {
+        if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
            var Utils = This.$parent.setMessage ? This.$parent : This;
            Utils.setMessage(true, err.data.msg, function(){
             if(err.data.code == 900) { // 未登入
