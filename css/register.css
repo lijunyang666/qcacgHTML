@@ -29,10 +29,11 @@ body li{
 	border: 1px solid #6c4274;
 	margin: 10px 0 0 30px;
 	opacity:0.5;
+	padding-left: 15px;
 }
 .regist .regist_Veri {
 	width: 174px;
-
+  padding-left: 15px;
 	height: 46px;
 	border-radius: 8px;
 	font-size: 18px;
@@ -57,7 +58,19 @@ body li{
 	margin: 12px 20px 0 0;
 	background-color: #9188d9;
 	box-shadow:  0px 3px 0px 0px #4c429b;
-	
+	color: #FFFFFF;
+}
+.regist p .a2 {
+  line-height: 46px;
+  width: 114px;
+  height: 44px;
+  font-size: 12px;
+  text-align: center;
+  float: right;
+  margin: 12px 20px 0 0;
+  color: #FFFFFF;
+  background-color: #b0b0b0;
+  box-shadow:  0px 3px 0px 0px #585858;
 }
 .regist .regist_input {
 	margin: 11px 0 0 39px;

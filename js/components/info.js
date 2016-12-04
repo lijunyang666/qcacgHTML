@@ -115,7 +115,6 @@ var info = Vue.extend({
 	                This.clearImgFn();
 	                var imgD = canvas.toDataURL('image/png');
 	                This.loginImg = 'background-image: url('+ imgD +')';
-	                console.log(This.$parent);
 	                This.$parent.loginImg = 'background-image: url('+ imgD +')';
 	              },
 	              error: function(data) {

@@ -45,12 +45,14 @@ SZXJ.loadImg = function(url, event) {
   }
 };
 SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
+  // 设置登入请求头
   if (localStorage.getItem('JSESSIONID')) {
     Vue.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
   }
+  // 设置登入URL
   _URL = _url;
+  // GET请求
   if (_method === 'get') {
-    // _URL
     Vue.http.get(_URL, _data).then(
       (response) => {
         successfn(response);
@@ -59,23 +61,20 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         if (!err.status) {
           return;
         }
-        alert(JSON.stringify(err.data.msg));
-        console.log(err);
         if (errorfn) {
             errorfn(err);
         }
-        if(err.data.code == 900) { // 未登入
-          location.href = PathList.TemprootPath + '/view/login.html';
-        }
-        if(err.data.code == 1000) { // 登入超时
-          location.href = PathList.TemprootPath + '/view/login.html';
-        }
+//      if(err.data.code == 900) { // 未登入
+//        location.href = PathList.TemprootPath + '/view/login.html';
+//      }
+//      if(err.data.code == 1000) { // 登入超时
+//        location.href = PathList.TemprootPath + '/view/login.html';
+//      }
       }
     );
   }
-  // post
+  // POST请求
   if (_method === 'post') {
-    // _URL
     Vue.http.post(_URL, _data).then(
       (response) => {
         successfn(response);
@@ -84,17 +83,15 @@ SZXJ.http = (_method, _url, _data, successfn, errorfn) => {
         if (!err.status) {
           return;
         }
-        alert(JSON.stringify(err.data.msg));
-        console.log(err);
         if (errorfn) {
             errorfn(err);
         }
-        if(err.data.code == 900) { // 未登入
-          location.href = PathList.TemprootPath + '/view/login.html';
-        }
-        if(err.data.code == 1000) { // 登入超时
-          location.href = PathList.TemprootPath + '/view/login.html';
-        }
+//      if(err.data.code == 900) { // 未登入
+//        location.href = PathList.TemprootPath + '/view/login.html';
+//      }
+//      if(err.data.code == 1000) { // 登入超时
+//        location.href = PathList.TemprootPath + '/view/login.html';
+//      }
       }
     );
   }
