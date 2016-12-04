@@ -5,13 +5,14 @@ var bookshelf = Vue.extend({
       +'<ul class="nav"><li class="active" v-link="{path: \'/bookshelf\'}"><span class="circular"></span><span class="title_name">我的收藏</span></li><li v-link="{path: \'/record\'}"><span class="circular"></span><span class="title_name">浏览记录</span></li></ul>'
       +'<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">我的收藏</span><span class="titleTwo">collect</span></div>'
       +'<div style="min-height:500px;width:100%;">'
-      +'<div v-for="obj in bookList"><div class="book-navAI"><a v-for="temp in obj" :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + temp.bookId"><img title="{{temp.bookName}}" :class="$index === 0?\'book-img\':\'book-img1\'" :src="path.rootPath + temp.bookCoverImage"/></a></div><a v-for="temp in obj" :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + temp.bookId"><span :class="$index === 0?\'book-name\':\'book-name1\'" title="{{ temp.bookName }}">{{ temp.bookName.length > 12? temp.bookName.substring(0, 12).concat(\'...\'):temp.bookName }}</span></a>'
+      +'<div v-for="obj in bookList"><div class="book-navAI"><a v-for="temp in obj" :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + temp.bookId"><img title="{{temp.bookName}}" :class="$index === 0?\'book-img\':\'book-img1\'" src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: \'\', $event)"/></a></div><a v-for="temp in obj" :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + temp.bookId"><span :class="$index === 0?\'book-name\':\'book-name1\'" title="{{ temp.bookName }}">{{ temp.bookName.length > 12? temp.bookName.substring(0, 12).concat(\'...\'):temp.bookName }}</span></a>'
       +'</div></div></div></div></div>'
       ,
       data: function() {
         return {
           path: PathList,
         	bookList:[],
+        	szxj: SZXJ,
         };
       },
       route: {

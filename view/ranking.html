@@ -50,7 +50,7 @@
 	  	</div>
 	  	<div class="content_ranking active" v-for="obj in result">
 	  		<h1>{{ ($index + 1) + ((RequestObj.pageNo - 1) * 12) }}</h1>
-	  		<a href="javascript:;"><img src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: '', $event)" @click="gotoBook(obj.bookId)"/></a>
+	  		<a href="javascript:;"><img src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" @click="gotoBook(obj.bookId)"/></a>
 	  		<ul>
 	  			<li><a href="javascript:;" class="content_a" title="{{obj.bookName}}"><span @click="gotoBook(obj.bookId)">{{obj.bookName}}</span></a></li>
 	  			<li>作者：{{obj.author}}</li>
@@ -101,6 +101,8 @@
 		var indexHtml = new Vue({
 		el: '#app',
 		data: {
+		  szxj: SZXJ,
+		bodyFlag: false,
 		path: PathList,
 		result:[],	
 		bookInfo: [],

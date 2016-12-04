@@ -2,11 +2,11 @@
 
 
 PathList.TemprootPath = '';
-//PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
+PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
 
 PathList.rootPath = '/Controller';
 //PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
-//PathList.rootPath = 'http://192.168.126.25:8080'; // 封面 头像
+ PathList.rootPath = 'http://192.168.126.25:8080'; // 封面 头像 刷
 
 
 
@@ -75,3 +75,5 @@ PathList.updateUser = PathList.rootPath + '/user/updateUser.shtml';
 PathList.userUpload = PathList.rootPath + '/user/upload.shtml';
 // 获取关注我的 和 我的关注  0表示我关注的人，status 1表示关注我的人  pageNo 当前页码数 pageSize 每页显示的数据量
 PathList.myCareOrCareMe = PathList.rootPath + '/relation/myCareOrCareMe.shtml';
+// 确定关注 或 取消关注
+PathList.saveOrCancelAttention = PathList.rootPath + '/relation/saveOrCancelAttention.shtml';
