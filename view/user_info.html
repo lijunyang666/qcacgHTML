@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/font-awesome.min.css"  />
  </head> 
  <body id="app" v-show="bodyFlag" style="display: none;">
-  <alert v-ref:alert></alert>
+  <alert v-ref:vue-alert></alert>
   <myheader :user-name.sync="userName" :login-img.sync="loginImg" :active.sync="active"></myheader>
   <div class="user_info_topBJ"></div>
   <div class="user_info clear"> 
@@ -163,7 +163,7 @@
   		  this.$set('active', str);
   		},
   		setMessage(flag,message,Fn) {
-  		  this.$refs.alert.setMessage(flag,message,Fn);
+  		  this.$refs.vueAlert.setMessage(flag,message,Fn);
   		}
     },
    ready : function (){
