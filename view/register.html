@@ -48,14 +48,14 @@
 	</body>
 
 
-  <script src="../js/apis/conf.js"></script>
-  <script src="../js/apis/vueHttp.js"></script>
-  <script type="text/javascript" src="../js/vue.min.js"></script>
-  <script type="text/javascript" src="../js/vue-resource.min.js" ></script>
-  <script type="text/javascript" src="../js/vue-router.min.js" ></script>
-  <script type="text/javascript" src="../js/components/header.js" ></script>
-  <script type="text/javascript" src="../js/components/footer.js" ></script>
-  <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
+<script src="../js/apis/conf.js"></script>
+<script src="../js/apis/vueHttp.js"></script>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
+<script type="text/javascript" src="../js/vue-router.min.js" ></script>
+<script type="text/javascript" src="../js/components/header.js" ></script>
+<script type="text/javascript" src="../js/components/footer.js" ></script>
+<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 
 <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.min.js" ></script>
@@ -67,6 +67,26 @@ var indexHtml = new Vue({
       el: '#app',
       data: {
         path: PathList,
+      },
+      methods: {
+        verificationBtn :function() {
+          var _data = {};
+          _data.telephone = document.getElementsByName('user')[0].value;
+          $.ajax({
+            url: PathList.registerTelephoneCode,
+            type: "POST",
+            dataType: "JSON",
+            data: _data,
+            success: function(data) {
+              localStorage.setItem('JSESSIONID', data.verificationId);
+              location.href = Url + '/view/user_info.html';
+              console.log(data);
+            },
+            error: function(data) {
+              alert(JSON.parse(data.responseText).msg);
+            }
+          });
+        },
       },
     });
 
@@ -210,26 +230,9 @@ $(function() {
     // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
   };
 
-  $('.verificationBtn').click(function() {
-    var _data = {};
-    _data.telephone = document.getElementsByName('user')[0].value;
-    $.ajax({
-      url: PathList.registerTelephoneCode,
-      type: "POST",
-      dataType: "JSON",
-      data: _data,
-      success: function(data) {
-        localStorage.setItem('JSESSIONID', data.verificationId);
-        location.href = Url + '/view/user_info.html';
-        console.log(data);
-      },
-      error: function(data) {
-        alert(JSON.parse(data.responseText).msg);
-      }
-    });
-  });
+  
 
-
+  
 
   $.ajax({
     // 获取id，challenge，success（是否启用failback）
