@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="../js/vue.js"></script>
 	<body id="mask" id="app"
 	  v-show="bodyFlag" style="display: none;"
-			v-bind:style="popup === true? 'overflow:hidden':''">
+		v-bind:style="popup === true? 'overflow:hidden':''">
     <alert v-ref:vue-alert></alert>
 	  <myheader></myheader>
 		<div id="search"></div>
@@ -34,12 +34,15 @@
 					<div class="text_type" >
 						<ul>
 							<li>分类：</li>
-							<li v-for="obj in Booktype"><a :href="path.TemprootPath + '/view/class.html'" ><span class="text_span">{{ obj.bookTypeName}}</a></span></li>
+							<li v-for="obj in Booktype"><a :href="path.TemprootPath + '/view/class.html?id=' + obj.bookTypeId" ><span class="text_span">{{ obj.bookTypeName}}</a></span></li>
 						</ul>
 					</div>
 					<div class="text_reading">
 						<ul>
-							<li><a class="text_Read" :href="path.TemprootPath + '/view/read_book.html?contentId=1'  + '&bookId='+ bookId">开始阅读</a></li>
+							<li>
+							  <a v-if="BookList[0] && BookList[0].contentEntityList[0]" class="text_Read" :href="path.TemprootPath + '/view/read_book.html?contentId=' + BookList[0].contentEntityList[0].contentId  + '&bookId='+ bookId">开始阅读</a>
+							  <a v-else class="text_Read" href="javascript:;">开始阅读</a>
+              </li>
 							<li @click="setCollect()" v-if="!collect" ><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
 							<li @click="setCollect()" v-else ><span><img src="../img/sss4.png"/ class="text_Collection"><p>已收藏</p><num>{{Collection}}</num></li>
 							<li <!--v-on:click="rewardFn"--><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>{{bookCopperCoins}}</num></li>
@@ -47,6 +50,7 @@
 					</div>
 				</div>
 			</div>
+			
 				<div class="text_Catalog">
 				  <div v-for="obj in BookList">
   					<ul >
@@ -150,10 +154,6 @@
 				
 				<div style="height: 300px;"></div>
 				
-					
-			
-			
-			
 			<div class="screen">
 				<h3>作者相关</h3>
 				<a href="javascript:;"><img :src="path.rootPath + userHead " class="head"></a>
@@ -181,6 +181,7 @@
 						</li>
 					</ul>
 				</div>
+				
 				<!--<div class="list">
 					<h3>好人榜</h3>
 					<ul class="list_ul">

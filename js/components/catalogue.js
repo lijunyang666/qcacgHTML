@@ -44,6 +44,7 @@
           SZXJ.http(this,'post', PathList.saveOrUpdateVolume, _data, 
             (response) => {
               this.$set('newBookChapter', false);
+              this.volume = '';
               this.getBookListFn();
             });
         }

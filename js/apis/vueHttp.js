@@ -62,13 +62,15 @@ SZXJ.http = (This,_method, _url, _data, successfn, errorfn) => {
           return;
         }
         if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
-           var Utils = This.$parent.setMessage ? This.$parent : This;
+           var Utils = This.$refs.vueAlert ? This.$refs.vueAlert : This.$parent.$refs.vueAlert;
            Utils.setMessage(true, err.data.msg, function(){
             if(err.data.code == 900) { // 未登入
               location.href = PathList.TemprootPath + '/view/login.html';
+              localStorage.removeItem('JSESSIONID');
             }
             if(err.data.code == 1000) { // 登入超时
               location.href = PathList.TemprootPath + '/view/login.html';
+              localStorage.removeItem('JSESSIONID');
             }
            });
         }
@@ -88,15 +90,16 @@ SZXJ.http = (This,_method, _url, _data, successfn, errorfn) => {
         if (!err.status) {
           return;
         }
-        // console.log(This.$parent.$refs.alert);
         if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
-           var Utils = This.$parent.setMessage ? This.$parent : This;
+           var Utils = This.$refs.vueAlert ? This.$refs.vueAlert : This.$parent.$refs.vueAlert;
            Utils.setMessage(true, err.data.msg, function(){
             if(err.data.code == 900) { // 未登入
               location.href = PathList.TemprootPath + '/view/login.html';
+              localStorage.removeItem('JSESSIONID');
             }
             if(err.data.code == 1000) { // 登入超时
               location.href = PathList.TemprootPath + '/view/login.html';
+              localStorage.removeItem('JSESSIONID');
             }
            });
         }

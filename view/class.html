@@ -269,7 +269,9 @@
 				} else {
 					this.hengshuId = 2;
 				}
-				
+				if (SZXJ.getQueryString('id')) {
+				  this.RequestObj.bookTypeId = SZXJ.getQueryString('id');
+				}
 				SZXJ.http(this,'get', PathList.queryBookType, {}, (response) => {
           var obj = this.obj;
 					obj.sort = response.data;

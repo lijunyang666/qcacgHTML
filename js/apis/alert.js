@@ -4,8 +4,8 @@ var VueAlert = Vue.extend({
     +  '<div class="alert_parent">'
     +   '<div class="alert_sub">'
     +     '<div class="words">'
-    +         '<div v-if="trueFlag" class="alert_img"><img :src="path.rootTempPath + \'alert_flast.png\'" /></div>'
-    +         '<div v-else class="alert_img"><img :src=" path.rootTempPath +  \'alert_ture.png\'" /></div>'
+    +         '<div v-if="trueFlag" class="alert_img"><img :src="path.TemprootPath + \'/img/alert_flast.png\'" /></div>'
+    +         '<div v-else class="alert_img"><img :src="path.TemprootPath +  \'/img/alert_ture.png\'" /></div>'
     +         '<ul>'
     +           '<li v-if="trueFlag" class="alert">操作失败</li>'
     +           '<li v-else class="alert3">操作成功</li>'
@@ -25,6 +25,7 @@ var VueAlert = Vue.extend({
   },
   data:function(){
     return {
+      path: PathList,
       flag: false,
       trueFlag: true,
       message: '',

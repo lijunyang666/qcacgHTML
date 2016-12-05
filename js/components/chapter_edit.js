@@ -40,11 +40,11 @@
           	  });
           },
         getBookListFn: function() {
-        	var _URL = PathList.findContent;
+        	var _URL = PathList.ContentfindContent;
         	var _data = {
                   contentId: this.contentId,
                 };
-                SZXJ.http(this,'get', PathList.findContent, _data, (response) => {
+                SZXJ.http(this,'get', PathList.ContentfindContent, _data, (response) => {
             	this.contentTitle = response.data.contentTitle;
             	this.editor.$txt.html(response.data.content);
           	  });

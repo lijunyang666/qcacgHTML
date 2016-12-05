@@ -27,11 +27,9 @@
     </div>
     <div class="tool-bottom">
       <a v-if="previousContent.contentId" id="btn-prev-tool" title="上一章" class="prev js-link-state" :href="path.TemprootPath + '/view/read_book.html?contentId=' + previousContent.contentId + '&bookId='+ previousContent.bookId"><i class="fa fa-angle-left"></i></a>
-      <a v-else id="btn-prev-tool" title="上一章" class="prev js-link-state" href="javascript:;"><i class="fa fa-angle-left"></i></a>
-      
+      <a v-else id="btn-prev-tool" @click="setPreviousEnd" title="上一章" class="prev js-link-state" href="javascript:;"><i class="fa fa-angle-left"></i></a>
       <a v-if="nextContent.contentId" id="btn-next-tool" title="下一章" class="next js-link-state" :href="path.TemprootPath + '/view/read_book.html?contentId=' + nextContent.contentId + '&bookId='+ nextContent.bookId"><i class="fa fa-angle-right"></i></a>
-      <a v-else id="btn-next-tool" title="下一章" class="next js-link-state" href="javascript:;"><i class="fa fa-angle-right"></i></a>
-    
+      <a v-else id="btn-next-tool" @click="setNextEnd" title="下一章" class="next js-link-state" href="javascript:;"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 	</div>	
@@ -41,8 +39,7 @@
 		<div id="reader" class="reader" style="min-height: 1200px; ">
 			<div class="inner-reader active"
 				:style=" 'min-height: 1200px; background-color:' + bj_color + ';color:' + font_color + ';' +
-				'font-family: '+ font_family + ';'
-				">
+				'font-family: '+ font_family + ';'">
 	
 				<div class="book-info" >
 					<p class="book-nav">
@@ -86,8 +83,8 @@
 	</div>
 	
 	
-	<!--<div class="read_alert"><img src="../img/readImg_03.jpg" />已经到最前一章</div>
-	<div class="read_alert"><img style="vertical-align: middle;" src="../img/readImg_03.jpg" />已经到最后一章</div>-->
+	<div v-show="previousEnd" class="read_alert"><img src="../img/readImg_03.jpg" />已经到最前一章</div>
+	<div v-show="nextEnd" class="read_alert"><img style="vertical-align: middle;" src="../img/readImg_03.jpg" />已经到最后一章</div>
 	
 	
 	
@@ -163,9 +160,13 @@
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
- 	 <script src="../js/apis/Data.js"></script>
-   <script src="../js/apis/alert.js"></script>
-   <script src="../js/apis/confirm.js"></script>
+ 	<script src="../js/apis/Data.js"></script>
+  <script src="../js/apis/alert.js"></script>
+  <script src="../js/apis/confirm.js"></script>
+  <script type="text/javascript" src="../js/components/header.js" ></script>
+  <script type="text/javascript" src="../js/components/footer.js" ></script>
+  <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>
+  
 	<script>
 		var vueDemo = new Vue({
   			el: '#app',
@@ -188,16 +189,47 @@
   				works:'',
   				nextContent: {},
   				previousContent: {},
-  				
+  				previousEnd: false,
+  				nextEnd: false,
   			},
   			methods: {
+  			  setNextEnd: function() {
+  			    this.$set('nextEnd',true);
+                var This = this;
+                setTimeout(function(){
+                  This.$set('nextEnd',false);
+                }, 2000)
+  			  },
+  			  setPreviousEnd: function() {
+            this.$set('previousEnd',true);
+                var This = this;
+                setTimeout(function(){
+                  This.$set('previousEnd',false);
+                }, 2000)
+          },
   			  keyDownFn: function(e) {
-  			    if(e.keyCode == 37 && this.previousContent.contentId) {
-  			      location.href = this.path.TemprootPath + '/view/read_book.html?contentId=' + this.previousContent.contentId + '&bookId='+ this.previousContent.bookId;
+  			    if(e.keyCode == 37) {
+  			      if (this.previousContent && this.previousContent.contentId) {
+  			          location.href = this.path.TemprootPath + '/view/read_book.html?contentId=' + this.previousContent.contentId + '&bookId='+ this.previousContent.bookId;
+              } else {
+                this.$set('previousEnd',true);
+                var This = this;
+                setTimeout(function(){
+                  This.$set('previousEnd',false);
+                }, 2000)
+              }
   			    }
-  			    if(e.keyCode == 39 && this.nextContent.contentId) {
+  			    if(e.keyCode == 39) {
+  			      if (this.nextContent && this.nextContent.contentId) {
                location.href = this.path.TemprootPath + '/view/read_book.html?contentId=' + this.nextContent.contentId + '&bookId='+ this.nextContent.bookId;
-            }
+            } else {
+                this.$set('nextEnd',true);
+                var This = this;
+                setTimeout(function(){
+                  This.$set('nextEnd',false);
+                }, 2000)
+              }
+  			    }
   			  },
   				getValueFn: function() {
   				var _data = {};

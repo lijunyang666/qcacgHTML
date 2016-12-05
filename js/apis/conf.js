@@ -1,13 +1,13 @@
 ﻿var PathList = {};
 
 
-//PathList.TemprootPath = '';
- PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
+PathList.TemprootPath = '';
+//PathList.TemprootPath = 'http://127.0.0.1:8020/ROOT'; // 页面跳转用这个
 
-//PathList.rootPath = '/Controller';
- //PathList.rootPath = 'http://www.qcacg.cn/Controller'; // 封面 头像
- PathList.rootPath = 'http://192.168.126.25:8080'; // 封面 头像
-
+PathList.rootPath = '/Controller';
+//PathList.rootPath = 'http://www.qcacg.cn/Controller';
+//PathList.rootPath = 'http://192.168.126.25:8080';
+//PathList.rootPath = 'http://121.196.194.211';
 
 
 
@@ -33,7 +33,7 @@ PathList.bookUpload = PathList.rootPath + '/book/upload.shtml';
 // 作者新建与修改作品的接口
 PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
 // 作者阅读章节接口
-PathList.findContent = PathList.rootPath + '/content/findContent.shtml';
+PathList.ContentfindContent = PathList.rootPath + '/content/findContent.shtml';
 // 作者新建章节接口
 PathList.saveOrUpdateContent = PathList.rootPath + '/content/saveOrUpdateContent.shtml';
 
