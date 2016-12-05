@@ -119,6 +119,9 @@
 .qcacg-header-parent .qcacg-header .nav-right li a:hover {
   color:#2863b4;
 }
+.qcacg-header-parent .qcacg-header .nav-right li a:active a {
+  color:#2863b4;
+}
 .qcacg-header-parent .qcacg-header .nav-right li.publication {
   width:75px;
   height: 56px;

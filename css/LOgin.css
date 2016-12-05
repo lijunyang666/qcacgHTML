@@ -4,8 +4,6 @@ body li{
 .Login {
 	width: 367px;
 	height: 319px;
-	
-
 	position: absolute;
 	top: 180px ;
 	right: 330px;
@@ -16,7 +14,7 @@ body li{
   border: 1px solid #6c4274;
   border-radius: 10px;
   box-shadow: 0 3px 9px rgba(0,0,0,.5);
-
+  
 }
 .Login .Login_img {
 	float: right;
