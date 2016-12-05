@@ -280,12 +280,17 @@ a {
 }
 
 .class-content .line .line-content .div {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 .class-content .line .line-content .p-2 {
-  margin-top: 20px;
+  margin-top: 12px;
   color: #7f7e7e;
+  min-height: 42px;
+  max-height: 50px;
+  overflow: hidden;
+  line-height: 1.2;
+  
 }
 
 .class-content .line-vertical {

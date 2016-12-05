@@ -4,17 +4,25 @@ body li{
 .Login {
 	width: 367px;
 	height: 319px;
-	border: 1px solid #6c4274;
-	border-radius: 10px;
-	box-shadow: 0 3px 9px rgba(0,0,0,.5);
+	
+
 	position: absolute;
 	top: 180px ;
 	right: 330px;
 	display: none;
 }	
+.Login .Login_small {
+  height: 320px;
+  border: 1px solid #6c4274;
+  border-radius: 10px;
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+
+}
 .Login .Login_img {
 	float: right;
-	margin: -25px 10px 0 0;
+  margin-right: 10px;
+
+
 }
 .Login .line {
 	margin-top: 15px;

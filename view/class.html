@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>轻创文学网-分类页</title>
+    <title>QC文学网-分类页</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/headerOrFooter.css" />
 		<link rel="stylesheet" href="../css/main.css" />
@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="../css/jquery-ui.min.css" />
   </head>
   <body class="class-body" id="app" v-show="bodyFlag" style="display: none;">
+    <alert v-ref:vue-alert></alert>
     <myheader></myheader>
     <div class="class-content" style="min-height: 700px;">
       <div class="class-title">
@@ -130,7 +131,9 @@
   <script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
-	
+	<script src="../js/apis/Data.js"></script>
+  <script src="../js/apis/alert.js"></script>
+  <script src="../js/apis/confirm.js"></script>
 	<script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>

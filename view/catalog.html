@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>轻创文学网-目录页</title>
+		<title>QC文学网-目录页</title>
 		<link rel="stylesheet" href="../css/main.css" />
 		<link rel="stylesheet" href="../css/catalog.css" />
     	<link rel="stylesheet" href="../css/headerOrFooter.css" />
@@ -13,7 +13,7 @@
 	<body id="mask" id="app"
 	  v-show="bodyFlag" style="display: none;"
 			v-bind:style="popup === true? 'overflow:hidden':''">
-
+    <alert v-ref:vue-alert></alert>
 	  <myheader></myheader>
 		<div id="search"></div>
 		<div class="index" >
@@ -34,12 +34,12 @@
 					<div class="text_type" >
 						<ul>
 							<li>分类：</li>
-							<li v-for="obj in Booktype"><span class="text_span">{{ obj.bookTypeName}}</span></li>
+							<li v-for="obj in Booktype"><a :href="path.TemprootPath + '/view/class.html'" ><span class="text_span">{{ obj.bookTypeName}}</a></span></li>
 						</ul>
 					</div>
 					<div class="text_reading">
 						<ul>
-							<li><a class="text_Read" href="javascript:;">开始阅读</a></li>
+							<li><a class="text_Read" :href="path.TemprootPath + '/view/read_book.html?contentId=1'  + '&bookId='+ bookId">开始阅读</a></li>
 							<li @click="setCollect()" v-if="!collect" ><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
 							<li @click="setCollect()" v-else ><span><img src="../img/sss4.png"/ class="text_Collection"><p>已收藏</p><num>{{Collection}}</num></li>
 							<li <!--v-on:click="rewardFn"--><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>{{bookCopperCoins}}</num></li>
@@ -161,7 +161,7 @@
 					<li><label>作者：</label>
 						<a href="javascript:;" class="span span_author" title="{{authorName}}">{{authorName}}</a>
 						<a @click="setAttention()" v-if="!attention" class="a_author" href="javascript:;">关注</a>
-						<a @click="setAttention()" v-else class="a_author" href="javascript:;" >已关注</a>
+						<a @click="setAttention()" v-else class="a_author_Tow" href="javascript:;" >已关注</a>
 					</li>
 					<li><p class="span_autograph" title="{{autograph}}"><label style="color: black;">签名：</label>{{autograph}}</p></li>
 				</ul>
@@ -330,6 +330,9 @@
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
   <script type="text/javascript" src="../js/components/header.js" ></script>
   <script type="text/javascript" src="../js/components/footer.js" ></script>
+  <script src="../js/apis/Data.js"></script>
+  <script src="../js/apis/alert.js"></script>
+  <script src="../js/apis/confirm.js"></script>
   <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	</body>
 	<script>
@@ -360,6 +363,7 @@
 				userId: '',
 				bookId: '',
 				userHead: '', 
+				
 			},
 			methods: {
 			setAttention: function(){
@@ -399,6 +403,7 @@
 			        SZXJ.http(this,'get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
 			        	 this.bookCustom = [];
+			        	 
 			        	 this.userHead = response.data.bookCustom.userEntity.userHead;
 			        	 this.bookId = response.data.bookCustom.bookId;
 			        	 this.userId = response.data.bookCustom.userEntity.userId;

@@ -19,6 +19,7 @@
 	.index .screen {
 		width: 321px;
 		height: 1621px;
+		/*min-height: 450px;*/
 		position: absolute;
 		top: 50px;
 		left: 802px;
@@ -72,19 +73,34 @@
 	.head {
 		margin: 30px 0 0 25px;
 		border-radius: 50px;
+		width: 64px;
+		height: 64px;
 	}
 	.screen .a_author {
 		text-align: center;
 		width: 90px;
 		height: 20px;
-		font-size: 14px;
-		margin: 0 0 0 px;
-		background-color: #099cef;
-		border-radius: 4px;
+		font-size: 12px;
+		padding: 3px 10px;
+		background-color: #00A1D6;
+		border-radius: 8px;
 		color: #FFFFFF;
-		padding: 5px 5px ;
+		
+		
 		
 	}
+	 .screen .a_author_Tow {
+    text-align: center;
+    width: 90px;
+    height: 20px;
+    font-size: 12px;
+    padding: 3px 3px;
+    color: #00A1D6;
+    border-radius: 8px;
+    border: 1px solid #00A1D6;
+    
+    
+  }
 	.screen .span_author {
 		color: #4a8eec;
 	}
@@ -455,6 +471,7 @@
 			width: 420px;
 			height: 55px;
 			padding: 15px 0 0 0;
+			cursor: pointer;
 		}
 
 		.index .text_reading ul {
@@ -515,7 +532,7 @@
 			border-radius: 8px;
 		}
 		.index .text_Catalog ul {
-			width: 169px;
+			min-width: 169px;
 			height: 30px;
 			margin: 18px 0 0 37px;
 		}

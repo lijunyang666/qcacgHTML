@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>轻创文学网-阅读页</title>
+		<title>QC文学网-阅读页</title>
 		<link rel="stylesheet" href="../css/headerOrFooter.css" />
 		<link rel="stylesheet" href="../css/main.css" />
 		<link rel="stylesheet" href="../css/jquery-ui.min.css" />
@@ -14,13 +14,14 @@
 	</head>
 	<body  id="app" @keydown="keyDownFn"
 		v-bind:style="fixed === true? 'font-family: FontAwesome;overflow:hidden':'font-family: FontAwesome;'">
+		<alert v-ref:vue-alert></alert>
 		<div class="hezi" style="float: right; position: relative; right: 480px; top: 450px;">
 		<div id="book-tool" class="book-tool">
     <div class="tool-top">
       <a v-on:click="screenFn"  id="btn-screen-tool" title="全屏" class="fullscreen"><i class="fa fa-expand"></i></a>
     </div>
     <div class="tool-bottom">
-      <a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" href="javascript:;"><i class="fa fa-list"></i></a>
+      <a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" :href="path.TemprootPath + '/view/catalog.html'"><i class="fa fa-list"></i></a>
       <a v-on:click="settingShow" id="btn-setting" title="设置" class="setting"><i class="fa fa-cog"></i></a>
       <a v-on:click="lampFn" id="btn-light" title="夜间模式" class="light" ><i class="fa fa-lightbulb-o"></i></a>
     </div>
@@ -45,7 +46,7 @@
 	
 				<div class="book-info" >
 					<p class="book-nav">
-						<a>轻创轻小说</a>
+						<a :href="path.TemprootPath + '/index.html'" >QC轻小说</a>
 						<i class="fa fa-angle-right"></i>
 						<a :href="path.TemprootPath + '/view/catalog.html?bookId=' + bookcontent.bookId">{{bookcontent.bookName}}</a>
 						<i class="fa fa-angle-right"></i>
@@ -73,7 +74,7 @@
 				<div class="book-bottom">
 					<p class="next-page" >
 					  <a v-if="nextContent.contentId" :href="path.TemprootPath + '/view/read_book.html?contentId=' + nextContent.contentId + '&bookId='+ nextContent.bookId" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a>
-					  <a v-else href="javascript:;" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a>
+					  <a v-else :href="path.TemprootPath + '/view/read_book.html?contentId=' + previousContent.contentId + '&bookId='+ previousContent.bookId" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a>
           </p>
 					<p class="hint-page">按键盘上的 ←（左）键和 →（右）键可以快速切换章节</p>
 				</div>
@@ -83,6 +84,11 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<!--<div class="read_alert"><img src="../img/readImg_03.jpg" />已经到最前一章</div>
+	<div class="read_alert"><img style="vertical-align: middle;" src="../img/readImg_03.jpg" />已经到最后一章</div>-->
+	
 	
 	
 	<div 
@@ -157,6 +163,9 @@
 	<script type="text/javascript" src="../js/vue.min.js" ></script>
 	<script type="text/javascript" src="../js/vue-resource.min.js" ></script>
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
+ 	 <script src="../js/apis/Data.js"></script>
+   <script src="../js/apis/alert.js"></script>
+   <script src="../js/apis/confirm.js"></script>
 	<script>
 		var vueDemo = new Vue({
   			el: '#app',
@@ -179,6 +188,7 @@
   				works:'',
   				nextContent: {},
   				previousContent: {},
+  				
   			},
   			methods: {
   			  keyDownFn: function(e) {

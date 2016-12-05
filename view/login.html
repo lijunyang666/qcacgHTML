@@ -3,17 +3,20 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>轻创文学网-登入页</title>
+		<title>QC文学网-登入页</title>
 	<link rel="stylesheet" href="../css/headerOrFooter.css" />
 	<link rel="stylesheet" href="../css/main.css" />
 	<link rel="stylesheet" href="../css/LOgin.css" />
 	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
 	</head>
 	<body id="app">
+	  <alert v-ref:vue-alert></alert>
 		<myheader></myheader>
 		<div style="position: relative;width: 100%;min-width: 1200px;">
+		  
 			<img src="../img/background-jpg.jpg" style="margin-top: -55px;width: 100%;min-height:768px ;"/>
 			<form class="Login" id="Login">
+			  <div class="Login_small" >
 				<img src="../img/logo-1.png" class="Login_img"/>
 				<p class="line">
 					<input  type="password" style="position: absolute; top: -999px" />
@@ -36,6 +39,7 @@
 					<li><a style="color:#000000" :href="path.TemprootPath + '/view/register.html'">注册新帐号</a></li>
 				</ul>
 			</form>
+			</div>
 		</div>
 		<myfooter></myfooter>
 	</body>
@@ -46,6 +50,9 @@
   <script type="text/javascript" src="../js/vue-router.min.js" ></script>
   <script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
+	 <script src="../js/apis/Data.js"></script>
+   <script src="../js/apis/alert.js"></script>
+   <script src="../js/apis/confirm.js"></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
 	
 
