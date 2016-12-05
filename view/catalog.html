@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>QC文学网-目录页</title>
+		<title>轻创文学网-目录页</title>
 		<link rel="stylesheet" href="../css/main.css" />
 		<link rel="stylesheet" href="../css/catalog.css" />
     	<link rel="stylesheet" href="../css/headerOrFooter.css" />
@@ -12,8 +12,8 @@
 	<script type="text/javascript" src="../js/vue.js"></script>
 	<body id="mask" id="app"
 	  v-show="bodyFlag" style="display: none;"
-		v-bind:style="popup === true? 'overflow:hidden':''">
-    <alert v-ref:vue-alert></alert>
+			v-bind:style="popup === true? 'overflow:hidden':''">
+
 	  <myheader></myheader>
 		<div id="search"></div>
 		<div class="index" >
@@ -29,28 +29,23 @@
 				</ul>
 				<div class="text_brief">
 						<p class="text_brief_p" title="{{introduction}}">简介：
-							<span style="font-size: 12px; display: inline-block;">{{introduction}}</p>
+							<span style="font-size: 12px; >{{introduction}}</p>
 						</span>
 					<div class="text_type" >
 						<ul>
 							<li>分类：</li>
-							<li v-for="obj in Booktype"><a :href="path.TemprootPath + '/view/class.html?id=' + obj.bookTypeId" ><span class="text_span">{{ obj.bookTypeName}}</a></span></li>
+							<li v-for="obj in Booktype"><span class="text_span">{{ obj.bookTypeName}}</span></li>
 						</ul>
 					</div>
 					<div class="text_reading">
 						<ul>
-							<li>
-							  <a v-if="BookList[0] && BookList[0].contentEntityList[0]" class="text_Read" :href="path.TemprootPath + '/view/read_book.html?contentId=' + BookList[0].contentEntityList[0].contentId  + '&bookId='+ bookId">开始阅读</a>
-							  <a v-else class="text_Read" href="javascript:;">开始阅读</a>
-              </li>
-							<li @click="setCollect()" v-if="!collect" ><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
-							<li @click="setCollect()" v-else ><span><img src="../img/sss4.png"/ class="text_Collection"><p>已收藏</p><num>{{Collection}}</num></li>
-							<li <!--v-on:click="rewardFn"--><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>{{bookCopperCoins}}</num></li>
+							<li><a class="text_Read" href="javascript:;">开始阅读</a></li>
+							<li><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
+							<li v-on:click="rewardFn"><span><img src="../img/sss3.png"/ class="text_card"><p>好人卡</p><num>{{bookCopperCoins}}</num></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			
 				<div class="text_Catalog">
 				  <div v-for="obj in BookList">
   					<ul >
@@ -59,9 +54,11 @@
   					</ul>   
   					<div class="text_chapter" >
   							<div class="group" v-for="value in obj.contentEntityList">
-  							  <span class="text_sign"></span><a :href="path.TemprootPath + '/view/read_book.html?contentId=' + value.contentId + '&bookId='+ obj.bookId">
-                      {{ value.contentTitle }}
-                  </a>
+  							  <span class="text_sign">
+  							    <a :href="path.TemprootPath + '/view/read_book.html?contentId=' + value.contentId + '&bookId='+ obj.bookId">
+  							      {{ value.contentTitle }}
+  							    </a>
+  							  </span>
   							</div>
   							
   					</div>
@@ -132,7 +129,7 @@
               <ul class="mes_head">
                 <li class="mes_head_user" >
                   <a href="javascript:;" class="user_a" title="">明珠求瑕</a>
-                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>思亘七险，点落九宫，神游八极，纵横十方。</span> </li> 
+                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>笑看嫣红染半山，逐风万里白云间。逍遥此身不为客，天地三才任平凡。</span> </li> 
                 <li>
                   <ul class="updata_mes">
                       <li class="mess1">2016-12-12</li>
@@ -154,14 +151,17 @@
 				
 				<div style="height: 300px;"></div>
 				
+					
+			
+			
+			
 			<div class="screen">
 				<h3>作者相关</h3>
-				<a href="javascript:;"><img :src="path.rootPath + userHead " class="head"></a>
+				<a href="javascript:;"><img src="../img/sss10.png"/ class="head"></a>
 				<ul class="author">
 					<li><label>作者：</label>
 						<a href="javascript:;" class="span span_author" title="{{authorName}}">{{authorName}}</a>
-						<a @click="setAttention()" v-if="!attention" class="a_author" href="javascript:;">关注</a>
-						<a @click="setAttention()" v-else class="a_author_Tow" href="javascript:;" >已关注</a>
+						<a class="a_author" href="javascript:;">关注</a>
 					</li>
 					<li><p class="span_autograph" title="{{autograph}}"><label style="color: black;">签名：</label>{{autograph}}</p></li>
 				</ul>
@@ -181,8 +181,7 @@
 						</li>
 					</ul>
 				</div>
-				
-				<!--<div class="list">
+				<div class="list">
 					<h3>好人榜</h3>
 					<ul class="list_ul">
 						<li>周</li>
@@ -260,8 +259,8 @@
 						</div>
 					</div>
 					<div id="more"><a>查看更多</a></div>
-				</div>-->
-				<!--<div id="recommed">
+				</div>
+				<div id="recommed">
 					<h3>同类作品推荐</h3>
 					<ul class="many">
 						<li><a  href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡" style="color: #000000;">更多</a></li>
@@ -295,10 +294,10 @@
 							<li><a class="Title_a" href="javascript:;" title="比企谷八幡比企谷八幡比企谷八幡">舞法舞天巴拉拉小魔仙</a></li>
 						</ul>
 					</div>
-					</div>-->
+					</div>
 			</div>
 		</div>
-		<!--<div 
+		<div 
 			v-if="popup" 
 			v-on:click="rewardFn"
 			style="position: fixed;top: 50%;bottom: 0px;left: 0px;right: 0px; ">
@@ -321,7 +320,7 @@
 				<a class="reward_Recharge">充值></a>
 				<a class="reward_My">我的好人卡：1000</a>
 			</div>
-		</div>-->
+		</div>
 
 	  <myfooter></myfooter>
 	<script src="../js/apis/vueHttp.js"></script>
@@ -331,17 +330,14 @@
  	<script type="text/javascript" src="../js/vue-router.min.js" ></script>
   <script type="text/javascript" src="../js/components/header.js" ></script>
   <script type="text/javascript" src="../js/components/footer.js" ></script>
-  <script src="../js/apis/Data.js"></script>
-  <script src="../js/apis/alert.js"></script>
-  <script src="../js/apis/confirm.js"></script>
   <script type="text/javascript" src="../js/require/headerOrfooter.js"></script>  
 	</body>
 	<script>
 		var vuePractice = new Vue({
 			el: '#mask',
 			data: {
-			  bodyFlag: false,
 			  zindex: 0,
+			  bodyFlag: false,
 			  path: PathList,
 			  szxj: SZXJ,
 				popup:false,
@@ -359,32 +355,8 @@
 				autograph:'',
 				booktTitle:[],
 				bookCustom:[],
-				collect: false,
-				attention: false,
-				userId: '',
-				bookId: '',
-				userHead: '', 
-				
 			},
 			methods: {
-			setAttention: function(){
-			  var _data = {};
-			  _data.receiveId = this.userId;
-			  SZXJ.http(this,'post', PathList.saveOrCancelAttention, _data, (response) => {
-			    if (this.attention) {
-			      this.attention = false;
-			    } else {
-			      this.attention = true;
-			    }
-        });
-			},
-			setCollect: function() {
-			  var _data = {};
-        _data.bookId = this.bookId;
-        SZXJ.http(this,'post', PathList.saveOrDeleteBookCollect, _data, (response) => {
-          this.getValueFn()
-        });
-      },
 				nextWorksFn:function() {
 			    // <--
           this.zindex--;
@@ -401,15 +373,9 @@
 				getValueFn: function() {
 					    var _data = {};
             	_data.bookId = this.id;
-			        SZXJ.http(this,'get', PathList.queryBookDirectory, _data, (response) => {
+			        SZXJ.http('get', PathList.queryBookDirectory, _data, (response) => {
 			        	// 取到数据渲染
 			        	 this.bookCustom = [];
-			        	 
-			        	 this.userHead = response.data.bookCustom.userEntity.userHead;
-			        	 this.bookId = response.data.bookCustom.bookId;
-			        	 this.userId = response.data.bookCustom.userEntity.userId;
-			        	 this.collect= response.data.bookCustom.collect;
-			        	 this.attention = response.data.bookCustom.userEntity.attention;
 			        	 this.bookCustom.push(response.data.bookCustom);
 			        	 this.title = response.data.bookCustom.bookName;
 			        	 this.introduction =response.data.bookCustom.bookIntroduction;
@@ -422,11 +388,11 @@
 			        	 this.Collection =response.data.bookCustom.bookCollect;
 			        	 this.bookCopperCoins =response.data.bookCustom.bookCopperCoins;
 			        	 this.authorName =response.data.bookCustom.userEntity.userName;
-			        	 this.autograph = response.data.bookCustom.userEntity.information;
+			        	 this.autograph =response.data.bookCustom.userEntity.information;
 			           console.log(response);
 			        });
 			        
-			        SZXJ.http(this,'get', PathList.findUserOtherBook, _data, (response) => {
+			        SZXJ.http('get', PathList.findUserOtherBook, _data, (response) => {
 			        	// 取到数据渲染
 			        	this.booktTitle = response.data.userOtherBook;
 			          console.log(response);
