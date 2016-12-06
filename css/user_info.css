@@ -721,6 +721,7 @@
 	background-color: #3db2d8;
 	border: 1px solid #3db2d8;
 	border-radius: 5px;
+	cursor: pointer;
 }
 .user_info .user_info_right .user_info_content .contribution .content .catalogue  .chapter_handle .handle_right > div span:hover {
   background-color: #00A1D6;
@@ -1049,9 +1050,13 @@
 	width: 90px;
 	height: 26px;
 	line-height: 22px;
-	background-color: #169bd5;
-	border: 1px solid #169bd5;
+	background-color: #3DB2D8;
+	border: 1px solid #3DB2D8;
 	border-radius: 5px;
+	cursor: pointer;
+}
+.chapter .inputTextarea .handle_right > div span:hover {
+  background-color: #00A1D6;
 }
 
 .cat-list-post {

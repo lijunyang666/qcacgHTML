@@ -28,13 +28,13 @@
 					<li style="width: 200px">更新: <span style="color:#7e7e7e;">&nbsp &nbsp{{szxj.getLocalTime(update / 1000) }}</span></li>
 				</ul>
 				<div class="text_brief">
-						<p class="text_brief_p" title="{{introduction}}">简介：
-							<span style="font-size: 12px; display: inline-block;">{{introduction}}</p>
-						</span>
+						<p id="brief" class="text_brief_p" title="{{introduction}}">简介：
+							{{introduction}}</p>
+						
 					<div class="text_type" >
 						<ul>
 							<li>分类：</li>
-							<li v-for="obj in Booktype"><a :href="path.TemprootPath + '/view/class.html?id=' + obj.bookTypeId" ><span class="text_span">{{ obj.bookTypeName}}</a></span></li>
+							<li v-for="obj in Booktype"><a  :href="path.TemprootPath + '/view/class.html?id=' + obj.bookTypeId" ><span  class="text_span">{{ obj.bookTypeName}}</span></a></li>
 						</ul>
 					</div>
 					<div class="text_reading">
@@ -132,7 +132,7 @@
               <ul class="mes_head">
                 <li class="mes_head_user" >
                   <a href="javascript:;" class="user_a" title="">明珠求瑕</a>
-                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>思亘七险，点落九宫，神游八极，纵横十方。</span> </li> 
+                <li><span class="user_comment"  title="">回复<span class="aite_user">@纷纷扰扰扰红尘</span>笑看嫣红染半山，逐风万里白云间，逍遥此身不为客，天地三才任平凡。</span> </li> 
                 <li>
                   <ul class="updata_mes">
                       <li class="mess1">2016-12-12</li>

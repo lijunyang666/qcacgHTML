@@ -77,7 +77,7 @@
             <p class="p-2"title="{{ obj.bookIntroduction }}">
               <label>简介:</label>{{ obj.bookIntroduction }}&nbsp;</p>
             <div class="div">
-              <span class="span" title="最新卷:{{obj.volumeEntity.volumeName}}"><label>最新卷:</label>{{obj.volumeEntity.volumeName}}</span>
+              <span class="span_new" title="最新卷:{{obj.volumeEntity.volumeName}}"><label>最新卷:</label>{{obj.volumeEntity.volumeName}}</span>
               <span class="span" title="最新更新:{{ szxj.getLocalTime(obj.bookUpdate / 1000) }}" style="width: 240px;">
               	<label>最新更新:</label>{{ szxj.getLocalTime(obj.bookUpdate / 1000) }}
               </span>

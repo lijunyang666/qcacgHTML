@@ -271,7 +271,15 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
+.class-content .line .line-content .span_new {
+  overflow: hidden;
+  display: block;
+  float: left;
+  margin-right: 20px;
+  width: 240px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .class-content .line .line-content .p {
   color: #00a1d6;
   font-size: 22px;
@@ -290,6 +298,7 @@ a {
   max-height: 50px;
   overflow: hidden;
   line-height: 1.2;
+  width: 720px;
   
 }
 

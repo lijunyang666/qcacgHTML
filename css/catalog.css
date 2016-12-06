@@ -102,7 +102,7 @@
     
   }
 	.screen .span_author {
-		color: #4a8eec;
+		color: #00A1D6;
 	}
 	.screen h3{
 		width: 285px;
@@ -449,17 +449,21 @@
 		.index .text_type ul li{
 			width: 60px;
 			height: 20px;
+			
 			line-height: 17px;
 			float: left;
 		}
 		.index .text_type .text_span {
-			width: 40px;
+			width: 48px;
+			
 			height: 20px;
-			display: block;
+			display: inline-block;
 			text-align: center;
-			border-radius: 4px;
+			border-radius: 6px;
 			color: #ff8E8E;
 			border: 1px solid #ff8E8E;
+
+		
 		}
 		.index .text_type .text_span:hover {
 			background-color: #FF7A7A;
