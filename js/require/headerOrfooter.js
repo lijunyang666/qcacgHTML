@@ -3,3 +3,6 @@ Vue.component('myfooter', footer);
 if (VueAlert) {
   Vue.component('alert', VueAlert);
 }
+if (VueConfirm) {
+  Vue.component('confirm', VueConfirm);
+}

@@ -21,7 +21,7 @@
       <a v-on:click="screenFn"  id="btn-screen-tool" title="全屏" class="fullscreen"><i class="fa fa-expand"></i></a>
     </div>
     <div class="tool-bottom">
-      <a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" :href="path.TemprootPath + '/view/catalog.html'"><i class="fa fa-list"></i></a>
+      <a v-on:click="gotoCatalogFn" id="btn-menu-tool" title="目录" class="menu" :href="path.TemprootPath + '/view/catalog.html?bookId=' + bookcontent.bookId "><i class="fa fa-list"></i></a>
       <a v-on:click="settingShow" id="btn-setting" title="设置" class="setting"><i class="fa fa-cog"></i></a>
       <a v-on:click="lampFn" id="btn-light" title="夜间模式" class="light" ><i class="fa fa-lightbulb-o"></i></a>
     </div>

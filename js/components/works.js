@@ -21,7 +21,7 @@ var works = Vue.extend({
         ulName: '', // 画师名称
         bookName: '',
         textArea: '',
-    }
+      }
     },
     ready: function() {
       $('#cropper-img').cropper({

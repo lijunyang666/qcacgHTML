@@ -11,6 +11,7 @@
  </head> 
  <body id="app" v-show="bodyFlag" style="display: none;">
   <alert v-ref:vue-alert></alert>
+  <confirm v-ref:vue-confirm></confirm>
   <myheader :user-name.sync="userName" :login-img.sync="loginImg" :active.sync="active"></myheader>
   <div class="user_info_topBJ"></div>
   <div class="user_info clear"> 
@@ -174,6 +175,7 @@
   App.component('myfooter', footer);
   App.component('myheader', header);
   App.component('alert', VueAlert);
+  App.component('confirm', VueConfirm);
   router.redirect({
   	'*': 'info',
   });
