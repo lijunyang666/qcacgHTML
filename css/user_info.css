@@ -537,6 +537,7 @@
 	background: url("../img/up_line.jpg") no-repeat left top;
 }
 
+
 .user_info .user_info_right .user_info_content .work_information > span:nth-child(1) {
 	font-size: 18px;
 	margin: 0 14px 0 15px;
@@ -572,6 +573,7 @@
 	vertical-align: middle;
 }
 
+
 .user_info .user_info_right .user_info_content .work_information > a > p:nth-child(2) span {
 	color: #b1b1b1;
 }
@@ -582,7 +584,10 @@
 }
 
 .user_info .user_info_right .user_info_content .chapter > a > p:nth-child(1) span {
-	color: #c2cda2;
+	color: #B1B1B1;
+}
+.user_info .user_info_right .user_info_content .chapter > a > p:nth-child(1) span:hover {
+  color: #c2cda2;
 }
 
 .user_info .user_info_right .user_info_content .chapter > a > p:nth-child(2) img {
@@ -974,21 +979,8 @@
 	font-size: 12px;
 }
 
-.hoverBlock:hover .hoverBlockActive {
-	display: block;
-}
 
-.hoverBlock:hover .hoverBlockNotActive {
-	display: none;
-}
 
-.hoverBlockActive {
-	display: none;
-}
-
-.hoverBlockNotActive {
-	display: block;
-}
 
 .chapter .labelTitle {
 	width: 255px;

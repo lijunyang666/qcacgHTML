@@ -15,8 +15,8 @@
 	<body  id="app" @keydown="keyDownFn"
 		v-bind:style="fixed === true? 'font-family: FontAwesome;overflow:hidden':'font-family: FontAwesome;'">
 		<alert v-ref:vue-alert></alert>
-		<div class="hezi" style="float: right; position: relative; right: 480px; top: 450px;">
-		<div id="book-tool" class="book-tool">
+		
+		<div id="book-tool" class="book-tool" >
     <div class="tool-top">
       <a v-on:click="screenFn"  id="btn-screen-tool" title="全屏" class="fullscreen"><i class="fa fa-expand"></i></a>
     </div>
@@ -32,7 +32,7 @@
       <a v-else id="btn-next-tool" @click="setNextEnd" title="下一章" class="next js-link-state" href="javascript:;"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
-	</div>	
+	
 		
 		
 	<div class="content">

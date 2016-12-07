@@ -56,6 +56,7 @@ font-size:inherit;text-rendering:auto;
 .read_alert img {
   vertical-align: middle;
   margin:15px 15px 15px 25px ;
+  
 }
 .modal-setting label {
 	color:#333;
@@ -292,9 +293,9 @@ font-size:inherit;text-rendering:auto;
   
 }
 .book-tool {
-	position: fixed;
+	position:fixed;
 	bottom: 22%;
-	right: 23%;
+	right: 450px;
 	z-index: 99999;
 
 }
@@ -312,6 +313,7 @@ font-size:inherit;text-rendering:auto;
 }
 .book-tool a:hover {
 	color:#eaeaea;
+	
 }
 .book-tool a:active {
 	background:#393939
@@ -361,7 +363,7 @@ font-size:inherit;text-rendering:auto;
 	float:right
 }
 .book-tool .tool-top {
-	float:right
+	float:right;
 }
 }.error-read,.loading-read {
 	text-align:center;
