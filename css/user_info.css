@@ -1013,9 +1013,9 @@
 
 @font-face {
 	font-family:icomoon;
-            src:url(../font/icomoon.ttf)format('embedded-opentype');
-            src:url(../font/icomoon.ttf)format('woff2');
-            font-weight:400;font-style:normal;
+  src:url(../font/icomoon.ttf)format('embedded-opentype');
+  src:url(../font/icomoon.ttf)format('woff2');
+  font-weight:400;font-style:normal;
 }
 
 .wangEditor-txt {
