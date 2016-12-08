@@ -83,7 +83,7 @@
 		font-size: 12px;
 		padding: 3px 10px;
 		background-color: #00A1D6;
-		border-radius: 8px;
+		border-radius: 5px;
 		color: #FFFFFF;
 		
 		
@@ -96,7 +96,7 @@
     font-size: 12px;
     padding: 3px 3px;
     color: #00A1D6;
-    border-radius: 8px;
+    border-radius: 5px;
     border: 1px solid #00A1D6;
     
     
@@ -435,7 +435,7 @@
 		    -webkit-box-orient: vertical;
 		    height: 112px;
 		    font-size: 12px;
-		    
+		    line-height: 1.3;
 		    
 		}
 		.index .text_type {
@@ -658,7 +658,7 @@
 		/*楼中楼回复*/
     .index .CommentArea  .Publish {
       width: 630px;
-      height: 100px;
+      height: 90px;
       margin-left:120px ;
     }
     .index .CommentArea  .Publish .user_head {
@@ -701,8 +701,53 @@
     .index .CommentArea hr {
       margin: 0 4% 0 15%  ;
     }
-
-
+    .index .CommentArea .text_page {
+      margin-left: 120px;
+      margin-bottom: 10px;
+      line-height: 24px;
+      font-size: 13px;
+    }
+    .index .CommentArea .text_page b {
+      margin: 0 3px;
+    }
+    .index .CommentArea .text_page li {
+      float: left;
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+    .index .CommentArea .text_page .page_number {
+      cursor: pointer;
+      width: 25px ;
+      height: 25px;
+      text-align: center;
+    }
+.index .CommentArea .text_page .page_number:hover {
+  color: #00A1D6;
+  border: 1px solid #00A1D6;
+  border-radius: 4px;
+}
+.index .CommentArea .text_page .page_number:active {
+  color: white;
+  background-color: #00A1D6;
+}
+.index .CommentArea .text_page .page_up {
+  display: none;
+}
+.index .CommentArea .text_page .page_next {
+  cursor: pointer;
+  height: 25px;
+  width: 54px;
+  text-align: center;
+}
+.index .CommentArea .text_page .page_next:hover { 
+  color: #00A1D6;
+  border: 1px solid #00A1D6;
+  border-radius: 6px;
+}
+.index .CommentArea .text_page .page_next:active {
+  color: white;
+  background-color: #00A1D6;
+}
 		.index  .text_sort {
 			width: 580px;
 			height: 27px;
@@ -743,7 +788,27 @@
 	   width: 600px;
 	   height: 1px;
 	   margin-left: 100px;
+	   
 		}
+		.index .CommentArea .updata_dispaly {
+		  color: #9E9E9E;
+		  margin: 15px 0 20px 120px;
+		  line-height: 22px;
+		  font-size: 13px;
+		}
+    .index .CommentArea .updata_dispaly span{
+		      color: #3DB2D8;
+		      cursor: pointer;
+		      width: 60px;
+		      height: 22px;
+		      display: inline-block;
+		      text-align: center;
+		    }
+		.index .CommentArea .updata_dispaly span:hover{
+          color: #00A1D6;
+          background-color: #F0F0F0;
+          border-radius: 6px;
+        }    
 		.index .text_user {
 		 	width: 678px;
 		 	margin-top: 20px; 
@@ -808,11 +873,11 @@
     }
     .index .text_user ul li .updata_mes .mess2:hover{
       color: #00A1D6;
-      background-color: #D9D9D9;
+      background-color: #F0F0F0;
     }
     .index .text_user ul li .updata_mes .mess3:hover{
       color: #00A1D6;
-      background-color: #D9D9D9;
+      background-color: #F0F0F0;
     }
 		.index .text_user .user_a {
 			display: block;
@@ -841,7 +906,7 @@
 		  	width: 530px;
 		    
 		    display: -webkit-box;
-		    
+		    max-height: 588px;
 		    -webkit-box-orient: vertical;
 		    line-height: 1.5;
 		    min-height: 14px;
@@ -850,7 +915,7 @@
 		/*楼中楼*/
      .index .text_userTow {
       width: 678px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       margin-left: 120px;
       height: 100%;
       position: relative;
@@ -911,11 +976,11 @@
     }
     .index .text_userTow ul li .updata_mes .mess2:hover{
       color: #00A1D6;
-      background-color: #D9D9D9;
+      background-color: #F0F0F0;
     }
     .index .text_userTow ul li .updata_mes .mess3:hover{
       color: #00A1D6;
-      background-color: #D9D9D9;
+      background-color: #F0F0F0;
     }
     .index .text_userTow .user_a {
       display: block;
@@ -935,6 +1000,7 @@
         -webkit-box-orient: vertical;
         line-height: 1.5;
         min-height: 14px;
+        max-height: 588px;
     }
 		.index .text_userTow .user_comment .aite_user {
 		  color: #00A1D6;

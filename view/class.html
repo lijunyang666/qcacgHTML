@@ -93,7 +93,7 @@
         			<div class="vertical-img" @click="gotoBook(temp.bookId)">
         				<img src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: '', $event)"  class="cover" />
         				<div class="vertical-img-line">
-        					<img src="../img/50x50-tou.jpg" />
+        					<img :src="path.rootPath + temp.userHeadImg " />
         					<div class="vertical-Author-name vertical-hover">{{temp.author}}</div>
         					<div class="vertical-font-size vertical-hover"><label>字数:</label>{{ temp.bookWordCount }}</div>
         					<div class="vertical-click-size vertical-hover"><label>点击:</label>{{ temp.bookHit }}</div>
