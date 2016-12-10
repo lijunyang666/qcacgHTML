@@ -41,7 +41,7 @@
 						</span>
 						<span class="update">
 							<span class="t">更新日期：</span>
-							<span class="d">{{bookcontent.contentUpdate}}</span>
+							<span class="d">{{szxj.getLocalTime(bookcontent.contentUpdate / 1000)}}</span>
 						</span>
 					</p>
 				</div>
@@ -169,6 +169,7 @@
 		var vueDemo = new Vue({
   			el: '#app',
   			data: {
+  			  szxj: SZXJ,
   			  path: PathList,
   				fixed:false,
   				font_size: 16,

@@ -6,3 +6,6 @@ if (VueAlert) {
 if (VueConfirm) {
   Vue.component('confirm', VueConfirm);
 }
+if (editor) {
+  Vue.component('editor', editor);
+}
