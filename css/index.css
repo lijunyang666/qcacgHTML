@@ -154,6 +154,7 @@
 	}
 	.index .main .main_title .main_img {
 		margin-top: 10px;
+		border-radius: 4px;
 	}
 	.index .main .main_title .main_p {
 		width: 310px;
@@ -499,10 +500,11 @@
 	    display: -webkit-box;
 	    -webkit-line-clamp: 2;
 	    -webkit-box-orient: vertical;
+	    height: 45px;
 	}
 	.index .Side .Side_content .Side_con ul .Side_surname {
 		width: 196px;
-		height: 45px;
+		height: 20px;
 	}
 	.index .Side .Side_content .Side_con ul .Side_card {
 		  float: left;
@@ -715,10 +717,11 @@
 	    display: -webkit-box;
 	    -webkit-line-clamp: 2;
 	    -webkit-box-orient: vertical;
+	    height: 45px;
 	}
 	.index .Word .Word_content .Word_con ul .Word_surname {
 		width: 196px;
-		height: 45px;
+		height: 20px;
 
 	}
 	.index .Word .Word_content .Word_con ul .Word_card {
@@ -870,15 +873,25 @@
 	.bookImg_Sl {
 	  height: 84px;
     width: 60px;
+    border-radius: 4px;
 	}
 	.bookImg_S {
 	  width: 128px;
     height: 174px;
+    border-radius: 4px;
 	}
 	.bookImg_L {
     width:157px;height: 236px;
+    border-radius: 4px;
   }
 	.bookImg_X {
     width: 319px;
     height: 435px;
+    border-radius: 4px;
+  }
+  .white {
+    height: 180px;
+  }
+  .white_sidebar {
+    height: 160px;
   }

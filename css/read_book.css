@@ -293,12 +293,12 @@ font-size:inherit;text-rendering:auto;
   
 }
 .book-tool {
-	position:fixed;
-	bottom: 22%;
-	right: 450px;
-	z-index: 99999;
+  position: absolute;
+  right: 25px;
+  z-index: 99999;
+  bottom: 25%;
+ }
 
-}
 .book-tool a {
 	display:block;
 	color:#5b5b5b;
@@ -390,7 +390,7 @@ body {
 .content {
 	padding:0;
 	min-height:auto;
-	
+	position: relative;
 }
 body::-webkit-scrollbar {
 	width:6px
@@ -611,3 +611,5 @@ footer:before {
 .fa-check:before {
     content: "\F00C";
 }
+
+
