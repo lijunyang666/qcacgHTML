@@ -1383,10 +1383,59 @@
 	float: left;
 	margin: 10px 10px 0 50px;
 	border-radius: 40px;
-	width: 80px;
-	height: 80px;
+	width: 64px;
+	height: 64px;
+	background-image: url(../img/sss10.png);
 }
-
+.attention_AI_words {
+  width: 480px;
+  height: 40px ;
+  display: inline-block;
+}
+.attention_AI_words li{
+  float: left;
+}
+.attention_AI_words .attention_AI_time {
+  color: #7D7D7D;
+  
+  margin: 15px 280px 10px 10px;
+}
+.attention_AI_words .attention_AI_detailed { 
+  margin-top: 15px;
+  cursor: pointer;
+}
+.attention_AI_words .attention_AI_detailed:hover {
+  color:#92C202 ;
+  
+} 
+.attention_AI_name {
+  height: 30px;
+  line-height: 30px;
+  
+}
+.attention_AI_name span {
+  color: #00A1D6;
+  margin: 0 5px 0 10px;
+  cursor: pointer;
+}
+.attention_AI_comment {
+  width:760px ;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 5px;
+  margin-top: 12px;
+  margin-left: 40px;
+  background-color: #F3F3F3;
+  margin-bottom: 10px;
+}
+.attention_AI_comment span{
+  width: 700px;
+  margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
+}
 .attention-name {
 	float: left;
 	width: 670px;
@@ -1476,72 +1525,13 @@
 	margin: 15px 0px 10px 15px;
 }
 
-.replyAI {
-	float: left;
-	margin: 18px 0 0 0;
-	min-height: 110px;
-}
-
-.replyAI .word1 {
-	font-size: 13px;
-	color: #A7A7A7;
-	padding-left: 5px;
-}
-
-.replyAI .word2 {
-	padding-left: 300px;
-	cursor: pointer;
-}
-
-.replyAI .word2:hover {
-	color: #92C202;
-	s
-}
-
-.replyAI1 {
-	margin: 10px 0 10px 5px;
-	min-height: 14px;
-	width: 467px;
-	line-height: 1.3;
-}
-
-.replyAI2 {
-	margin: 15px 0 15px 30px;
-	min-height: 14px;
-  width: 467px;
-  line-height: 1.3;
-}
-.replyAI2:hover .word-reply {
-	display: inline-block;
-}
-.replyAI2:hover .word-time {
-	display: inline-block;
-}
-
-.replyAI .word-name {
-	color: #169BD5;
-	cursor: pointer;
-}
-
-.replyAI .word-time {
-	margin-left: 20px;
-	font-size: 12px;
-	color: #A7A7A7;
-	display: none;
-}
-
-.replyAI  .word-reply {
-	cursor: pointer;
-	margin-left: 20px;
-	font-size: 12px;
-	color: #A7A7A7;
-	display: none;
-}
 
 
-.replyAI3 {
-	margin: 25px 0 30px 5px;
-}
+
+
+
+
+
 
 .img-attention-word {
 	margin: 10px 0 15px 50px;
