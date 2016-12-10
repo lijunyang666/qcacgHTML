@@ -162,6 +162,7 @@
       </li>
     </ul>
   </div>
+  <div class="white_sidebar">
   <div class="sidebar_cont" v-for="obj in indexList.weekBookByBookCopperCoins" v-if="$index >= 3"> 
     <ul> 
       <li><span class="span">{{ $index + 1 }}</span></li> 
@@ -175,6 +176,7 @@
       </li> 
     </ul> 
   </div> 
+  </div>
   <p style="margin: 0px;">
     <a :href="path.TemprootPath + '/view/ranking.html?type=1'">查看更多</a>
   </p> 
@@ -280,6 +282,7 @@
         </li>
       </ul> 
     </div> 
+    <div class="white clear">
     <div class="Side_cont1" v-for="obj in indexList.weekBookByBookHit" v-if="$index >= 3"> 
       <div class="Side_cont_block">
        {{$index + 1}}
@@ -290,9 +293,11 @@
         <li v-if="rankingList.clickSize === 1">{{obj.everyMonthHit}}</li>
         <li v-if="rankingList.clickSize === 2">{{obj.bookHit}}</li>
       </div>
-      </div> 
+      </div>  
+    </div>
       <p style="margin: 0px;">
         <a :href="path.TemprootPath + '/view/ranking.html?type=2'">查看更多</a>
+       
       </p>
     </div> 
 </div>
@@ -362,7 +367,7 @@
         </li> 
       </ul> 
     </div>
-    
+     <div class="white"> 
     <div class="Word_cont" v-for="obj in indexList.weekBookByBookWordCount" v-if="$index >= 3"> 
       <div class="Word_cont_block">
        {{ $index + 1 }}
@@ -374,6 +379,7 @@
           <span v-if="rankingList.fontSize === 2">{{indexList.weekBookByBookWordCount[$index].bookWordCount}}字</span>
       </div>
     </div> 
+    </div>
     <p style="margin: 0px;">
       <a :href="path.TemprootPath + '/view/ranking.html?type=3'">查看更多</a>
     </p> 

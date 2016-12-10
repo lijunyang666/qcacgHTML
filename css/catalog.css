@@ -834,6 +834,7 @@
 			height: 20px;
 			margin-bottom: 5px;
 			margin-top: 5px;
+	    line-height: 16px;
 		}
 		.index .text_user ul li .updata_mes{
 		  height: 16px;
@@ -899,9 +900,30 @@
 			border-radius: 4px;
 			float: left;
 			color: #FFFFFF;
-			margin: -3px 0 0 15px;
+			margin: 0px 0 0 15px;
 			font-size: 13px;
 		}
+    .index .text_user .user_Top_a {
+      width: 40px;
+      height: 17px;
+      
+      text-align: center;
+      line-height: 16px;
+      display: none;
+      float: left;
+      color: #7D7D7D;
+      margin: 0px 0 0 15px;
+      font-size: 12px;
+    }		
+    .index .text_user ul .mes_head_user:hover .user_Top_a {
+      display: block;
+    }
+    .index .text_user .user_Top_a:hover {
+      border-radius: 4px;
+      background-color:#F0F0F0 ;
+      color: #00A1D6;
+      
+    }
 		.index .text_user .user_comment {
 		  	width: 530px;
 		    
