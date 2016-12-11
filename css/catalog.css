@@ -925,13 +925,11 @@
       
     }
 		.index .text_user .user_comment {
-		  	width: 530px;
-		    
-		    display: -webkit-box;
-		    max-height: 588px;
-		    -webkit-box-orient: vertical;
-		    line-height: 1.5;
-		    min-height: 14px;
+	  	width: 530px;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    line-height: 1.5;
+	    min-height: 14px;
 		}
 		
 		/*楼中楼*/

@@ -292,12 +292,14 @@ font-size:inherit;text-rendering:auto;
 	font-size:12px;
   
 }
+
 .book-tool {
-  position: absolute;
+  position: fixed;
   right: 25px;
   z-index: 99999;
-  bottom: 25%;
- }
+  top: 25%;
+}
+
 
 .book-tool a {
 	display:block;

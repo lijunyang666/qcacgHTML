@@ -58,7 +58,7 @@
         </div> </a> 
       </div> 
       <figcaption> 
-       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{obj.bookName}}">{{ obj.bookName }}</a> 
+       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{obj.bookName}}">{{ obj.bookName }}</a>
       </figcaption> 
      </figure> 
     </div> 
@@ -74,29 +74,27 @@
      </div> 
      <div> 
       <div class="main_picture"> 
-        
-       <figure v-for="obj in indexList.allBook" v-if="$index < 4" @mouseover="setMouseOut($index, $event)">
-        <div class="display"> 
-         <a href="javascript:;"><img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_S" /></a> 
-         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
-         <div class="Small"> 
-          <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
-          <label>{{ obj.author }}</label> 
-          <ul class="Small_ul"> 
-            <li>字数：{{ obj.bookWordCount }}</li> 
-            <li>点击：{{ obj.bookHit }}</li> 
-            <li>收藏：{{ obj.bookCollect }}</li> 
-            <li>打赏：{{ obj.bookCopperCoins }}</li> 
-          </ul> 
-         </div> 
-         </a>
-        </div> 
-        <figcaption>
-         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName }}">{{ obj.bookName }}</a> 
-        </figcaption> 
-       </figure> 
-      
-      </div> 
+        <figure v-for="obj in indexList.allBook" v-if="$index < 4" @mouseover="setMouseOut($index, $event)">
+          <div class="display"> 
+           <a href="javascript:;"><img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_S" /></a> 
+           <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
+           <div class="Small"> 
+            <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
+            <label>{{ obj.author }}</label> 
+            <ul class="Small_ul"> 
+              <li>字数：{{ obj.bookWordCount }}</li> 
+              <li>点击：{{ obj.bookHit }}</li> 
+              <li>收藏：{{ obj.bookCollect }}</li> 
+              <li>打赏：{{ obj.bookCopperCoins }}</li> 
+            </ul> 
+           </div> 
+           </a>
+          </div> 
+          <figcaption>
+           <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName }}">{{ obj.bookName }}</a> 
+          </figcaption> 
+        </figure> 
+      </div>
       <img src="./img/index/icon-4.jpg" style="float: right;margin:  20px -24px 0 0;" />
       <div class="main_pictu"> 
         

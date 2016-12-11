@@ -1,11 +1,11 @@
 Vue.component('myheader', header);
 Vue.component('myfooter', footer);
-if (VueAlert) {
+if (typeof VueAlert !== 'undefined') {
   Vue.component('alert', VueAlert);
 }
-if (VueConfirm) {
+if (typeof VueConfirm !== 'undefined') {
   Vue.component('confirm', VueConfirm);
 }
-if (editor) {
+if (typeof editor !== 'undefined') {
   Vue.component('editor', editor);
 }

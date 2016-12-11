@@ -24,19 +24,19 @@
         this.editorFn();
       }
       ,methods: {
-          submitFn: function() {
-              var _URL = PathList.saveOrUpdateContent;
-              var _data = {
-                  formatText: this.editor.$txt.formatText(),      //文本格式化内容
-                  content: this.editor.$txt.html(),      //文本html内容
-                  contentTitle: this.contentTitle,    // 内容名称
-                  volumeId: this.id, // 卷id
-                  contentId: null,
-              };
-			  SZXJ.http(this,'post', PathList.saveOrUpdateContent, _data, (response) => {
-            	history.back();
-          	  });
-          },
+        submitFn: function() {
+          var _URL = PathList.saveOrUpdateContent;
+          var _data = {
+            formatText: this.editor.$txt.formatText(),      //文本格式化内容
+            content: this.editor.$txt.html(),      //文本html内容
+            contentTitle: this.contentTitle,    // 内容名称
+            volumeId: this.id, // 卷id
+            contentId: null,
+          };
+    		  SZXJ.http(this,'post', PathList.saveOrUpdateContent, _data, (response) => {
+          	history.back();
+        	});
+        },
         getBookListFn: function() {
         	
         },

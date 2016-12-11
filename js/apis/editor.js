@@ -13,6 +13,9 @@ var editor = Vue.extend({
     }
   },
   methods: {
+    getEditor() {
+      return this.editor;
+    }
   },
   ready: function() {
     var textarea = document.getElementById(this.id);
@@ -21,7 +24,6 @@ var editor = Vue.extend({
     this.editor.config.uploadHeaders = {
       'JSESSIONID': localStorage.getItem('JSESSIONID'),
     }
-    console.log(this.editor.config.menus)
     this.editor.config.menus = ['emotion','img'];
     this.editor.config.emotions = {
       'default': {
