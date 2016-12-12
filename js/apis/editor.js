@@ -6,6 +6,9 @@ var editor = Vue.extend({
   props: {
     id: {
       type: String,
+    },
+    editor: {
+      type: Object,
     }
   },
   data:function(){
