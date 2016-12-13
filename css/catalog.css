@@ -18,12 +18,12 @@
 	}
 	.index .screen {
 		width: 321px;
-		height: 1621px;
-		/*min-height: 450px;*/
+		/*height: 1621px;*/
+		min-height: 650px;
 		position: absolute;
 		top: 50px;
 		left: 802px;
-		background-color: #fdfdfd;
+		background-color: #fefefd;
 		
 	}
 	.index .picture {

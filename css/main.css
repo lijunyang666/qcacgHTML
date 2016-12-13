@@ -343,11 +343,11 @@ a {
   background-color: #000;
   background-color: rgba(0,0,0,.2);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-  padding: 10px;
   opacity: 0;
   -webkit-transition: opacity .3s ease;
   transition: opacity .3s ease;
   border-radius: 4px;
+  padding: 10px;
   cursor: pointer;
 }
 

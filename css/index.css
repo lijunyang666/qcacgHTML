@@ -501,6 +501,7 @@
 	    -webkit-line-clamp: 2;
 	    -webkit-box-orient: vertical;
 	    height: 45px;
+	    margin-left: 6px;
 	}
 	.index .Side .Side_content .Side_con ul .Side_surname {
 		width: 196px;
@@ -718,6 +719,7 @@
 	    -webkit-line-clamp: 2;
 	    -webkit-box-orient: vertical;
 	    height: 45px;
+	    margin-left: 6px;
 	}
 	.index .Word .Word_content .Word_con ul .Word_surname {
 		width: 196px;
@@ -774,6 +776,20 @@
 		color: white;
 		
 	}
+	.Side_cont1 a {
+	  width: 120px;
+    display: inline-block;
+    overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+	}
+  .Word_cont a{ 
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+  }	
 	.index .Word p {
 		width: 278px;
     height: 20px;
@@ -787,15 +803,14 @@
 	}	
 	.index .display:hover .hide,
 	.index .display:hover .Small{
-		opacity: 1;
+  opacity: 1;
 	}
 	.index  .display:hover .details_img{
 		-webkit-filter:blur(2px);
 		
 	}
 	.index  .display {
-		position: relative;
-
+  position: relative;
 	}
 	.index  .hide {
 		width: 161px;
@@ -836,8 +851,11 @@
 		position: absolute;
 		top: 0;
 		color: #FFFFFF;	
-		opacity: 0;
 		z-index: 1;
+  	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .5s ease;
 	}
 	.index .Small img {
 		margin: 8px 0px 0 5px;
