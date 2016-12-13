@@ -105,14 +105,14 @@
     <ul class="mes_head">
       <li class="mes_head_user" >
         <a href="javascript:;" class="user_a" title="">{{obj.userName}}</a>
-        <a v-if="$index === 0 && findCommentAndReply.strickie != '0'" href="javascript:;" class="user_Top">置顶</a>
-        <a v-if="obj.auth && findCommentAndReply.strickie == '0' " href="javascript:;" class="user_Top_a">置顶</a>
+        <a v-if="$index === 0 && obj.strickie != '0'" href="javascript:;" class="user_Top">置顶</a>
+        <a v-if="findCommentAndReply.auth && obj.strickie == '0'" @click="strickieFn(obj.commentId)" href="javascript:;" class="user_Top_a">置顶</a>
       </li>
       <li><span class="user_comment" style="display: block;white-space: normal;word-break:break-all;word-wrap:break-word;">{{{ obj.commentContent }}}</span></li>  
       <li>
         <ul class="updata_mes">
             <li class="mess1">{{ szxj.getLocalTime(obj.commentDate / 1000) }}</li>
-            <li class="mess2" @click="messageShow(obj.commentId)">回复</li>
+            <li class="mess2" @click="messageShow(obj.commentId, 0, obj.userName, obj.userId)">回复</li>
             <li class="mess3">举报</li>
         </ul>
       </li>
@@ -120,7 +120,7 @@
   </div >
   
   <div class="text_userTow clear" style="position: relative;" v-for="temp in obj.replyEntityList">
-    <a href="javascript:;"><img src="../img/smallHead.png" @load="szxj.loadImg(temp.userHead ? path.rootPath + temp.userHead: '', $event)" style="width: 36px;height: 36px;"/ ></a>
+    <a href="javascript:;"><img src="../img/smallHead.png" @load="szxj.loadImg(temp.userHead ? path.rootPath + temp.userHead: '', $event)" style="border-radius: 25px;width: 36px;height: 36px;"/ ></a>
     <ul class="mes_head">
       
       <li class="mes_head_user" >
@@ -129,57 +129,60 @@
       
       <li>
         <span class="user_comment"  title="">
-          <label>回复<span class="aite_user">@{{ temp.replyUserName }}</span></label>
+          <label v-if="obj.replyStatus">回复<span class="aite_user">@{{ temp.replyUserName }}</span></label>
            
           {{{ temp.replyContent }}}
         
-        </span> 
+        </span>
       </li> 
         
       <li>
         <ul class="updata_mes">
             <li class="mess1">{{ szxj.getLocalTime(temp.replyDate / 1000) }}</li>
-            <li class="mess2" @click="messageShow(temp.commentId)">回复</li>
+            <li class="mess2" @click="messageShow(temp.commentId, 1, temp.userName, temp.userId)">回复</li>
             <li class="mess3">举报</li>
         </ul>
       </li>
     </ul>
   </div>
   
-  <ul class="Publish" :style="commentId === obj.commentId ? 'visibility: ;':'visibility: hidden;'">
+<ul class="Publish" :style="commentId === obj.commentId ? 'visibility: ;':'display: none;'">
     <li class="user_head"><a href="javascript:;"><img src="../img/sss8.jpg" @load="szxj.loadImg(obj.userHead ? path.rootPath + obj.userHead: '', $event)"/></a></li>
     <li style="position: relative;float: left;width: 485px;min-height: 60px;">
       <editor :id="'editor_' + obj.commentId" :editor.sync="obj.editor"></editor>
     </li>
-    <li class="MessageBtn btn"><span style="line-height: 26px;">回复</span></li>
-  </ul>
+    <li class="MessageBtn btn" @click="saveReply(obj.commentId)"><span style="line-height: 26px;">回复</span></li>
+</ul>
   
-  <ul class="text_page clear" :style="obj.pageCount > 1 ? 'visibility: ;':'visibility: hidden;'">
+  
+<ul class="text_page clear" :style="obj.pageCount > 1 ? 'visibility: ;':'visibility: hidden;'">
+      
       <li>共<b>{{obj.pageCount}}</b>页</li>
-      <li class="page_up">上一页</li>
+      <li class="page_up" @click="setPage1(obj.pageNo - 1, $index)" :style="obj.pageNo > 1 ? 'display:block':'display:none'">上一页</li>
       
       <li v-if="(($index + 1) <= 5 && obj.pageNo < 3 || (($index + 1) > obj.pageNo - 3 &&  $index < obj.pageNo)) || ( (($index + 1) <= obj.pageNo + 2 &&　($index + 1) > obj.pageNo) || (obj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )"
-      :class="objTemp == obj.pageNo? 'active':''" v-for="objTemp in obj.page" @click="setPage1(objTemp)"><a>{{ objTemp }}</a></li>
+      :style="objTemp == obj.pageNo? 'font-weight:bold':''" v-for="objTemp in obj.page" @click="setPage1(objTemp, $index)"><a>{{ objTemp }}</a></li>
       
-      <li class="page_next">下一页</li>
-  </ul>
+      <li v-show="obj.pageNo !== obj.pageCount" class="page_next" @click="setPage1(obj.pageNo + 1, $index)">下一页</li>
+</ul>
+  
   <div class="hr"></div>  
 </div>
    
 
-<div class="Report">
+<div class="Report" style="display: none;">
     <form action="" method="get"> 
         请输入举报理由
     <br /><br /> 
     <ul>
-       <li><label><input name="Fruit" type="radio" value="" />&nbsp广告 </label> </li>
-    <li><label><input name="Fruit" type="radio" value="" />&nbsp刷屏 </label>  </li>
-    <li><label><input name="Fruit" type="radio" value="" />&nbsp剧透 </label>  </li>
-    <li><label><input name="Fruit" type="radio" value="" />&nbsp引战</label>  </li>
-    <li><label><input name="Fruit" type="radio" value="" />&nbsp政治</label>  </li>
-    <li> <label><input name="Fruit" type="radio" value="" />&nbsp内容不相关</label>  </li>
-    <li><label><input name="Fruit" type="radio" value="" />&nbsp人身攻击</label>  </li>
-    <li><label><input name="Fruit" type="radio" value="" />&nbsp其他</label>  </li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp广告 </label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp刷屏 </label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp剧透 </label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp引战</label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp政治</label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp内容不相关</label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp人身攻击</label></li>
+      <li><label><input name="Fruit" type="radio" value="" />&nbsp其他</label></li>
     </ul>
 </form> 
 <div class="true">确定</div>
@@ -428,9 +431,16 @@ var vuePractice = new Vue({
 		authorId: '',
 		commentId: '', // 根据评论id显示 回复输入框
 		commentStatus: 0, // 按回复数 或 按时间排序显示评论
+		replyStatus: 0,
+		replyUserId: 0,
 	},
 	methods: {
-	  messageShow: function(commentId) {
+	  strickieFn: function(commentId) {
+	    SZXJ.http(this,'post', PathList.top, { bookId: this.id,commentId: commentId }, (response) => {
+        this.setComment(this.commentStatus);
+      });
+	  },
+	  messageShow: function(commentId, v, name, id) {
 	    this.commentId = commentId; // editor
 	    var editor = {};
 	    var index = 0;
@@ -442,7 +452,13 @@ var vuePractice = new Vue({
 	      }
 	      // console.log(this.findCommentAndReply.comment[i].editor);
 	    }
-	    editor.$txt.html('<p><span style="color:#00A1D6;" contenteditable="false">回复@asdasd</span><span>&nbsp;<span></p>')
+	    this.replyUserId = id;
+	    if (v === 1) {
+	      editor.$txt.html('<p><span style="color:#00A1D6;" contenteditable="false">回复@'+name+'</span><span>&nbsp;<span></p>');
+	      this.replyStatus = 1;
+      } else {
+        this.replyStatus = 0;
+      }
 	  },
 	  setPageCount: function(v) {
       var obj = this.findCommentAndReply;
@@ -452,6 +468,29 @@ var vuePractice = new Vue({
         this.page.push(i+1);
       }
       this.$set('findCommentAndReply', obj);
+    },
+    setPage1: function(v, commentId) { // 获取回复的
+       var index = 0;
+       for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
+        if (this.findCommentAndReply.comment[i].commentId === commentId) {
+          index = i;
+          break;
+        }
+        // console.log(this.findCommentAndReply.comment[i].editor);
+      }
+      var _data = {
+        pageNo: v,
+        pageSize : 10,
+        commentId: this.findCommentAndReply.comment[index].commentId,
+      }
+      var obj = this.findCommentAndReply;
+      this.findCommentAndReply = {};
+      SZXJ.http(this,'get', PathList.moreReply, _data, (response) => {
+        obj.comment[index].replyEntityList = response.data;
+        obj.comment[index].pageNo = v;
+        this.findCommentAndReply = obj;
+        console.log(this.findCommentAndReply);
+      });
     },
     setPage: function(v) {
       if (!v || v > this.findCommentAndReply.pageCount || v <= 0 || v.toString().search(/[^0-9]/g) !== -1 || parseInt(v) === parseInt(this.findCommentAndReply.pageNo) ) {
@@ -508,13 +547,13 @@ var vuePractice = new Vue({
           this.findCommentAndReply.comment[i].page = [];
           this.findCommentAndReply.comment[i].pageNo = 1;
           // 计算评论楼中楼回复的总页数
-          if (this.findCommentAndReply.comment[i].replyEntityList.length / _data.pageSize <= 1) {
+          if (this.findCommentAndReply.comment[i].totalCount / _data.pageSize <= 1) {
             this.findCommentAndReply.comment[i].pageCount = 1;
           } else {
-            if (this.findCommentAndReply.comment[i].replyEntityList.length % _data.pageSize === 0) {
-              this.findCommentAndReply.comment[i].pageCount = this.findCommentAndReply.comment[i].replyEntityList.length / _data.pageSize;
+            if (this.findCommentAndReply.comment[i].totalCount % _data.pageSize === 0) {
+              this.findCommentAndReply.comment[i].pageCount = this.findCommentAndReply.comment[i].totalCount / _data.pageSize;
             } else {
-              this.findCommentAndReply.comment[i].pageCount = parseInt((this.findCommentAndReply.comment[i].replyEntityList.length / _data.pageSize), 10) + 1;
+              this.findCommentAndReply.comment[i].pageCount = parseInt((this.findCommentAndReply.comment[i].totalCount / _data.pageSize), 10) + 1;
             }
           }
           for (var j = 1; j <= this.findCommentAndReply.comment[i].pageCount;j++) {
@@ -525,8 +564,6 @@ var vuePractice = new Vue({
         });
     },
 	  saveComment: function() {
-	    var _URL = PathList.saveOrUpdateContent;
-	    console.log(this.$refs.editor);
 	    var editor = this.$refs.editor.getEditor();
       var _data = {
         commentContent: editor.$txt.html(), //文本html内容
@@ -535,6 +572,32 @@ var vuePractice = new Vue({
       SZXJ.http(this,'post', PathList.saveComment, _data, (response) => {
         editor.$txt.html('');
         this.getValueFn();
+      });
+	  },
+	  saveReply: function(commentId) { // 回复
+      var editor = {};
+      var index = 0;
+      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
+        if (this.findCommentAndReply.comment[i].commentId === commentId) {
+          editor = this.findCommentAndReply.comment[i].editor;
+          index = i;
+          break;
+        }
+      }
+      var _data = {
+        replyStatus: this.replyStatus,
+        commentId: this.commentId,
+        replyUserId: this.replyUserId, 
+        replyContent: editor.$txt.html(), //文本html内容
+      };
+      SZXJ.http(this,'post', PathList.saveReply, _data, (response) => {
+        editor.$txt.html('');
+        this.getValueFn();
+        var This = this;
+        setTimeout(function(){
+          This.setPage1(This.findCommentAndReply.comment[index].pageCount,This.commentId);
+          This.commentId = -1;   
+        },300);
       });
 	  },
 	  setAttention: function(){
