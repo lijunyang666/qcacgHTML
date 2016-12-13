@@ -47,7 +47,7 @@
 				<div class="book-bottom">
 					<p class="next-page" >
 					  <a v-if="nextContent.contentId" :href="path.TemprootPath + '/view/read_book.html?contentId=' + nextContent.contentId + '&bookId='+ nextContent.bookId" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a>
-					  <a v-else :href="path.TemprootPath + '/view/read_book.html?contentId=' + previousContent.contentId + '&bookId='+ previousContent.bookId" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a>
+					  <a v-else @click="setNextEnd" class="js-link-state">点击进入下一章<i class="fa fa-angle-right"></i></a>
           </p>
 					<p class="hint-page">按键盘上的 ←（左）键和 →（右）键可以快速切换章节</p>
 				</div>

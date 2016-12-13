@@ -41,7 +41,6 @@ var header = Vue.extend({
   },
   ready: function() {
     SZXJ.http(this,'get', PathList.getStatus, {}, (response) => {
-      console.log(response);
       this.loginImg = 'background-image: url('+ this.path.rootPath + response.data.status.userImage +')';
       this.loginFlag = response.data.status.flag;
       this.userName = response.data.status.userName;
