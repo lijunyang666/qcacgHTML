@@ -1477,7 +1477,7 @@
 .attention-name .wordAI2 {
   position:  absolute ;
   left: 420px;
-  
+  font-size: 12px;
   background-color:#3DB2D8;
   width: 55px;
   height: 20px;
@@ -1492,6 +1492,7 @@
 .attention-name .wordAI2:hover {
     border: 1px solid #00A1D6;
     color: #00A1D6;
+    background-color: white;
     
 
 }

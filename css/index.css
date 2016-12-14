@@ -129,6 +129,11 @@
 	.index .main .main_title a {
 		color: #7d7d7d;
 	}
+	 .index .main .main_title a:hover {
+	   color: #0e9ac8;
+	   transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+	 }
 	.index .main .main_title .main_recomm {
 		width: 850px;
 		height: 35px;
@@ -249,6 +254,11 @@
 	.index .sidebar .sidebar_content a{
 		color: #000000;
 	}
+	 .index .sidebar .sidebar_content a:hover{
+	   transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+        color: #0E9AC8;
+	 }
 	.index .sidebar .sidebar_content .sidebar_con {
 		width: 301px;
 		height:84px;
@@ -360,7 +370,13 @@
 	
 	.index .secon .secon_title a {
 		color: #7d7d7d;
+		
 	}
+	 .index .secon .secon_title a:hover {
+	   transition: all 0.4s ease;
+        -webkit-transition: all 0.4s ease;
+        color: #0e9ac8;
+	 }
 	.index .secon .secon_title .secon_recomm {
 		width: 850px;
 		height: 35px;
@@ -480,6 +496,11 @@
 	.index .Side .Side_content a{
 		color: #000000;
 	}
+	 .index .Side .Side_content a:hover{
+	   color: #0E9AC8;
+	   transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+	 }
 	.index .Side .Side_content .Side_con {
 		width: 301px;
 		height:84px;
@@ -525,7 +546,13 @@
 		
 	.index .Side .Side_content .Side_con ul .Side_card a{
 		 color: #7d7d7d;
+		 font-size: 12px;
 	}
+	 .index .Side .Side_content .Side_con ul .Side_card a:hover{
+	   color: #0E9AC8;
+	   transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+	 }
 	.index .Side .Side_content .Side_con ul .Side_Percen {
       text-align:right;
 	    width: 110px;
@@ -698,6 +725,11 @@
 	.index .Word .Word_content a{
 		color: #000000;
 	}
+	 .index .Word .Word_content a:hover{
+	   color: #0E9AC8;
+	   transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+	 }
 	.index .Word .Word_content .Word_con {
 		width: 301px;
 		height:84px;
@@ -742,7 +774,13 @@
 	}
 	.index .Word .Word_content .Word_con ul .Word_card a{
 		 color: #7d7d7d;
+		 font-size: 12px;
 	}
+	 .index .Word .Word_content .Word_con ul .Word_card a:hover{
+	   color: #0E9AC8;
+	   transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+	 }
 	.index .Word .Word_content .Word_con ul .Word_Percen {
 		height: 14px;
 	    width: 110px;
@@ -854,7 +892,7 @@
 		z-index: 1;
   	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
-    -webkit-transition: opacity .3s ease;
+    -webkit-transition: opacity .5s ease;
     transition: opacity .5s ease;
 	}
 	.index .Small img {

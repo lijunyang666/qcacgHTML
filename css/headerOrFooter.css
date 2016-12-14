@@ -67,13 +67,24 @@
 .qcacg-header-parent .qcacg-header .liBlock .headers_display {
   background-color: white;
   width: 200px;
-  height: 80px;
+  height: 90px;
   position:absolute;
   top: 45px;
   right: 50px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.3);  
   border-radius: 3px 3px 6px 6px;
   display: none;
+}
+.emil_message {
+   position: absolute;
+   top: 28px;
+   left: 35px;
+   display: none;
+ 
+}
+.emil_message img{
+  width: 22px;
+  height: 15px;
 }
 .qcacg-header-parent .qcacg-header .liBlock:hover .headers_display {
   display: block;
@@ -103,7 +114,7 @@
   width: 200px;
   background-color: #D3D3D3;
   line-height: 30px;
-  margin-top: 10px;
+  margin-top: 20px;
   line-height: 30px;
   text-align: center;
   border-radius: 0px 0px 6px 6px; 

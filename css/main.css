@@ -49,6 +49,7 @@ a {
   cursor: pointer;
 }
 
+
 .btn:focus {
   outline: none;
   cursor: pointer;
@@ -202,10 +203,13 @@ a {
   height: 26px;
   width: 50px;
   text-align: right;
-  background-color: #00a1d6;
+  background-color: #3DB2D8;
   margin-left: 10px;
   border-radius: 4px;
   color: #ffffff;
+}
+.class-btn-search:hover {
+  background-color: #00a1d6;
 }
 
 .class-btn-search-input {
@@ -232,8 +236,10 @@ a {
   margin: 0px auto;
   height: 190px;
   margin-top: 30px;
-  -webkit-box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
 }
 
 .class-content .line {
@@ -241,7 +247,7 @@ a {
   margin: 0px auto;
   height: 190px;
   margin-top: 30px;
-  border-bottom: 1px solid #999999;
+  border-bottom: 1px solid #D3D3D3;
 }
 
 .class-content .line .line-img {
@@ -249,6 +255,7 @@ a {
   cursor: pointer;
   width: 100px;
   height: 140px;
+  border-radius: 4px;
 }
 
 .class-content .line .line-content {
@@ -281,10 +288,15 @@ a {
   white-space: nowrap;
 }
 .class-content .line .line-content .p {
-  color: #00a1d6;
+  color: black;
   font-size: 22px;
   margin-top: 25px;
   cursor: pointer;
+}
+.class-content .line .line-content .p:hover {
+  color: #0E9AC8;
+  transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
 }
 
 .class-content .line .line-content .div {
@@ -332,6 +344,7 @@ a {
   margin-top: 42.5px;
   position: relative;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .class-content .line-vertical .vertical-img .vertical-img-line {
@@ -432,7 +445,7 @@ a {
   padding-top: 12px;
   width: 150px;
   height: 60px;
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
   margin: 0 auto;
   cursor: pointer;

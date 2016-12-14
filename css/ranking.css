@@ -159,8 +159,9 @@
 		border: 1px solid #E3E6EA !important;
 	}
 	#content .content_ranking:hover {
-		box-shadow:  1px 6px 20px 1px #cfcece;
-		
+		box-shadow:  1px 2px 4px 1px #cfcece;
+		transition: all 0.3s ease;
+        -webkit-transition: all 0.25s ease;
 	}
 	#content .content_ranking {
 		width: 1104px;
@@ -182,6 +183,7 @@
 		float: left;
 		width: 100px;
 		height: 140px;
+		
 	}
 	#content .content_ranking ul {
 		width: 550px;
@@ -191,13 +193,18 @@
 		
 	}
 	#content .content_ranking ul li {
-		width: 160px;
+		width: 180px;
 		height: 50px;
 		float: left;
 	}
 	#content .content_ranking ul span{
 		font-size: 20px;
 	}
+	 #content .content_ranking ul span:hover{
+	   color: #0E9AC8;
+	   transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+	   }
 	#content .ranking_Collection  {
 		display: block;
 		width: 85px;

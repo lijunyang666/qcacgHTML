@@ -54,7 +54,7 @@
 	  		<a href="javascript:;"><img src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" @click="gotoBook(obj.bookId)"/></a>
 	  		<ul>
 	  			<li><a href="javascript:;" class="content_a" title="{{obj.bookName}}"><span @click="gotoBook(obj.bookId)">{{obj.bookName}}</span></a></li>
-	  			<li>作者：{{obj.author}}</li>
+	  			<li style="padding-top: 6px;">作者：{{obj.author}}</li>
 	  			<li><!-- 占位符 --></li>
 	  			
 	  			<li v-if="RequestObj.timeRank === 0">点击：{{obj.everyWeekHit}}</li>

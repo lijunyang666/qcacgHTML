@@ -160,7 +160,7 @@
       <li>共<b>{{obj.pageCount}}</b>页</li>
       <li class="page_up" @click="setPage1(obj.pageNo - 1, $index)" :style="obj.pageNo > 1 ? 'display:block':'display:none'">上一页</li>
       
-      <li v-if="(($index + 1) <= 5 && obj.pageNo < 3 || (($index + 1) > obj.pageNo - 3 &&  $index < obj.pageNo)) || ( (($index + 1) <= obj.pageNo + 2 &&　($index + 1) > obj.pageNo) || (obj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )"
+      <li class="page_number" v-if="(($index + 1) <= 5 && obj.pageNo < 3 || (($index + 1) > obj.pageNo - 3 &&  $index < obj.pageNo)) || ( (($index + 1) <= obj.pageNo + 2 &&　($index + 1) > obj.pageNo) || (obj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )"
       :style="objTemp == obj.pageNo? 'font-weight:bold':''" v-for="objTemp in obj.page" @click="setPage1(objTemp, $index)"><a>{{ objTemp }}</a></li>
       
       <li v-show="obj.pageNo !== obj.pageCount" class="page_next" @click="setPage1(obj.pageNo + 1, $index)">下一页</li>

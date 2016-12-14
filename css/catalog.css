@@ -33,6 +33,7 @@
 		top: 30px;
 		left: 15px;
 		padding-top:20px;
+		border-radius: 4px;
 	}
 	.text {
 		width: 550px;
@@ -89,6 +90,18 @@
 		
 		
 	}
+	 .screen .a_author:hover {
+	  text-align: center;
+    width: 90px;
+    height: 20px;
+    font-size: 12px;
+    padding: 2px 9px;
+    background-color: white;
+    border-radius: 5px;
+    color: #00A1D6;
+    border:1px solid #00A1D6;
+	   
+	 }
 	 .screen .a_author_Tow {
     text-align: center;
     width: 90px;
@@ -101,6 +114,16 @@
     
     
   }
+   .screen .a_author_Tow:hover {
+     text-align: center;
+    width: 90px;
+    height: 20px;
+    font-size: 12px;
+    padding: 3px 3px;
+    color: white;
+    border-radius: 5px;
+    background-color: #00A1D6;
+   }
 	.screen .span_author {
 		color: #00A1D6;
 	}
@@ -145,6 +168,7 @@
 		display: block;
 		width: 70px;
 		height: 100px;
+		border-radius: 4px;
 	}
 	.list {
 		width: 300px;
@@ -387,6 +411,11 @@
 		color: #000000;
 		text-align: center;
   }
+    .screen .works_a:hover {
+      color: #0E9AC8;
+      transition: all 0.2s ease;
+      -webkit-transition: all 0.2s ease;
+    }
 	 .screen .works_b {
     display: block;
     width: 150px;
@@ -577,7 +606,13 @@
 			white-space: nowrap;
 			padding-left: 10px;
 			width: 150px;
+			font-size: 13px;
 		}
+		  .index .text_chapter .group a:hover {
+		    color: #0e9ac8;
+		    transition: all 0.2s ease;
+		    -webkit-transition: all 0.2s ease;
+		  }
 		.index .text_chapter span {
 				width: 5px;
 				height: 14px;
@@ -736,7 +771,10 @@
   background-color: #00A1D6;
 }
 .index .CommentArea .text_page .page_up {
-  display: none;
+    cursor: pointer;
+  height: 25px;
+  width: 54px;
+  text-align: center;
 }
 .index .CommentArea .text_page .page_next {
   cursor: pointer;
@@ -750,6 +788,15 @@
   border-radius: 6px;
 }
 .index .CommentArea .text_page .page_next:active {
+  color: white;
+  background-color: #00A1D6;
+}
+.index .CommentArea .text_page .page_up:hover { 
+  color: #00A1D6;
+  border: 1px solid #00A1D6;
+  border-radius: 6px;
+}
+.index .CommentArea .text_page .page_up:active {
   color: white;
   background-color: #00A1D6;
 }
