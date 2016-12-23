@@ -490,15 +490,15 @@
 			display: inline-block;
 			text-align: center;
 			border-radius: 6px;
-			color: #ff8E8E;
-			border: 1px solid #ff8E8E;
-
+			color: #169BD5;
+			border: 1px solid #169BD5;
+      
 		
 		}
 		.index .text_type .text_span:hover {
-			background-color: #FF7A7A;
+			background-color: #00A1D6;
 			cursor: pointer;
-			color: #FFFFFF;
+			color: white;
 		}
 			
 		.index .text_reading {

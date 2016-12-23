@@ -67,13 +67,14 @@
 .qcacg-header-parent .qcacg-header .liBlock .headers_display {
   background-color: white;
   width: 200px;
-  height: 90px;
+  height: 70px;
   position:absolute;
   top: 45px;
   right: 50px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.3);  
   border-radius: 3px 3px 6px 6px;
   display: none;
+
 }
 .emil_message {
    position: absolute;
@@ -86,8 +87,31 @@
   width: 22px;
   height: 15px;
 }
+.mag_number {
+  position: absolute;
+  width:20px ;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #EA5464;
+  color: white;
+  top: 5px;
+  right: 130px;
+  line-height: 20px;
+  font-size: 10px;
+  text-align: center;
+}
+.noMeg{
+  height: 18px;
+  position: absolute;
+  width:150px ;
+  top: 25px;
+  left: 2px;
+  font-size: 12px;
+  
+}
 .qcacg-header-parent .qcacg-header .liBlock:hover .headers_display {
   display: block;
+
   
 }
 .qcacg-header-parent .qcacg-header .nav-right .headers_display a{
@@ -96,17 +120,20 @@
 }
 .qcacg-header-parent .qcacg-header .nav-right .headers_display .display_user{
   display: inline-block;
- 
+  height: 25px;
   width: 90px;
   margin-left: 15px;
   text-overflow: ellipsis;
   overflow: hidden;
   float: left;
   white-space: nowrap;
-  
+  line-height: 25px;
+  margin-top: 10px;
 }
 .qcacg-header-parent .qcacg-header .nav-right .headers_display .out{
   display: inline-block;
+  height: 25px;
+  line-height: 25px;
 }
 
 .qcacg-header-parent .qcacg-header .nav-right .headers_display .header_more {
@@ -114,7 +141,7 @@
   width: 200px;
   background-color: #D3D3D3;
   line-height: 30px;
-  margin-top: 20px;
+  margin-top: 10px;
   line-height: 30px;
   text-align: center;
   border-radius: 0px 0px 6px 6px; 

@@ -183,7 +183,7 @@
 		float: left;
 		width: 100px;
 		height: 140px;
-		
+		border-radius: 4px;
 	}
 	#content .content_ranking ul {
 		width: 550px;

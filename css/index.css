@@ -551,7 +551,7 @@
 	 .index .Side .Side_content .Side_con ul .Side_card a:hover{
 	   color: #0E9AC8;
 	   transition: all 0.5s ease;
-        -webkit-transition: all 0.5s ease;
+     -webkit-transition: all 0.5s ease;
 	 }
 	.index .Side .Side_content .Side_con ul .Side_Percen {
       text-align:right;
@@ -842,6 +842,7 @@
 	.index .display:hover .hide,
 	.index .display:hover .Small{
   opacity: 1;
+
 	}
 	.index  .display:hover .details_img{
 		-webkit-filter:blur(2px);

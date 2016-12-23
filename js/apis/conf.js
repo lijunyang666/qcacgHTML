@@ -89,3 +89,9 @@ PathList.saveReply = PathList.rootPath + '/reply/saveReply.shtml';
 PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml ';
 // 评论置顶
 PathList.top = PathList.rootPath + '/comment/top.shtml';
+// 新增系统消息
+PathList.saveInfo = PathList.rootPath + '/info/saveInfo.shtml';
+// 查看消息
+PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml';
+// 获取回复
+PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
