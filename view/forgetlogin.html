@@ -16,7 +16,7 @@
 		  
 			<img src="../img/background-jpg.jpg" style="margin-top: -55px;width: 100%;min-height:768px ;"/>
 			<form class="Login" id="Login">
-			  <div class="Login_small"  style="margin-top: 20px;">
+			  <div class="Login_small_tow"  style="margin-top: 20px;">
 				<img src="../img/logo-1.png" class="Login_img" style="margin-top: -17px;"/>
 				<p class="line">
 					<input  type="password" style="position: absolute; top: -999px" />
@@ -24,17 +24,23 @@
 					<img src="../img/lock-1.png"/>
 				</p>
 				<p class="line">
+         <input class="input" type="password" name="password" placeholder="请输入验证码" autocomplete="off" style="width:174px ;" />
+          <a class="obtaincode btn" >获取验证码</a>
+          
+        </p>
+				<p class="line">
 					<input class="input" type="password" name="password" placeholder="请输入密码" autocomplete="off" />
 					<img src="../img/lock-png.png"/>
 				</p>
 				<p class="line">
-					<input type="checkbox" checked="checked" class="Login_input"/>
-					<label>记住账号</label>
-				</p>
+          <input class="input" type="password" name="password" placeholder="请重新输入密码" autocomplete="off" />
+          
+        </p>
+				
 				<div id="popup-captcha"></div>
-				<a class="btn btn_submit a" id="btn-login">登入</a>
+				<a class="btn btn_submit a" id="btn-login">确认</a>
 				<ul>
-					<li><a :href="path.TemprootPath + '/view/forgetlogin.html'">忘记密码</a></li>
+					<li><a href="login.html">返回登录</a></li>
 					<li>|</li>
 					<li><a style="color:#000000" :href="path.TemprootPath + '/view/register.html'">注册新帐号</a></li>
 				</ul>
@@ -50,16 +56,15 @@
   <script type="text/javascript" src="../js/vue-router.min.js" ></script>
   <script type="text/javascript" src="../js/components/header.js" ></script>
 	<script type="text/javascript" src="../js/components/footer.js" ></script>
-	 <script src="../js/apis/Data.js"></script>
-   <script src="../js/apis/alert.js"></script>
-   <script src="../js/apis/confirm.js"></script>
+	<script src="../js/apis/Data.js"></script>
+  <script src="../js/apis/alert.js"></script>
+  <script src="../js/apis/confirm.js"></script>
 	<script type="text/javascript" src="../js/require/headerOrfooter.js"></script>	
-	
+  <script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+  <script type="text/javascript" src="../js/jquery-ui.min.js" ></script>
+  <script type="text/javascript" src="../js/jquery.validate.js"></script>
+  <script src="http://static.geetest.com/static/tools/gt.js"></script>
 
-<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="../js/jquery-ui.min.js" ></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script src="http://static.geetest.com/static/tools/gt.js"></script>
 <script>
 
 var indexHtml = new Vue({
@@ -75,7 +80,7 @@ $(function() {
   // 主URL地址
   // 登入框动态弹出 start
   $('.Login').animate({
-    height: '350px'
+    height: '500px'
   });
   $('.Login').slideDown(1000);
   $("#Login").tooltip({
@@ -219,7 +224,14 @@ $(function() {
       error: function(result) {
         var data = JSON.parse(result.responseText);
         alert(data.msg);
-      }
+      },
+      getValueFn: function() {
+          var _data = {};
+          SZXJ.http(this,'post', PathList.updatePassword, _data, (response) => {
+          
+            console.log(response);
+          });
+        },
     });
   }
 });

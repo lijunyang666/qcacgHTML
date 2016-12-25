@@ -39,8 +39,8 @@
 					<div class="text_reading">
 						<ul>
 							<li>
-							  <a v-if="BookList[0] && BookList[0].contentEntityList[0]" class="text_Read" :href="path.TemprootPath + '/view/read_book.html?contentId=' + BookList[0].contentEntityList[0].contentId  + '&bookId='+ bookId">开始阅读</a>
-							  <a v-else class="text_Read" href="javascript:;">开始阅读</a>
+							  <a v-if="BookList[0] && BookList[0].contentEntityList[0]" class="text_Read" target="_blank"  :href="path.TemprootPath + '/view/read_book.html?contentId=' + BookList[0].contentEntityList[0].contentId  + '&bookId='+ bookId" >开始阅读</a>
+							  <a v-else class="text_Read" href="javascript:;" target="_blank">开始阅读</a>
               </li>
 							<li @click="setCollect()" v-if="!collect" ><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏作品</p><num>{{Collection}}</num></li>
 							<li @click="setCollect()" v-else ><span><img src="../img/sss4.png"/ class="text_Collection"><p>已收藏</p><num>{{Collection}}</num></li>
@@ -58,7 +58,8 @@
   					</ul>   
   					<div class="text_chapter" >
   							<div class="group" v-for="value in obj.contentEntityList">
-  							  <span class="text_sign"></span><a :href="path.TemprootPath + '/view/read_book.html?contentId=' + value.contentId + '&bookId='+ obj.bookId">
+  							  <span class="text_sign"></span>
+  							  <a target="_blank" :href="path.TemprootPath + '/view/read_book.html?contentId=' + value.contentId + '&bookId='+ obj.bookId">
                       {{ value.contentTitle }}
                   </a>
   							</div>

@@ -839,14 +839,29 @@
     overflow: auto;
     cursor: pointer;
 	}	
+	.index .display{
+	  height:174px ;
+	  opacity: 1;
+	  width: 128px;
+	}
+	.index  .display .details_img{
+	  height:174px ;
+    
+    width: 128px;
+	}
+	
+	
 	.index .display:hover .hide,
 	.index .display:hover .Small{
   opacity: 1;
-
+  background-color: rgba(0,0,0,0.3);
+  filter: brightness(60%);
+  border-radius:4px ;
 	}
 	.index  .display:hover .details_img{
-		-webkit-filter:blur(2px);
-		
+		-webkit-filter:blur(4px);
+   
+    
 	}
 	.index  .display {
   position: relative;
@@ -885,8 +900,8 @@
 	  text-overflow: ellipsis;
 	}
 	.index  .Small {
-		width: 125px;
-		height: 176px;
+		width: 128px;
+		height: 174px;
 		position: absolute;
 		top: 0;
 		color: #FFFFFF;	
@@ -907,6 +922,7 @@
 		overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    
 	}
 	.index  .Small .Small_ul {
 		position: absolute;

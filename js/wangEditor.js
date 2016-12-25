@@ -1404,7 +1404,9 @@ function(a) {
 			undo: "撤销",
 			redo: "重复",
 			fullscreen: "全屏",
-			openLink: "打开链接"
+			openLink: "打开链接",
+			lineheight:"行高",
+      indent:"缩进",
 		},
 		a.langs.en = {
 			bold: "Bold",
@@ -1445,7 +1447,9 @@ function(a) {
 			undo: "Undo",
 			redo: "Redo",
 			fullscreen: "Full screnn",
-			openLink: "open link"
+			openLink: "open link",
+			lineheight:"lineheight",
+			indent:"indent",
 		}
 	}),
 	b(function(a, b) {
