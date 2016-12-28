@@ -97,3 +97,5 @@ PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml';
 PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
 // 修改密码 or 忘记密码
 PathList.updatePassword = PathList.rootPath + '/updatePassword.shtml';
+// 表情
+PathList.updatePassword = PathList.rootPath + '/img/emotion/qcacgGirl';

@@ -23,7 +23,7 @@ var editor = Vue.extend({
   ready: function() {
     var textarea = document.getElementById(this.id);
     this.editor = new wangEditor(textarea);
-    this.editor.config.uploadImgUrl = PathList.rootPath +　'/content/upload.shtml';
+    this.editor.config.uploadImgUrl = PathList.rootPath +　'/img/emotion/qcacgGirl';
     this.editor.config.uploadHeaders = {
       'JSESSIONID': localStorage.getItem('JSESSIONID'),
     }
