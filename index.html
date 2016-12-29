@@ -8,23 +8,23 @@
 		<link rel="stylesheet" href="css/headerOrFooter.css" />
 	</head>
 	<body id="app" v-show="bodyFlag" style="display: none; background-color: #FeFeFe;">
-	  <alert v-ref:vue-alert></alert>
+	<alert v-ref:vue-alert></alert>
 	<myheader></myheader>
   <div class="index"> 
-   <div class="Recomm"> 
-    <img src="./img/index/scrollbar4.jpg" /> 
-    <img src="./img/index/scrollbar5.jpg" /> 
-    <img src="./img/index/scrollbar3.jpg" /> 
-    <img src="./img/index/scrollbar1.jpg" /> 
-    <img src="./img/index/scrollbar2.jpg" /> 
+    <div class="Recomm"> 
+      <img src="./img/index/scrollbar4.jpg" /> 
+      <img src="./img/index/scrollbar5.jpg" /> 
+      <img src="./img/index/scrollbar3.jpg" /> 
+      <img src="./img/index/scrollbar1.jpg" /> 
+      <img src="./img/index/scrollbar2.jpg" /> 
     <div class="Recomm_left"> 
-     <span><img src="img/nav_button_03.png" /></span> 
+      <span><img src="img/nav_button_03.png" /></span> 
     </div> 
     <div class="Recomm_right"> 
      <span><img src="img/nav_button_04.png" /></span> 
     </div> 
     <div class="Recomm_intro"> 
-     <p><a href="javascript:;">我的青春恋爱物语果然有问题11卷</a></p> 
+      <p><a href="javascript:;">我的青春恋爱物语果然有问题11卷</a></p> 
     </div> 
    </div> 
    <div class="edit"> 
@@ -121,15 +121,16 @@
         </figcaption> 
        </figure> 
       
-      </div> 
-      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.allBook[newBookimg].bookId">
+      </div>
+      
+      <a v-if="indexList.allBook && indexList.allBook.length > 0" :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.allBook[newBookimg].bookId">
         <img :src="indexList.allBook[newBookimg].bookCoverImage ? path.rootPath + indexList.allBook[newBookimg].bookCoverImage : ''"  class="main_img bookImg_X" />
       </a>
-      <p class="main_p" title="{{ indexList.allBook[newBookimg].bookName }}">
+      <p v-if="indexList.allBook && indexList.allBook.length > 0" class="main_p" title="{{ indexList.allBook[newBookimg].bookName }}">
         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.allBook[newBookimg].bookId">
           {{ indexList.allBook[newBookimg].bookName }}
         </a>  
-      </p> 
+      </p>
      </div> 
     </div> 
 <div class="sidebar"> 
@@ -146,10 +147,7 @@
     <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[$index].bookId">
       <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="bookImg_Sl" />
     </a> 
-    <img :src="'img/sss' + (25 + $index) + '.png'" class="sidebar_img" />
-    
-
-    
+    <img :src="'img/sss' + (19 + $index) + '.png'" class="sidebar_img" />
     <ul> 
       <li class="sidebar_name" title="{{ indexList.weekBookByBookCopperCoins[$index].bookName }}">
         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookCopperCoins[$index].bookId">
@@ -244,10 +242,10 @@
         </figcaption> 
        </figure>
       </div> 
-      <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg1].bookId">
+      <a v-if="indexList.newBookRecom && indexList.newBookRecom.length > 0" :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg1].bookId">
         <img :src="indexList.newBookRecom[newBookimg1].bookCoverImage ? path.rootPath + indexList.newBookRecom[newBookimg1].bookCoverImage:''" class="secon_img bookImg_X" />
       </a>
-      <p class="secon_p" title="{{ indexList.newBookRecom[newBookimg1].bookName }}">
+      <p v-if="indexList.newBookRecom && indexList.newBookRecom.length > 0" class="secon_p" title="{{ indexList.newBookRecom[newBookimg1].bookName }}">
         <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.newBookRecom[newBookimg1].bookId">
           {{ indexList.newBookRecom[newBookimg1].bookName }}
         </a>  
@@ -279,9 +277,9 @@
         <li class="Side_card"><a href="javascript:;">
         <img src="img/Side_card_03.png" />{{ indexList.weekBookByBookHit[$index].author }}</a></li> 
         <li class="Side_Percen" style="color: #3781E7;">
-          <li v-if="rankingList.clickSize === 0" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}">{{indexList.weekBookByBookHit[$index].everyWeekHit}}</li>
-          <li v-if="rankingList.clickSize === 1" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}">{{indexList.weekBookByBookHit[$index].everyMonthHit}}</li>
-          <li v-if="rankingList.clickSize === 2" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}">{{indexList.weekBookByBookHit[$index].bookHit}}</li>
+          <li v-if="rankingList.clickSize === 0" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}"><img src="img/Side_card_06.png" />{{indexList.weekBookByBookHit[$index].everyWeekHit}}</li>
+          <li v-if="rankingList.clickSize === 1" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}"><img src="img/Side_card_06.png" />{{indexList.weekBookByBookHit[$index].everyMonthHit}}</li>
+          <li v-if="rankingList.clickSize === 2" class="Side_Percen_Side" title="{{indexList.weekBookByBookHit[$index].everyWeekHit}}"><img src="img/Side_card_06.png" />{{indexList.weekBookByBookHit[$index].bookHit}}</li>
         </li>
       </ul> 
     </div> 
@@ -300,7 +298,6 @@
     </div>
       <p style="margin: 0px;">
         <a :href="path.TemprootPath + '/view/ranking.html?type=2'">查看更多</a>
-       
       </p>
     </div> 
 </div>
@@ -328,7 +325,7 @@
        <ul v-for="obj in indexList.lastUpdate"> 
         <li class="content_classi">[精品作品]</li> 
         <li>
-          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName +':'+ obj.volumeEntity.volumeName }}">
+          <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId" title="{{ obj.bookName +':'+ obj.contentTitle }}">
             &nbsp;&nbsp;<span style="font-weight: 600;font-size: 14px;">{{ obj.bookName }}</span>&nbsp;
             <span>最新章节:{{ obj.contentTitle }}</span>
           </a>
@@ -395,8 +392,8 @@
 <myfooter></myfooter>
 </body>
 
-<script src="./js/apis/vueHttp.js"></script>
-<script src="./js/apis/conf.js"></script>
+
+
 
 <script type="text/javascript" src="./js/vue.min.js" ></script>
 <script type="text/javascript" src="./js/vue-resource.min.js" ></script>
@@ -407,6 +404,7 @@
 <script type="text/javascript" src="js/components/header.js" ></script>
 <script type="text/javascript" src="js/components/footer.js" ></script>
 <script type="text/javascript" src="js/require/headerOrfooter.js"></script>
+  <script src="./js/main/indexMain.js"></script>
 <script>
     var indexHtml = new Vue({
       el: '#app',
@@ -505,4 +503,10 @@
       },
     });
 </script>
+
+
+
+
+ 
+
 </html>
