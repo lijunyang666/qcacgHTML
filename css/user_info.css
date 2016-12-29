@@ -399,8 +399,41 @@
 	width: 90px;
 	height: 126px;
 	position: relative;
+	border-radius: 4px;
+	position: relative;
 }
-
+.examine {
+  background-color: #63bff3;
+  color: white;
+  height: 16px;
+  width: 40px;
+  border-radius: 10px 0 0px 10px;
+  position: absolute;
+  font-size: 10px;
+  text-align: center;
+  line-height: 16px;
+  top: 3px;
+  right: 0px;
+}
+.examine1 {
+  display: none;
+}
+.bookUpdate {
+  background-color: #8dd2f3;
+  color: white;
+  height: 16px;
+  width: 40px;
+  border-radius: 4px 0 0px 4px;
+  position: absolute;
+  font-size: 9px;
+  text-align: center;
+  line-height: 16px;
+  top: 3px;
+  right: 0px;
+}
+.bookUpdate1 {
+  display: none;
+}
 .contribution .bookBlockList .vertical-title {
 	height: 36px;
 	width: 90px;
@@ -725,7 +758,7 @@
 	line-height: 22px;
 	background-color: #3db2d8;
 	border: 1px solid #3db2d8;
-	border-radius: 5px;
+	border-radius:10px;
 	cursor: pointer;
 }
 .user_info .user_info_right .user_info_content .contribution .content .catalogue  .chapter_handle .handle_right > div span:hover {
@@ -1041,10 +1074,10 @@
 	text-align: center;
 	width: 90px;
 	height: 26px;
-	line-height: 22px;
+	line-height: 26px;
 	background-color: #3DB2D8;
 	border: 1px solid #3DB2D8;
-	border-radius: 5px;
+	border-radius: 11px;
 	cursor: pointer;
 }
 .chapter .inputTextarea .handle_right > div span:hover {

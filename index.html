@@ -350,7 +350,6 @@
     </ul> 
   </div> 
   <div class="Word_content">
-    
     <div class="Word_con" v-for="obj in indexList.weekBookByBookWordCount" v-if="$index < 3"> 
       <a :href="path.TemprootPath + '/view/catalog.html?bookId=' + indexList.weekBookByBookWordCount[$index].bookId">
         <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="bookImg_Sl"/>
@@ -402,9 +401,9 @@
 <script type="text/javascript" src="./js/vue.min.js" ></script>
 <script type="text/javascript" src="./js/vue-resource.min.js" ></script>
 <script type="text/javascript" src="./js/vue-router.min.js" ></script>
- <script src="./js/apis/Data.js"></script>
- <script src="./js/apis/alert.js"></script>
- <script src="./js/apis/confirm.js"></script>
+<script src="./js/apis/Data.js"></script>
+<script src="./js/apis/alert.js"></script>
+<script src="./js/apis/confirm.js"></script>
 <script type="text/javascript" src="js/components/header.js" ></script>
 <script type="text/javascript" src="js/components/footer.js" ></script>
 <script type="text/javascript" src="js/require/headerOrfooter.js"></script>
