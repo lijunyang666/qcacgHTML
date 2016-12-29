@@ -77,109 +77,11 @@
     </div>
  <myfooter></myfooter>
 
- </body>
- 
- <script type="text/javascript" src="../js/jquery-1.11.1.js" ></script>
- <link rel="stylesheet" href="../css/wangEditor.min.css" />
- <script type="text/javascript" src="../js/wangEditor.min.js" ></script>
- 
- <link rel="stylesheet" href="../css/cropper.min.css" />
- <script type="text/javascript" src="../js/cropper.min.js"></script>
- 
- <script type="text/javascript" src="../js/vue.min.js" ></script>
- <script type="text/javascript" src="../js/vue-resource.min.js" ></script>
- <script type="text/javascript" src="../js/vue-router.min.js" ></script>
- <script src="../js/components/header.js"></script>
- <script src="../js/components/footer.js"></script>
- <script src="../js/apis/Data.js"></script>
- <script src="../js/apis/alert.js"></script>
- <script src="../js/apis/confirm.js"></script>
- 
- 
- <script src="../js/apis/vueHttp.js"></script>
- <script src="../js/apis/conf.js"></script>
- 
- 
- <script src="../js/components/bookBlockList.js"></script>
- <script src="../js/components/works.js"></script> 
- <script src="../js/components/works.js"></script>
- <script src="../js/components/worksUpdate.js"></script>
- <script src="../js/components/catalogue.js"></script>
- <script src="../js/components/chapter.js"></script>
- <script src="../js/components/chapter_edit.js"></script>
- <script src="../js/components/info.js"></script>
- <script src="../js/components/updatePass.js"></script>
- <script src="../js/components/bookshelf.js"></script>
- <script src="../js/components/record.js"></script>
- <script src="../js/components/attention.js"></script>
- <script src="../js/components/attentionToMe.js"></script>
- <script src="../js/components/message.js"></script>
- <script src="../js/components/tellMe.js"></script>
- <script src="../js/components/relevant.js"></script>
- <script src="../js/components/system.js"></script>
- <script src="../js/components/official.js"></script>
- <script src="../js/components/wallet.js"></script>
- <script src="../js/components/bill.js"></script>
- 
- 
- <script>
- 
-  var router = new VueRouter();
-  router.map({
-    '/bookBlockList': { component: bookBlockList },
-    '/works': { component: works },
-    '/works_update/:id': { component: works_update },
-    '/catalogue/:id':{ component: catalogue },
-    '/chapter/:id':{ component: chapter },
-    '/chapter_edit/:id':{ component: chapter_edit },
-    '/info': { component: info },
-    '/updatePass': { component: updatePass },
-    '/bookshelf': { component: bookshelf },
-    '/record': { component: record },
-    '/attention': { component: attention },
-    '/attentionToMe': { component: attentionToMe },
-    '/message': { component: message },
-    '/tellMe': { component: tellMe },
-    '/relevant': { component: relevant },
-    '/system': { component: system },
-    '/official': { component: official },
-    '/wallet': { component: wallet },
-    '/bill': { component: bill },
-  })
-  var App = Vue.extend({
-  	el: '#app',
-  	data: function() {
-  		return {
-  		  bodyFlag: false,
-  			path: PathList,
-  			active: '',
-  			userName: '',
-  			loginImg:'',
-  		}
-  	},
-  	methods: {
-      setShowFlagFn: function() {
-  		  const href = window.location.href;
-        const str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
-  		  this.$set('active', str);
-  		},
-  		setMessage(flag,message,Fn) {
-  		  this.$refs.vueAlert.setMessage(flag,message,Fn);
-  		}
-    },
-   ready : function (){
-      this.bodyFlag = true;
-      this.setShowFlagFn();
-    },
-  });
-  App.component('myfooter', footer);
-  App.component('myheader', header);
-  App.component('alert', VueAlert);
-  App.component('confirm', VueConfirm);
-  router.redirect({
-  	'*': 'info',
-  });
-  router.start(App, '#app');
-  
- </script>
+</body>
+<script type="text/javascript" src="../lib/jquery.min.js" ></script>
+<link rel="stylesheet" href="../css/wangEditor.min.css" />
+<script type="text/javascript" src="../lib/wangEditor.min.js" ></script>
+<link rel="stylesheet" href="../css/cropper.min.css" />
+<script type="text/javascript" src="../lib/cropper.min.js"></script>
+<script src="../js/main/user_info.js"></script>
 </html>
