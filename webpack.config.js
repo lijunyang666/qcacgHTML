@@ -1,4 +1,4 @@
-var path = require('path');
+﻿var path = require('path');
 var fs = require("fs");
 var glob = require('glob');
 var Parser = require('xml2js').Parser();
@@ -44,14 +44,14 @@ function readFile(path, newPath){
         console.log("读取失败");
         return false;
       }
-      Parser.parseString(data.toString(), function (error, result) {
-        if (error) {
-          console.log(path);
-          console.log(error);
-          return false;
-        }
+//      Parser.parseString(data.toString(), function (error, result) {
+//        if (error) {
+//          console.log(path);
+//          console.log(error);
+//          return false;
+//        }
         // console.dir(result);
-      });
+//      });
       writeFile(data, newPath);
     });
   } else {
