@@ -4746,6 +4746,8 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
+	//PathList.rootPath = 'http://192.168.126.34:8080';
+
 
 	// 登陆的3个请求
 	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
@@ -5005,7 +5007,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var header = _vueMin2.default.extend({
-	  template: '<header class="qcacg-header-parent" id="qcacg-header-parent" style="position:relative"><div class="qcacg-header"><a :href="path.TemprootPath + \'/index.html\'"><div class="logo">轻创文学网</div></a>   <ul class="nav-left">   <li :class="active"><a :href="path.TemprootPath + \'/index.html\'">首页</a></li><li><a :href="path.TemprootPath + \'/view/class.html\'">分类</a></li><li><a :href="path.TemprootPath + \'/view/ranking.html\'">排行榜</a></li><li class="none"><a href="javascript:;">画师</a></li><li class="none"><a href="javascript:;">周边</a></li><li><a :href="path.TemprootPath + \'/view/welfare.html\'">福利</a></li></ul><ul class="nav-right">' + '<li v-if="loginFlag" class="liBlock" :style="loginImg !== \'\' ? loginImg:\'\'"><div class="headers_display"><span class="display_user"><a  :href="path.TemprootPath + \'/view/user_info.html\'">{{ userName }}</a></span> <span class="out"><a  href="javascript:;" @click="backLoginFn">退出</a></span>  <div class="header_more"><a :href="path.TemprootPath + \'/view/user_info.html\'">查看更多</a></div></div></a></li>' + '<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>' + '<li class="ul_msg" ><div class="mag_number" v-if="number > 0" >{{ number }}</div><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">消息</a><ul class="li_msg_ul" v-if="loginFlag"><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">回复我的</a><div class="mag_number_small" v-if="book > 0" @click="setbookFn" >{{ book }}</div></li><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/relevant\'">作品相关</a><div class="mag_number_small" v-if="reply > 0" @click="setreplyFn">{{ reply }}</div></li><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/system\'">系统消息</a><div class="mag_number_small" v-if="system > 0" @click="setsystemFn">{{ system }}</div></li><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/official\'">官方公共</a><div class="mag_number_small" v-if="official > 0" @click="setofficialFn">{{ official }}</div></li></ul></li>' + '<li class="publication">' + '<a v-if="loginFlag" @click="setHref(path.TemprootPath + \'/view/user_info.html#!/bookBlockList\')" style="color:#FFFFFF">投&nbsp;稿</a>' + '<a v-else style="color:#FFFFFF" :href="path.TemprootPath + \'/view/login.html\'">投&nbsp;稿</a>' + '</li></ul></div></header>',
+	  template: '<header class="qcacg-header-parent" id="qcacg-header-parent" style="position:relative"><div class="qcacg-header"><a :href="path.TemprootPath + \'/index.html\'"><div class="logo">轻创文学网</div></a>   <ul class="nav-left">   <li :class="active"><a :href="path.TemprootPath + \'/index.html\'">首页</a></li><li><a :href="path.TemprootPath + \'/view/class.html\'">分类</a></li><li><a :href="path.TemprootPath + \'/view/ranking.html\'">排行榜</a></li><li class="none"><a href="javascript:;">画师</a></li><li class="none"><a href="javascript:;">周边</a></li><li><a :href="path.TemprootPath + \'/view/welfare.html\'">福利</a></li></ul><ul class="nav-right">' + '<li v-if="loginFlag" class="liBlock" :style="loginImg !== \'\' ? loginImg:\'\'"><div class="headers_display"><span class="display_user"><a  :href="path.TemprootPath + \'/view/user_info.html\'">{{ userName }}</a></span> <span class="out"><a  href="javascript:;" @click="backLoginFn">退出</a></span>  <div class="header_more"><a :href="path.TemprootPath + \'/view/user_info.html\'">查看更多</a></div></div></a></li>' + '<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>' + '<li v-if="loginFlag" class="ul_msg" ><div class="mag_number" v-if="book+official+reply+system > 0" >{{ book+official+reply+system }}</div><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">消息</a><ul class="li_msg_ul" ><li @click="setreplyFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">回复我的</a><div class="mag_number_small" v-if="reply > 0"  >{{ reply }}</div></li><li @click="setbookFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/relevant\'">作品相关</a><div class="mag_number_small" v-if="book > 0" >{{ book }}</div></li><li @click="setsystemFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/system\'">系统消息</a><div class="mag_number_small" v-if="system > 0" >{{ system }}</div></li><li @click="setofficialFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/official\'">官方公共</a><div class="mag_number_small" v-if="official > 0" >{{ official }}</div></li></ul></li>' + '<li class="publication">' + '<a v-if="loginFlag" @click="setHref(path.TemprootPath + \'/view/user_info.html#!/bookBlockList\')" style="color:#FFFFFF">投&nbsp;稿</a>' + '<a v-else style="color:#FFFFFF" :href="path.TemprootPath + \'/view/login.html\'">投&nbsp;稿</a>' + '</li></ul></div></header>',
 	  components: {},
 	  props: {
 	    userName: {
@@ -5022,7 +5024,7 @@
 	    return {
 	      path: _conf2.default,
 	      loginFlag: false,
-	      number: 0,
+	      number1: '',
 	      book: '',
 	      official: '',
 	      reply: '',
@@ -5030,6 +5032,11 @@
 	    };
 	  },
 	  methods: {
+	    setmessageFn: function setmessageFn() {
+	      if (this.number > 1) {
+	        this.number;
+	      }
+	    },
 	    setbookFn: function setbookFn() {
 	      this.$set('book', 0);
 	    },
@@ -5040,6 +5047,7 @@
 	      this.$set('reply', 0);
 	    },
 	    setsystemFn: function setsystemFn() {
+
 	      this.$set('system', 0);
 	    },
 	    backLoginFn: function backLoginFn() {
@@ -5071,11 +5079,11 @@
 	      _this2.loginImg = 'background-image: url(' + _this2.path.rootPath + response.data.status.userImage + ')';
 	      _this2.loginFlag = response.data.status.flag;
 	      _this2.userName = response.data.status.userName;
-	      _this2.number = response.data.book + response.data.official + response.data.reply + response.data.system;
 	      _this2.book = response.data.book;
 	      _this2.official = response.data.official;
 	      _this2.reply = response.data.reply;
 	      _this2.system = response.data.system;
+	      _this2.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
 	    });
 	  },
 	  route: {
@@ -6219,7 +6227,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var worksUpdate = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li class="active" v-link="{path: \'/works_update/\' + id}"><span class="circular"></span><span class="title_name">修改信息</span></li></ul>' + '<div class="content"><div class="works">' + '<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container {    margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"> <img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div  style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="clickFileActiveFn">重新选择</div></div><div  style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="clearImgFn">取消上传</div></div><div  style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>      ' + '<div class="works_title"><ul><li class="works_sign"></li><li>修改作品</li><li class="works_sont">create a work</li></ul></div><div class="works_name"><p>书名：<input type="text" maxlength="64" v-model="bookName" disabled="disabled" /></p><p>画师：<input type="text" v-model="ulName" placeholder="没有可不填写"  /></p><p>分类：<span id="area-cat-info" class="text-primary">{{ classList }}</span><span v-on:click="classListFn"  class="span " style="padding: 2px 8px 3px 8px;">选择分类</span>' + '<div class="cat-list-post" v-if="classFlag" style="display:block"><div class="btn-block clear"><a v-for="obj in classArr" v-on:click="clickClassFn($index)" :class="classArr[$index].flag === true?\'btn btn-xs btn-primary\':\'btn btn-xs btn-default\'" data-id="obj.bookTypeId" data-name="{{obj.bookTypeName}}">{{obj.bookTypeName}}</a></div><div class="bottom-block"><a data-type="submit" class="btn btn-wide btn-xs btn-primary" v-on:click="primaryFn">确定</a></div></div>' + '</p><span>简介：</span><textarea placeholder="0/300字" v-model="textArea"></textarea><div class="works_Deposit " v-on:click="submitFn">修改</div></div><div class="works_chart"><img style="width:150px;height:210px" src="../img/user_inco.jpg" v-el:img/><p  v-on:click="clickFileActiveFn">选择封面</p><div class="works_notes"><span>注：</span><ul><li>最大上传2M</li><li>建议尺寸大小比例：</li><li>宽320px</li><li>高480px</li><li>上传前请确认比例</li></ul></div></div><div class="works_line"></div><div class="works_Remarks"><label>注意事项：</label><ul><li>1.请慎重填写书名，选择作品分类，一旦提交将不可修改，书籍亦不可删除。</li><li>2.作品封面请选择大尺寸高清的ACG风格图片，本站拒绝三次元图片或与轻小说感觉严重不符的图片，请勿使用违规图片，违规者将被处罚</li><li>3.严禁盗图行为，上传插图请使用具有授权的图片！并与编辑提供授权证明。如无法提供，网站将封面撤回</li><li>4.书名与间接内容请不要填写令读者不适的内容</li><li>5.分类最多可选择三项</li><li>6.欢迎加入轻创文学QQ群交流写作心得，作者群：********，加群申请请附上书籍网站后六位数字。</li></ul></div><div class="Popup" style="display: none;"><ul class="Popup_title"><li>幻想</li><li>搞笑</li><li>后宫</li><li>科幻</li><li>恐怖</li></ul><ul class="Popup_content"><li>战斗</li><li class="content_li">幻想</li><li>恋爱</li><li>异界</li><li class="content_li">搞笑</li><li>日常</li><li>校园</li><li class="content_li">后宫</li><li>推理</li><li class="content_li">科幻</li><li>治愈</li><li>超能力</li><li class="content_li">恐怖</li><li>伪娘</li><li>乙女</li><li>同人</li><li>悬疑</li><li>网游</li></ul></div></div></div> ' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li class="active" v-link="{path: \'/works_update/\' + id}"><span class="circular"></span><span class="title_name">修改信息</span></li></ul>' + '<div class="content"><div class="works">' + '<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container {    margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"> <img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div  style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="clickFileActiveFn">重新选择</div></div><div  style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="clearImgFn">取消上传</div></div><div  style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>      ' + '<div class="works_title"><ul><li class="works_sign"></li><li>修改作品</li><li class="works_sont">create a work</li></ul></div><div class="works_name">' + '<p class="works_titleSmall">书名：<input type="text" maxlength="64" v-model="bookName" disabled="disabled" /></p>' + '<p class="works_titleSmall">画师：<input type="text" v-model="ulName" placeholder="没有可不填写"  /></p>' + '<p class="works_titleSmall">分类：<span id="area-cat-info" class="text-primary">{{ classList }}</span><span v-on:click="classListFn"  class="span " style="padding: 2px 8px 3px 8px;">选择分类</span>' + '<div class="cat-list-post" v-if="classFlag" style="display:block"><div class="btn-block clear"><a v-for="obj in classArr" v-on:click="clickClassFn($index)" :class="classArr[$index].flag === true?\'btn btn-xs btn-primary\':\'btn btn-xs btn-default\'" data-id="obj.bookTypeId" data-name="{{obj.bookTypeName}}">{{obj.bookTypeName}}</a></div><div class="bottom-block"><a data-type="submit" class="btn btn-wide btn-xs btn-primary" v-on:click="primaryFn">确定</a></div></div>' + '</p>' + '<form class="works_form">更新：<input name="sign" type="radio" value=""  /><div class="works_img" v-if="updateCycle==1" @click="SetupdateCycle"></div><div class="works_img2" v-if="updateCycle !== 1" @click="SetupdateCycle"></div><label  @click="SetupdateCycle" class="works_label">日更</label><input name="sign" type="radio" value="" /><div class="works_img" v-if="updateCycle==2" @click="SetupdateCycle2"></div><div class="works_img2" v-if="updateCycle !== 2" @click="SetupdateCycle2"></div><label @click="SetupdateCycle2" class="works_label">月更</label></form>' + '<p  class="works_title_p">*注意事项：一经修改，下月才会开始生效，请慎重考虑</p>' + '<span>简介：</span><textarea placeholder="0/300字" v-model="textArea"></textarea><div class="works_Deposit " v-on:click="submitFn">修改</div></div><div class="works_chart"><img style="width:150px;height:210px" src="../img/user_inco.jpg" v-el:img/><p  v-on:click="clickFileActiveFn">选择封面</p><div class="works_notes"><span>注：</span><ul><li>最大上传2M</li><li>建议尺寸大小比例：</li><li>宽320px</li><li>高480px</li><li>上传前请确认比例</li></ul></div></div><div class="works_line"></div><div class="works_Remarks"><label>注意事项：</label><ul><li>1.请慎重填写书名，选择作品分类，一旦提交将不可修改，书籍亦不可删除。</li><li>2.作品封面请选择大尺寸高清的ACG风格图片，本站拒绝三次元图片或与轻小说感觉严重不符的图片，请勿使用违规图片，违规者将被处罚</li><li>3.严禁盗图行为，上传插图请使用具有授权的图片！并与编辑提供授权证明。如无法提供，网站将封面撤回</li><li>4.书名与间接内容请不要填写令读者不适的内容</li><li>5.分类最多可选择三项</li><li>6.欢迎加入轻创文学QQ群交流写作心得，作者群：********，加群申请请附上书籍网站后六位数字。</li></ul></div><div class="Popup" style="display: none;"><ul class="Popup_title"><li>幻想</li><li>搞笑</li><li>后宫</li><li>科幻</li><li>恐怖</li></ul><ul class="Popup_content"><li>战斗</li><li class="content_li">幻想</li><li>恋爱</li><li>异界</li><li class="content_li">搞笑</li><li>日常</li><li>校园</li><li class="content_li">后宫</li><li>推理</li><li class="content_li">科幻</li><li>治愈</li><li>超能力</li><li class="content_li">恐怖</li><li>伪娘</li><li>乙女</li><li>同人</li><li>悬疑</li><li>网游</li></ul></div></div></div> ' + '</div></div></div>',
 	  data: function data() {
 	    return {
 	      classList: '',
@@ -6233,7 +6241,8 @@
 	      bookName: '',
 	      textArea: '',
 	      id: '',
-	      sort: ''
+	      sort: '',
+	      updateCycle: ''
 	    };
 	  },
 	  ready: function ready() {
@@ -6273,6 +6282,16 @@
 	    $('#cropper-img').cropper('setDragMode', 'move');
 	  },
 	  methods: {
+	    SetupdateCycle: function SetupdateCycle() {
+	      if (this.updateCycle == 0 || this.updateCycle == 2) {
+	        this.updateCycle = 1;
+	      }
+	    },
+	    SetupdateCycle2: function SetupdateCycle2() {
+	      if (this.updateCycle == 0 || this.updateCycle == 1) {
+	        this.updateCycle = 2;
+	      }
+	    },
 	    getValue: function getValue() {
 	      var _this = this;
 
@@ -6289,6 +6308,7 @@
 	        _this.$els.img.src = _conf2.default.rootPath + response.data.bookCustom.bookCoverImage;
 	        _this.sort = response.data.bookCustom.sort;
 	        _this.classArr = response.data.bookCustom.bookTypeEntityList;
+	        _this.updateCycle = response.data.bookCustom.updateCycle;
 	        var arrTemp = [];
 	        for (var i = 0; i < _this.classArr.length; i++) {
 	          _this.classArr[i].flag = true;
@@ -6338,6 +6358,7 @@
 	      _data.bookCoverImage = this.imgUrl;
 	      _data.sort = this.sort;
 	      _data.bookTypeList = arrTemp;
+	      _data.updateCycle = this.updateCycle;
 	      //============================================
 
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateBook, _data, function (response) {

@@ -84,6 +84,7 @@
 	  },
 	  methods: {
 	    handlerPopup: function handlerPopup(captchaObj) {
+	      var This = this;
 	      captchaObj.onReady(function () {
 	        $('.btn_submit').click(function () {
 	          $('#Login').submit();
@@ -136,8 +137,6 @@
 	        $("#Login input:not(:submit)").addClass("ui-widget-content");
 	        $(":submit").button();
 	        captchaObj.onSuccess(function () {
-	          var _this = this;
-
 	          var validate = captchaObj.getValidate();
 	          if (!validate) {
 	            //  alert('请先完成验证！');
@@ -151,12 +150,12 @@
 	          userEntity.geetest_challenge = validate.geetest_challenge;
 	          userEntity.geetest_validate = validate.geetest_validate;
 	          userEntity.geetest_seccode = validate.geetest_seccode;
-	          _vueHttp2.default.http(this, 'post', _conf2.default.VerifyLoginServlet, userEntity, function (data) {
+	          _vueHttp2.default.http(This, 'post', _conf2.default.VerifyLoginServlet, userEntity, function (data) {
 	            localStorage.setItem('JSESSIONID', data.data.msg);
 	            location.href = _conf2.default.TemprootPath + '/view/user_info.html';
 	          }, function (err) {
 	            if (data.err.code === 1002) {
-	              _this.getGeetestFn();
+	              This.getGeetestFn();
 	            }
 	          });
 	        });
@@ -166,7 +165,7 @@
 	      // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
 	    },
 	    getGeetestFn: function getGeetestFn() {
-	      var _this2 = this;
+	      var _this = this;
 
 	      // 获取就极验验证码
 	      _vueHttp2.default.http(this, 'get', _conf2.default.StartCaptchaServlet, {}, function (data) {
@@ -179,7 +178,7 @@
 	          product: "popup",
 	          // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
 	          offline: !data.data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-	        }, _this2.handlerPopup);
+	        }, _this.handlerPopup);
 	      });
 	    }
 	  },
@@ -4728,6 +4727,8 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
+	//PathList.rootPath = 'http://192.168.126.34:8080';
+
 
 	// 登陆的3个请求
 	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
@@ -5026,7 +5027,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var header = _vueMin2.default.extend({
-	  template: '<header class="qcacg-header-parent" id="qcacg-header-parent" style="position:relative"><div class="qcacg-header"><a :href="path.TemprootPath + \'/index.html\'"><div class="logo">轻创文学网</div></a>   <ul class="nav-left">   <li :class="active"><a :href="path.TemprootPath + \'/index.html\'">首页</a></li><li><a :href="path.TemprootPath + \'/view/class.html\'">分类</a></li><li><a :href="path.TemprootPath + \'/view/ranking.html\'">排行榜</a></li><li class="none"><a href="javascript:;">画师</a></li><li class="none"><a href="javascript:;">周边</a></li><li><a :href="path.TemprootPath + \'/view/welfare.html\'">福利</a></li></ul><ul class="nav-right">' + '<li v-if="loginFlag" class="liBlock" :style="loginImg !== \'\' ? loginImg:\'\'"><div class="headers_display"><span class="display_user"><a  :href="path.TemprootPath + \'/view/user_info.html\'">{{ userName }}</a></span> <span class="out"><a  href="javascript:;" @click="backLoginFn">退出</a></span>  <div class="header_more"><a :href="path.TemprootPath + \'/view/user_info.html\'">查看更多</a></div></div></a></li>' + '<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>' + '<li class="ul_msg" ><div class="mag_number" v-if="number > 0" >{{ number }}</div><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">消息</a><ul class="li_msg_ul" v-if="loginFlag"><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">回复我的</a><div class="mag_number_small" v-if="book > 0" @click="setbookFn" >{{ book }}</div></li><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/relevant\'">作品相关</a><div class="mag_number_small" v-if="reply > 0" @click="setreplyFn">{{ reply }}</div></li><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/system\'">系统消息</a><div class="mag_number_small" v-if="system > 0" @click="setsystemFn">{{ system }}</div></li><li class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/official\'">官方公共</a><div class="mag_number_small" v-if="official > 0" @click="setofficialFn">{{ official }}</div></li></ul></li>' + '<li class="publication">' + '<a v-if="loginFlag" @click="setHref(path.TemprootPath + \'/view/user_info.html#!/bookBlockList\')" style="color:#FFFFFF">投&nbsp;稿</a>' + '<a v-else style="color:#FFFFFF" :href="path.TemprootPath + \'/view/login.html\'">投&nbsp;稿</a>' + '</li></ul></div></header>',
+	  template: '<header class="qcacg-header-parent" id="qcacg-header-parent" style="position:relative"><div class="qcacg-header"><a :href="path.TemprootPath + \'/index.html\'"><div class="logo">轻创文学网</div></a>   <ul class="nav-left">   <li :class="active"><a :href="path.TemprootPath + \'/index.html\'">首页</a></li><li><a :href="path.TemprootPath + \'/view/class.html\'">分类</a></li><li><a :href="path.TemprootPath + \'/view/ranking.html\'">排行榜</a></li><li class="none"><a href="javascript:;">画师</a></li><li class="none"><a href="javascript:;">周边</a></li><li><a :href="path.TemprootPath + \'/view/welfare.html\'">福利</a></li></ul><ul class="nav-right">' + '<li v-if="loginFlag" class="liBlock" :style="loginImg !== \'\' ? loginImg:\'\'"><div class="headers_display"><span class="display_user"><a  :href="path.TemprootPath + \'/view/user_info.html\'">{{ userName }}</a></span> <span class="out"><a  href="javascript:;" @click="backLoginFn">退出</a></span>  <div class="header_more"><a :href="path.TemprootPath + \'/view/user_info.html\'">查看更多</a></div></div></a></li>' + '<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>' + '<li v-if="loginFlag" class="ul_msg" ><div class="mag_number" v-if="book+official+reply+system > 0" >{{ book+official+reply+system }}</div><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">消息</a><ul class="li_msg_ul" ><li @click="setreplyFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">回复我的</a><div class="mag_number_small" v-if="reply > 0"  >{{ reply }}</div></li><li @click="setbookFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/relevant\'">作品相关</a><div class="mag_number_small" v-if="book > 0" >{{ book }}</div></li><li @click="setsystemFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/system\'">系统消息</a><div class="mag_number_small" v-if="system > 0" >{{ system }}</div></li><li @click="setofficialFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/official\'">官方公共</a><div class="mag_number_small" v-if="official > 0" >{{ official }}</div></li></ul></li>' + '<li class="publication">' + '<a v-if="loginFlag" @click="setHref(path.TemprootPath + \'/view/user_info.html#!/bookBlockList\')" style="color:#FFFFFF">投&nbsp;稿</a>' + '<a v-else style="color:#FFFFFF" :href="path.TemprootPath + \'/view/login.html\'">投&nbsp;稿</a>' + '</li></ul></div></header>',
 	  components: {},
 	  props: {
 	    userName: {
@@ -5043,7 +5044,7 @@
 	    return {
 	      path: _conf2.default,
 	      loginFlag: false,
-	      number: 0,
+	      number1: '',
 	      book: '',
 	      official: '',
 	      reply: '',
@@ -5051,6 +5052,11 @@
 	    };
 	  },
 	  methods: {
+	    setmessageFn: function setmessageFn() {
+	      if (this.number > 1) {
+	        this.number;
+	      }
+	    },
 	    setbookFn: function setbookFn() {
 	      this.$set('book', 0);
 	    },
@@ -5061,6 +5067,7 @@
 	      this.$set('reply', 0);
 	    },
 	    setsystemFn: function setsystemFn() {
+
 	      this.$set('system', 0);
 	    },
 	    backLoginFn: function backLoginFn() {
@@ -5092,11 +5099,11 @@
 	      _this2.loginImg = 'background-image: url(' + _this2.path.rootPath + response.data.status.userImage + ')';
 	      _this2.loginFlag = response.data.status.flag;
 	      _this2.userName = response.data.status.userName;
-	      _this2.number = response.data.book + response.data.official + response.data.reply + response.data.system;
 	      _this2.book = response.data.book;
 	      _this2.official = response.data.official;
 	      _this2.reply = response.data.reply;
 	      _this2.system = response.data.system;
+	      _this2.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
 	    });
 	  },
 	  route: {
