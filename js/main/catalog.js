@@ -121,9 +121,12 @@
 	    lineHr: function lineHr() {
 	      for (var i = 0; i = this.contentEntityList.length; i++) {
 	        if (i % 4 == 0) {
-	          line++;
+	          this.line++;
 	        };
 	      };
+	    },
+	    setreplyFn: function setreplyFn(replyId) {
+	      this.replyId = replyId;
 	    },
 	    strickieFn: function strickieFn(commentId) {
 	      var _this = this;
@@ -132,7 +135,7 @@
 	        _this.setComment(_this.commentStatus);
 	      });
 	    },
-	    messageShow: function messageShow(commentId, v, name, id) {
+	    messageShow: function messageShow(commentId, v, name, id, replyId) {
 	      this.commentId = commentId; // editor
 	      var editor = {};
 	      var index = 0;
@@ -144,8 +147,9 @@
 	        }
 	      }
 	      this.replyUserId = id;
+	      this.replyId = replyId;
 	      if (v === 1) {
-	        editor.$txt.html('<span style="color:#00A1D6;" contenteditable="false">回复@' + name + '</span><span>:</span>');
+	        editor.$txt.html('<span style="color:#00A1D6;" contenteditable="false">回复@' + name + '</span><span style="font-size:12px !important;color:#555 !important;">:</span>');
 	        this.replyStatus = 1;
 	      } else {
 	        this.replyStatus = 0;
@@ -174,8 +178,8 @@
 	      var _data = {
 	        pageNo: v,
 	        pageSize: 10,
-	        commentId: this.findCommentAndReply.comment[index].commentId,
-	        replyId: this.findCommentAndReply.replyId
+	        commentId: this.findCommentAndReply.comment[index].commentId
+
 	      };
 	      var obj = this.findCommentAndReply;
 	      this.findCommentAndReply = {};
@@ -206,6 +210,7 @@
 	      _data.pageNo = this.findCommentAndReply.pageNo;
 	      _data.pageSize = 10;
 	      _data.status = v;
+
 	      this.getComment(_data); // 请求
 	    },
 	    getComment: function getComment(_data) {
@@ -221,6 +226,7 @@
 	        } else {
 	          pageNo = 1;
 	        }
+
 	        _this3.findCommentAndReply = response.data;
 	        _this3.findCommentAndReply.page = [];
 	        _this3.findCommentAndReply.pageNo = pageNo;
@@ -289,6 +295,7 @@
 	        replyStatus: this.replyStatus,
 	        commentId: this.commentId,
 	        replyUserId: this.replyUserId,
+	        repliedId: this.replyId,
 	        replyContent: editor.$txt.html() };
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveReply, _data, function (response) {
 	        editor.$txt.html('');
