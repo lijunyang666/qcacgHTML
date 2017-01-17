@@ -54,9 +54,9 @@
 
 	var _vueResourceMin2 = _interopRequireDefault(_vueResourceMin);
 
-	var _editor = __webpack_require__(120);
+	var _vueRouterMin = __webpack_require__(128);
 
-	var _editor2 = _interopRequireDefault(_editor);
+	var _vueRouterMin2 = _interopRequireDefault(_vueRouterMin);
 
 	var _conf = __webpack_require__(121);
 
@@ -73,338 +73,235 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vueMin2.default.use(_vueResourceMin2.default);
-	_vueMin2.default.component('editor', _editor2.default);
+	_vueMin2.default.use(_vueRouterMin2.default);
 
 	(0, _headerOrfooter2.default)();
 
-	var vuePractice = new _vueMin2.default({
-	  el: '#mask',
+	var indexHtml = new _vueMin2.default({
+	  el: '#app',
 	  data: {
-	    loginFlag: false,
-	    loginImg: '',
-	    bodyFlag: false,
-	    zindex: 0,
 	    path: _conf2.default,
-	    szxj: _vueHttp2.default,
-	    popup: false,
-	    id: '',
-	    title: '',
-	    words: '',
-	    cursor: '',
-	    update: '',
-	    introduction: '',
-	    BookList: [],
-	    Booktype: [{ typeName: '' }],
-	    Collection: '',
-	    bookCopperCoins: '',
-	    authorName: '',
-	    autograph: '',
-	    booktTitle: [],
-	    bookCustom: [],
-	    collect: false,
-	    attention: false,
-	    userId: '',
-	    bookId: '',
-	    userHead: '',
-	    findCommentAndReply: [], // 评论字段
-	    authorId: '',
-	    commentId: '', // 根据评论id显示 回复输入框
-	    commentStatus: 0, // 按回复数 或 按时间排序显示评论
-	    replyStatus: 0,
-	    replyUserId: 0,
-	    line: 0,
-	    contentEntityList: [],
-	    Report: 0,
-	    commentAndReplyTotalCount: '',
-	    replyId: ''
+	    telephone: '', // 手机号码
+	    verification: '', // 手机验证码
+	    username: '', // 昵称
+	    password: '', // 密码
+	    password2: '', // 确认密码
+	    uid: '', // 推荐人
+	    verificationBtnTime: 60, // 验证码时间
+	    verificationBtnFlag: true, // 验证码状态
+	    captchaObj: {},
+	    verificationFlag: false
 	  },
 	  methods: {
-	    lineHr: function lineHr() {
-	      for (var i = 0; i = this.contentEntityList.length; i++) {
-	        if (i % 4 == 0) {
-	          this.line++;
-	        };
-	      };
+	    verificationTimeFn: function verificationTimeFn() {
+	      if (this.verificationBtnTime === 0) {
+	        this.$set('verificationBtnTime', 60);
+	        this.verificationBtnFlag = true;
+	        return;
+	      } else {
+	        this.$set('verificationBtnTime', --this.verificationBtnTime);
+	        var This = this;
+	        setTimeout(function () {
+	          This.verificationTimeFn();
+	        }, 1000);
+	      }
 	    },
-	    setreplyFn: function setreplyFn(replyId) {
-	      this.replyId = replyId;
+	    verificationBtn: function verificationBtn() {
+	      this.verificationFlag = true;
+	      this.captchaObj.show();
 	    },
-	    strickieFn: function strickieFn(commentId) {
+	    register: function register(validate) {
 	      var _this = this;
 
-	      _vueHttp2.default.http(this, 'post', _conf2.default.top, { bookId: this.id, commentId: commentId }, function (response) {
-	        _this.setComment(_this.commentStatus);
+	      var registCodeId = localStorage.getItem('verificationId');
+	      var _data = {};
+	      _data.registCodeId = registCodeId;
+	      _data.telephone = this.telephone;
+	      _data.telephoneCode = this.verification;
+	      _data.uuid = registCodeId;
+	      _data.userName = this.username;
+	      _data.passWord = this.password;
+	      _data.passWordConfirm = this.password2;
+	      if (this.uid !== '') {
+	        _data.invitePeople = this.uid;
+	      }
+	      _data.challenge = validate.geetest_challenge;
+	      _data.validate = validate.geetest_validate;
+	      _data.seccode = validate.geetest_seccode;
+	      _vueHttp2.default.http(this, 'post', _conf2.default.register, _data, function (response) {
+	        location.href = _this.path.TemprootPath + '/view/login.html';
 	      });
 	    },
-	    messageShow: function messageShow(commentId, v, name, id, replyId) {
-	      this.commentId = commentId; // editor
-	      var editor = {};
-	      var index = 0;
-	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
-	        if (this.findCommentAndReply.comment[i].commentId === commentId) {
-	          editor = this.findCommentAndReply.comment[i].editor;
-	          index = 0;
-	          break;
-	        }
-	      }
-	      this.replyUserId = id;
-	      this.replyId = replyId;
-	      if (v === 1) {
-	        editor.$txt.html('<span style="color:#00A1D6;" contenteditable="false">回复@' + name + '</span><span style="font-size:12px !important;color:#555 !important;">:</span>');
-	        this.replyStatus = 1;
-	      } else {
-	        this.replyStatus = 0;
-	      }
-	    },
-	    setPageCount: function setPageCount(v) {
-	      var obj = this.findCommentAndReply;
-	      obj.pageCount = v;
-	      this.page = [];
-	      for (var i = 0; i < obj.pageCount; i++) {
-	        this.page.push(i + 1);
-	      }
-	      this.$set('findCommentAndReply', obj);
-	    },
-	    setPage1: function setPage1(v, commentId) {
-	      var _this2 = this;
+	    handlerPopup: function handlerPopup(captchaObj) {
+	      this.captchaObj = captchaObj;
+	      var This = this;
+	      captchaObj.onReady(function () {
+	        // 设置验证的
+	        $.validator.setDefaults({
+	          submitHandler: function submitHandler() {
+	            captchaObj.show();
+	          },
+	          showErrors: function showErrors(map, list) {
+	            // there's probably a way to simplify this
+	            var focussed = document.activeElement;
 
-	      // 获取回复的
-	      var index = 0;
-	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
-	        if (this.findCommentAndReply.comment[i].commentId === commentId) {
-	          index = i;
-	          break;
-	        }
-	      }
-	      var _data = {
-	        pageNo: v,
-	        pageSize: 10,
-	        commentId: this.findCommentAndReply.comment[index].commentId
+	            if (focussed && $(focussed).is("input, textarea")) {
+	              $(this.currentForm).tooltip("close", {
+	                currentTarget: focussed
+	              }, true);
+	            }
 
-	      };
-	      var obj = this.findCommentAndReply;
-	      this.findCommentAndReply = {};
-	      _vueHttp2.default.http(this, 'get', _conf2.default.moreReply, _data, function (response) {
-	        obj.comment[index].replyEntityList = response.data;
-	        obj.comment[index].pageNo = v;
-	        _this2.findCommentAndReply = obj;
-	      });
-	    },
-	    setPage: function setPage(v) {
-	      if (!v || v > this.findCommentAndReply.pageCount || v <= 0 || v.toString().search(/[^0-9]/g) !== -1 || parseInt(v) === parseInt(this.findCommentAndReply.pageNo)) {
-	        return;
-	      }
-	      var obj = this.findCommentAndReply;
-	      obj.pageNo = v;
-	      this.$set('findCommentAndReply', obj);
-	      var _data = {};
-	      _data.bookId = this.id;
-	      _data.pageNo = v;
-	      _data.pageSize = 10;
-	      _data.status = this.commentStatus;
-	      this.getComment(_data); // 请求
-	    },
-	    setComment: function setComment(v) {
-	      this.commentStatus = v;
-	      var _data = {};
-	      _data.bookId = this.id;
-	      _data.pageNo = this.findCommentAndReply.pageNo;
-	      _data.pageSize = 10;
-	      _data.status = v;
+	            this.currentElements.removeAttr("title").removeClass("ui-state-highlight");
+	            $.each(list, function (index, error) {
+	              $(error.element).attr("title", error.message).addClass("ui-state-highlight");
+	            });
 
-	      this.getComment(_data); // 请求
-	    },
-	    getComment: function getComment(_data) {
-	      var _this3 = this;
-
-	      _vueHttp2.default.http(this, 'get', _conf2.default.findCommentAndReply, _data, function (response) {
-	        console.log('评论:');
-	        console.log(response);
-	        var pageNo;
-	        if (_this3.findCommentAndReply.pageNo) {
-	          pageNo = _this3.findCommentAndReply.pageNo;
-	          _this3.setPageCount(pageNo);
-	        } else {
-	          pageNo = 1;
-	        }
-
-	        _this3.findCommentAndReply = response.data;
-	        _this3.findCommentAndReply.page = [];
-	        _this3.findCommentAndReply.pageNo = pageNo;
-	        // 计算评论的总页数
-	        console.log(_this3.findCommentAndReply.totalCount / _data.pageSize);
-	        if (_this3.findCommentAndReply.totalCount / _data.pageSize <= 1) {
-	          _this3.findCommentAndReply.pageCount = 1;
-	        } else {
-	          if (_this3.findCommentAndReply.totalCount % _data.pageSize === 0) {
-	            _this3.findCommentAndReply.pageCount = _this3.findCommentAndReply.totalCount / _data.pageSize;
-	          } else {
-	            _this3.findCommentAndReply.pageCount = parseInt(_this3.findCommentAndReply.totalCount / _data.pageSize, 10) + 1;
-	          }
-	        }
-	        for (var i = 0; i < _this3.findCommentAndReply.pageCount; i++) {
-	          _this3.findCommentAndReply.page.push(i + 1);
-	        }
-	        for (var i = 0; i < _this3.findCommentAndReply.comment.length; i++) {
-	          // 评论楼中楼
-	          _this3.findCommentAndReply.comment[i].editor = {};
-	          _this3.findCommentAndReply.comment[i].page = [];
-	          _this3.findCommentAndReply.comment[i].pageNo = 1;
-	          // 计算评论楼中楼回复的总页数
-	          if (_this3.findCommentAndReply.comment[i].totalCount / _data.pageSize <= 1) {
-	            _this3.findCommentAndReply.comment[i].pageCount = 1;
-	          } else {
-	            if (_this3.findCommentAndReply.comment[i].totalCount % _data.pageSize === 0) {
-	              _this3.findCommentAndReply.comment[i].pageCount = _this3.findCommentAndReply.comment[i].totalCount / _data.pageSize;
-	            } else {
-	              _this3.findCommentAndReply.comment[i].pageCount = parseInt(_this3.findCommentAndReply.comment[i].totalCount / _data.pageSize, 10) + 1;
+	            if (focussed && $(focussed).is("input, textarea")) {
+	              $(this.currentForm).tooltip("open", {
+	                target: focussed
+	              });
 	            }
 	          }
-	          for (var j = 1; j <= _this3.findCommentAndReply.comment[i].pageCount; j++) {
-	            _this3.findCommentAndReply.comment[i].page.push(j);
+	        });
+	        $('.btn_submit').click(function () {
+	          $('#regist').submit();
+	        });
+
+	        $("#regist").validate({
+	          rules: {
+	            verification: {
+	              required: true,
+	              minlength: 6,
+	              number: true
+	            },
+	            username: "required",
+	            user: {
+	              required: true,
+	              minlength: 11,
+	              number: true
+	            },
+	            password: {
+	              required: true,
+	              minlength: 6
+	            },
+	            password2: {
+	              required: true,
+	              minlength: 6
+	            }
+	          },
+	          messages: {
+	            verification: {
+	              required: "此为必填项",
+	              minlength: "长度最小为6位！",
+	              number: "必须是数字"
+	            },
+	            username: "此为必填项",
+	            user: {
+	              required: "此为必填项",
+	              minlength: "长度最小为11位！",
+	              number: "必须是数字"
+	            },
+	            password: {
+	              required: "此为必填项",
+	              minlength: "长度最小为6位！"
+	            },
+	            password2: {
+	              required: "此为必填项",
+	              minlength: "长度最小为6位！"
+	            }
 	          }
-	        }
-	      });
-	    },
+	        });
 
-	    saveComment: function saveComment() {
-	      var _this4 = this;
+	        $("#regist input:not(:submit)").addClass("ui-widget-content");
 
-	      var editor = this.$refs.editor.getEditor();
-	      var _data = {
-	        commentContent: editor.$txt.html(), //文本html内容
-	        bookId: this.id };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveComment, _data, function (response) {
-	        editor.$txt.html('');
-	        _this4.getValueFn();
-	      });
-	    },
-	    saveReply: function saveReply(commentId) {
-	      var _this5 = this;
+	        $(":submit").button();
+	        // 极验验证成功
+	        captchaObj.onSuccess(function () {
+	          var validate = captchaObj.getValidate();
+	          if (!validate) {
+	            //  alert('请先完成验证！');
+	            //  return;
+	          }
 
-	      // 回复
-	      var editor = {};
-	      var index = 0;
-	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
-	        if (this.findCommentAndReply.comment[i].commentId === commentId) {
-	          editor = this.findCommentAndReply.comment[i].editor;
-	          index = i;
-	          break;
-	        }
-	      }
-	      var _data = {
-	        replyStatus: this.replyStatus,
-	        commentId: this.commentId,
-	        replyUserId: this.replyUserId,
-	        repliedId: this.replyId,
-	        replyContent: editor.$txt.html() };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveReply, _data, function (response) {
-	        editor.$txt.html('');
-	        _this5.getValueFn();
-	        var This = _this5;
-	        setTimeout(function () {
-	          This.setPage1(This.findCommentAndReply.comment[index].pageCount, This.commentId);
-	          This.commentId = -1;
-	        }, 300);
+	          if (This.verificationFlag) {
+	            var _data = {};
+	            _data.telephone = This.telephone;
+	            _data.geetest_challenge = validate.geetest_challenge;
+	            _data.geetest_validate = validate.geetest_validate;
+	            _data.geetest_seccode = validate.geetest_seccode;
+	            console.log(_data);
+	            _vueHttp2.default.http(This, 'post', _conf2.default.registerTelephoneCode, _data, function (data) {
+	              This.verificationBtnFlag = false;
+	              This.verificationTimeFn();
+	              localStorage.setItem('verificationId', data.data.verificationId);
+	              This.getGeetestFn();
+	            });
+	          } else {
+	            This.register(validate);
+	          }
+	          This.verificationFlag = false;
+	          //      $.ajax({
+	          //        url: PathList.VerifyLoginServlet,
+	          //        // 进行二次验证
+	          //        type: "post",
+	          //        dataType: "json",
+	          //        data: {
+	          //          // 二次验证所需的三个值
+	          //          geetest_challenge: validate.geetest_challenge,
+	          //          geetest_validate: validate.geetest_validate,
+	          //          geetest_seccode: validate.geetest_seccode,
+	          //          // telephone
+	          //        },
+	          //        success: function(data) {
+	          //          if (data && (data.status === "success")) {
+	          //            This.register();
+	          //          } else {
+	          //            alert('服务端验证异常！');
+	          //          }
+	          //        },
+	          //        error: function(data) {
+	          //          alert(JSON.parse(data.responseText).msg);
+	          //        },
+	          //      });
+	        });
 	      });
+	      // 将验证码加到id为captcha的元素里
+	      captchaObj.appendTo("#popup-captcha");
+	      // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
 	    },
-	    setAttention: function setAttention() {
-	      var _this6 = this;
+	    getGeetestFn: function getGeetestFn() {
+	      var _this2 = this;
 
-	      var _data = {};
-	      _data.receiveId = this.userId;
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrCancelAttention, _data, function (response) {
-	        if (_this6.attention) {
-	          _this6.attention = false;
-	        } else {
-	          _this6.attention = true;
-	        }
+	      // 获取就极验验证码
+	      _vueHttp2.default.http(this, 'get', _conf2.default.StartCaptchaServlet, {}, function (data) {
+	        // 使用initGeetest接口
+	        // 参数1：配置参数
+	        // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+	        window.initGeetest({
+	          gt: data.data.gt,
+	          challenge: data.data.challenge,
+	          product: "popup",
+	          // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+	          offline: !data.data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+	        }, _this2.handlerPopup);
 	      });
-	    },
-	    setCollect: function setCollect() {
-	      var _this7 = this;
-
-	      var _data = {};
-	      _data.bookId = this.bookId;
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrDeleteBookCollect, _data, function (response) {
-	        _this7.getValueFn();
-	      });
-	    },
-	    nextWorksFn: function nextWorksFn() {
-	      if (this.booktTitle.length < 3) {
-	        return;
-	      }
-	      this.zindex--;
-	      if (Math.abs(this.zindex) >= this.booktTitle.length - 3) {
-	        this.zindex = -(this.booktTitle.length - 3);
-	      }
-	    },
-	    previousWorksFn: function previousWorksFn() {
-	      if (this.booktTitle.length < 3) {
-	        return;
-	      }
-	      this.zindex++;
-	      if (this.zindex >= 0) {
-	        this.zindex = 0;
-	      }
-	    },
-	    getValueFn: function getValueFn() {
-	      var _this8 = this;
-
-	      var _data = {};
-	      _data.bookId = this.id;
-	      _vueHttp2.default.http(this, 'get', _conf2.default.queryBookDirectory, _data, function (response) {
-	        // 取到数据渲染
-	        _this8.bookCustom = [];
-	        _this8.userHead = response.data.bookCustom.userEntity.userHead;
-	        _this8.bookId = response.data.bookCustom.bookId;
-	        _this8.userId = response.data.bookCustom.userEntity.userId;
-	        _this8.collect = response.data.bookCustom.collect;
-	        _this8.attention = response.data.bookCustom.userEntity.attention;
-	        _this8.bookCustom.push(response.data.bookCustom);
-	        _this8.title = response.data.bookCustom.bookName;
-	        _this8.introduction = response.data.bookCustom.bookIntroduction;
-	        _this8.words = response.data.bookCustom.bookWordCount;
-	        _this8.update = response.data.bookCustom.bookUpdate;
-	        _this8.cursor = response.data.bookCustom.bookHit;
-	        _this8.BookList = response.data.bookCustom.volumeCustomList;
-	        _this8.Booktype = response.data.bookCustom.bookTypeEntityList;
-	        _this8.typeName = response.data.bookCustom.bookTypeName;
-	        _this8.Collection = response.data.bookCustom.bookCollect;
-	        _this8.bookCopperCoins = response.data.bookCustom.bookCopperCoins;
-	        _this8.authorName = response.data.bookCustom.userEntity.userName;
-	        _this8.autograph = response.data.bookCustom.userEntity.information;
-	      });
-	      _vueHttp2.default.http(this, 'get', _conf2.default.findUserOtherBook, _data, function (response) {
-	        // 取到数据渲染
-	        _this8.booktTitle = response.data.userOtherBook;
-	      });
-	      _data.pageNo = 1;
-	      _data.pageSize = 10;
-	      _data.status = this.commentStatus;
-	      this.getComment(_data);
-	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, _data, function (response) {
-	        _this8.loginFlag = response.data.status.flag;
-	      });
-	    },
-	    rewardFn: function rewardFn() {
-	      this.popup = true;
-	    },
-	    rewardShow: function rewardShow() {
-	      this.popup = false;
 	    }
 	  },
 	  ready: function ready() {
-	    this.bodyFlag = true;
-	    var href = window.location.href;
-	    this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length);
-	    var str = this.id.toString();
-	    if (str.search(/[^0-9]/g) === -1) {
-	      this.getValueFn();
-	    } else {
-	      window.location.href = _conf2.default.TemprootPath + '/index.html';
-	    }
+	    this.getGeetestFn();
 	  }
+	});
+
+	"use strict";
+	$(function () {
+	  $('.regist').animate({
+	    height: '512px'
+	  });
+	  $('.regist').slideDown(1000);
+	  $("#regist").tooltip({
+	    show: false,
+	    hide: false
+	  });
 	});
 
 /***/ },
@@ -4919,126 +4816,7 @@
 	});
 
 /***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _conf = __webpack_require__(121);
-
-	var _conf2 = _interopRequireDefault(_conf);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var editor = _vueMin2.default.extend({
-	  template: '<textarea id="{{id}}" required="" spellcheck="false" placeholder="" class="form-control input-sm" style="display: none;"></textarea>',
-
-	  components: {},
-	  props: {
-	    id: {
-	      type: String
-	    },
-	    editor: {
-	      type: Object
-	    }
-	  },
-	  data: function data() {
-	    return {};
-	  },
-	  methods: {
-	    getEditor: function getEditor() {
-	      return this.editor;
-	    }
-	  },
-	  ready: function ready() {
-	    var textarea = document.getElementById(this.id);
-	    this.editor = new wangEditor(textarea);
-	    this.editor.config.uploadImgUrl = _conf2.default.rootPath + '/content/upload.shtml';
-	    this.editor.config.uploadHeaders = {
-	      'JSESSIONID': localStorage.getItem('JSESSIONID')
-	    };
-	    this.editor.config.menus = ['emotion', 'img'];
-	    this.editor.config.emotions = {
-	      'default': {
-	        title: '轻悦娘',
-	        data: [{
-	          'icon': _conf2.default.rootPath + '/img/不明所以然.jpg',
-	          'value': '[不明所以然]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/伤心欲绝.jpg',
-	          'value': '[伤心欲绝]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/发呆.jpg',
-	          'value': '[发呆]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/吃惊.jpg',
-	          'value': '[吃惊]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/哭泣.jpg',
-	          'value': '[哭泣]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/害羞.jpg',
-	          'value': '[害羞]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/就是那个.jpg',
-	          'value': '[就是那个]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/微笑.jpg',
-	          'value': '[微笑]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/恼怒.jpg',
-	          'value': '[恼怒]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/悲伤.jpg',
-	          'value': '[悲伤]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/战斗力渣渣.jpg',
-	          'value': '[战斗力渣渣]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/抛媚眼.jpg',
-	          'value': '[抛媚眼]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/早就看穿一切.jpg',
-	          'value': '[早就看穿一切]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/汗.jpg',
-	          'value': '[汗]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/菜刀.jpg',
-	          'value': '[菜刀]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/那个有没有.jpg',
-	          'value': '[那个有没有]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/震惊.jpg',
-	          'value': '[震惊]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/高兴.jpg',
-	          'value': '[高兴]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/默默地看着.jpg',
-	          'value': '[默默地看着]'
-	        }]
-	      }
-	    };
-	    this.editor.create();
-	  },
-	  route: {
-	    data: function data() {}
-	  }
-	});
-	//import wangEditor from '../../lib/wangEditor.min.js';
-	exports.default = editor;
-
-/***/ },
+/* 120 */,
 /* 121 */
 /***/ function(module, exports) {
 
@@ -5577,6 +5355,656 @@
 	  }
 	});
 	exports.default = VueConfirm;
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
+
+	var _freeze = __webpack_require__(42);
+
+	var _freeze2 = _interopRequireDefault(_freeze);
+
+	var _create = __webpack_require__(92);
+
+	var _create2 = _interopRequireDefault(_create);
+
+	var _keys = __webpack_require__(100);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _stringify = __webpack_require__(95);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	var _typeof2 = __webpack_require__(103);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/*!
+	 * vue-router v0.7.13
+	 * (c) 2016 Evan You
+	 * Released under the MIT License.
+	 */
+	!function (t, e) {
+	  "object" == ( false ? "undefined" : (0, _typeof3.default)(exports)) && "undefined" != typeof module ? module.exports = e() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (e), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : t.VueRouter = e();
+	}(undefined, function () {
+	  "use strict";
+	  function t(t, e, n) {
+	    this.path = t, this.matcher = e, this.delegate = n;
+	  }function e(t) {
+	    this.routes = {}, this.children = {}, this.target = t;
+	  }function n(e, r, i) {
+	    return function (o, a) {
+	      var s = e + o;return a ? void a(n(s, r, i)) : new t(e + o, r, i);
+	    };
+	  }function r(t, e, n) {
+	    for (var r = 0, i = 0, o = t.length; o > i; i++) {
+	      r += t[i].path.length;
+	    }e = e.substr(r);var a = { path: e, handler: n };t.push(a);
+	  }function i(t, e, n, o) {
+	    var a = e.routes;for (var s in a) {
+	      if (a.hasOwnProperty(s)) {
+	        var h = t.slice();r(h, s, a[s]), e.children[s] ? i(h, e.children[s], n, o) : n.call(o, h);
+	      }
+	    }
+	  }function o(t, r) {
+	    var o = new e();t(n("", o, this.delegate)), i([], o, function (t) {
+	      r ? r(this, t) : this.add(t);
+	    }, this);
+	  }function a(t) {
+	    B || "undefined" == typeof console || console.error("[vue-router] " + t);
+	  }function s(t, e) {
+	    try {
+	      return e ? decodeURIComponent(t) : decodeURI(t);
+	    } catch (n) {
+	      a("malformed URI" + (e ? " component: " : ": ") + t);
+	    }
+	  }function h(t) {
+	    return "[object Array]" === Object.prototype.toString.call(t);
+	  }function c(t) {
+	    this.string = t;
+	  }function u(t) {
+	    this.name = t;
+	  }function l(t) {
+	    this.name = t;
+	  }function p() {}function f(t, e, n) {
+	    "/" === t.charAt(0) && (t = t.substr(1));var r = t.split("/"),
+	        i = [];n.val = "";for (var o = 0, a = r.length; a > o; o++) {
+	      var s,
+	          h = r[o];(s = h.match(/^:([^\/]+)$/)) ? (i.push(new u(s[1])), e.push(s[1]), n.val += "3") : (s = h.match(/^\*([^\/]+)$/)) ? (i.push(new l(s[1])), n.val += "2", e.push(s[1])) : "" === h ? (i.push(new p()), n.val += "1") : (i.push(new c(h)), n.val += "4");
+	    }return n.val = +n.val, i;
+	  }function d(t) {
+	    this.charSpec = t, this.nextStates = [];
+	  }function v(t) {
+	    return t.sort(function (t, e) {
+	      return e.specificity.val - t.specificity.val;
+	    });
+	  }function g(t, e) {
+	    for (var n = [], r = 0, i = t.length; i > r; r++) {
+	      var o = t[r];n = n.concat(o.match(e));
+	    }return n;
+	  }function y(t) {
+	    this.queryParams = t || {};
+	  }function m(t, e, n) {
+	    for (var r = t.handlers, i = t.regex, o = e.match(i), a = 1, s = new y(n), h = 0, c = r.length; c > h; h++) {
+	      for (var u = r[h], l = u.names, p = {}, f = 0, d = l.length; d > f; f++) {
+	        p[l[f]] = o[a++];
+	      }s.push({ handler: u.handler, params: p, isDynamic: !!l.length });
+	    }return s;
+	  }function _(t, e) {
+	    return e.eachChar(function (e) {
+	      t = t.put(e);
+	    }), t;
+	  }function w(t) {
+	    return t = t.replace(/\+/gm, "%20"), s(t, !0);
+	  }function b(t) {
+	    "undefined" != typeof console && console.error("[vue-router] " + t);
+	  }function C(t, e, n) {
+	    var r = t.match(/(\?.*)$/);if (r && (r = r[1], t = t.slice(0, -r.length)), "?" === e.charAt(0)) return t + e;var i = t.split("/");n && i[i.length - 1] || i.pop();for (var o = e.replace(/^\//, "").split("/"), a = 0; a < o.length; a++) {
+	      var s = o[a];"." !== s && (".." === s ? i.pop() : i.push(s));
+	    }return "" !== i[0] && i.unshift(""), i.join("/");
+	  }function R(t) {
+	    return t && "function" == typeof t.then;
+	  }function A(t, e) {
+	    var n = t && (t.$options || t.options);return n && n.route && n.route[e];
+	  }function k(t, e) {
+	    Y ? Y.$options.components._ = t.component : Y = { resolve: X.Vue.prototype._resolveComponent, $options: { components: { _: t.component } } }, Y.resolve("_", function (n) {
+	      t.component = n, e(n);
+	    });
+	  }function $(t, e, n) {
+	    return void 0 === e && (e = {}), t = t.replace(/:([^\/]+)/g, function (n, r) {
+	      var i = e[r];return i || b('param "' + r + '" not found when generating path for "' + t + '" with params ' + (0, _stringify2.default)(e)), i || "";
+	    }), n && (t += K(n)), t;
+	  }function x(t, e, n) {
+	    var r = t.childVM;if (!r || !e) return !1;if (t.Component !== e.component) return !1;var i = A(r, "canReuse");return "boolean" == typeof i ? i : i ? i.call(r, { to: n.to, from: n.from }) : !0;
+	  }function E(t, e, n) {
+	    var r = t.childVM,
+	        i = A(r, "canDeactivate");i ? e.callHook(i, r, n, { expectBoolean: !0 }) : n();
+	  }function V(t, e, n) {
+	    k(t, function (t) {
+	      if (!e.aborted) {
+	        var r = A(t, "canActivate");r ? e.callHook(r, null, n, { expectBoolean: !0 }) : n();
+	      }
+	    });
+	  }function S(t, e, n) {
+	    var r = t.childVM,
+	        i = A(r, "deactivate");i ? e.callHooks(i, r, n) : n();
+	  }function P(t, e, n, r, i) {
+	    var o = e.activateQueue[n];if (!o) return H(t), t._bound && t.setComponent(null), void (r && r());var a = t.Component = o.component,
+	        s = A(a, "activate"),
+	        h = A(a, "data"),
+	        c = A(a, "waitForData");t.depth = n, t.activated = !1;var u = void 0,
+	        l = !(!h || c);if (i = i && t.childVM && t.childVM.constructor === a) u = t.childVM, u.$loadingRouteData = l;else if (H(t), t.unbuild(!0), u = t.build({ _meta: { $loadingRouteData: l }, created: function created() {
+	        this._routerView = t;
+	      } }), t.keepAlive) {
+	      u.$loadingRouteData = l;var p = u._keepAliveRouterView;p && (t.childView = p, u._keepAliveRouterView = null);
+	    }var f = function f() {
+	      u.$destroy();
+	    },
+	        d = function d() {
+	      if (i) return void (r && r());var n = e.router;n._rendered || n._transitionOnLoad ? t.transition(u) : (t.setCurrent ? t.setCurrent(u) : t.childVM = u, u.$before(t.anchor, null, !1)), r && r();
+	    },
+	        v = function v() {
+	      t.childView && P(t.childView, e, n + 1, null, i || t.keepAlive), d();
+	    },
+	        g = function g() {
+	      t.activated = !0, h && c ? T(u, e, h, v, f) : (h && T(u, e, h), v());
+	    };s ? e.callHooks(s, u, g, { cleanup: f, postActivate: !0 }) : g();
+	  }function O(t, e) {
+	    var n = t.childVM,
+	        r = A(n, "data");r && T(n, e, r);
+	  }function T(t, e, n, r, i) {
+	    t.$loadingRouteData = !0, e.callHooks(n, t, function () {
+	      t.$loadingRouteData = !1, t.$emit("route-data-loaded", t), r && r();
+	    }, { cleanup: i, postActivate: !0, processData: function processData(e) {
+	        var n = [];return j(e) && (0, _keys2.default)(e).forEach(function (r) {
+	          var i = e[r];R(i) ? n.push(i.then(function (e) {
+	            t.$set(r, e);
+	          })) : t.$set(r, i);
+	        }), n.length ? n[0].constructor.all(n) : void 0;
+	      } });
+	  }function H(t) {
+	    t.keepAlive && t.childVM && t.childView && (t.childVM._keepAliveRouterView = t.childView), t.childView = null;
+	  }function j(t) {
+	    return "[object Object]" === Object.prototype.toString.call(t);
+	  }function M(t) {
+	    return "[object Object]" === Object.prototype.toString.call(t);
+	  }function D(t) {
+	    return t ? Array.prototype.slice.call(t) : [];
+	  }function q(t) {
+	    var e = t.util,
+	        n = e.extend,
+	        r = e.isArray,
+	        i = e.defineReactive,
+	        o = t.prototype._init;t.prototype._init = function (t) {
+	      t = t || {};var e = t._parent || t.parent || this,
+	          n = e.$router,
+	          r = e.$route;n && (this.$router = n, n._children.push(this), this._defineMeta ? this._defineMeta("$route", r) : i(this, "$route", r)), o.call(this, t);
+	    };var a = t.prototype._destroy;t.prototype._destroy = function () {
+	      !this._isBeingDestroyed && this.$router && this.$router._children.$remove(this), a.apply(this, arguments);
+	    };var s = t.config.optionMergeStrategies,
+	        h = /^(data|activate|deactivate)$/;s && (s.route = function (t, e) {
+	      if (!e) return t;if (!t) return e;var i = {};n(i, t);for (var o in e) {
+	        var a = i[o],
+	            s = e[o];a && h.test(o) ? i[o] = (r(a) ? a : [a]).concat(s) : i[o] = s;
+	      }return i;
+	    });
+	  }function z(t) {
+	    var e = t.util,
+	        n = t.directive("_component") || t.internalDirectives.component,
+	        r = e.extend({}, n);e.extend(r, { _isRouterView: !0, bind: function bind() {
+	        var t = this.vm.$route;if (!t) return void b("<router-view> can only be used inside a router-enabled app.");this._isDynamicLiteral = !0, n.bind.call(this);for (var e = void 0, r = this.vm; r;) {
+	          if (r._routerView) {
+	            e = r._routerView;break;
+	          }r = r.$parent;
+	        }if (e) this.parentView = e, e.childView = this;else {
+	          var i = t.router;i._rootView = this;
+	        }var o = t.router._currentTransition;if (!e && o.done || e && e.activated) {
+	          var a = e ? e.depth + 1 : 0;P(this, o, a);
+	        }
+	      }, unbind: function unbind() {
+	        this.parentView && (this.parentView.childView = null), n.unbind.call(this);
+	      } }), t.elementDirective("router-view", r);
+	  }function Q(t) {
+	    function e(t) {
+	      return t.protocol === location.protocol && t.hostname === location.hostname && t.port === location.port;
+	    }function n(t, e, n) {
+	      if (e = e.trim(), -1 === e.indexOf(" ")) return void n(t, e);for (var r = e.split(/\s+/), i = 0, o = r.length; o > i; i++) {
+	        n(t, r[i]);
+	      }
+	    }var r = t.util,
+	        i = r.bind,
+	        o = r.isObject,
+	        a = r.addClass,
+	        s = r.removeClass,
+	        h = t.directive("on").priority,
+	        c = "__vue-router-link-update__",
+	        u = 0;t.directive("link-active", { priority: 9999, bind: function bind() {
+	        for (var t = this, e = String(u++), n = this.el.querySelectorAll("[v-link]"), r = 0, i = n.length; i > r; r++) {
+	          var o = n[r],
+	              a = o.getAttribute(c),
+	              s = a ? a + "," + e : e;o.setAttribute(c, s);
+	        }this.vm.$on(c, this.cb = function (n, r) {
+	          n.activeIds.indexOf(e) > -1 && n.updateClasses(r, t.el);
+	        });
+	      }, unbind: function unbind() {
+	        this.vm.$off(c, this.cb);
+	      } }), t.directive("link", { priority: h - 2, bind: function bind() {
+	        var t = this.vm;if (!t.$route) return void b("v-link can only be used inside a router-enabled app.");this.router = t.$route.router, this.unwatch = t.$watch("$route", i(this.onRouteUpdate, this));var e = this.el.getAttribute(c);e && (this.el.removeAttribute(c), this.activeIds = e.split(",")), "A" === this.el.tagName && "_blank" === this.el.getAttribute("target") || (this.handler = i(this.onClick, this), this.el.addEventListener("click", this.handler));
+	      }, update: function update(t) {
+	        this.target = t, o(t) && (this.append = t.append, this.exact = t.exact, this.prevActiveClass = this.activeClass, this.activeClass = t.activeClass), this.onRouteUpdate(this.vm.$route);
+	      }, onClick: function onClick(t) {
+	        if (!(t.metaKey || t.ctrlKey || t.shiftKey || t.defaultPrevented || 0 !== t.button)) {
+	          var n = this.target;if (n) t.preventDefault(), this.router.go(n);else {
+	            for (var r = t.target; "A" !== r.tagName && r !== this.el;) {
+	              r = r.parentNode;
+	            }if ("A" === r.tagName && e(r)) {
+	              t.preventDefault();var i = r.pathname;this.router.history.root && (i = i.replace(this.router.history.rootRE, "")), this.router.go({ path: i, replace: n && n.replace, append: n && n.append });
+	            }
+	          }
+	        }
+	      }, onRouteUpdate: function onRouteUpdate(t) {
+	        var e = this.router.stringifyPath(this.target);this.path !== e && (this.path = e, this.updateActiveMatch(), this.updateHref()), this.activeIds ? this.vm.$emit(c, this, t.path) : this.updateClasses(t.path, this.el);
+	      }, updateActiveMatch: function updateActiveMatch() {
+	        this.activeRE = this.path && !this.exact ? new RegExp("^" + this.path.replace(/\/$/, "").replace(at, "").replace(ot, "\\$&") + "(\\/|$)") : null;
+	      }, updateHref: function updateHref() {
+	        if ("A" === this.el.tagName) {
+	          var t = this.path,
+	              e = this.router,
+	              n = "/" === t.charAt(0),
+	              r = t && ("hash" === e.mode || n) ? e.history.formatPath(t, this.append) : t;r ? this.el.href = r : this.el.removeAttribute("href");
+	        }
+	      }, updateClasses: function updateClasses(t, e) {
+	        var r = this.activeClass || this.router._linkActiveClass;this.prevActiveClass && this.prevActiveClass !== r && n(e, this.prevActiveClass, s);var i = this.path.replace(at, "");t = t.replace(at, ""), this.exact ? i === t || "/" !== i.charAt(i.length - 1) && i === t.replace(it, "") ? n(e, r, a) : n(e, r, s) : this.activeRE && this.activeRE.test(t) ? n(e, r, a) : n(e, r, s);
+	      }, unbind: function unbind() {
+	        this.el.removeEventListener("click", this.handler), this.unwatch && this.unwatch();
+	      } });
+	  }function F(t, e) {
+	    var n = e.component;ht.util.isPlainObject(n) && (n = e.component = ht.extend(n)), "function" != typeof n && (e.component = null, b('invalid component for route "' + t + '".'));
+	  }var I = {};I.classCallCheck = function (t, e) {
+	    if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+	  }, t.prototype = { to: function to(t, e) {
+	      var n = this.delegate;if (n && n.willAddRoute && (t = n.willAddRoute(this.matcher.target, t)), this.matcher.add(this.path, t), e) {
+	        if (0 === e.length) throw new Error("You must have an argument in the function passed to `to`");this.matcher.addChild(this.path, t, e, this.delegate);
+	      }return this;
+	    } }, e.prototype = { add: function add(t, e) {
+	      this.routes[t] = e;
+	    }, addChild: function addChild(t, r, i, o) {
+	      var a = new e(r);this.children[t] = a;var s = n(t, a, o);o && o.contextEntered && o.contextEntered(r, s), i(s);
+	    } };var U = ["/", ".", "*", "+", "?", "|", "(", ")", "[", "]", "{", "}", "\\"],
+	      L = new RegExp("(\\" + U.join("|\\") + ")", "g"),
+	      B = !1;c.prototype = { eachChar: function eachChar(t) {
+	      for (var e, n = this.string, r = 0, i = n.length; i > r; r++) {
+	        e = n.charAt(r), t({ validChars: e });
+	      }
+	    }, regex: function regex() {
+	      return this.string.replace(L, "\\$1");
+	    }, generate: function generate() {
+	      return this.string;
+	    } }, u.prototype = { eachChar: function eachChar(t) {
+	      t({ invalidChars: "/", repeat: !0 });
+	    }, regex: function regex() {
+	      return "([^/]+)";
+	    }, generate: function generate(t) {
+	      var e = t[this.name];return null == e ? ":" + this.name : e;
+	    } }, l.prototype = { eachChar: function eachChar(t) {
+	      t({ invalidChars: "", repeat: !0 });
+	    }, regex: function regex() {
+	      return "(.+)";
+	    }, generate: function generate(t) {
+	      var e = t[this.name];return null == e ? ":" + this.name : e;
+	    } }, p.prototype = { eachChar: function eachChar() {}, regex: function regex() {
+	      return "";
+	    }, generate: function generate() {
+	      return "";
+	    } }, d.prototype = { get: function get(t) {
+	      for (var e = this.nextStates, n = 0, r = e.length; r > n; n++) {
+	        var i = e[n],
+	            o = i.charSpec.validChars === t.validChars;if (o = o && i.charSpec.invalidChars === t.invalidChars) return i;
+	      }
+	    }, put: function put(t) {
+	      var e;return (e = this.get(t)) ? e : (e = new d(t), this.nextStates.push(e), t.repeat && e.nextStates.push(e), e);
+	    }, match: function match(t) {
+	      for (var e, n, r, i = this.nextStates, o = [], a = 0, s = i.length; s > a; a++) {
+	        e = i[a], n = e.charSpec, "undefined" != typeof (r = n.validChars) ? -1 !== r.indexOf(t) && o.push(e) : "undefined" != typeof (r = n.invalidChars) && -1 === r.indexOf(t) && o.push(e);
+	      }return o;
+	    } };var N = _create2.default || function (t) {
+	    function e() {}return e.prototype = t, new e();
+	  };y.prototype = N({ splice: Array.prototype.splice, slice: Array.prototype.slice, push: Array.prototype.push, length: 0, queryParams: null });var G = function G() {
+	    this.rootState = new d(), this.names = {};
+	  };G.prototype = { add: function add(t, e) {
+	      for (var n, r = this.rootState, i = "^", o = {}, a = [], s = [], h = !0, c = 0, u = t.length; u > c; c++) {
+	        var l = t[c],
+	            d = [],
+	            v = f(l.path, d, o);s = s.concat(v);for (var g = 0, y = v.length; y > g; g++) {
+	          var m = v[g];m instanceof p || (h = !1, r = r.put({ validChars: "/" }), i += "/", r = _(r, m), i += m.regex());
+	        }var w = { handler: l.handler, names: d };a.push(w);
+	      }h && (r = r.put({ validChars: "/" }), i += "/"), r.handlers = a, r.regex = new RegExp(i + "$"), r.specificity = o, (n = e && e.as) && (this.names[n] = { segments: s, handlers: a });
+	    }, handlersFor: function handlersFor(t) {
+	      var e = this.names[t],
+	          n = [];if (!e) throw new Error("There is no route named " + t);for (var r = 0, i = e.handlers.length; i > r; r++) {
+	        n.push(e.handlers[r]);
+	      }return n;
+	    }, hasRoute: function hasRoute(t) {
+	      return !!this.names[t];
+	    }, generate: function generate(t, e) {
+	      var n = this.names[t],
+	          r = "";if (!n) throw new Error("There is no route named " + t);for (var i = n.segments, o = 0, a = i.length; a > o; o++) {
+	        var s = i[o];s instanceof p || (r += "/", r += s.generate(e));
+	      }return "/" !== r.charAt(0) && (r = "/" + r), e && e.queryParams && (r += this.generateQueryString(e.queryParams)), r;
+	    }, generateQueryString: function generateQueryString(t) {
+	      var e = [],
+	          n = [];for (var r in t) {
+	        t.hasOwnProperty(r) && n.push(r);
+	      }n.sort();for (var i = 0, o = n.length; o > i; i++) {
+	        r = n[i];var a = t[r];if (null != a) {
+	          var s = encodeURIComponent(r);if (h(a)) for (var c = 0, u = a.length; u > c; c++) {
+	            var l = r + "[]=" + encodeURIComponent(a[c]);e.push(l);
+	          } else s += "=" + encodeURIComponent(a), e.push(s);
+	        }
+	      }return 0 === e.length ? "" : "?" + e.join("&");
+	    }, parseQueryString: function parseQueryString(t) {
+	      for (var e = t.split("&"), n = {}, r = 0; r < e.length; r++) {
+	        var i,
+	            o = e[r].split("="),
+	            a = w(o[0]),
+	            s = a.length,
+	            h = !1;1 === o.length ? i = "true" : (s > 2 && "[]" === a.slice(s - 2) && (h = !0, a = a.slice(0, s - 2), n[a] || (n[a] = [])), i = o[1] ? w(o[1]) : ""), h ? n[a].push(i) : n[a] = i;
+	      }return n;
+	    }, recognize: function recognize(t, e) {
+	      B = e;var n,
+	          r,
+	          i,
+	          o,
+	          a = [this.rootState],
+	          h = {},
+	          c = !1;if (o = t.indexOf("?"), -1 !== o) {
+	        var u = t.substr(o + 1, t.length);t = t.substr(0, o), u && (h = this.parseQueryString(u));
+	      }if (t = s(t)) {
+	        for ("/" !== t.charAt(0) && (t = "/" + t), n = t.length, n > 1 && "/" === t.charAt(n - 1) && (t = t.substr(0, n - 1), c = !0), r = 0, i = t.length; i > r && (a = g(a, t.charAt(r)), a.length); r++) {}var l = [];for (r = 0, i = a.length; i > r; r++) {
+	          a[r].handlers && l.push(a[r]);
+	        }a = v(l);var p = l[0];return p && p.handlers ? (c && "(.+)$" === p.regex.source.slice(-5) && (t += "/"), m(p, t, h)) : void 0;
+	      }
+	    } }, G.prototype.map = o;var K = G.prototype.generateQueryString,
+	      X = {},
+	      Y = void 0,
+	      J = /#.*$/,
+	      W = function () {
+	    function t(e) {
+	      var n = e.root,
+	          r = e.onChange;I.classCallCheck(this, t), n && "/" !== n ? ("/" !== n.charAt(0) && (n = "/" + n), this.root = n.replace(/\/$/, ""), this.rootRE = new RegExp("^\\" + this.root)) : this.root = null, this.onChange = r;var i = document.querySelector("base");this.base = i && i.getAttribute("href");
+	    }return t.prototype.start = function () {
+	      var t = this;this.listener = function (e) {
+	        var n = location.pathname + location.search;t.root && (n = n.replace(t.rootRE, "")), t.onChange(n, e && e.state, location.hash);
+	      }, window.addEventListener("popstate", this.listener), this.listener();
+	    }, t.prototype.stop = function () {
+	      window.removeEventListener("popstate", this.listener);
+	    }, t.prototype.go = function (t, e, n) {
+	      var r = this.formatPath(t, n);e ? history.replaceState({}, "", r) : (history.replaceState({ pos: { x: window.pageXOffset, y: window.pageYOffset } }, "", location.href), history.pushState({}, "", r));var i = t.match(J),
+	          o = i && i[0];t = r.replace(J, "").replace(this.rootRE, ""), this.onChange(t, null, o);
+	    }, t.prototype.formatPath = function (t, e) {
+	      return "/" === t.charAt(0) ? this.root ? this.root + "/" + t.replace(/^\//, "") : t : C(this.base || location.pathname, t, e);
+	    }, t;
+	  }(),
+	      Z = function () {
+	    function t(e) {
+	      var n = e.hashbang,
+	          r = e.onChange;I.classCallCheck(this, t), this.hashbang = n, this.onChange = r;
+	    }return t.prototype.start = function () {
+	      var t = this;this.listener = function () {
+	        var e = location.hash,
+	            n = e.replace(/^#!?/, "");"/" !== n.charAt(0) && (n = "/" + n);var r = t.formatPath(n);if (r !== e) return void location.replace(r);var i = location.search && e.indexOf("?") > -1 ? "&" + location.search.slice(1) : location.search;t.onChange(e.replace(/^#!?/, "") + i);
+	      }, window.addEventListener("hashchange", this.listener), this.listener();
+	    }, t.prototype.stop = function () {
+	      window.removeEventListener("hashchange", this.listener);
+	    }, t.prototype.go = function (t, e, n) {
+	      t = this.formatPath(t, n), e ? location.replace(t) : location.hash = t;
+	    }, t.prototype.formatPath = function (t, e) {
+	      var n = "/" === t.charAt(0),
+	          r = "#" + (this.hashbang ? "!" : "");return n ? r + t : r + C(location.hash.replace(/^#!?/, ""), t, e);
+	    }, t;
+	  }(),
+	      tt = function () {
+	    function t(e) {
+	      var n = e.onChange;I.classCallCheck(this, t), this.onChange = n, this.currentPath = "/";
+	    }return t.prototype.start = function () {
+	      this.onChange("/");
+	    }, t.prototype.stop = function () {}, t.prototype.go = function (t, e, n) {
+	      t = this.currentPath = this.formatPath(t, n), this.onChange(t);
+	    }, t.prototype.formatPath = function (t, e) {
+	      return "/" === t.charAt(0) ? t : C(this.currentPath, t, e);
+	    }, t;
+	  }(),
+	      et = function () {
+	    function t(e, n, r) {
+	      I.classCallCheck(this, t), this.router = e, this.to = n, this.from = r, this.next = null, this.aborted = !1, this.done = !1;
+	    }return t.prototype.abort = function () {
+	      if (!this.aborted) {
+	        this.aborted = !0;var t = !this.from.path && "/" === this.to.path;t || this.router.replace(this.from.path || "/");
+	      }
+	    }, t.prototype.redirect = function (t) {
+	      this.aborted || (this.aborted = !0, "string" == typeof t ? t = $(t, this.to.params, this.to.query) : (t.params = t.params || this.to.params, t.query = t.query || this.to.query), this.router.replace(t));
+	    }, t.prototype.start = function (t) {
+	      for (var e = this, n = [], r = this.router._rootView; r;) {
+	        n.unshift(r), r = r.childView;
+	      }var i = n.slice().reverse(),
+	          o = this.activateQueue = D(this.to.matched).map(function (t) {
+	        return t.handler;
+	      }),
+	          a = void 0,
+	          s = void 0;for (a = 0; a < i.length && x(i[a], o[a], e); a++) {}a > 0 && (s = i.slice(0, a), n = i.slice(a).reverse(), o = o.slice(a)), e.runQueue(n, E, function () {
+	        e.runQueue(o, V, function () {
+	          e.runQueue(n, S, function () {
+	            if (e.router._onTransitionValidated(e), s && s.forEach(function (t) {
+	              return O(t, e);
+	            }), n.length) {
+	              var r = n[n.length - 1],
+	                  i = s ? s.length : 0;P(r, e, i, t);
+	            } else t();
+	          });
+	        });
+	      });
+	    }, t.prototype.runQueue = function (t, e, n) {
+	      function r(o) {
+	        o >= t.length ? n() : e(t[o], i, function () {
+	          r(o + 1);
+	        });
+	      }var i = this;r(0);
+	    }, t.prototype.callHook = function (t, e, n) {
+	      var r = arguments.length <= 3 || void 0 === arguments[3] ? {} : arguments[3],
+	          i = r.expectBoolean,
+	          o = void 0 === i ? !1 : i,
+	          a = r.postActivate,
+	          s = void 0 === a ? !1 : a,
+	          h = r.processData,
+	          c = r.cleanup,
+	          u = this,
+	          l = !1,
+	          p = function p() {
+	        c && c(), u.abort();
+	      },
+	          f = function f(t) {
+	        if (s ? v() : p(), t && !u.router._suppress) throw b("Uncaught error during transition: "), t instanceof Error ? t : new Error(t);
+	      },
+	          d = function d(t) {
+	        try {
+	          f(t);
+	        } catch (e) {
+	          setTimeout(function () {
+	            throw e;
+	          }, 0);
+	        }
+	      },
+	          v = function v() {
+	        return l ? void b("transition.next() should be called only once.") : (l = !0, u.aborted ? void (c && c()) : void (n && n()));
+	      },
+	          g = function g(e) {
+	        "boolean" == typeof e ? e ? v() : p() : R(e) ? e.then(function (t) {
+	          t ? v() : p();
+	        }, d) : t.length || v();
+	      },
+	          y = function y(t) {
+	        var e = void 0;try {
+	          e = h(t);
+	        } catch (n) {
+	          return f(n);
+	        }R(e) ? e.then(v, d) : v();
+	      },
+	          m = { to: u.to, from: u.from, abort: p, next: h ? y : v, redirect: function redirect() {
+	          u.redirect.apply(u, arguments);
+	        } },
+	          _ = void 0;try {
+	        _ = t.call(e, m);
+	      } catch (w) {
+	        return f(w);
+	      }o ? g(_) : R(_) ? h ? _.then(y, d) : _.then(v, d) : h && M(_) ? y(_) : t.length || v();
+	    }, t.prototype.callHooks = function (t, e, n, r) {
+	      var i = this;Array.isArray(t) ? this.runQueue(t, function (t, n, o) {
+	        i.aborted || i.callHook(t, e, o, r);
+	      }, n) : this.callHook(t, e, n, r);
+	    }, t;
+	  }(),
+	      nt = /^(component|subRoutes|fullPath)$/,
+	      rt = function ut(t, e) {
+	    var n = this;I.classCallCheck(this, ut);var r = e._recognizer.recognize(t);r && ([].forEach.call(r, function (t) {
+	      for (var e in t.handler) {
+	        nt.test(e) || (n[e] = t.handler[e]);
+	      }
+	    }), this.query = r.queryParams, this.params = [].reduce.call(r, function (t, e) {
+	      if (e.params) for (var n in e.params) {
+	        t[n] = e.params[n];
+	      }return t;
+	    }, {})), this.path = t, this.matched = r || e._notFoundHandler, Object.defineProperty(this, "router", { enumerable: !1, value: e }), (0, _freeze2.default)(this);
+	  },
+	      it = /\/$/,
+	      ot = /[-.*+?^${}()|[\]\/\\]/g,
+	      at = /\?.*$/,
+	      st = { "abstract": tt, hash: Z, html5: W },
+	      ht = void 0,
+	      ct = function () {
+	    function t() {
+	      var e = this,
+	          n = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0],
+	          r = n.hashbang,
+	          i = void 0 === r ? !0 : r,
+	          o = n["abstract"],
+	          a = void 0 === o ? !1 : o,
+	          s = n.history,
+	          h = void 0 === s ? !1 : s,
+	          c = n.saveScrollPosition,
+	          u = void 0 === c ? !1 : c,
+	          l = n.transitionOnLoad,
+	          p = void 0 === l ? !1 : l,
+	          f = n.suppressTransitionError,
+	          d = void 0 === f ? !1 : f,
+	          v = n.root,
+	          g = void 0 === v ? null : v,
+	          y = n.linkActiveClass,
+	          m = void 0 === y ? "v-link-active" : y;if (I.classCallCheck(this, t), !t.installed) throw new Error("Please install the Router with Vue.use() before creating an instance.");this.app = null, this._children = [], this._recognizer = new G(), this._guardRecognizer = new G(), this._started = !1, this._startCb = null, this._currentRoute = {}, this._currentTransition = null, this._previousTransition = null, this._notFoundHandler = null, this._notFoundRedirect = null, this._beforeEachHooks = [], this._afterEachHooks = [], this._rendered = !1, this._transitionOnLoad = p, this._root = g, this._abstract = a, this._hashbang = i;var _ = "undefined" != typeof window && window.history && window.history.pushState;this._history = h && _, this._historyFallback = h && !_;var w = ht.util.inBrowser;this.mode = !w || this._abstract ? "abstract" : this._history ? "html5" : "hash";var b = st[this.mode];this.history = new b({ root: g, hashbang: this._hashbang, onChange: function onChange(t, n, r) {
+	          e._match(t, n, r);
+	        } }), this._saveScrollPosition = u, this._linkActiveClass = m, this._suppress = d;
+	    }return t.prototype.map = function (t) {
+	      for (var e in t) {
+	        this.on(e, t[e]);
+	      }return this;
+	    }, t.prototype.on = function (t, e) {
+	      return "*" === t ? this._notFound(e) : this._addRoute(t, e, []), this;
+	    }, t.prototype.redirect = function (t) {
+	      for (var e in t) {
+	        this._addRedirect(e, t[e]);
+	      }return this;
+	    }, t.prototype.alias = function (t) {
+	      for (var e in t) {
+	        this._addAlias(e, t[e]);
+	      }return this;
+	    }, t.prototype.beforeEach = function (t) {
+	      return this._beforeEachHooks.push(t), this;
+	    }, t.prototype.afterEach = function (t) {
+	      return this._afterEachHooks.push(t), this;
+	    }, t.prototype.go = function (t) {
+	      var e = !1,
+	          n = !1;ht.util.isObject(t) && (e = t.replace, n = t.append), t = this.stringifyPath(t), t && this.history.go(t, e, n);
+	    }, t.prototype.replace = function (t) {
+	      "string" == typeof t && (t = { path: t }), t.replace = !0, this.go(t);
+	    }, t.prototype.start = function (t, e, n) {
+	      if (this._started) return void b("already started.");if (this._started = !0, this._startCb = n, !this.app) {
+	        if (!t || !e) throw new Error("Must start vue-router with a component and a root container.");if (t instanceof ht) throw new Error("Must start vue-router with a component, not a Vue instance.");this._appContainer = e;var r = this._appConstructor = "function" == typeof t ? t : ht.extend(t);r.options.name = r.options.name || "RouterApp";
+	      }if (this._historyFallback) {
+	        var i = window.location,
+	            o = new W({ root: this._root }),
+	            a = o.root ? i.pathname.replace(o.rootRE, "") : i.pathname;if (a && "/" !== a) return void i.assign((o.root || "") + "/" + this.history.formatPath(a) + i.search);
+	      }this.history.start();
+	    }, t.prototype.stop = function () {
+	      this.history.stop(), this._started = !1;
+	    }, t.prototype.stringifyPath = function (t) {
+	      var e = "";if (t && "object" == (typeof t === "undefined" ? "undefined" : (0, _typeof3.default)(t))) {
+	        if (t.name) {
+	          var n = ht.util.extend,
+	              r = this._currentTransition && this._currentTransition.to.params,
+	              i = t.params || {},
+	              o = r ? n(n({}, r), i) : i;e = encodeURI(this._recognizer.generate(t.name, o));
+	        } else t.path && (e = encodeURI(t.path));if (t.query) {
+	          var a = this._recognizer.generateQueryString(t.query);e += e.indexOf("?") > -1 ? "&" + a.slice(1) : a;
+	        }
+	      } else e = encodeURI(t ? t + "" : "");return e;
+	    }, t.prototype._addRoute = function (t, e, n) {
+	      if (F(t, e), e.path = t, e.fullPath = (n.reduce(function (t, e) {
+	        return t + e.path;
+	      }, "") + t).replace("//", "/"), n.push({ path: t, handler: e }), this._recognizer.add(n, { as: e.name }), e.subRoutes) for (var r in e.subRoutes) {
+	        this._addRoute(r, e.subRoutes[r], n.slice());
+	      }
+	    }, t.prototype._notFound = function (t) {
+	      F("*", t), this._notFoundHandler = [{ handler: t }];
+	    }, t.prototype._addRedirect = function (t, e) {
+	      "*" === t ? this._notFoundRedirect = e : this._addGuard(t, e, this.replace);
+	    }, t.prototype._addAlias = function (t, e) {
+	      this._addGuard(t, e, this._match);
+	    }, t.prototype._addGuard = function (t, e, n) {
+	      var r = this;this._guardRecognizer.add([{ path: t, handler: function handler(t, i) {
+	          var o = $(e, t.params, i);n.call(r, o);
+	        } }]);
+	    }, t.prototype._checkGuard = function (t) {
+	      var e = this._guardRecognizer.recognize(t, !0);return e ? (e[0].handler(e[0], e.queryParams), !0) : this._notFoundRedirect && (e = this._recognizer.recognize(t), !e) ? (this.replace(this._notFoundRedirect), !0) : void 0;
+	    }, t.prototype._match = function (t, e, n) {
+	      var r = this;if (!this._checkGuard(t)) {
+	        var i = this._currentRoute,
+	            o = this._currentTransition;if (o) {
+	          if (o.to.path === t) return;if (i.path === t) return o.aborted = !0, void (this._currentTransition = this._prevTransition);o.aborted = !0;
+	        }var a = new rt(t, this),
+	            s = new et(this, a, i);this._prevTransition = o, this._currentTransition = s, this.app || !function () {
+	          var t = r;r.app = new r._appConstructor({ el: r._appContainer, created: function created() {
+	              this.$router = t;
+	            }, _meta: { $route: a } });
+	        }();var h = this._beforeEachHooks,
+	            c = function c() {
+	          s.start(function () {
+	            r._postTransition(a, e, n);
+	          });
+	        };h.length ? s.runQueue(h, function (t, e, n) {
+	          s === r._currentTransition && s.callHook(t, null, n, { expectBoolean: !0 });
+	        }, c) : c(), !this._rendered && this._startCb && this._startCb.call(null), this._rendered = !0;
+	      }
+	    }, t.prototype._onTransitionValidated = function (t) {
+	      var e = this._currentRoute = t.to;this.app.$route !== e && (this.app.$route = e, this._children.forEach(function (t) {
+	        t.$route = e;
+	      })), this._afterEachHooks.length && this._afterEachHooks.forEach(function (e) {
+	        return e.call(null, { to: t.to, from: t.from });
+	      }), this._currentTransition.done = !0;
+	    }, t.prototype._postTransition = function (t, e, n) {
+	      var r = e && e.pos;r && this._saveScrollPosition ? ht.nextTick(function () {
+	        window.scrollTo(r.x, r.y);
+	      }) : n && ht.nextTick(function () {
+	        var t = document.getElementById(n.slice(1));t && window.scrollTo(window.scrollX, t.offsetTop);
+	      });
+	    }, t;
+	  }();return ct.installed = !1, ct.install = function (t) {
+	    return ct.installed ? void b("already installed.") : (ht = t, q(ht), z(ht), Q(ht), X.Vue = ht, void (ct.installed = !0));
+	  }, "undefined" != typeof window && window.Vue && window.Vue.use(ct), ct;
+	});
 
 /***/ }
 /******/ ]);

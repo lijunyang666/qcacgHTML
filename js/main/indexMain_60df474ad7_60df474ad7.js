@@ -54,10 +54,6 @@
 
 	var _vueResourceMin2 = _interopRequireDefault(_vueResourceMin);
 
-	var _editor = __webpack_require__(120);
-
-	var _editor2 = _interopRequireDefault(_editor);
-
 	var _conf = __webpack_require__(121);
 
 	var _conf2 = _interopRequireDefault(_conf);
@@ -70,340 +66,174 @@
 
 	var _headerOrfooter2 = _interopRequireDefault(_headerOrfooter);
 
+	var _alert = __webpack_require__(126);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vueMin2.default.use(_vueResourceMin2.default);
-	_vueMin2.default.component('editor', _editor2.default);
 
 	(0, _headerOrfooter2.default)();
 
-	var vuePractice = new _vueMin2.default({
-	  el: '#mask',
+	var indexHtml = new _vueMin2.default({
+	  el: '#app',
 	  data: {
-	    loginFlag: false,
-	    loginImg: '',
+	    imgFlag: 0,
+	    swiperArr: ['./img/Illustration/scrollbar1.jpg', './img/Illustration/scrollbar2.jpg', './img/Illustration/scrollbar3.jpg', './img/Illustration/scrollbar4.jpg', './img/Illustration/scrollbar5.jpg'],
 	    bodyFlag: false,
-	    zindex: 0,
 	    path: _conf2.default,
-	    szxj: _vueHttp2.default,
-	    popup: false,
-	    id: '',
-	    title: '',
-	    words: '',
-	    cursor: '',
-	    update: '',
-	    introduction: '',
-	    BookList: [],
-	    Booktype: [{ typeName: '' }],
-	    Collection: '',
-	    bookCopperCoins: '',
-	    authorName: '',
-	    autograph: '',
-	    booktTitle: [],
-	    bookCustom: [],
-	    collect: false,
-	    attention: false,
-	    userId: '',
-	    bookId: '',
-	    userHead: '',
-	    findCommentAndReply: [], // 评论字段
-	    authorId: '',
-	    commentId: '', // 根据评论id显示 回复输入框
-	    commentStatus: 0, // 按回复数 或 按时间排序显示评论
-	    replyStatus: 0,
-	    replyUserId: 0,
-	    line: 0,
-	    contentEntityList: [],
-	    Report: 0,
-	    commentAndReplyTotalCount: '',
-	    replyId: ''
+	    szxj: _vueHttp2.default, // 公共方法
+	    indexList: {}, // 首页默认渲染数据
+	    theHotList: [], // 小编推荐
+	    pageNo: 0,
+	    newBookimg: 0, // 全站推荐的切换下标
+	    newBookimg1: 0, // 新书推荐的切换下标
+	    RequestObj: {
+	      rankList: 0, // 好人 字数 点击
+	      timeRank: 0, // 周 月 总
+	      date: 1, // 0 近期 1远期
+	      bookTypeId: '',
+	      pageNo: 1,
+	      pageSize: 7
+	    },
+	    rankingList: {
+	      copperCoinsList: [],
+	      copperCoins: 0,
+	      clickSizeList: [],
+	      clickSize: 0,
+	      fontSizeList: [],
+	      fontSize: 0
+	    }
 	  },
 	  methods: {
-	    lineHr: function lineHr() {
-	      for (var i = 0; i = this.contentEntityList.length; i++) {
-	        if (i % 4 == 0) {
-	          this.line++;
-	        };
-	      };
+	    nextImg: function nextImg() {
+	      var tempArr = this.swiperArr;
+	      this.swiperArr = [];
+	      var temp = tempArr[0];
+	      for (var i = 0; i < tempArr.length - 1; i++) {
+	        tempArr[i] = tempArr[i + 1];
+	      }
+	      tempArr[tempArr.length - 1] = temp;
+	      this.swiperArr = tempArr;
 	    },
-	    setreplyFn: function setreplyFn(replyId) {
-	      this.replyId = replyId;
+	    previousImg: function previousImg() {
+	      var tempArr = this.swiperArr;
+	      this.swiperArr = [];
+	      var temp = tempArr[tempArr.length - 1];
+	      for (var i = tempArr.length - 1; i > 0; i--) {
+	        tempArr[i] = tempArr[i - 1];
+	      }
+	      tempArr[0] = temp;
+	      this.swiperArr = tempArr;
 	    },
-	    strickieFn: function strickieFn(commentId) {
+	    setTimeImg: function setTimeImg(v) {
+	      if (this.imgFlag !== v) {
+	        return;
+	      }
+	      var tempArr = this.swiperArr;
+	      this.swiperArr = [];
+	      var temp = tempArr[0];
+	      for (var i = 0; i < tempArr.length - 1; i++) {
+	        tempArr[i] = tempArr[i + 1];
+	      }
+	      tempArr[tempArr.length - 1] = temp;
+	      this.swiperArr = tempArr;
+	      var This = this;
+	      var dateTime = new Date();
+	      this.imgFlag = dateTime.getTime();
+	      setTimeout(function () {
+	        This.setTimeImg(dateTime.getTime());
+	      }, 10000);
+	    },
+	    stop: function stop() {
+	      this.imgFlag = -1;
+	    },
+	    start: function start() {
+	      var dateTime = new Date();
+	      this.imgFlag = dateTime.getTime();
+	      var This = this;
+	      setTimeout(function () {
+	        This.setTimeImg(dateTime.getTime());
+	      }, 10000);
+	    },
+	    setCopperCoins: function setCopperCoins(v) {
+	      var Temp = this.rankingList;
+	      Temp.copperCoins = v;
+	      this.$set('rankingList', Temp);
+	      this.RequestObj.rankList = 0;
+	      this.RequestObj.timeRank = v;
+	      this.getReOrderFn();
+	    },
+	    setFontSize: function setFontSize(v) {
+	      var Temp = this.rankingList;
+	      Temp.fontSize = v;
+	      this.$set('rankingList', Temp);
+	      this.RequestObj.rankList = 1;
+	      this.RequestObj.timeRank = v;
+	      this.getReOrderFn();
+	    },
+	    setClickSize: function setClickSize(v) {
+	      var Temp = this.rankingList;
+	      Temp.clickSize = v;
+	      this.$set('rankingList', Temp);
+	      this.RequestObj.rankList = 2;
+	      this.RequestObj.timeRank = v;
+	      this.getReOrderFn();
+	    },
+	    getReOrderFn: function getReOrderFn() {
 	      var _this = this;
 
-	      _vueHttp2.default.http(this, 'post', _conf2.default.top, { bookId: this.id, commentId: commentId }, function (response) {
-	        _this.setComment(_this.commentStatus);
-	      });
-	    },
-	    messageShow: function messageShow(commentId, v, name, id, replyId) {
-	      this.commentId = commentId; // editor
-	      var editor = {};
-	      var index = 0;
-	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
-	        if (this.findCommentAndReply.comment[i].commentId === commentId) {
-	          editor = this.findCommentAndReply.comment[i].editor;
-	          index = 0;
-	          break;
+	      _vueHttp2.default.http(this, 'get', _conf2.default.getRankingList, this.RequestObj, function (response) {
+	        switch (_this.RequestObj.rankList) {
+	          case 0:
+	            _this.indexList.weekBookByBookCopperCoins = response.data.result;
+	            break;
+	          case 1:
+	            _this.indexList.weekBookByBookWordCount = response.data.result;
+	            break;
+	          case 2:
+	            _this.indexList.weekBookByBookHit = response.data.result;
+	            break;
+	          default:
+	            break;
 	        }
-	      }
-	      this.replyUserId = id;
-	      this.replyId = replyId;
-	      if (v === 1) {
-	        editor.$txt.html('<span style="color:#00A1D6;" contenteditable="false">回复@' + name + '</span><span style="font-size:12px !important;color:#555 !important;">:</span>');
-	        this.replyStatus = 1;
-	      } else {
-	        this.replyStatus = 0;
-	      }
-	    },
-	    setPageCount: function setPageCount(v) {
-	      var obj = this.findCommentAndReply;
-	      obj.pageCount = v;
-	      this.page = [];
-	      for (var i = 0; i < obj.pageCount; i++) {
-	        this.page.push(i + 1);
-	      }
-	      this.$set('findCommentAndReply', obj);
-	    },
-	    setPage1: function setPage1(v, commentId) {
-	      var _this2 = this;
-
-	      // 获取回复的
-	      var index = 0;
-	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
-	        if (this.findCommentAndReply.comment[i].commentId === commentId) {
-	          index = i;
-	          break;
-	        }
-	      }
-	      var _data = {
-	        pageNo: v,
-	        pageSize: 10,
-	        commentId: this.findCommentAndReply.comment[index].commentId
-
-	      };
-	      var obj = this.findCommentAndReply;
-	      this.findCommentAndReply = {};
-	      _vueHttp2.default.http(this, 'get', _conf2.default.moreReply, _data, function (response) {
-	        obj.comment[index].replyEntityList = response.data;
-	        obj.comment[index].pageNo = v;
-	        _this2.findCommentAndReply = obj;
-	      });
-	    },
-	    setPage: function setPage(v) {
-	      if (!v || v > this.findCommentAndReply.pageCount || v <= 0 || v.toString().search(/[^0-9]/g) !== -1 || parseInt(v) === parseInt(this.findCommentAndReply.pageNo)) {
-	        return;
-	      }
-	      var obj = this.findCommentAndReply;
-	      obj.pageNo = v;
-	      this.$set('findCommentAndReply', obj);
-	      var _data = {};
-	      _data.bookId = this.id;
-	      _data.pageNo = v;
-	      _data.pageSize = 10;
-	      _data.status = this.commentStatus;
-	      this.getComment(_data); // 请求
-	    },
-	    setComment: function setComment(v) {
-	      this.commentStatus = v;
-	      var _data = {};
-	      _data.bookId = this.id;
-	      _data.pageNo = this.findCommentAndReply.pageNo;
-	      _data.pageSize = 10;
-	      _data.status = v;
-
-	      this.getComment(_data); // 请求
-	    },
-	    getComment: function getComment(_data) {
-	      var _this3 = this;
-
-	      _vueHttp2.default.http(this, 'get', _conf2.default.findCommentAndReply, _data, function (response) {
-	        console.log('评论:');
 	        console.log(response);
-	        var pageNo;
-	        if (_this3.findCommentAndReply.pageNo) {
-	          pageNo = _this3.findCommentAndReply.pageNo;
-	          _this3.setPageCount(pageNo);
-	        } else {
-	          pageNo = 1;
-	        }
-
-	        _this3.findCommentAndReply = response.data;
-	        _this3.findCommentAndReply.page = [];
-	        _this3.findCommentAndReply.pageNo = pageNo;
-	        // 计算评论的总页数
-	        console.log(_this3.findCommentAndReply.totalCount / _data.pageSize);
-	        if (_this3.findCommentAndReply.totalCount / _data.pageSize <= 1) {
-	          _this3.findCommentAndReply.pageCount = 1;
-	        } else {
-	          if (_this3.findCommentAndReply.totalCount % _data.pageSize === 0) {
-	            _this3.findCommentAndReply.pageCount = _this3.findCommentAndReply.totalCount / _data.pageSize;
-	          } else {
-	            _this3.findCommentAndReply.pageCount = parseInt(_this3.findCommentAndReply.totalCount / _data.pageSize, 10) + 1;
-	          }
-	        }
-	        for (var i = 0; i < _this3.findCommentAndReply.pageCount; i++) {
-	          _this3.findCommentAndReply.page.push(i + 1);
-	        }
-	        for (var i = 0; i < _this3.findCommentAndReply.comment.length; i++) {
-	          // 评论楼中楼
-	          _this3.findCommentAndReply.comment[i].editor = {};
-	          _this3.findCommentAndReply.comment[i].page = [];
-	          _this3.findCommentAndReply.comment[i].pageNo = 1;
-	          // 计算评论楼中楼回复的总页数
-	          if (_this3.findCommentAndReply.comment[i].totalCount / _data.pageSize <= 1) {
-	            _this3.findCommentAndReply.comment[i].pageCount = 1;
-	          } else {
-	            if (_this3.findCommentAndReply.comment[i].totalCount % _data.pageSize === 0) {
-	              _this3.findCommentAndReply.comment[i].pageCount = _this3.findCommentAndReply.comment[i].totalCount / _data.pageSize;
-	            } else {
-	              _this3.findCommentAndReply.comment[i].pageCount = parseInt(_this3.findCommentAndReply.comment[i].totalCount / _data.pageSize, 10) + 1;
-	            }
-	          }
-	          for (var j = 1; j <= _this3.findCommentAndReply.comment[i].pageCount; j++) {
-	            _this3.findCommentAndReply.comment[i].page.push(j);
-	          }
-	        }
 	      });
 	    },
-
-	    saveComment: function saveComment() {
-	      var _this4 = this;
-
-	      var editor = this.$refs.editor.getEditor();
-	      var _data = {
-	        commentContent: editor.$txt.html(), //文本html内容
-	        bookId: this.id };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveComment, _data, function (response) {
-	        editor.$txt.html('');
-	        _this4.getValueFn();
-	      });
+	    setMouseOut: function setMouseOut(v, e) {
+	      this.newBookimg = v;
 	    },
-	    saveReply: function saveReply(commentId) {
-	      var _this5 = this;
-
-	      // 回复
-	      var editor = {};
-	      var index = 0;
-	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
-	        if (this.findCommentAndReply.comment[i].commentId === commentId) {
-	          editor = this.findCommentAndReply.comment[i].editor;
-	          index = i;
-	          break;
-	        }
-	      }
-	      var _data = {
-	        replyStatus: this.replyStatus,
-	        commentId: this.commentId,
-	        replyUserId: this.replyUserId,
-	        repliedId: this.replyId,
-	        replyContent: editor.$txt.html() };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveReply, _data, function (response) {
-	        editor.$txt.html('');
-	        _this5.getValueFn();
-	        var This = _this5;
-	        setTimeout(function () {
-	          This.setPage1(This.findCommentAndReply.comment[index].pageCount, This.commentId);
-	          This.commentId = -1;
-	        }, 300);
-	      });
-	    },
-	    setAttention: function setAttention() {
-	      var _this6 = this;
-
-	      var _data = {};
-	      _data.receiveId = this.userId;
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrCancelAttention, _data, function (response) {
-	        if (_this6.attention) {
-	          _this6.attention = false;
-	        } else {
-	          _this6.attention = true;
-	        }
-	      });
-	    },
-	    setCollect: function setCollect() {
-	      var _this7 = this;
-
-	      var _data = {};
-	      _data.bookId = this.bookId;
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrDeleteBookCollect, _data, function (response) {
-	        _this7.getValueFn();
-	      });
-	    },
-	    nextWorksFn: function nextWorksFn() {
-	      if (this.booktTitle.length < 3) {
-	        return;
-	      }
-	      this.zindex--;
-	      if (Math.abs(this.zindex) >= this.booktTitle.length - 3) {
-	        this.zindex = -(this.booktTitle.length - 3);
-	      }
-	    },
-	    previousWorksFn: function previousWorksFn() {
-	      if (this.booktTitle.length < 3) {
-	        return;
-	      }
-	      this.zindex++;
-	      if (this.zindex >= 0) {
-	        this.zindex = 0;
-	      }
+	    setMouseOutTwo: function setMouseOutTwo(v, e) {
+	      this.newBookimg1 = v;
 	    },
 	    getValueFn: function getValueFn() {
-	      var _this8 = this;
+	      var _this2 = this;
 
 	      var _data = {};
-	      _data.bookId = this.id;
-	      _vueHttp2.default.http(this, 'get', _conf2.default.queryBookDirectory, _data, function (response) {
-	        // 取到数据渲染
-	        _this8.bookCustom = [];
-	        _this8.userHead = response.data.bookCustom.userEntity.userHead;
-	        _this8.bookId = response.data.bookCustom.bookId;
-	        _this8.userId = response.data.bookCustom.userEntity.userId;
-	        _this8.collect = response.data.bookCustom.collect;
-	        _this8.attention = response.data.bookCustom.userEntity.attention;
-	        _this8.bookCustom.push(response.data.bookCustom);
-	        _this8.title = response.data.bookCustom.bookName;
-	        _this8.introduction = response.data.bookCustom.bookIntroduction;
-	        _this8.words = response.data.bookCustom.bookWordCount;
-	        _this8.update = response.data.bookCustom.bookUpdate;
-	        _this8.cursor = response.data.bookCustom.bookHit;
-	        _this8.BookList = response.data.bookCustom.volumeCustomList;
-	        _this8.Booktype = response.data.bookCustom.bookTypeEntityList;
-	        _this8.typeName = response.data.bookCustom.bookTypeName;
-	        _this8.Collection = response.data.bookCustom.bookCollect;
-	        _this8.bookCopperCoins = response.data.bookCustom.bookCopperCoins;
-	        _this8.authorName = response.data.bookCustom.userEntity.userName;
-	        _this8.autograph = response.data.bookCustom.userEntity.information;
-	      });
-	      _vueHttp2.default.http(this, 'get', _conf2.default.findUserOtherBook, _data, function (response) {
-	        // 取到数据渲染
-	        _this8.booktTitle = response.data.userOtherBook;
-	      });
-	      _data.pageNo = 1;
-	      _data.pageSize = 10;
-	      _data.status = this.commentStatus;
-	      this.getComment(_data);
-	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, _data, function (response) {
-	        _this8.loginFlag = response.data.status.flag;
+	      _vueHttp2.default.http(this, 'get', _conf2.default.getIndexData, _data, function (response) {
+	        _this2.indexList = response.data;
+	        _this2.theHotList = response.data.theHot;
+	        console.log(_this2.indexList);
+	        var dateTime = new Date();
+	        _this2.imgFlag = dateTime.getTime();
+	        var This = _this2;
+	        setTimeout(function () {
+	          This.setTimeImg(dateTime.getTime());
+	        }, 10000);
 	      });
 	    },
-	    rewardFn: function rewardFn() {
-	      this.popup = true;
-	    },
-	    rewardShow: function rewardShow() {
-	      this.popup = false;
+	    changeFn: function changeFn() {
+	      var _this3 = this;
+
+	      _vueHttp2.default.http(this, 'get', _conf2.default.nextBatch, { pageNo: ++this.pageNo }, function (response) {
+	        _this3.theHotList = response.data.theHot;
+	      });
 	    }
 	  },
 	  ready: function ready() {
+	    this.getValueFn();
 	    this.bodyFlag = true;
-	    var href = window.location.href;
-	    this.id = href.substring(href.lastIndexOf('?bookId=') + 8, href.length);
-	    var str = this.id.toString();
-	    if (str.search(/[^0-9]/g) === -1) {
-	      this.getValueFn();
-	    } else {
-	      window.location.href = _conf2.default.TemprootPath + '/index.html';
-	    }
 	  }
 	});
 
@@ -4919,126 +4749,7 @@
 	});
 
 /***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _conf = __webpack_require__(121);
-
-	var _conf2 = _interopRequireDefault(_conf);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var editor = _vueMin2.default.extend({
-	  template: '<textarea id="{{id}}" required="" spellcheck="false" placeholder="" class="form-control input-sm" style="display: none;"></textarea>',
-
-	  components: {},
-	  props: {
-	    id: {
-	      type: String
-	    },
-	    editor: {
-	      type: Object
-	    }
-	  },
-	  data: function data() {
-	    return {};
-	  },
-	  methods: {
-	    getEditor: function getEditor() {
-	      return this.editor;
-	    }
-	  },
-	  ready: function ready() {
-	    var textarea = document.getElementById(this.id);
-	    this.editor = new wangEditor(textarea);
-	    this.editor.config.uploadImgUrl = _conf2.default.rootPath + '/content/upload.shtml';
-	    this.editor.config.uploadHeaders = {
-	      'JSESSIONID': localStorage.getItem('JSESSIONID')
-	    };
-	    this.editor.config.menus = ['emotion', 'img'];
-	    this.editor.config.emotions = {
-	      'default': {
-	        title: '轻悦娘',
-	        data: [{
-	          'icon': _conf2.default.rootPath + '/img/不明所以然.jpg',
-	          'value': '[不明所以然]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/伤心欲绝.jpg',
-	          'value': '[伤心欲绝]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/发呆.jpg',
-	          'value': '[发呆]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/吃惊.jpg',
-	          'value': '[吃惊]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/哭泣.jpg',
-	          'value': '[哭泣]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/害羞.jpg',
-	          'value': '[害羞]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/就是那个.jpg',
-	          'value': '[就是那个]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/微笑.jpg',
-	          'value': '[微笑]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/恼怒.jpg',
-	          'value': '[恼怒]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/悲伤.jpg',
-	          'value': '[悲伤]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/战斗力渣渣.jpg',
-	          'value': '[战斗力渣渣]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/抛媚眼.jpg',
-	          'value': '[抛媚眼]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/早就看穿一切.jpg',
-	          'value': '[早就看穿一切]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/汗.jpg',
-	          'value': '[汗]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/菜刀.jpg',
-	          'value': '[菜刀]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/那个有没有.jpg',
-	          'value': '[那个有没有]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/震惊.jpg',
-	          'value': '[震惊]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/高兴.jpg',
-	          'value': '[高兴]'
-	        }, {
-	          'icon': _conf2.default.rootPath + '/img/默默地看着.jpg',
-	          'value': '[默默地看着]'
-	        }]
-	      }
-	    };
-	    this.editor.create();
-	  },
-	  route: {
-	    data: function data() {}
-	  }
-	});
-	//import wangEditor from '../../lib/wangEditor.min.js';
-	exports.default = editor;
-
-/***/ },
+/* 120 */,
 /* 121 */
 /***/ function(module, exports) {
 
