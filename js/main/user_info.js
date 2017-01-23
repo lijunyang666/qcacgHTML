@@ -4747,8 +4747,9 @@
 
 	PathList.rootPath = '/Controller';
 	//PathList.rootPath = 'http://192.168.126.34:8080';
-
-
+	//PathList.rootPath = 'http://192.168.126.25:8080';
+	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	//PathList.rootPath = "http://127.0.0.1:7788"
 	// 登陆的3个请求
 	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
 	PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
@@ -4921,7 +4922,9 @@
 	  // GET请求
 	  if (_method === 'get') {
 	    _vueMin2.default.http.get(_URL, _data).then(function (response) {
-	      successfn(response);
+	      if (response.data.length !== 0) {
+	        successfn(response);
+	      }
 	    }, function (err) {
 	      if (!err.status) {
 	        return;
@@ -4949,7 +4952,9 @@
 	  // POST请求
 	  if (_method === 'post') {
 	    _vueMin2.default.http.post(_URL, _data).then(function (response) {
-	      successfn(response);
+	      if (response.data.length !== 0) {
+	        successfn(response);
+	      }
 	    }, function (err) {
 	      if (!err.status) {
 	        return;
@@ -5032,11 +5037,6 @@
 	    };
 	  },
 	  methods: {
-	    setmessageFn: function setmessageFn() {
-	      if (this.number > 1) {
-	        this.number;
-	      }
-	    },
 	    setbookFn: function setbookFn() {
 	      this.$set('book', 0);
 	    },
@@ -5047,7 +5047,6 @@
 	      this.$set('reply', 0);
 	    },
 	    setsystemFn: function setsystemFn() {
-
 	      this.$set('system', 0);
 	    },
 	    backLoginFn: function backLoginFn() {
@@ -6477,11 +6476,9 @@
 	        this.classArr.$set(v, obj);
 	        this.$set('trueClass', this.trueClass - 1);
 	      } else if (this.trueClass == 0) {
-
 	        obj.flag = false;
 	      } else {
 	        if (this.trueClass < 5) {
-
 	          var obj = this.classArr[v];
 	          obj.flag = true;
 	          this.classArr.$set(v, obj);
@@ -6528,7 +6525,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var catalogue = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works_update/\' + id}"><span class="circular"></span><span class="title_name">修改信息</span></li></ul>' + '<div class="content"><div class="catalogue"><div class="catalogue_header"><span>作品目录</span><span>catalogue</span><span class="content_bookTitle"><a :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + bookCustom.bookId">>><b>{{bookCustom.bookName}}</b></a></span></div>' + '<div class="newBookChapter" v-if="newBookChapter"><div class="clearX" v-on:click="newBookChapterClearFn">x</div><h4 class="newBookTitle">请输入卷的标题</h4><div><input type="text" class="inputText" placeholder="第一卷" v-model="volume" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="submitVolumeFn">提交</a></div>' + '<div  class="SubmitAudit" v-if="SubmitAudit"><div class="clearX" v-on:click="SubmitAuditClearFn">x</div><h4 class="newBookTitle">提交审核</h4><div><textarea type="text" class="inputTextTow" placeholder="我想对编辑说(选填)" v-model="volume" /></textarea></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="SetSubmitAudit">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookChapter"><div class="clearX" v-on:click="updateVolumeFn">x</div><h4 class="newBookTitle">修改卷的标题</h4><div><input type="text" class="inputText" placeholder="修改卷名称" v-model="updateBookChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateVolumeNameFn">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookContentChapter"><div class="clearX" v-on:click="updateContentFn">x</div><h4 class="newBookTitle">修改章节的名称</h4><div><input type="text" class="inputText" placeholder="修改章节名称" v-model="updateBookContentChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateContentNameFn">提交</a></div>' + '<div class="catalogue_list" v-for="obj in volumeCustomList"><div class="list_title"><h4 class="listBlock">{{obj.volumeName}}<span style="font-size:12px; padding-left:5px; font-weight:normal;  ">({{obj.volumeWordCount}})</span></h4>' + '<div class="list_action">' + '<a v-if="$index !== 0" @click="volumeChange(volumeCustomList[$index - 1].volumeId, volumeCustomList[$index].volumeId)" href="javascript:;">前移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">前移</a>' + '<a v-if="$index !== volumeCustomList.length - 1" @click="volumeChange(volumeCustomList[$index].volumeId, volumeCustomList[$index + 1].volumeId)" href="javascript:;">后移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">后移</a>' + '<a href="javascript:;" @click="volumeDelete(volumeCustomList[$index].volumeId)">删除</a>' + '<a href="javascript:;" @click="updateVolumeFn(volumeCustomList[$index].volumeId)">重命名</a>' + '</div></div>' + '<div class="create_chapter"><div class="chapter_header clear"><div class="line" v-for="bookObj in obj.contentEntityList"> <div class="lineIcon"><img src="../img/chapter_icon.jpg" /> <div class="handle_left">' + '<p @click="contentChange(obj.contentEntityList[$index - 1].contentId, obj.contentEntityList[$index].contentId)" v-if="$index !==0"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p @click="contentChange(obj.contentEntityList[$index].contentId, obj.contentEntityList[$index + 1].contentId)"  v-if="$index !== obj.contentEntityList.length - 1"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p @click="contentDelete(bookObj.contentId)"><img src="../img/to_right.jpg"/> 删除章节</p>' + '<p @click="updateContentFn(bookObj.contentId,bookObj.volumeId)"><img src="../img/to_right.jpg" /> 重命名</p>' + '</div></div><span class="span" uid="{{bookObj.volumeId}}"  uid2="{{bookObj.contentId}}" v-link="{path: \'/chapter_edit/\' + bookObj.volumeId + \'_\' +  bookObj.contentId }">{{bookObj.contentTitle}}</span></div><div class="line"><div class="lineIcon"><img src="../img/create_icon.jpg" />              </div>              <span class="span" uid="{{obj.volumeId}}" v-link="{ path: \'/chapter/\' + obj.volumeId }">创建新章节</span></div></div></div></div><div class="chapter_handle"><div class="handle_right"><div><span  v-on:click="newBookChapterFn">新增卷</span>' + '<span style="display:none;"  v-on:click="SubmitAuditFn">提交审核</span>' + '<a :href="path.TemprootPath + \'/view/user_info.html#!/bookBlockList\'"><span>返回</span></a>' + '</div></div></div></div></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works_update/\' + id}"><span class="circular"></span><span class="title_name">修改信息</span></li></ul>' + '<div class="content"><div class="catalogue"><div class="catalogue_header"><span>作品目录</span><span>catalogue</span><span class="content_bookTitle"><a :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + bookCustom.bookId">>><b>{{bookCustom.bookName}}</b></a></span></div>' + '<div class="newBookChapter" v-if="newBookChapter"><div class="clearX" v-on:click="newBookChapterClearFn">x</div><h4 class="newBookTitle">请输入卷的标题</h4><div><input type="text" class="inputText" placeholder="第一卷" v-model="volume" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="submitVolumeFn">提交</a></div>' + '<div  class="SubmitAudit" v-if="SubmitAudit"><div class="clearX" v-on:click="SubmitAuditClearFn">x</div><h4 class="newBookTitle">提交审核</h4><div><textarea type="text"  class="inputTextTow" placeholder="我想对编辑说(选填)" v-model="SubmitAuditvolume" /></textarea></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="SetSubmitAudit">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookChapter"><div class="clearX" v-on:click="updateVolumeFn">x</div><h4 class="newBookTitle">修改卷的标题</h4><div><input type="text" class="inputText" placeholder="修改卷名称" v-model="updateBookChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateVolumeNameFn">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookContentChapter"><div class="clearX" v-on:click="updateContentFn">x</div><h4 class="newBookTitle">修改章节的名称</h4><div><input type="text" class="inputText" placeholder="修改章节名称" v-model="updateBookContentChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateContentNameFn">提交</a></div>' + '<div class="catalogue_list" v-for="obj in volumeCustomList"><div class="list_title"><h4 class="listBlock">{{obj.volumeName}}<span style="font-size:12px; padding-left:5px; font-weight:normal;  ">({{obj.volumeWordCount}})</span></h4>' + '<div class="list_action">' + '<a v-if="$index !== 0" @click="volumeChange(volumeCustomList[$index - 1].volumeId, volumeCustomList[$index].volumeId)" href="javascript:;">前移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">前移</a>' + '<a v-if="$index !== volumeCustomList.length - 1" @click="volumeChange(volumeCustomList[$index].volumeId, volumeCustomList[$index + 1].volumeId)" href="javascript:;">后移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">后移</a>' + '<a href="javascript:;" @click="volumeDelete(volumeCustomList[$index].volumeId)">删除</a>' + '<a href="javascript:;" @click="updateVolumeFn(volumeCustomList[$index].volumeId)">重命名</a>' + '</div></div>' + '<div class="create_chapter"><div class="chapter_header clear"><div class="line" v-for="bookObj in obj.contentEntityList"> <div class="lineIcon"><img src="../img/chapter_icon.jpg" /> <div class="handle_left">' + '<p @click="contentChange(obj.contentEntityList[$index - 1].contentId, obj.contentEntityList[$index].contentId)" v-if="$index !==0"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p @click="contentChange(obj.contentEntityList[$index].contentId, obj.contentEntityList[$index + 1].contentId)"  v-if="$index !== obj.contentEntityList.length - 1"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p @click="contentDelete(bookObj.contentId)"><img src="../img/to_right.jpg"/> 删除章节</p>' + '<p @click="updateContentFn(bookObj.contentId,bookObj.volumeId)"><img src="../img/to_right.jpg" /> 重命名</p>' + '</div></div><span class="span" uid="{{bookObj.volumeId}}"  uid2="{{bookObj.contentId}}" v-link="{path: \'/chapter_edit/\' + bookObj.volumeId + \'_\' +  bookObj.contentId }">{{bookObj.contentTitle}}</span></div><div class="line"><div class="lineIcon"><img src="../img/create_icon.jpg" />              </div>              <span class="span" uid="{{obj.volumeId}}" v-link="{ path: \'/chapter/\' + obj.volumeId }">创建新章节</span></div></div></div></div><div class="chapter_handle"><div class="handle_right"><div><span  v-on:click="newBookChapterFn">新增卷</span>' + '<span  v-on:click="SubmitAuditFn">提交审核</span>' + '<a style="dispaly:none;" :href="path.TemprootPath + \'/view/user_info.html#!/bookBlockList\'"><span>返回</span></a>' + '</div></div></div></div></div>' + '</div></div></div>',
 	  data: function data() {
 	    return {
 	      volumeCustomList: [],
@@ -6537,6 +6534,7 @@
 	      updateBookChapter: false,
 	      updateBookChapterId: '',
 	      updateBookChapterName: '',
+	      SubmitAuditvolume: '',
 	      //
 	      updateBookContentChapter: false,
 	      updateBookContentChapterId: '',
@@ -6634,6 +6632,11 @@
 	        this.$set('updateBookChapterId', volumeId);
 	      }
 	    },
+	    SubmitAuditvolumeLFn: function SubmitAuditvolumeLFn() {
+	      if (this.SubmitAudit) {
+	        this.$set('SubmitAuditvolume', '');
+	      }
+	    },
 	    updateVolumeNameFn: function updateVolumeNameFn() {
 	      var _this4 = this;
 
@@ -6680,6 +6683,7 @@
 	      _data.bookId = parseInt(this.id, 10);
 	      _data.volumeName = this.volume;
 	      _data.volumeId = '';
+
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateVolume, _data, function (response) {
 	        _this6.$set('newBookChapter', false);
 	        _this6.volume = '';
@@ -6691,8 +6695,7 @@
 
 	      var _data = {};
 	      _data.bookId = parseInt(this.id, 10);
-	      _data.status = this.status;
-	      _data.userId = this.userId;
+	      _data.message = this.SubmitAuditvolume;
 	      _vueHttp2.default.http(this, 'post', _conf2.default.userUpdateBookStatus, _data, function (response) {
 	        _this7.$set('SubmitAudit', false);
 	        _this7.getBookListFn();
@@ -7029,7 +7032,7 @@
 
 	// 个人信息-基本信息
 	var info = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution relative">' + '<ul class="nav"><li class="one active" v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li  v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">基本信息</span><span class="titleTwo">essential information</span></div><div class="portrait relative;" :style="loginImg">' + '<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container { margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"><img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div  style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clickFileActiveFn">重新选择</div></div><div  style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clearImgFn">取消上传</div></div><div  style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>' + '</div><div class="messageAI"><div class="up clear"><span class="up-name ">{{ userInfoList.userName }}</span><ul><li class="up-word">关注：{{attention.length}}</li><li class="up-word">粉丝：{{attentionTow.length}}</li><li style="display:none;" class="up-word">好人卡：0</li></ul></div><div class="centreAI"><img class="imgAI1" src="../img/新个人信息_09.gif"/><span class="font">注册于{{ szxj.getLocalDate(userInfoList.createDate) }}</span><span>uid:&nbsp;{{ userInfoList.userId }}</span></div><div class="downAI"><span>签名：</span>' + '<input type="text" v-model="userInfoList.information" v-if="inputFlag"  placeholder="最多保存30个字符" style="width:440PX;margin-right:20px;padding-left:10px" />' + '<input type="text" v-model="userInfoList.information" v-else placeholder="请输入个人简介" style="width:440PX;margin-right:20px;padding-left:10px;border: 2px solid rgba(0,0,0,0);" readonly="readonly" />' + '<img src="../img/新个人信息_14.jpg" style="cursor:pointer" @click="setInputFlag" /></div></div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="change " @click="clickFileActiveFn">更换头像</div></div>' + '<div class="bookBlockList relative"><div v-if="infoFlag" style="position: absolute;top: 0px;left: 0px;bottom:0px;right: 0px;width: 100%;height: 230px;z-index: 999;"></div><div class="bookBlockList_title"><span class="hr"></span><span class="title">详细信息</span><span class="titleTwo">detailed information</span></div>' + '<div class="nameAI"><span class="name1">昵称：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" v-model="userName" /><span class="remarkAI">注： 修改名称需要600张好人卡</span></div><div class="sexAI"><span class="name1">性别：</span><label class="butt"><input type="radio" name="sex" v-model="userInfoList.sex"  value="男生" />男</label><label class="butt"><input type="radio" name="sex" value="女生" v-model="userInfoList.sex" />女</label></div>' + '<div class="birthday"><span class="name1">生日：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" placeholder="请选择生日时间" v-model="userInfoList.birthday" index="0" readonly="readonly" style="cursor: pointer;" @click="showDate" />' + '<date-time :type.sync="Datetype" :show.sync="showA" :value.sync="userInfoList.birthday" :x="x" :y="y" :begin="begin" :end="end" :range="range"></date-time>' + '</div><div class="numberAI"><span class="name1">手机号码：</span><input type="text" v-model="userInfoList.telephone" style="border: none;" /><span class="remarkAI">注： 手机号码暂不支持修改</span></div><hr style="width:90%;border: 1px dotted #E1E1E1 ; margin:20px 0 0 5%;"/>' + '<div class="change2 " v-if="infoFlag" @click="setInfoFlag">修改</div><div class="change2 " v-else @click="submitInfoFlag">保存</div></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution relative">' + '<ul class="nav"><li class="one active" v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li  v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">基本信息</span><span class="titleTwo">essential information</span></div><div class="portrait relative;" :style="loginImg">' + '<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container { margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"><img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div  style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clickFileActiveFn">重新选择</div></div><div  style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clearImgFn">取消上传</div></div><div  style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>' + '</div><div class="messageAI"><div class="up clear"><span class="up-name ">{{ userInfoList.userName }}</span><ul><li class="up-word">关注：<a v-if="attention.length !== 0">{{attention.length}}</a><a v-else>0</a></li><li class="up-word">粉丝：<a v-if="attentionTow.length !== 0">{{attentionTow.length}}</a><a v-else>0</a></li><li style="display:none;" class="up-word">好人卡：0</li></ul></div><div class="centreAI"><img class="imgAI1" src="../img/新个人信息_09.gif"/><span class="font">注册于{{ szxj.getLocalDate(userInfoList.createDate) }}</span><span>uid:&nbsp;{{ userInfoList.userId }}</span></div><div class="downAI"><span>签名：</span>' + '<input type="text" v-model="userInfoList.information" v-if="inputFlag"  placeholder="最多保存30个字符" style="width:440PX;margin-right:20px;padding-left:10px" />' + '<input type="text" v-model="userInfoList.information" v-else placeholder="请输入个人简介" style="width:440PX;margin-right:20px;padding-left:10px;border: 2px solid rgba(0,0,0,0);" readonly="readonly" />' + '<img src="../img/新个人信息_14.jpg" style="cursor:pointer" @click="setInputFlag" /></div></div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="change " @click="clickFileActiveFn">更换头像</div></div>' + '<div class="bookBlockList relative"><div v-if="infoFlag" style="position: absolute;top: 0px;left: 0px;bottom:0px;right: 0px;width: 100%;height: 230px;z-index: 999;"></div><div class="bookBlockList_title"><span class="hr"></span><span class="title">详细信息</span><span class="titleTwo">detailed information</span></div>' + '<div class="nameAI"><span class="name1">昵称：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" v-model="userName" /><span class="remarkAI">注： 修改名称需要600张好人卡</span></div><div class="sexAI"><span class="name1">性别：</span><label class="butt"><input type="radio" name="sex" v-model="userInfoList.sex"  value="男生" />男</label><label class="butt"><input type="radio" name="sex" value="女生" v-model="userInfoList.sex" />女</label></div>' + '<div class="birthday"><span class="name1">生日：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" placeholder="请选择生日时间" v-model="userInfoList.birthday" index="0" readonly="readonly" style="cursor: pointer;" @click="showDate" />' + '<date-time :type.sync="Datetype" :show.sync="showA" :value.sync="userInfoList.birthday" :x="x" :y="y" :begin="begin" :end="end" :range="range"></date-time>' + '</div><div class="numberAI"><span class="name1">手机号码：</span><input type="text" v-model="userInfoList.telephone" style="border: none;" /><span class="remarkAI">注： 手机号码暂不支持修改</span></div><hr style="width:90%;border: 1px dotted #E1E1E1 ; margin:20px 0 0 5%;"/>' + '<div class="change2 " v-if="infoFlag" @click="setInfoFlag">修改</div><div class="change2 " v-else @click="submitInfoFlag">保存</div></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8065,7 +8068,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var message = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li   class="active" v-link="{path: \'/message\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">@我的</span></li><li  v-link="{path: \'/relevant\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.book === 0">{{bookList.book}}</div><span class="circular"></span><span class="title_name">作品相关</span></li><li  v-link="{path: \'/system\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.system === 0">{{bookList.system}}</div><span class="circular"></span><span class="title_name">系统消息</span></li><li  v-link="{path: \'/official\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.official === 0">{{bookList.official}}</div><span class="circular"></span><span class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">回复我的</span><span class="titleTwo">essential information</span></div>' + '<div style="min-height:500px">' + '<div v-for="obj in bookList"><div class="img-attention-headTow" ><img :src="path.rootPath + obj.userHead "/></div><ul class="attention_AI_words"><li class="attention_AI_time" >{{ szxj.getLocalTimeTwo(obj.replyDate) }} </li><li class="attention_AI_detailed"><a :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + obj.bookId">查看详情</a></li> </ul><div class="attention_AI_name"><span>{{obj.userName}}</span>回复了你:{{obj.replyContent}}</div><div class="attention_AI_comment"><span v-if="obj.commentContent==\'\'||obj.repliedContent !== null ">“{{obj.repliedContent}}”</span><span v-else>“{{obj.commentContent}}”</span></div>   <hr style="border: 1px solid #f9f9f9; margin:0 0 0 5%;  " width="90% " /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li   class="active" v-link="{path: \'/message\'}">' + '<div class="mag_number1"  v-if="reply > 0">{{reply}}</div><span class="circular"></span><span @click="setreplyFn" class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;"></div><span class="circular"></span><span class="title_name">@我的</span></li><li  v-link="{path: \'/relevant\'}">' + '<div class="mag_number1"  v-if="book > 0">{{book}}</div><span class="circular"></span><span @click="setbookFn" class="title_name">作品相关</span></li><li  v-link="{path: \'/system\'}">' + '<div class="mag_number1"  v-if="system > 0">{{system}}</div><span class="circular"></span><span @click="setsystemFn" class="title_name">系统消息</span></li><li  v-link="{path: \'/official\'}">' + '<div class="mag_number1"  v-if="official > 0">{{official}}</div><span class="circular"></span><span @click="setofficialFn" class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">回复我的</span><span class="titleTwo">essential information</span></div>' + '<div style="min-height:500px">' + '<div v-for="obj in bookList"><div class="img-attention-headTow" ><img :src="path.rootPath + obj.userHead "/></div><ul class="attention_AI_words"><li class="attention_AI_time" >{{ szxj.getLocalTimeTwo(obj.replyDate) }} </li><li class="attention_AI_detailed"><a :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + obj.bookId">查看详情</a></li> </ul><div class="attention_AI_name"><span>{{obj.userName}}</span>回复了你:{{obj.replyContent}}</div><div class="attention_AI_comment"><span v-if="obj.commentContent==\'\'||obj.repliedContent !== null ">“{{obj.repliedContent}}”</span><span v-else>“{{obj.commentContent}}”</span></div>   <hr style="border: 1px solid #f9f9f9; margin:0 0 0 5%;  " width="90% " /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8079,8 +8082,13 @@
 	      obj: {
 	        p: 1, // 页码
 	        n: 10,
-	        pageCount: 0
-	      }
+	        pageCount: 1
+	      },
+	      number1: '',
+	      book: '',
+	      official: '',
+	      reply: '',
+	      system: ''
 	    };
 	  },
 	  route: {
@@ -8089,6 +8097,18 @@
 	    }
 	  },
 	  methods: {
+	    setbookFn: function setbookFn() {
+	      this.$set('book', 0);
+	    },
+	    setofficialFn: function setofficialFn() {
+	      this.$set('official', 0);
+	    },
+	    setreplyFn: function setreplyFn() {
+	      this.$set('reply', 0);
+	    },
+	    setsystemFn: function setsystemFn() {
+	      this.$set('system', 0);
+	    },
 	    setPageCount: function setPageCount(v) {
 	      var obj = this.obj;
 	      obj.pageCount = v;
@@ -8126,11 +8146,18 @@
 	      var _this2 = this;
 
 	      var _data = this.RequestObj;
-
 	      _vueHttp2.default.http(this, 'get', _conf2.default.findCommentAndReplyByReplyUserId, _data, function (response) {
 	        console.log(response);
 	        _this2.$set('bookList', response.data);
 	        _this2.setPageCount(response.data[0].totalPage);
+	      });
+	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
+	        _this2.userName = response.data.status.userName;
+	        _this2.book = response.data.book;
+	        _this2.official = response.data.official;
+	        _this2.reply = response.data.reply;
+	        _this2.system = response.data.system;
+	        _this2.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
 	      });
 	    }
 	  },
@@ -8218,7 +8245,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var relevant = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/message\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">@我的</span></li><li class="active" v-link="{path: \'/relevant\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.book === 0">{{bookList.book}}</div><span class="circular"></span><span class="title_name">作品相关</span></li><li  v-link="{path: \'/system\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.system === 0">{{bookList.system}}</div><span class="circular"></span><span class="title_name">系统消息</span></li><li  v-link="{path: \'/official\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.official === 0">{{bookList.official}}</div><span class="circular"></span><span class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" "><div class="bookBlockList_title"><span class="hr"></span><span class="title">作品相关</span><span class="titleTwo">work related</span></div>' + '<div style="min-height:500px">' + '<div v-for="obj in bookList.info" ><div class="img-attention-word"><span class="attention-word1">{{obj.messageTitle}}</span><span class="attention-word2">{{ szxj.getLocalTimeTwo(obj.messageCreateDate) }}</span></div><p>{{obj.message}}</p><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/message\'}">' + '<div class="mag_number1" v-if="reply > 0">{{reply}}</div><span class="circular"></span><span @click="setreplyFn" class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;" ></div><span class="circular"></span><span class="title_name">@我的</span></li><li class="active" v-link="{path: \'/relevant\'}">' + '<div class="mag_number1" v-if="book > 0">{{book}}</div><span class="circular"></span><span @click="setbookFn" class="title_name">作品相关</span></li><li  v-link="{path: \'/system\'}">' + '<div class="mag_number1" v-if="system > 0">{{system}}</div><span class="circular"></span><span @click="setsystemFn" class="title_name">系统消息</span></li><li  v-link="{path: \'/official\'}">' + '<div class="mag_number1" v-if="official > 0">{{official}}</div><span class="circular"></span><span @click="setofficialFn" class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" "><div class="bookBlockList_title"><span class="hr"></span><span class="title">作品相关</span><span class="titleTwo">work related</span></div>' + '<div style="min-height:500px">' + '<div v-for="obj in bookList.info" ><div class="img-attention-word"><span class="attention-word1">{{obj.messageTitle}}</span><span class="attention-word2">{{ szxj.getLocalTimeTwo(obj.messageCreateDate) }}</span></div><p>{{obj.message}}</p><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8233,14 +8260,30 @@
 	      obj: {
 	        p: 1, // 页码
 	        n: 10,
-	        pageCount: 0
-	      }
+	        pageCount: 1
+	      },
+	      book: '',
+	      official: '',
+	      reply: '',
+	      system: ''
 	    };
 	  },
 	  route: {
 	    data: function data() {}
 	  },
 	  methods: {
+	    setbookFn: function setbookFn() {
+	      this.$set('book', 0);
+	    },
+	    setofficialFn: function setofficialFn() {
+	      this.$set('official', 0);
+	    },
+	    setreplyFn: function setreplyFn() {
+	      this.$set('reply', 0);
+	    },
+	    setsystemFn: function setsystemFn() {
+	      this.$set('system', 0);
+	    },
 	    setPageCount: function setPageCount(v) {
 	      var obj = this.obj;
 	      obj.pageCount = v;
@@ -8266,6 +8309,14 @@
 	        _this.$set('bookList', response.data);
 	        _this.setPageCount(response.data.totalPage);
 	        console.log(_this.bookList);
+	      });
+	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
+	        _this.userName = response.data.status.userName;
+	        _this.book = response.data.book;
+	        _this.official = response.data.official;
+	        _this.reply = response.data.reply;
+	        _this.system = response.data.system;
+	        _this.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
 	      });
 	    }
 	  },
@@ -8300,7 +8351,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var system = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/message\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">@我的</span></li><li  v-link="{path: \'/relevant\'}">' + '<div class="mag_number1" style="display:none;" v-show="bookList.book === 0">{{bookList.book}}</div><span class="circular"></span><span class="title_name">作品相关</span></li><li class="active"  v-link="{path: \'/system\'}"> ' + '<div class="mag_number1" style="display:none;" v-show="bookList.system === 0">{{bookList.system}}</div><span class="circular"></span><span class="title_name">系统消息</span></li><li  v-link="{path: \'/official\'}"> ' + '<div class="mag_number1" style="display:none;" v-show="bookList.official === 0">{{bookList.official}}</div><span class="circular"></span><span class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">系统消息</span><span class="titleTwo">system</span></div>' + '<div style="min-height:500px">' + '<div v-for="obj in bookList.info"><div class="img-attention-word"><span class="attention-word1">{{obj.messageTitle}}</span><span class="attention-word2">{{szxj.getLocalTimeTwo(obj.messageCreateDate)}}</span></div><p>{{obj.message}}</p><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/message\'}">' + '<div class="mag_number1" v-if="reply > 0">{{reply}}</div><span class="circular"></span><span @click="setreplyFn" class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;"></div><span class="circular"></span><span class="title_name">@我的</span></li><li  v-link="{path: \'/relevant\'}">' + '<div class="mag_number1" v-if="book > 0">{{book}}</div><span class="circular"></span><span @click="setbookFn" class="title_name">作品相关</span></li><li class="active"  v-link="{path: \'/system\'}"> ' + '<div class="mag_number1" v-if="system > 0">{{system}}</div><span class="circular"></span><span @click="setsystemFn" class="title_name">系统消息</span></li><li  v-link="{path: \'/official\'}"> ' + '<div class="mag_number1" v-if="official > 0">{{official}}</div><span class="circular"></span><span @click="setofficialFn" class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">系统消息</span><span class="titleTwo">system</span></div>' + '<div style="min-height:500px">' + '<div v-for="obj in bookList.info"><div class="img-attention-word"><span class="attention-word1">{{obj.messageTitle}}</span><span class="attention-word2">{{szxj.getLocalTimeTwo(obj.messageCreateDate)}}</span></div><p>{{obj.message}}</p><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8315,14 +8366,30 @@
 	      obj: {
 	        p: 1, // 页码
 	        n: 10,
-	        pageCount: 0
-	      }
+	        pageCount: 1
+	      },
+	      book: '',
+	      official: '',
+	      reply: '',
+	      system: ''
 	    };
 	  },
 	  route: {
 	    data: function data() {}
 	  },
 	  methods: {
+	    setbookFn: function setbookFn() {
+	      this.$set('book', 0);
+	    },
+	    setofficialFn: function setofficialFn() {
+	      this.$set('official', 0);
+	    },
+	    setreplyFn: function setreplyFn() {
+	      this.$set('reply', 0);
+	    },
+	    setsystemFn: function setsystemFn() {
+	      this.$set('system', 0);
+	    },
 	    setPageCount: function setPageCount(v) {
 	      var obj = this.obj;
 	      obj.pageCount = v;
@@ -8348,6 +8415,14 @@
 	        _this.$set('bookList', response.data);
 	        _this.setPageCount(response.data.totalPage);
 	        console.log(_this.bookList);
+	      });
+	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
+	        _this.userName = response.data.status.userName;
+	        _this.book = response.data.book;
+	        _this.official = response.data.official;
+	        _this.reply = response.data.reply;
+	        _this.system = response.data.system;
+	        _this.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
 	      });
 	    }
 	  },
@@ -8382,7 +8457,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var official = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/message\'}"> <div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}"> <div class="mag_number1" style="display:none;" v-show="bookList.reply === 0">{{bookList.reply}}</div><span class="circular"></span><span class="title_name">@我的</span></li><li  v-link="{path: \'/relevant\'}"> <div class="mag_number1" style="display:none;" v-show="bookList.book === 0">{{bookList.book}}</div><span class="circular"></span><span class="title_name">作品相关</span></li><li  v-link="{path: \'/system\'}"> <div class="mag_number1" style="display:none;" v-show="bookList.system === 0">{{bookList.system}}</div><span class="circular"></span><span class="title_name">系统消息</span></li><li class="active"  v-link="{path: \'/official\'}"><div class="mag_number1" style="display:none;" v-show="bookList.official === 0">{{bookList.official}}</div><span class="circular"></span><span class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">官方公共</span><span class="titleTwo">official public</span></div>' + '<div style="min-height:500px !important">' + '<div v-for="obj in bookList.info"><div class="img-attention-word"><span class="attention-word1">{{obj.messageTitle}}</span><span class="attention-word2">{{szxj.getLocalTimeTwo(obj.messageCreateDate)}}</span></div><p>{{obj.message}}</p><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal message</div><div class="titleBlock_LG">个人消息</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/message\'}">' + '<div class="mag_number1" v-if="reply > 0">{{reply}}</div><span class="circular"></span><span @click="setreplyFn" class="title_name">我的回复</span></li><li  v-link="{path: \'/tellMe\'}">' + '<div class="mag_number1" style="display:none;" ></div><span class="circular"></span><span class="title_name">@我的</span></li><li  v-link="{path: \'/relevant\'}">' + '<div class="mag_number1" v-if="book > 0">{{book}}</div><span class="circular"></span><span @click="setbookFn" class="title_name">作品相关</span></li><li  v-link="{path: \'/system\'}">' + '<div class="mag_number1" v-if="system > 0">{{system}}</div><span class="circular"></span><span @click="setsystemFn" class="title_name">系统消息</span></li><li class="active"  v-link="{path: \'/official\'}">' + '<div class="mag_number1" v-if="official > 0">{{official}}</div><span class="circular"></span><span @click="setofficialFn" class="title_name">官方公共</span></li></ul>' + '<div class="content"><div class="bookBlockList" ><div class="bookBlockList_title"><span class="hr"></span><span class="title">官方公共</span><span class="titleTwo">official public</span></div>' + '<div style="min-height:500px !important">' + '<div v-for="obj in bookList.info"><div class="img-attention-word"><span class="attention-word1">{{obj.messageTitle}}</span><span class="attention-word2">{{szxj.getLocalTimeTwo(obj.messageCreateDate)}}</span></div><p>{{obj.message}}</p><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /></div>' + '</div>' + '<div id="page" class="page" ><ul><li class="btn" @click="setPage((RequestObj.pageNo - 1) >= 1 ? (RequestObj.pageNo - 1) : 1)"><a>上一页</a></li><li v-if="(($index + 1)<= 5 && RequestObj.pageNo< 3 || (($index + 1) > RequestObj.pageNo - 3 &&  $index< RequestObj.pageNo)) || ( (($index + 1)<= RequestObj.pageNo + 2 &&　($index + 1) > RequestObj.pageNo) || (RequestObj.pageNo > obj.pageCount - 3 && ($index + 6) > obj.pageCount) )" :class="objTemp == RequestObj.pageNo? \'active\':\'\'" v-for="objTemp in page" @click="setPage(objTemp)"><a>{{ objTemp }}</a></li><li class="btn" @click="setPage((RequestObj.pageNo + 1)<= obj.pageCount ? (RequestObj.pageNo + 1) : obj.pageCount)"><a>下一页</a></li><li class="goto"><input type="text" v-model="pageNo" style="text-align: center;"/><span>{{ RequestObj.pageNo }}/{{ obj.pageCount }}</span><a class="btn" @click="setPage(pageNo)">转页</a></li></ul></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8397,15 +8472,31 @@
 	      obj: {
 	        p: 1, // 页码
 	        n: 10,
-	        pageCount: 0
+	        pageCount: 1
 	      },
-	      messageStatus: 0
+	      messageStatus: 0,
+	      book: '',
+	      official: '',
+	      reply: '',
+	      system: ''
 	    };
 	  },
 	  route: {
 	    data: function data() {}
 	  },
 	  methods: {
+	    setbookFn: function setbookFn() {
+	      this.$set('book', 0);
+	    },
+	    setofficialFn: function setofficialFn() {
+	      this.$set('official', 0);
+	    },
+	    setreplyFn: function setreplyFn() {
+	      this.$set('reply', 0);
+	    },
+	    setsystemFn: function setsystemFn() {
+	      this.$set('system', 0);
+	    },
 	    setPageCount: function setPageCount(v) {
 	      var obj = this.obj;
 	      obj.pageCount = v;
@@ -8431,6 +8522,14 @@
 	        _this.$set('bookList', response.data);
 	        console.log(_this.bookList);
 	        _this.setPageCount(response.data.totalPage);
+	      });
+	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
+	        _this.userName = response.data.status.userName;
+	        _this.book = response.data.book;
+	        _this.official = response.data.official;
+	        _this.reply = response.data.reply;
+	        _this.system = response.data.system;
+	        _this.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
 	      });
 	    }
 	  },

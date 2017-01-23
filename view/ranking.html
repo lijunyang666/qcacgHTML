@@ -4,11 +4,11 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<title>QC文学网-排行榜</title>
-  	<link rel="stylesheet" href="../css/ranking.css" />
-  	<link rel="stylesheet" href="../css/headerOrFooter.css" />
-  	<link rel="stylesheet" href="../css/main.css" />
-  	<link rel="stylesheet" href="../css/LOgin.css" />
-  	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
+  	<link rel="stylesheet" href="../css/ranking_6c47f008ba.css" />
+  	<link rel="stylesheet" href="../css/headerOrFooter_69d072ec5f.css" />
+  	<link rel="stylesheet" href="../css/main_ddfaca9e09.css" />
+  	<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
+  	<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
 	</head>
 	<body id="app" v-show="bodyFlag" style="display: none;">
 	  <alert v-ref:vue-alert></alert>
@@ -58,17 +58,17 @@
 	  			<li style="padding-top: 6px;">作者：{{obj.author}}</li>
 	  			<li><!-- 占位符 --></li>
 	  			
-	  			<li v-if="RequestObj.timeRank === 0">点击：{{obj.everyWeekHit}}</li>
-	  			<li v-if="RequestObj.timeRank === 1">点击：{{obj.everyMonthHit}}</li>
-	  			<li v-if="RequestObj.timeRank === 2">点击：{{obj.bookHit}}</li>
+	  			<li class="hit" v-if="RequestObj.timeRank === 0">点击：{{obj.everyWeekHit}}</li>
+	  			<li class="hit" v-if="RequestObj.timeRank === 1">点击：{{obj.everyMonthHit}}</li>
+	  			<li class="hit" v-if="RequestObj.timeRank === 2">点击：{{obj.bookHit}}</li>
 	  			
-	  			<li v-if="RequestObj.timeRank === 0">好人卡：{{obj.everyWeekCopperCoins}}</li>
-          <li v-if="RequestObj.timeRank === 1">好人卡：{{obj.everyMonthCopperCoins}}</li>
-          <li v-if="RequestObj.timeRank === 2">好人卡：{{obj.bookCopperCoins}}</li>
+	  			<li class="hit" v-if="RequestObj.timeRank === 0">好人卡：{{obj.everyWeekCopperCoins}}</li>
+          <li class="hit" v-if="RequestObj.timeRank === 1">好人卡：{{obj.everyMonthCopperCoins}}</li>
+          <li class="hit" v-if="RequestObj.timeRank === 2">好人卡：{{obj.bookCopperCoins}}</li>
           
-          <li v-if="RequestObj.timeRank === 0">字数：{{obj.everyWeekWordCount}}</li>
-	  			<li v-if="RequestObj.timeRank === 1">字数：{{obj.everyMonthWordCount}}</li>
-	  			<li v-if="RequestObj.timeRank === 2">字数：{{obj.bookWordCount}}</li>
+          <li class="hit" v-if="RequestObj.timeRank === 0">字数：{{obj.everyWeekWordCount}}</li>
+	  			<li class="hit" v-if="RequestObj.timeRank === 1">字数：{{obj.everyMonthWordCount}}</li>
+	  			<li class="hit" v-if="RequestObj.timeRank === 2">字数：{{obj.bookWordCount}}</li>
 	  			
 	  		</ul>
 	  		<a @click="setCollect(obj.bookId)" v-if="obj.collect" class="ranking_Collection " href="javascript:;">取消收藏</a>
@@ -91,6 +91,6 @@
   </div>
 	<myfooter></myfooter>
 	</body>
-<script src="../js/main/ranking_fd6b7808bd.js"></script>
+<script src="../js/main/ranking_e97c6149ef.js"></script>
 
 </html>

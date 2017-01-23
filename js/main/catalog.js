@@ -5053,8 +5053,9 @@
 
 	PathList.rootPath = '/Controller';
 	//PathList.rootPath = 'http://192.168.126.34:8080';
-
-
+	//PathList.rootPath = 'http://192.168.126.25:8080';
+	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	//PathList.rootPath = "http://127.0.0.1:7788"
 	// 登陆的3个请求
 	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
 	PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
@@ -5227,7 +5228,9 @@
 	  // GET请求
 	  if (_method === 'get') {
 	    _vueMin2.default.http.get(_URL, _data).then(function (response) {
-	      successfn(response);
+	      if (response.data.length !== 0) {
+	        successfn(response);
+	      }
 	    }, function (err) {
 	      if (!err.status) {
 	        return;
@@ -5255,7 +5258,9 @@
 	  // POST请求
 	  if (_method === 'post') {
 	    _vueMin2.default.http.post(_URL, _data).then(function (response) {
-	      successfn(response);
+	      if (response.data.length !== 0) {
+	        successfn(response);
+	      }
 	    }, function (err) {
 	      if (!err.status) {
 	        return;
@@ -5377,11 +5382,6 @@
 	    };
 	  },
 	  methods: {
-	    setmessageFn: function setmessageFn() {
-	      if (this.number > 1) {
-	        this.number;
-	      }
-	    },
 	    setbookFn: function setbookFn() {
 	      this.$set('book', 0);
 	    },
@@ -5392,7 +5392,6 @@
 	      this.$set('reply', 0);
 	    },
 	    setsystemFn: function setsystemFn() {
-
 	      this.$set('system', 0);
 	    },
 	    backLoginFn: function backLoginFn() {
