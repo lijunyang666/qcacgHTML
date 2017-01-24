@@ -54,7 +54,7 @@
 
 	var _vueResourceMin2 = _interopRequireDefault(_vueResourceMin);
 
-	var _vueRouterMin = __webpack_require__(128);
+	var _vueRouterMin = __webpack_require__(120);
 
 	var _vueRouterMin2 = _interopRequireDefault(_vueRouterMin);
 
@@ -4713,547 +4713,7 @@
 	});
 
 /***/ },
-/* 120 */,
-/* 121 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var PathList = {};
-
-	PathList.TemprootPath = '';
-
-	PathList.rootPath = '/Controller';
-	//PathList.rootPath = 'http://192.168.126.34:8080';
-	//PathList.rootPath = 'http://192.168.126.25:8080';
-	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
-	//PathList.rootPath = "http://127.0.0.1:7788"
-	// 登陆的3个请求
-	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
-	PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
-
-	PathList.login = PathList.rootPath + '/login.shtml';
-	// 注册的2个请求
-	PathList.registerTelephoneCode = PathList.rootPath + '/registerTelephoneCode.shtml';
-	PathList.register = PathList.rootPath + '/register.shtml';
-	// 查看用户创建作品列表 不需要传数据
-	PathList.findBookByUser = PathList.rootPath + '/book/findBookByUser.shtml';
-	// 查看作者创建作品目录页 需要传入作品id
-	PathList.queryBook = PathList.rootPath + '/book/queryBook.shtml';
-	// 作者作品新增卷
-	PathList.saveOrUpdateVolume = PathList.rootPath + '/volume/saveOrUpdateVolume.shtml';
-	// 作者新建作品上传封面页
-	PathList.bookUpload = PathList.rootPath + '/book/upload.shtml';
-	// 作者新建与修改作品的接口
-	PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
-	// 作者阅读章节接口
-	PathList.ContentfindContent = PathList.rootPath + '/content/findContent.shtml';
-	// 作者新建章节接口
-	PathList.saveOrUpdateContent = PathList.rootPath + '/content/saveOrUpdateContent.shtml';
-	// 获取作品分类的接口
-	PathList.queryBookType = PathList.rootPath + '/bookType/queryBookType.shtml';
-	// 读者访问目录页
-	PathList.queryBookDirectory = PathList.rootPath + '/catalog/queryBookDirectory.shtml';
-	//作者其他作品的
-	PathList.findUserOtherBook = PathList.rootPath + '/catalog/findUserOtherBook.shtml';
-	//阅读页
-	PathList.findContent = PathList.rootPath + '/catalog/findContent.shtml';
-
-	PathList.queryBookTitle = PathList.rootPath + '/bookType/queryBook.shtml';
-	// 分类页面
-	PathList.queryBookClass = PathList.rootPath + '/bookType/filter.shtml';
-	//主页
-	PathList.getIndexData = PathList.rootPath + '/index/getIndexData.shtml';
-	//小编推荐
-	PathList.nextBatch = PathList.rootPath + '/index/nextBatch.shtml';
-	//排行榜
-	PathList.getRankingList = PathList.rootPath + '/rank/getRankingList.shtml';
-	//我的书架 -我的收藏
-	PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
-	//我的书架-我的浏览记录
-	PathList.findBookHitByUser = PathList.rootPath + '/bookHit/findBookHitByUser.shtml';
-	// 判断是否登入
-	PathList.getStatus = PathList.rootPath + '/getStatus.shtml';
-	// 添加或取消收藏
-	PathList.saveOrDeleteBookCollect = PathList.rootPath + '/bookCollect/saveOrDeleteBookCollect.shtml';
-	// 获取评论
-	PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
-	// 获取个人信息
-	PathList.queryUser = PathList.rootPath + '/user/queryUser.shtml';
-	// 修改个人信息
-	PathList.updateUser = PathList.rootPath + '/user/updateUser.shtml';
-	// 头像上传
-	PathList.userUpload = PathList.rootPath + '/user/upload.shtml';
-	// 获取关注我的 和 我的关注  0表示我关注的人，status 1表示关注我的人  pageNo 当前页码数 pageSize 每页显示的数据量
-	PathList.myCareOrCareMe = PathList.rootPath + '/relation/myCareOrCareMe.shtml';
-	// 确定关注 或 取消关注
-	PathList.saveOrCancelAttention = PathList.rootPath + '/relation/saveOrCancelAttention.shtml';
-	// 卷交换位置 volumeUpId volumeDownId
-	PathList.volumeChange = PathList.rootPath + '/catalog/volumeChange.shtml';
-	// 章节交换位置 contentUpId contentDownId
-	PathList.contentChange = PathList.rootPath + '/catalog/contentChange.shtml';
-	// 删除卷
-	PathList.removeVolume = PathList.rootPath + '/volume/removeVolume.shtml';
-	// 删除章节
-	PathList.removeContent = PathList.rootPath + '/content/removeContent.shtml';
-	// 获取评论
-	PathList.findCommentAndReply = PathList.rootPath + '/comment/findCommentAndReply.shtml';
-	// 添加评论
-	PathList.saveComment = PathList.rootPath + '/comment/saveComment.shtml';
-	// 获取回复 
-	PathList.moreReply = PathList.rootPath + '/comment/moreReply.shtml';
-	// 添加回复    
-	PathList.saveReply = PathList.rootPath + '/reply/saveReply.shtml';
-	// 查看回复
-	PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml ';
-	// 评论置顶
-	PathList.top = PathList.rootPath + '/comment/top.shtml';
-	// 新增系统消息
-	PathList.saveInfo = PathList.rootPath + '/info/saveInfo.shtml';
-	// 查看消息
-	PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml';
-	// 获取回复
-	PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
-	// 修改密码 or 忘记密码
-	PathList.updatePassword = PathList.rootPath + '/updatePassword.shtml';
-	// 审核
-	PathList.userUpdateBookStatus = PathList.rootPath + '/book/userUpdateBookStatus.shtml';
-
-	exports.default = PathList;
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _conf = __webpack_require__(121);
-
-	var _conf2 = _interopRequireDefault(_conf);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var SZXJ = {};
-	Date.prototype.Format = function (fmt) {
-	  //author: meizz   
-	  var o = {
-	    "M+": this.getMonth() + 1, //月份   
-	    "d+": this.getDate(), //日   
-	    "h+": this.getHours(), //小时   
-	    "m+": this.getMinutes(), //分   
-	    "s+": this.getSeconds(), //秒   
-	    "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
-	    "S": this.getMilliseconds() //毫秒   
-	  };
-	  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-	  for (var k in o) {
-	    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-	  }return fmt;
-	};
-	SZXJ.getLocalTime = function (nS) {
-	  var time = new Date(nS * 1000);
-	  return time.Format("yyyy-MM-dd hh:mm:ss");
-	  // return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
-	};
-	SZXJ.getLocalTimeTwo = function (nS) {
-	  var time = new Date(nS);
-	  return time.Format("yyyy-MM-dd hh:mm:ss");
-	  // return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
-	};
-	SZXJ.getLocalDate = function (nS) {
-	  var time = new Date(nS);
-	  return time.Format("yyyy-MM-dd");
-	  // return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
-	};
-	SZXJ.getQueryString = function (name) {
-	  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-	  var r = window.location.search.substr(1).match(reg);
-	  if (r != null) return unescape(r[2]);
-	  return null;
-	};
-	SZXJ.loadImg = function (url, event) {
-	  var dom = event.target;
-	  if (url && dom.src !== url) {
-	    var img = new Image();
-	    var This = this;
-	    img.src = url;
-	    img.addEventListener('load', function () {
-	      dom.src = img.src;
-	    });
-	  }
-	};
-	SZXJ.http = function (This, _method, _url, _data, successfn, errorfn) {
-	  // 设置登入请求头
-	  if (localStorage.getItem('JSESSIONID')) {
-	    _vueMin2.default.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
-	  }
-	  // 设置登入URL
-	  var _URL = _url;
-	  // GET请求
-	  if (_method === 'get') {
-	    _vueMin2.default.http.get(_URL, _data).then(function (response) {
-	      if (response.data.length !== 0) {
-	        successfn(response);
-	      }
-	    }, function (err) {
-	      if (!err.status) {
-	        return;
-	      }
-	      if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
-	        var Utils = This.$refs.vueAlert ? This.$refs.vueAlert : This.$parent.$refs.vueAlert;
-	        Utils.setMessage(true, err.data.msg, function () {
-	          if (err.data.code == 901) {
-	            // 未登入
-	            location.href = _conf2.default.TemprootPath + '/view/login.html';
-	            localStorage.removeItem('JSESSIONID');
-	          }
-	          if (err.data.code == 1001) {
-	            // 登入超时
-	            location.href = _conf2.default.TemprootPath + '/view/login.html';
-	            localStorage.removeItem('JSESSIONID');
-	          }
-	        });
-	      }
-	      if (errorfn) {
-	        errorfn(err);
-	      }
-	    });
-	  }
-	  // POST请求
-	  if (_method === 'post') {
-	    _vueMin2.default.http.post(_URL, _data).then(function (response) {
-	      if (response.data.length !== 0) {
-	        successfn(response);
-	      }
-	    }, function (err) {
-	      if (!err.status) {
-	        return;
-	      }
-	      if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
-	        var Utils = This.$refs.vueAlert ? This.$refs.vueAlert : This.$parent.$refs.vueAlert;
-	        Utils.setMessage(true, err.data.msg, function () {
-	          if (err.data.code == 901) {
-	            // 未登入
-	            location.href = _conf2.default.TemprootPath + '/view/login.html';
-	            localStorage.removeItem('JSESSIONID');
-	          }
-	          if (err.data.code == 1001) {
-	            // 登入超时
-	            location.href = _conf2.default.TemprootPath + '/view/login.html';
-	            localStorage.removeItem('JSESSIONID');
-	          }
-	        });
-	      }
-	      if (errorfn) {
-	        errorfn(err);
-	      }
-	    });
-	  }
-	  // 图片上传
-	  if (_method === 'upload') {
-	    // 
-	  }
-	};
-	exports.default = SZXJ;
-
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _header = __webpack_require__(124);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	var _footer = __webpack_require__(125);
-
-	var _footer2 = _interopRequireDefault(_footer);
-
-	var _alert = __webpack_require__(126);
-
-	var _alert2 = _interopRequireDefault(_alert);
-
-	var _confirm = __webpack_require__(127);
-
-	var _confirm2 = _interopRequireDefault(_confirm);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function headerOrfooter() {
-	  _vueMin2.default.component('myheader', _header2.default);
-	  _vueMin2.default.component('myfooter', _footer2.default);
-	  _vueMin2.default.component('alert', _alert2.default);
-	  _vueMin2.default.component('confirm', _confirm2.default);
-	}
-	exports.default = headerOrfooter;
-
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _conf = __webpack_require__(121);
-
-	var _conf2 = _interopRequireDefault(_conf);
-
-	var _vueHttp = __webpack_require__(122);
-
-	var _vueHttp2 = _interopRequireDefault(_vueHttp);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var header = _vueMin2.default.extend({
-	  template: '<header class="qcacg-header-parent" id="qcacg-header-parent" style="position:relative"><div class="qcacg-header"><a :href="path.TemprootPath + \'/index.html\'"><div class="logo">轻创文学网</div></a>   <ul class="nav-left">   <li :class="active"><a :href="path.TemprootPath + \'/index.html\'">首页</a></li><li><a :href="path.TemprootPath + \'/view/class.html\'">分类</a></li><li><a :href="path.TemprootPath + \'/view/ranking.html\'">排行榜</a></li><li class="none"><a href="javascript:;">画师</a></li><li class="none"><a href="javascript:;">周边</a></li><li><a :href="path.TemprootPath + \'/view/welfare.html\'">福利</a></li></ul><ul class="nav-right">' + '<li v-if="loginFlag" class="liBlock" :style="loginImg !== \'\' ? loginImg:\'\'"><div class="headers_display"><span class="display_user"><a  :href="path.TemprootPath + \'/view/user_info.html\'">{{ userName }}</a></span> <span class="out"><a  href="javascript:;" @click="backLoginFn">退出</a></span>  <div class="header_more"><a :href="path.TemprootPath + \'/view/user_info.html\'">查看更多</a></div></div></a></li>' + '<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>' + '<li v-if="loginFlag" class="ul_msg" ><div class="mag_number" v-if="book+official+reply+system > 0" >{{ book+official+reply+system }}</div><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">消息</a><ul class="li_msg_ul" ><li @click="setreplyFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">回复我的</a><div class="mag_number_small" v-if="reply > 0"  >{{ reply }}</div></li><li @click="setbookFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/relevant\'">作品相关</a><div class="mag_number_small" v-if="book > 0" >{{ book }}</div></li><li @click="setsystemFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/system\'">系统消息</a><div class="mag_number_small" v-if="system > 0" >{{ system }}</div></li><li @click="setofficialFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/official\'">官方公共</a><div class="mag_number_small" v-if="official > 0" >{{ official }}</div></li></ul></li>' + '<li class="publication">' + '<a v-if="loginFlag" @click="setHref(path.TemprootPath + \'/view/user_info.html#!/bookBlockList\')" style="color:#FFFFFF">投&nbsp;稿</a>' + '<a v-else style="color:#FFFFFF" :href="path.TemprootPath + \'/view/login.html\'">投&nbsp;稿</a>' + '</li></ul></div></header>',
-	  components: {},
-	  props: {
-	    userName: {
-	      type: String
-	    },
-	    loginImg: {
-	      type: String
-	    },
-	    active: {
-	      type: String
-	    }
-	  },
-	  data: function data() {
-	    return {
-	      path: _conf2.default,
-	      loginFlag: false,
-	      number1: '',
-	      book: '',
-	      official: '',
-	      reply: '',
-	      system: ''
-	    };
-	  },
-	  methods: {
-	    setbookFn: function setbookFn() {
-	      this.$set('book', 0);
-	    },
-	    setofficialFn: function setofficialFn() {
-	      this.$set('official', 0);
-	    },
-	    setreplyFn: function setreplyFn() {
-	      this.$set('reply', 0);
-	    },
-	    setsystemFn: function setsystemFn() {
-	      this.$set('system', 0);
-	    },
-	    backLoginFn: function backLoginFn() {
-	      this.loginFlag = false;
-	      localStorage.removeItem('JSESSIONID');
-	      window.location.reload();
-	      // window.location.href = this.path.TemprootPath + '/index.html';
-	    },
-	    setHref: function setHref(v) {
-	      location.href = v;
-	      var href = window.location.href;
-	      var str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
-	      this.$set('active', str);
-	    },
-
-	    getBookListFn: function getBookListFn() {
-	      var _this = this;
-
-	      var _data = {};
-	      _vueHttp2.default.http(this, 'get', _conf2.default.findBookByUser, {}, function (response) {
-	        _this.$set('bookList', response.data);
-	      });
-	    }
-	  },
-	  ready: function ready() {
-	    var _this2 = this;
-
-	    _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
-	      _this2.loginImg = 'background-image: url(' + _this2.path.rootPath + response.data.status.userImage + ')';
-	      _this2.loginFlag = response.data.status.flag;
-	      _this2.userName = response.data.status.userName;
-	      _this2.book = response.data.book;
-	      _this2.official = response.data.official;
-	      _this2.reply = response.data.reply;
-	      _this2.system = response.data.system;
-	      _this2.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
-	    });
-	  },
-	  route: {
-	    data: function data() {}
-	  }
-	});
-	exports.default = header;
-
-/***/ },
-/* 125 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _conf = __webpack_require__(121);
-
-	var _conf2 = _interopRequireDefault(_conf);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var footer = _vueMin2.default.extend({
-	  template: '<footer class="qcacg-footer-parent"><div class="qcacg-footer"><div class="qcacg-top"><div class="pull-left qcacg-footer-block"><p class="qcacg-title">关于</p><p class="qcacg-content"><a href="javascript:;">关于我们</a></p><p class="qcacg-content"><a href="javascript:;">免责声明</a></p><p class="qcacg-content"><a href="javascript:;">公司信息</a></p><div class="qcacg-hr"></div></div><div class="pull-left qcacg-footer-block"><p class="qcacg-title">联系方式</p><p class="qcacg-content"><a href="javascript:;">微博</a></p><p class="qcacg-content"><a href="javascript:;">电子邮件</a></p><div class="qcacg-hr"></div></div><div class="pull-left qcacg-footer-block"><p class="qcacg-title">投稿</p><p class="qcacg-content"><a href="javascript:;">签约制度</a></p><p class="qcacg-content"><a href="javascript:;">作者福利</a></p><p class="qcacg-content"><a href="javascript:;">签约流程</a></p><p class="qcacg-content"><a href="javascript:;">约稿函</a></p><p class="qcacg-content"><a href="javascript:;">投稿流程</a></p><div class="qcacg-hr"></div></div><div class="pull-left qcacg-footer-block"><p class="qcacg-title">友情链接</p>'
-	  // +'<p class="qcacg-content"><a href="javascript:;">米画师</a></p><p class="qcacg-content"><a href="javascript:;">网易GACHA</a></p><p class="qcacg-content"><a href="javascript:;">MissEvan_M站</a></p>'
-	  + '</div><div class="qcacg-footer-logo" onclick="location.href=\'/qcacg/index.html\'">轻创文学网</div></div><div class="qcacg-bottom"><p>杭州轻悦网络科技有限公司<span class="driver"> |</span>浙ICP备16021285号</p></div></div></footer>' + '<div style="text-align: center;background-color: #f2f2f2;margin-top: -10px;">' + '<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602007631" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../img/police.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#c8cbcc;">浙公网安备 33010602007631号</p></a>' + '</div>'
-	});
-	exports.default = footer;
-
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	var _conf = __webpack_require__(121);
-
-	var _conf2 = _interopRequireDefault(_conf);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var VueAlert = _vueMin2.default.extend({
-	  template: '<div v-if="flag" class="alert-Block">' + '<div class="alert_parent">' + '<div class="alert_sub">' + '<div class="words">' + '<div v-if="trueFlag" class="alert_img"><img :src="path.TemprootPath + \'/img/alert_flast.png\'" /></div>' + '<div v-else class="alert_img"><img :src="path.TemprootPath +  \'/img/alert_ture.png\'" /></div>' + '<ul>' + '<li v-if="trueFlag" class="alert">操作失败</li>' + '<li v-else class="alert3">操作成功</li>' + '<li class="alertToo">{{ message }}</li>' + '</ul>' + '<div class="clear"></div>' + '</div>' + '<div class="alert_foot btn" @click="cloneMessage">确认</div>' + '</div>' + '</div>' + '</div>',
-	  components: {},
-	  props: {
-	    //  flag: {
-	    //    type: Boolean,
-	    //  }
-	  },
-	  data: function data() {
-	    return {
-	      path: _conf2.default,
-	      flag: false,
-	      trueFlag: true,
-	      message: '',
-	      Fn: 0,
-	      tureImg: 'alert_ture.png',
-	      flastImg: 'alert_flast.png'
-	    };
-	  },
-	  methods: {
-	    setMessage: function setMessage(trueFlag, message, Fn) {
-	      this.flag = true;
-	      this.trueFlag = trueFlag;
-	      this.message = message;
-	      this.Fn = Fn;
-	    },
-
-	    cloneMessage: function cloneMessage() {
-	      this.flag = false;
-	      this.trueFlag = false;
-	      this.message = '';
-	      if (this.Fn) {
-	        this.Fn();
-	      }
-	    }
-	  },
-	  ready: function ready() {},
-	  route: {
-	    data: function data() {}
-	  }
-	});
-	exports.default = VueAlert;
-
-/***/ },
-/* 127 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _vueMin = __webpack_require__(1);
-
-	var _vueMin2 = _interopRequireDefault(_vueMin);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var VueConfirm = _vueMin2.default.extend({
-	  template: '<div v-if="flag" class="confirmBlock">' + '<div class="confirm_parent">' + '<div class="confirm_sub">' + '<p class="words"> {{message}}</p>' + '<div @click="trueFn" class="true">确认</div>' + '<div @click="clearFn" class="flast">取消</div>' + '</div>' + '</div>' + '</div>',
-
-	  components: {},
-	  props: {},
-	  data: function data() {
-	    return {
-	      flag: false,
-	      message: '',
-	      Fn: ''
-	    };
-	  },
-	  methods: {
-	    setConfirm: function setConfirm(message, Fn, id) {
-	      this.flag = true;
-	      this.message = message;
-	      this.Fn = Fn;
-	    },
-	    trueFn: function trueFn() {
-	      if (this.Fn) {
-	        this.Fn();
-	      }
-	      this.flag = false;
-	    },
-	    clearFn: function clearFn() {
-	      this.flag = false;
-	    }
-	  },
-	  ready: function ready() {},
-	  route: {
-	    data: function data() {}
-	  }
-	});
-	exports.default = VueConfirm;
-
-/***/ },
-/* 128 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -5901,6 +5361,546 @@
 	    return ct.installed ? void b("already installed.") : (ht = t, q(ht), z(ht), Q(ht), X.Vue = ht, void (ct.installed = !0));
 	  }, "undefined" != typeof window && window.Vue && window.Vue.use(ct), ct;
 	});
+
+/***/ },
+/* 121 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var PathList = {};
+
+	PathList.TemprootPath = '';
+
+	PathList.rootPath = '/Controller';
+	PathList.rootPath = 'http://192.168.126.34:8080';
+	PathList.rootPath = 'http://192.168.126.25:8080';
+	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	//PathList.rootPath = "http://127.0.0.1:7788"
+	// 登陆的3个请求
+	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
+	PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
+	PathList.login = PathList.rootPath + '/login.shtml';
+	// 注册的2个请求
+	PathList.registerTelephoneCode = PathList.rootPath + '/registerTelephoneCode.shtml';
+	PathList.register = PathList.rootPath + '/register.shtml';
+	// 找回密码或修改密码
+	PathList.updatePasswordTelephoneCode = PathList.rootPath + '/updatePasswordTelephoneCode.shtml';
+	PathList.updatePassword = PathList.rootPath + '/updatePassword.shtml';
+
+	// 查看用户创建作品列表 不需要传数据
+	PathList.findBookByUser = PathList.rootPath + '/book/findBookByUser.shtml';
+	// 查看作者创建作品目录页 需要传入作品id
+	PathList.queryBook = PathList.rootPath + '/book/queryBook.shtml';
+	// 作者作品新增卷
+	PathList.saveOrUpdateVolume = PathList.rootPath + '/volume/saveOrUpdateVolume.shtml';
+	// 作者新建作品上传封面页
+	PathList.bookUpload = PathList.rootPath + '/book/upload.shtml';
+	// 作者新建与修改作品的接口
+	PathList.saveOrUpdateBook = PathList.rootPath + '/book/saveOrUpdateBook.shtml';
+	// 作者阅读章节接口
+	PathList.ContentfindContent = PathList.rootPath + '/content/findContent.shtml';
+	// 作者新建章节接口
+	PathList.saveOrUpdateContent = PathList.rootPath + '/content/saveOrUpdateContent.shtml';
+	// 获取作品分类的接口
+	PathList.queryBookType = PathList.rootPath + '/bookType/queryBookType.shtml';
+	// 读者访问目录页
+	PathList.queryBookDirectory = PathList.rootPath + '/catalog/queryBookDirectory.shtml';
+	//作者其他作品的
+	PathList.findUserOtherBook = PathList.rootPath + '/catalog/findUserOtherBook.shtml';
+	//阅读页
+	PathList.findContent = PathList.rootPath + '/catalog/findContent.shtml';
+
+	PathList.queryBookTitle = PathList.rootPath + '/bookType/queryBook.shtml';
+	// 分类页面
+	PathList.queryBookClass = PathList.rootPath + '/bookType/filter.shtml';
+	//主页
+	PathList.getIndexData = PathList.rootPath + '/index/getIndexData.shtml';
+	//小编推荐
+	PathList.nextBatch = PathList.rootPath + '/index/nextBatch.shtml';
+	//排行榜
+	PathList.getRankingList = PathList.rootPath + '/rank/getRankingList.shtml';
+	//我的书架 -我的收藏
+	PathList.findBookCollectByUser = PathList.rootPath + '/bookCollect/findBookCollectByUser.shtml';
+	//我的书架-我的浏览记录
+	PathList.findBookHitByUser = PathList.rootPath + '/bookHit/findBookHitByUser.shtml';
+	// 判断是否登入
+	PathList.getStatus = PathList.rootPath + '/getStatus.shtml';
+	// 添加或取消收藏
+	PathList.saveOrDeleteBookCollect = PathList.rootPath + '/bookCollect/saveOrDeleteBookCollect.shtml';
+	// 获取评论
+	PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
+	// 获取个人信息
+	PathList.queryUser = PathList.rootPath + '/user/queryUser.shtml';
+	// 修改个人信息
+	PathList.updateUser = PathList.rootPath + '/user/updateUser.shtml';
+	// 头像上传
+	PathList.userUpload = PathList.rootPath + '/user/upload.shtml';
+	// 获取关注我的 和 我的关注  0表示我关注的人，status 1表示关注我的人  pageNo 当前页码数 pageSize 每页显示的数据量
+	PathList.myCareOrCareMe = PathList.rootPath + '/relation/myCareOrCareMe.shtml';
+	// 确定关注 或 取消关注
+	PathList.saveOrCancelAttention = PathList.rootPath + '/relation/saveOrCancelAttention.shtml';
+	// 卷交换位置 volumeUpId volumeDownId
+	PathList.volumeChange = PathList.rootPath + '/catalog/volumeChange.shtml';
+	// 章节交换位置 contentUpId contentDownId
+	PathList.contentChange = PathList.rootPath + '/catalog/contentChange.shtml';
+	// 删除卷
+	PathList.removeVolume = PathList.rootPath + '/volume/removeVolume.shtml';
+	// 删除章节
+	PathList.removeContent = PathList.rootPath + '/content/removeContent.shtml';
+	// 获取评论
+	PathList.findCommentAndReply = PathList.rootPath + '/comment/findCommentAndReply.shtml';
+	// 添加评论
+	PathList.saveComment = PathList.rootPath + '/comment/saveComment.shtml';
+	// 获取回复 
+	PathList.moreReply = PathList.rootPath + '/comment/moreReply.shtml';
+	// 添加回复    
+	PathList.saveReply = PathList.rootPath + '/reply/saveReply.shtml';
+	// 查看回复
+	PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml ';
+	// 评论置顶
+	PathList.top = PathList.rootPath + '/comment/top.shtml';
+	// 新增系统消息
+	PathList.saveInfo = PathList.rootPath + '/info/saveInfo.shtml';
+	// 查看消息
+	PathList.queryMsg = PathList.rootPath + '/info/queryMsg.shtml';
+	// 获取回复
+	PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
+	// 审核
+	PathList.userUpdateBookStatus = PathList.rootPath + '/book/userUpdateBookStatus.shtml';
+
+	exports.default = PathList;
+
+/***/ },
+/* 122 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vueMin = __webpack_require__(1);
+
+	var _vueMin2 = _interopRequireDefault(_vueMin);
+
+	var _conf = __webpack_require__(121);
+
+	var _conf2 = _interopRequireDefault(_conf);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SZXJ = {};
+	Date.prototype.Format = function (fmt) {
+	  //author: meizz   
+	  var o = {
+	    "M+": this.getMonth() + 1, //月份   
+	    "d+": this.getDate(), //日   
+	    "h+": this.getHours(), //小时   
+	    "m+": this.getMinutes(), //分   
+	    "s+": this.getSeconds(), //秒   
+	    "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+	    "S": this.getMilliseconds() //毫秒   
+	  };
+	  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+	  for (var k in o) {
+	    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+	  }return fmt;
+	};
+	SZXJ.getLocalTime = function (nS) {
+	  var time = new Date(nS * 1000);
+	  return time.Format("yyyy-MM-dd hh:mm:ss");
+	  // return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
+	};
+	SZXJ.getLocalTimeTwo = function (nS) {
+	  var time = new Date(nS);
+	  return time.Format("yyyy-MM-dd hh:mm:ss");
+	  // return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
+	};
+	SZXJ.getLocalDate = function (nS) {
+	  var time = new Date(nS);
+	  return time.Format("yyyy-MM-dd");
+	  // return new Date(parseInt(nS) * 1000).toLocaleString().substr(0,17);
+	};
+	SZXJ.getQueryString = function (name) {
+	  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	  var r = window.location.search.substr(1).match(reg);
+	  if (r != null) return unescape(r[2]);
+	  return null;
+	};
+	SZXJ.loadImg = function (url, event) {
+	  var dom = event.target;
+	  if (url && dom.src !== url) {
+	    var img = new Image();
+	    var This = this;
+	    img.src = url;
+	    img.addEventListener('load', function () {
+	      dom.src = img.src;
+	    });
+	  }
+	};
+	SZXJ.http = function (This, _method, _url, _data, successfn, errorfn) {
+	  // 设置登入请求头
+	  if (localStorage.getItem('JSESSIONID')) {
+	    _vueMin2.default.http.headers.common['JSESSIONID'] = localStorage.getItem('JSESSIONID');
+	  }
+	  // 设置登入URL
+	  var _URL = _url;
+	  // GET请求
+	  if (_method === 'get') {
+	    _vueMin2.default.http.get(_URL, _data).then(function (response) {
+	      if (response.data.length !== 0) {
+	        successfn(response);
+	      }
+	    }, function (err) {
+	      if (!err.status) {
+	        return;
+	      }
+	      if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
+	        var Utils = This.$refs.vueAlert ? This.$refs.vueAlert : This.$parent.$refs.vueAlert;
+	        Utils.setMessage(true, err.data.msg, function () {
+	          if (err.data.code == 901) {
+	            // 未登入
+	            location.href = _conf2.default.TemprootPath + '/view/login.html';
+	            localStorage.removeItem('JSESSIONID');
+	          }
+	          if (err.data.code == 1001) {
+	            // 登入超时
+	            location.href = _conf2.default.TemprootPath + '/view/login.html';
+	            localStorage.removeItem('JSESSIONID');
+	          }
+	        });
+	      }
+	      if (errorfn) {
+	        errorfn(err);
+	      }
+	    });
+	  }
+	  // POST请求
+	  if (_method === 'post') {
+	    _vueMin2.default.http.post(_URL, _data).then(function (response) {
+	      if (response.data.length !== 0) {
+	        successfn(response);
+	      }
+	    }, function (err) {
+	      if (!err.status) {
+	        return;
+	      }
+	      if (This.$refs.vueAlert || This.$parent.$refs.vueAlert) {
+	        var Utils = This.$refs.vueAlert ? This.$refs.vueAlert : This.$parent.$refs.vueAlert;
+	        Utils.setMessage(true, err.data.msg, function () {
+	          if (err.data.code == 901) {
+	            // 未登入
+	            location.href = _conf2.default.TemprootPath + '/view/login.html';
+	            localStorage.removeItem('JSESSIONID');
+	          }
+	          if (err.data.code == 1001) {
+	            // 登入超时
+	            location.href = _conf2.default.TemprootPath + '/view/login.html';
+	            localStorage.removeItem('JSESSIONID');
+	          }
+	        });
+	      }
+	      if (errorfn) {
+	        errorfn(err);
+	      }
+	    });
+	  }
+	  // 图片上传
+	  if (_method === 'upload') {
+	    // 
+	  }
+	};
+	exports.default = SZXJ;
+
+/***/ },
+/* 123 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vueMin = __webpack_require__(1);
+
+	var _vueMin2 = _interopRequireDefault(_vueMin);
+
+	var _header = __webpack_require__(124);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	var _footer = __webpack_require__(125);
+
+	var _footer2 = _interopRequireDefault(_footer);
+
+	var _alert = __webpack_require__(126);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
+	var _confirm = __webpack_require__(127);
+
+	var _confirm2 = _interopRequireDefault(_confirm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function headerOrfooter() {
+	  _vueMin2.default.component('myheader', _header2.default);
+	  _vueMin2.default.component('myfooter', _footer2.default);
+	  _vueMin2.default.component('alert', _alert2.default);
+	  _vueMin2.default.component('confirm', _confirm2.default);
+	}
+	exports.default = headerOrfooter;
+
+/***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vueMin = __webpack_require__(1);
+
+	var _vueMin2 = _interopRequireDefault(_vueMin);
+
+	var _conf = __webpack_require__(121);
+
+	var _conf2 = _interopRequireDefault(_conf);
+
+	var _vueHttp = __webpack_require__(122);
+
+	var _vueHttp2 = _interopRequireDefault(_vueHttp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var header = _vueMin2.default.extend({
+	  template: '<header class="qcacg-header-parent" id="qcacg-header-parent" style="position:relative"><div class="qcacg-header"><a :href="path.TemprootPath + \'/index.html\'"><div class="logo">轻创文学网</div></a>   <ul class="nav-left">   <li :class="active"><a :href="path.TemprootPath + \'/index.html\'">首页</a></li><li><a :href="path.TemprootPath + \'/view/class.html\'">分类</a></li><li><a :href="path.TemprootPath + \'/view/ranking.html\'">排行榜</a></li><li class="none"><a href="javascript:;">画师</a></li><li class="none"><a href="javascript:;">周边</a></li><li><a :href="path.TemprootPath + \'/view/welfare.html\'">福利</a></li></ul><ul class="nav-right">' + '<li v-if="loginFlag" class="liBlock" :style="loginImg !== \'\' ? loginImg:\'\'"><div class="headers_display"><span class="display_user"><a  :href="path.TemprootPath + \'/view/user_info.html\'">{{ userName }}</a></span> <span class="out"><a  href="javascript:;" @click="backLoginFn">退出</a></span>  <div class="header_more"><a :href="path.TemprootPath + \'/view/user_info.html\'">查看更多</a></div></div></a></li>' + '<li v-else class="li_login"><a :href="path.TemprootPath + \'/view/login.html\'">登录/注册</a></li>' + '<li v-if="loginFlag" class="ul_msg" ><div class="mag_number" v-if="book+official+reply+system > 0" >{{ book+official+reply+system }}</div><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">消息</a><ul class="li_msg_ul" ><li @click="setreplyFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/message\'">回复我的</a><div class="mag_number_small" v-if="reply > 0"  >{{ reply }}</div></li><li @click="setbookFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/relevant\'">作品相关</a><div class="mag_number_small" v-if="book > 0" >{{ book }}</div></li><li @click="setsystemFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/system\'">系统消息</a><div class="mag_number_small" v-if="system > 0" >{{ system }}</div></li><li @click="setofficialFn" class="li_msg_li"><a :href="path.TemprootPath + \'/view/user_info.html#!/official\'">官方公共</a><div class="mag_number_small" v-if="official > 0" >{{ official }}</div></li></ul></li>' + '<li class="publication">' + '<a v-if="loginFlag" @click="setHref(path.TemprootPath + \'/view/user_info.html#!/bookBlockList\')" style="color:#FFFFFF">投&nbsp;稿</a>' + '<a v-else style="color:#FFFFFF" :href="path.TemprootPath + \'/view/login.html\'">投&nbsp;稿</a>' + '</li></ul></div></header>',
+	  components: {},
+	  props: {
+	    userName: {
+	      type: String
+	    },
+	    loginImg: {
+	      type: String
+	    },
+	    active: {
+	      type: String
+	    }
+	  },
+	  data: function data() {
+	    return {
+	      path: _conf2.default,
+	      loginFlag: false,
+	      number1: '',
+	      book: '',
+	      official: '',
+	      reply: '',
+	      system: ''
+	    };
+	  },
+	  methods: {
+	    setbookFn: function setbookFn() {
+	      this.$set('book', 0);
+	    },
+	    setofficialFn: function setofficialFn() {
+	      this.$set('official', 0);
+	    },
+	    setreplyFn: function setreplyFn() {
+	      this.$set('reply', 0);
+	    },
+	    setsystemFn: function setsystemFn() {
+	      this.$set('system', 0);
+	    },
+	    backLoginFn: function backLoginFn() {
+	      this.loginFlag = false;
+	      localStorage.removeItem('JSESSIONID');
+	      window.location.reload();
+	      // window.location.href = this.path.TemprootPath + '/index.html';
+	    },
+	    setHref: function setHref(v) {
+	      location.href = v;
+	      var href = window.location.href;
+	      var str = href.substring(href.lastIndexOf('#!/') + 3, href.length);
+	      this.$set('active', str);
+	    },
+
+	    getBookListFn: function getBookListFn() {
+	      var _this = this;
+
+	      var _data = {};
+	      _vueHttp2.default.http(this, 'get', _conf2.default.findBookByUser, {}, function (response) {
+	        _this.$set('bookList', response.data);
+	      });
+	    }
+	  },
+	  ready: function ready() {
+	    var _this2 = this;
+
+	    _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
+	      _this2.loginImg = 'background-image: url(' + _this2.path.rootPath + response.data.status.userImage + ')';
+	      _this2.loginFlag = response.data.status.flag;
+	      _this2.userName = response.data.status.userName;
+	      _this2.book = response.data.book;
+	      _this2.official = response.data.official;
+	      _this2.reply = response.data.reply;
+	      _this2.system = response.data.system;
+	      _this2.number1 = response.data.system + response.data.reply + response.data.official + response.data.book;
+	    });
+	  },
+	  route: {
+	    data: function data() {}
+	  }
+	});
+	exports.default = header;
+
+/***/ },
+/* 125 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vueMin = __webpack_require__(1);
+
+	var _vueMin2 = _interopRequireDefault(_vueMin);
+
+	var _conf = __webpack_require__(121);
+
+	var _conf2 = _interopRequireDefault(_conf);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var footer = _vueMin2.default.extend({
+	  template: '<footer class="qcacg-footer-parent"><div class="qcacg-footer"><div class="qcacg-top"><div class="pull-left qcacg-footer-block"><p class="qcacg-title">关于</p><p class="qcacg-content"><a href="javascript:;">关于我们</a></p><p class="qcacg-content"><a href="javascript:;">免责声明</a></p><p class="qcacg-content"><a href="javascript:;">公司信息</a></p><div class="qcacg-hr"></div></div><div class="pull-left qcacg-footer-block"><p class="qcacg-title">联系方式</p><p class="qcacg-content"><a href="javascript:;">微博</a></p><p class="qcacg-content"><a href="javascript:;">电子邮件</a></p><div class="qcacg-hr"></div></div><div class="pull-left qcacg-footer-block"><p class="qcacg-title">投稿</p><p class="qcacg-content"><a href="javascript:;">签约制度</a></p><p class="qcacg-content"><a href="javascript:;">作者福利</a></p><p class="qcacg-content"><a href="javascript:;">签约流程</a></p><p class="qcacg-content"><a href="javascript:;">约稿函</a></p><p class="qcacg-content"><a href="javascript:;">投稿流程</a></p><div class="qcacg-hr"></div></div><div class="pull-left qcacg-footer-block"><p class="qcacg-title">友情链接</p>'
+	  // +'<p class="qcacg-content"><a href="javascript:;">米画师</a></p><p class="qcacg-content"><a href="javascript:;">网易GACHA</a></p><p class="qcacg-content"><a href="javascript:;">MissEvan_M站</a></p>'
+	  + '</div><div class="qcacg-footer-logo" onclick="location.href=\'/qcacg/index.html\'">轻创文学网</div></div><div class="qcacg-bottom"><p>杭州轻悦网络科技有限公司<span class="driver"> |</span>浙ICP备16021285号</p></div></div></footer>' + '<div style="text-align: center;background-color: #f2f2f2;margin-top: -10px;">' + '<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602007631" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../img/police.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#c8cbcc;">浙公网安备 33010602007631号</p></a>' + '</div>'
+	});
+	exports.default = footer;
+
+/***/ },
+/* 126 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vueMin = __webpack_require__(1);
+
+	var _vueMin2 = _interopRequireDefault(_vueMin);
+
+	var _conf = __webpack_require__(121);
+
+	var _conf2 = _interopRequireDefault(_conf);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var VueAlert = _vueMin2.default.extend({
+	  template: '<div v-if="flag" class="alert-Block">' + '<div class="alert_parent">' + '<div class="alert_sub">' + '<div class="words">' + '<div v-if="trueFlag" class="alert_img"><img :src="path.TemprootPath + \'/img/alert_flast.png\'" /></div>' + '<div v-else class="alert_img"><img :src="path.TemprootPath +  \'/img/alert_ture.png\'" /></div>' + '<ul>' + '<li v-if="trueFlag" class="alert">操作失败</li>' + '<li v-else class="alert3">操作成功</li>' + '<li class="alertToo">{{ message }}</li>' + '</ul>' + '<div class="clear"></div>' + '</div>' + '<div class="alert_foot btn" @click="cloneMessage">确认</div>' + '</div>' + '</div>' + '</div>',
+	  components: {},
+	  props: {
+	    //  flag: {
+	    //    type: Boolean,
+	    //  }
+	  },
+	  data: function data() {
+	    return {
+	      path: _conf2.default,
+	      flag: false,
+	      trueFlag: true,
+	      message: '',
+	      Fn: 0,
+	      tureImg: 'alert_ture.png',
+	      flastImg: 'alert_flast.png'
+	    };
+	  },
+	  methods: {
+	    setMessage: function setMessage(trueFlag, message, Fn) {
+	      this.flag = true;
+	      this.$set('trueFlag', trueFlag);
+	      this.message = message;
+	      this.Fn = Fn;
+	    },
+
+	    cloneMessage: function cloneMessage() {
+	      this.flag = false;
+	      this.trueFlag = false;
+	      this.message = '';
+	      if (this.Fn) {
+	        this.Fn();
+	      }
+	    }
+	  },
+	  ready: function ready() {},
+	  route: {
+	    data: function data() {}
+	  }
+	});
+	exports.default = VueAlert;
+
+/***/ },
+/* 127 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _vueMin = __webpack_require__(1);
+
+	var _vueMin2 = _interopRequireDefault(_vueMin);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var VueConfirm = _vueMin2.default.extend({
+	  template: '<div v-if="flag" class="confirmBlock">' + '<div class="confirm_parent">' + '<div class="confirm_sub">' + '<p class="words"> {{message}}</p>' + '<div @click="trueFn" class="true">确认</div>' + '<div @click="clearFn" class="flast">取消</div>' + '</div>' + '</div>' + '</div>',
+
+	  components: {},
+	  props: {},
+	  data: function data() {
+	    return {
+	      flag: false,
+	      message: '',
+	      Fn: ''
+	    };
+	  },
+	  methods: {
+	    setConfirm: function setConfirm(message, Fn, id) {
+	      this.flag = true;
+	      this.message = message;
+	      this.Fn = Fn;
+	    },
+	    trueFn: function trueFn() {
+	      if (this.Fn) {
+	        this.Fn();
+	      }
+	      this.flag = false;
+	    },
+	    clearFn: function clearFn() {
+	      this.flag = false;
+	    }
+	  },
+	  ready: function ready() {},
+	  route: {
+	    data: function data() {}
+	  }
+	});
+	exports.default = VueConfirm;
 
 /***/ }
 /******/ ]);
