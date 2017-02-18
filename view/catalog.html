@@ -5,22 +5,22 @@
 		<meta charset="UTF-8" />
 		<title>QC文学网-目录页</title>
 		<link rel="stylesheet" href="../css/main_ddfaca9e09.css" />
-		<link rel="stylesheet" href="../css/catalog_f93384b015.css" />
+		<link rel="stylesheet" href="../css/catalog_2ac79e5d10.css" />
     <link rel="stylesheet" href="../css/headerOrFooter_69d072ec5f.css" />
 		<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
 		<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
-	</head>
+	</head>  
 	<body id="mask" id="app"
 	  v-show="bodyFlag" style="display: none;"
 		v-bind:style="popup === true? 'overflow:hidden':''">
     <alert v-ref:vue-alert></alert>
 	  <myheader :login-img="loginImg"></myheader>
 		<div id="search"></div>
-		<div class="index" >
+		<div class="index" >  
 			<div class="index_Line"></div>
 			<img v-for="obj in bookCustom" id="{{obj.bookCoverImage}}"  class="picture" src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" />
 			<div class="text">
-			  <h4>{{ title }}</h4>
+			  <h4>{{ title }}</h4>   
 				<ul class="text_ul">
 					<li>字数: <span style="color:#7e7e7e">&nbsp {{words}}</span></li>
 					<li>点击: <span style="color:#7e7e7e">&nbsp {{cursor}}</span></li>
@@ -41,10 +41,20 @@
 							  <a v-if="BookList[0] && BookList[0].contentEntityList[0]" class="text_Read" target="_blank"  :href="path.TemprootPath + '/view/read_book.html?contentId=' + BookList[0].contentEntityList[0].contentId  + '&bookId='+ bookId" >开始阅读</a>
 							  <a v-else class="text_Read" href="javascript:;" target="_blank">开始阅读</a>
               </li>
-							<li @click="setCollect()" v-if="!collect" ><span><img src="../img/sss4.png"/ class="text_Collection"><p>收藏</p><i style="font-style: normal;">{{Collection}}</i></li>
-							<li @click="setCollect()" v-else ><span><img src="../img/sss4.png"/ class="text_Collection"><p>已收藏</p><i style="font-style: normal;">{{Collection}}</i></li>
-							<li style="display: none;" <!--v-on:click="rewardFn"--><span><img src="../img/sss3.png"/ class="text_card"><p>打赏</p><i style="font-style: normal;">{{bookCopperCoins}}</i></li>
-							<li><div class="bdsharebuttonbox"><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a></div></li>
+							<li @click="setCollect()" v-if="!collect" ><span><img src="../img/zzzz.png"/ class="text_Collection"><p >收藏</p><i style="font-style: normal;display: none;">{{Collection}}</i></li>
+							<li @click="setCollect()" v-else ><span><img src="../img/zzzz.png"/ class="text_Collection"><p >已收藏</p><i style="font-style: normal;display: none;">{{Collection}}</i></li>
+							<li  v-on:click="rewardFn"><span><img src="../img/zzz.png"/ class="text_card"><p>打赏</p><i style="font-style: normal;display: none;">{{bookCopperCoins}}</i></li>
+							<li class="four">
+							  <span>
+    							  <img src="../img/zzzzz.png"/ class="text_card">
+    							  <p>分享</p>
+							  </span>
+							           <div class="bdsharebuttonbox bdshare_t bds_tools get-codes-bdshare" id="bdshare">
+							             <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="background-position: center !important ;" ></a>
+							             <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="background-position: center !important ;"></a>
+							             <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友" style="background-position: center !important ;"></a>
+							           </div>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -149,7 +159,9 @@
 </div>
 <div class="CommentArea"  v-for="obj in findCommentAndReply.comment">
   <div class="text_user clear">
-    <a href="javascript:;"><img src="../img/sss8.jpg" @load="szxj.loadImg(obj.userHead ? path.rootPath + obj.userHead: '', $event)"/ ></a>
+    <a href="javascript:;"><img src="../img/sss8.jpg" @load="szxj.loadImg(obj.userHead ? path.rootPath + obj.userHead: '', $event)"/ >
+<!--         <span v-if="obj.sex == '男生'" class="attention-name-sex-Tow"><img src="../../img/sex_001.png" alt="" /></span><span v-if="obj.sex == '女生'" class="attention-name-sex-Tow"><img src="../../img/sex_002.png" alt="" /></span>
+-->    </a>
     <ul class="mes_head">
       <li class="mes_head_user" >
         
@@ -162,30 +174,31 @@
         <ul class="updata_mes">
             <li class="mess1">{{ szxj.getLocalTime(obj.commentDate / 1000) }}</li>
             <li class="mess2" @click="messageShow(obj.commentId, 0, obj.replyUserName, obj.userId)">回复</li>
-            <li class="mess3" >举报</li>
+            <li class="mess3"  @click="reportShow(obj.commentId)">举报</li>
         </ul>
       </li>
     </ul>
   </div >
   
   <div class="text_userTow clear"  v-for="temp in obj.replyEntityList" :style=" replyEntityList.length == replyEntityList[$index+1] 'border-bottom: 1px solid rgba(0,0,0,0.06);':''  ">
-    <a href="javascript:;"><img src="../img/smallHead.png" @load="szxj.loadImg(temp.userHead ? path.rootPath + temp.userHead: '', $event)" / ></a>
+    <a href="javascript:;"><img src="../img/smallHead.png" @load="szxj.loadImg(temp.userHead ? path.rootPath + temp.userHead: '', $event)" / >
+<!--        <span v-if="temp.sex == '男生'" class="attention-name-sex-thr"><img src="../../img/sex_001.png" alt="" /></span><span v-if="temp.sex == '女生'" class="attention-name-sex-thr"><img src="../../img/sex_002.png" alt="" /></span>
+-->    </a>
     <ul class="mes_head">
       
       <li class="mes_head_user" >
-        <a style="display: none;">{{temp.replyId}}</a>
-        <a href="javascript:;" class="user_a" title="">{{ temp.userName }}</a>
+        <span class="user_comment"  title=""><a href="javascript:;" class="user_a" title="">{{ temp.userName }}</a><label v-if="temp.replyStatus==1">回复<span class="aite_user">@{{ temp.replyUserName }}</span></label>{{{ temp.replyContent }}}</span>
       </li>
       
       <li>
-        <span class="user_comment"  title=""><label v-if="temp.replyStatus==1">回复<span class="aite_user">@{{ temp.replyUserName }}</span></label>{{{ temp.replyContent }}}</span>
-      </li> 
         
+      </li> 
+       
       <li>
-        <ul class="updata_mes">
+         <ul class="updata_mes">
             <li class="mess1">{{ szxj.getLocalTime(temp.replyDate / 1000) }}</li>
             <li class="mess2" @click="messageShow(temp.commentId, 1, temp.userName, temp.userId,temp.replyId)">回复</li>
-            <li class="mess3" >举报</li>
+            <li class="mess3" @click="reportShowFn(temp.replyId)">举报</li>
         </ul>
       </li>
     </ul>
@@ -214,7 +227,7 @@
 </div>
    
 
-<div class="Report" style="display: none;">
+<div class="Report" v-if="report" >
     <form action="" method="get">请输入举报理由
     <br /><br /> 
     <ul>
@@ -228,7 +241,7 @@
       <li><label><input name="Fruit" type="radio" value="" />&nbsp其他</label></li>
     </ul>
 </form> 
-<div class="true">确定</div>
+<div class="true" @click="reportDown">确定</div>
 </div>
 
 
@@ -251,13 +264,15 @@
 </div>
         
         
-				
+		
 				
 				
 				
 <div class="screen">
 	<h3>作者相关</h3>
-	<a href="javascript:;"><img :src="path.rootPath + userHead " class="head"></a>
+	<a href="javascript:;"><img :src="path.rootPath + userHead " class="head">
+	   <span v-if="sex == '男生'" class="attention-name-sex"><img src="../../img/sex_001.png" alt="" /></span><span v-if="sex == '女生'" class="attention-name-sex"><img src="../../img/sex_002.png" alt="" /></span>
+	</a>
 	<ul class="author">
 		<li><label>作者：</label>
 			<a href="javascript:;" class="span span_author" title="{{authorName}}">{{authorName}}</a>
@@ -397,7 +412,7 @@
 					</div>-->
 			</div>
 		</div>
-<!--<div 
+<div 
 	v-if="popup" 
 	v-on:click="rewardFn"
 	style="position: fixed;top: 50%;bottom: 0px;left: 0px;right: 0px; ">
@@ -420,24 +435,24 @@
 		<a class="reward_Recharge">充值></a>
 		<a class="reward_My">我的好人卡：1000</a>
 	</div>
-</div>-->
+</div>
 
 <myfooter></myfooter>
 <link rel="stylesheet" href="../css/wangEditor.min_6c8738c0e8.css" />
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/wangEditor.min.js"></script>
-<script src="../js/main/catalog_dca54ce941.js"></script>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","weixin","sqq"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin","sqq"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?ec8c853059c8a6f927ecfbedee4c437d";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+<script src="../js/main/catalog_d4b513c343.js"></script>
+<script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+  //在这里定义bds_config
+  var bds_config = {'bdText':'QC轻创轻小说_小说目录页'};
+  document.getElementById('bdshell_js').src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+  var bds_config = {'bdDesc':'QC轻创轻小说_小说目录页'};
+  document.getElementById('bdshell_js').src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
 </script>
-	</body>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","weixin","sqq"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin","sqq"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('scrip t')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</body>
 </html>
 
 

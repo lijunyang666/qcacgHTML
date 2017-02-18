@@ -86,7 +86,7 @@
 	    szxj: _vueHttp2.default, // 公共方法
 	    indexList: {}, // 首页默认渲染数据
 	    theHotList: [], // 小编推荐
-	    pageNo: 0,
+	    pageNo: 1,
 	    newBookimg: 0, // 全站推荐的切换下标
 	    newBookimg1: 0, // 新书推荐的切换下标
 	    RequestObj: {
@@ -4763,10 +4763,11 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	//PathList.rootPath = 'http://192.168.126.34:8080';
-	//PathList.rootPath = 'http://192.168.126.25:8080';
+	// PathList.rootPath = 'http://192.168.126.40:8080';
+	//PathList.rootPath = 'http://192.168.126.39:8080';
 	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
+
 	// 登陆的3个请求
 	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
 	PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
@@ -4858,6 +4859,26 @@
 	PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
 	// 审核
 	PathList.userUpdateBookStatus = PathList.rootPath + '/book/userUpdateBookStatus.shtml';
+	// 举报
+	PathList.report = PathList.rootPath + '/report/report.shtml';
+	// 钱包余额
+	PathList.amount = PathList.rootPath + '/pay/amount.shtml';
+	// 申请签约
+	PathList.userUpdateBookSign = PathList.rootPath + '/book/userUpdateBookSign.shtml';
+	// 充值钱包
+	PathList.recharge = PathList.rootPath + '/pay/recharge.shtml';
+	// 获取好人卡
+	PathList.cardamount = PathList.rootPath + '/card/amount.shtml';
+	// 好人卡记录
+	PathList.cardlist = PathList.rootPath + '/card/list.shtml';
+	// 钱包记录
+	PathList.paylist = PathList.rootPath + '/pay/list.shtml';
+	// 购买好人卡
+	PathList.buyCard = PathList.rootPath + '/pay/buyCard.shtml';
+	// 提现
+	PathList.withdrawals = PathList.rootPath + '/pay/withdrawals.shtml';
+	// 保存提现信息登记
+	PathList.saveAlipay = PathList.rootPath + '/pay/saveAlipay.shtml';
 
 	exports.default = PathList;
 

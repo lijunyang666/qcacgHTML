@@ -116,16 +116,19 @@
 	    contentEntityList: [],
 	    Report: 0,
 	    commentAndReplyTotalCount: '',
-	    replyId: ''
+	    replyId: '',
+	    report: false,
+	    reportTypeId: 1,
+	    reportContent: '',
+	    reportFlag: false,
+	    RequestObj: {
+	      status: 0,
+	      pageNo: 1,
+	      pageSize: 5
+	    },
+	    sex: ''
 	  },
 	  methods: {
-	    lineHr: function lineHr() {
-	      for (var i = 0; i = this.contentEntityList.length; i++) {
-	        if (i % 4 == 0) {
-	          this.line++;
-	        };
-	      };
-	    },
 	    setreplyFn: function setreplyFn(replyId) {
 	      this.replyId = replyId;
 	    },
@@ -137,7 +140,9 @@
 	      });
 	    },
 	    messageShow: function messageShow(commentId, v, name, id, replyId) {
-	      this.commentId = commentId; // editor
+	      if (this.loginFlag) {
+	        this.commentId = commentId;
+	      }; // editor
 	      var editor = {};
 	      var index = 0;
 	      for (var i = 0; i < this.findCommentAndReply.comment.length; i++) {
@@ -213,6 +218,49 @@
 	      _data.status = v;
 
 	      this.getComment(_data); // 请求
+	    },
+
+	    reportShow: function reportShow(commentId) {
+	      this.report = true;
+	      this.commentId = commentId;
+	    },
+	    reportShowFn: function reportShowFn(replyId) {
+	      this.report = true;
+	      this.replyId = replyId;
+	    },
+	    reportDown: function reportDown() {
+	      this.report = false;
+	      var _data = {
+	        reporterId: this.userId,
+	        reportTypeId: this.reportTypeId,
+	        commentId: function (_commentId) {
+	          function commentId() {
+	            return _commentId.apply(this, arguments);
+	          }
+
+	          commentId.toString = function () {
+	            return _commentId.toString();
+	          };
+
+	          return commentId;
+	        }(function () {
+	          return reportShow(commentId);
+	        }),
+	        replyId: function (_replyId) {
+	          function replyId() {
+	            return _replyId.apply(this, arguments);
+	          }
+
+	          replyId.toString = function () {
+	            return _replyId.toString();
+	          };
+
+	          return replyId;
+	        }(function () {
+	          return reportShowFn(replyId);
+	        })
+	      };
+	      _vueHttp2.default.http(this, 'post', _conf2.default.report, _data, function (response) {});
 	    },
 	    getComment: function getComment(_data) {
 	      var _this3 = this;
@@ -4933,10 +4981,11 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	//PathList.rootPath = 'http://192.168.126.34:8080';
-	//PathList.rootPath = 'http://192.168.126.25:8080';
+	// PathList.rootPath = 'http://192.168.126.40:8080';
+	//PathList.rootPath = 'http://192.168.126.39:8080';
 	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
+
 	// 登陆的3个请求
 	PathList.VerifyLoginServlet = PathList.rootPath + '/VerifyLoginServlet.shtml';
 	PathList.StartCaptchaServlet = PathList.rootPath + '/StartCaptchaServlet';
@@ -5028,6 +5077,26 @@
 	PathList.findCommentAndReplyByReplyUserId = PathList.rootPath + '/reply/findCommentAndReplyByReplyUserId.shtml';
 	// 审核
 	PathList.userUpdateBookStatus = PathList.rootPath + '/book/userUpdateBookStatus.shtml';
+	// 举报
+	PathList.report = PathList.rootPath + '/report/report.shtml';
+	// 钱包余额
+	PathList.amount = PathList.rootPath + '/pay/amount.shtml';
+	// 申请签约
+	PathList.userUpdateBookSign = PathList.rootPath + '/book/userUpdateBookSign.shtml';
+	// 充值钱包
+	PathList.recharge = PathList.rootPath + '/pay/recharge.shtml';
+	// 获取好人卡
+	PathList.cardamount = PathList.rootPath + '/card/amount.shtml';
+	// 好人卡记录
+	PathList.cardlist = PathList.rootPath + '/card/list.shtml';
+	// 钱包记录
+	PathList.paylist = PathList.rootPath + '/pay/list.shtml';
+	// 购买好人卡
+	PathList.buyCard = PathList.rootPath + '/pay/buyCard.shtml';
+	// 提现
+	PathList.withdrawals = PathList.rootPath + '/pay/withdrawals.shtml';
+	// 保存提现信息登记
+	PathList.saveAlipay = PathList.rootPath + '/pay/saveAlipay.shtml';
 
 	exports.default = PathList;
 
