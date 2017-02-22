@@ -46,7 +46,6 @@
 	width: 60px;
 	height: 23px;
 	margin: 20px  30px  0  140px;
-	
 	background-color: #3db2d8;
 	color: #FFFFFF;
 	font-size: 15px;
@@ -62,8 +61,7 @@
 .user_info .user_info_left .user_info_btn_qiandaoY {
 	width: 70px;
 	height: 23px;
-	margin: 0 auto;
-	margin-top: 10px;
+  margin: 20px  40px  0  134px;
 	background-color: #92c202;
 	color: #FFFFFF;
 	font-size: 15px;
@@ -1782,6 +1780,7 @@
 	width: 800px;
 	margin: auto;
 	margin-bottom: 5px;
+	margin-left: 70px;
 }
 
 .pay-a li {
@@ -1793,7 +1792,7 @@
 	text-align: center;
 	color: #7F7E7E;
   margin-top: 10px;
-	margin-left: 75px;
+	margin-left: 125px;
 	min-height: 450px;
 }
 
@@ -2127,6 +2126,12 @@
     margin-left: 66px;
     font-size: 16px;
     margin-bottom: 25px;
+    width: 300px;
+}
+.amount_span{
+  margin-top: 25px;
+      margin-left: 52px;
+
 }
 .exchange_divTow{
   margin-left: 130px;
@@ -2437,9 +2442,12 @@
   height: 26px;
 }
 .registrationTow{
-  height: 238px;
+  height: 355px;
+  margin-left: 52px;
 }
-
+.verification_divTow{
+  padding-left: 52px !important;
+}
 .humanName{
   margin-left: 65px !important;
   
@@ -2463,6 +2471,20 @@
   color: white;
   font-family: '幼圆';
   font-size: 13px;
+  margin-left: 15px;
+}
+.verification_spanTow{
+  display: inline-block;
+  width: 75px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #BDBBBB ;
+  cursor: pointer;
+  text-align: center;
+  line-height: 26px;
+  color: white;
+  font-family: '幼圆';
+  font-size: 12px;
   margin-left: 15px;
 }
 .verification_span:hover{

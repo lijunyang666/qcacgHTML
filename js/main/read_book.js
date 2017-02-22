@@ -4798,7 +4798,7 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	// PathList.rootPath = 'http://192.168.126.40:8080';
+	//PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
 	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
@@ -4913,7 +4913,11 @@
 	// 提现
 	PathList.withdrawals = PathList.rootPath + '/pay/withdrawals.shtml';
 	// 保存提现信息登记
-	PathList.saveAlipay = PathList.rootPath + '/pay/saveAlipay.shtml';
+	PathList.saveAlipay = PathList.rootPath + '/updateAlipay.shtml';
+	// 打赏好人卡  
+	PathList.cardgive = PathList.rootPath + '/card/give.shtml';
+	// 签到获取好人卡
+	PathList.cardsign = PathList.rootPath + '/card/sign.shtml';
 
 	exports.default = PathList;
 

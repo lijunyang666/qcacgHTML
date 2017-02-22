@@ -126,7 +126,10 @@
 	      pageNo: 1,
 	      pageSize: 5
 	    },
-	    sex: ''
+	    sex: '',
+	    payCardAmount: '',
+	    numb: 0,
+	    amount: 0
 	  },
 	  methods: {
 	    setreplyFn: function setreplyFn(replyId) {
@@ -434,12 +437,39 @@
 	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, _data, function (response) {
 	        _this8.loginFlag = response.data.status.flag;
 	      });
+	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, _data, function (response) {
+	        _this8.payCardAmount = response.data.amount.payCardAmount;
+	      });
 	    },
 	    rewardFn: function rewardFn() {
 	      this.popup = true;
 	    },
+	    numberOne: function numberOne() {
+	      this.amount = 30;
+	    },
+	    numberTow: function numberTow() {
+	      this.amount = 88;
+	    },
+	    numberThr: function numberThr() {
+	      this.amount = 100;
+	    },
+	    numberFou: function numberFou() {
+	      this.amount = 250;
+	    },
+	    numberFif: function numberFif() {
+	      this.amount = 500;
+	    },
 	    rewardShow: function rewardShow() {
+	      var _this9 = this;
+
 	      this.popup = false;
+	      var _data = {};
+	      _data.amount = this.amount;
+	      _data.bookId = this.bookId;
+	      _vueHttp2.default.http(this, 'get', _conf2.default.cardgive, _data, function (response) {});
+	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, _data, function (response) {
+	        _this9.payCardAmount = response.data.amount.payCardAmount;
+	      });
 	    }
 	  },
 	  ready: function ready() {
@@ -4981,7 +5011,7 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	// PathList.rootPath = 'http://192.168.126.40:8080';
+	//PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
 	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
@@ -5096,7 +5126,11 @@
 	// 提现
 	PathList.withdrawals = PathList.rootPath + '/pay/withdrawals.shtml';
 	// 保存提现信息登记
-	PathList.saveAlipay = PathList.rootPath + '/pay/saveAlipay.shtml';
+	PathList.saveAlipay = PathList.rootPath + '/updateAlipay.shtml';
+	// 打赏好人卡  
+	PathList.cardgive = PathList.rootPath + '/card/give.shtml';
+	// 签到获取好人卡
+	PathList.cardsign = PathList.rootPath + '/card/sign.shtml';
 
 	exports.default = PathList;
 
