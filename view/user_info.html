@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>轻悦文学网---个人中心</title> 
   <link rel="stylesheet" href="../css/main_ddfaca9e09.css" /> 
-  <link rel="stylesheet" href="../css/user_info_df78fecf96.css" /> 
-  <link rel="stylesheet" href="../css/headerOrFooter_69d072ec5f.css" />
+  <link rel="stylesheet" href="../css/user_info_695efb2c2e.css" /> 
+  <link rel="stylesheet" href="../css/headerOrFooter_e47ccb1647.css" />
   <link rel="stylesheet" href="../css/Date_3e192c3277.css"  />
   <link rel="stylesheet" href="../css/font-awesome.min_7517ab4286.css"  />
  </head> 
@@ -22,8 +22,9 @@
     <div class="user_info_account">
      {{ userName }}
     </div> 
-     <div class="user_info_btn_qiandao " @click="signFn" v-if="Sign">签到</div> 
-     <div class="user_info_btn_qiandaoY " v-else >已签到</div> 
+     <div class="user_info_btn_qiandaoY "  v-if="sign" >已签到</div> 
+     <div class="user_info_btn_qiandao " @click="signFn" v-else>签到</div> 
+     
 
     <div class="user_info_nva clear"> 
      <ul> 
@@ -82,5 +83,5 @@
 <link rel="stylesheet" href="../css/cropper.min_7a1fe53434.css" />
 <script type="text/javascript" src="../lib/cropper.min.js"></script>
 <script src="http://static.geetest.com/static/tools/gt.js"></script>
-<script src="../js/main/user_info_c57f21191a.js"></script>
+<script src="../js/main/user_info_f1410b5351.js"></script>
 </html>

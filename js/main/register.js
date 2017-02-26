@@ -5597,8 +5597,10 @@
 	PathList.saveAlipay = PathList.rootPath + '/updateAlipay.shtml';
 	// 打赏好人卡  
 	PathList.cardgive = PathList.rootPath + '/card/give.shtml';
-	// 签到获取好人卡
+	// 签到获取好人卡   
 	PathList.cardsign = PathList.rootPath + '/card/sign.shtml';
+	// 钱包日志详情
+	PathList.detail_21 = PathList.rootPath + '/log/detailForCash.shtml';
 
 	exports.default = PathList;
 

@@ -127,7 +127,7 @@
 	      pageSize: 5
 	    },
 	    sex: '',
-	    payCardAmount: '',
+	    payCardAmount: 0,
 	    numb: 0,
 	    amount: 0
 	  },
@@ -224,102 +224,89 @@
 	    },
 
 	    reportShow: function reportShow(commentId) {
+	      this.commentId = '';
+	      this.replyId = '';
 	      this.report = true;
 	      this.commentId = commentId;
 	    },
 	    reportShowFn: function reportShowFn(replyId) {
+	      this.commentId = '';
+	      this.replyId = '';
 	      this.report = true;
 	      this.replyId = replyId;
 	    },
 	    reportDown: function reportDown() {
+	      var _this3 = this;
+
 	      this.report = false;
 	      var _data = {
-	        reporterId: this.userId,
-	        reportTypeId: this.reportTypeId,
-	        commentId: function (_commentId) {
-	          function commentId() {
-	            return _commentId.apply(this, arguments);
-	          }
-
-	          commentId.toString = function () {
-	            return _commentId.toString();
-	          };
-
-	          return commentId;
-	        }(function () {
-	          return reportShow(commentId);
-	        }),
-	        replyId: function (_replyId) {
-	          function replyId() {
-	            return _replyId.apply(this, arguments);
-	          }
-
-	          replyId.toString = function () {
-	            return _replyId.toString();
-	          };
-
-	          return replyId;
-	        }(function () {
-	          return reportShowFn(replyId);
-	        })
-	      };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.report, _data, function (response) {});
+	        reporterId: this.userId, // 被举报人的id
+	        reportTypeId: this.reportTypeId };
+	      if (this.commentId === '') {
+	        _data.replyId = this.replyId;
+	      } else {
+	        _data.commentId = this.commentId;
+	      }
+	      _vueHttp2.default.http(this, 'post', _conf2.default.report, _data, function (response) {
+	        var Utils = _this3.$refs.vueAlert ? _this3.$refs.vueAlert : _this3.$parent.$refs.vueAlert;
+	        Utils.setMessage(false, '举报成功');
+	      });
 	    },
 	    getComment: function getComment(_data) {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      _vueHttp2.default.http(this, 'get', _conf2.default.findCommentAndReply, _data, function (response) {
 	        console.log('评论:');
 	        console.log(response);
 	        var pageNo;
-	        if (_this3.findCommentAndReply.pageNo) {
-	          pageNo = _this3.findCommentAndReply.pageNo;
-	          _this3.setPageCount(pageNo);
+	        if (_this4.findCommentAndReply.pageNo) {
+	          pageNo = _this4.findCommentAndReply.pageNo;
+	          _this4.setPageCount(pageNo);
 	        } else {
 	          pageNo = 1;
 	        }
 
-	        _this3.findCommentAndReply = response.data;
-	        _this3.findCommentAndReply.page = [];
-	        _this3.findCommentAndReply.pageNo = pageNo;
+	        _this4.findCommentAndReply = response.data;
+	        _this4.findCommentAndReply.page = [];
+	        _this4.findCommentAndReply.pageNo = pageNo;
 	        // 计算评论的总页数
-	        console.log(_this3.findCommentAndReply.totalCount / _data.pageSize);
-	        if (_this3.findCommentAndReply.totalCount / _data.pageSize <= 1) {
-	          _this3.findCommentAndReply.pageCount = 1;
+	        console.log(_this4.findCommentAndReply.totalCount / _data.pageSize);
+	        if (_this4.findCommentAndReply.totalCount / _data.pageSize <= 1) {
+	          _this4.findCommentAndReply.pageCount = 1;
 	        } else {
-	          if (_this3.findCommentAndReply.totalCount % _data.pageSize === 0) {
-	            _this3.findCommentAndReply.pageCount = _this3.findCommentAndReply.totalCount / _data.pageSize;
+	          if (_this4.findCommentAndReply.totalCount % _data.pageSize === 0) {
+	            _this4.findCommentAndReply.pageCount = _this4.findCommentAndReply.totalCount / _data.pageSize;
 	          } else {
-	            _this3.findCommentAndReply.pageCount = parseInt(_this3.findCommentAndReply.totalCount / _data.pageSize, 10) + 1;
+	            _this4.findCommentAndReply.pageCount = parseInt(_this4.findCommentAndReply.totalCount / _data.pageSize, 10) + 1;
 	          }
 	        }
-	        for (var i = 0; i < _this3.findCommentAndReply.pageCount; i++) {
-	          _this3.findCommentAndReply.page.push(i + 1);
+	        for (var i = 0; i < _this4.findCommentAndReply.pageCount; i++) {
+	          _this4.findCommentAndReply.page.push(i + 1);
 	        }
-	        for (var i = 0; i < _this3.findCommentAndReply.comment.length; i++) {
+	        for (var i = 0; i < _this4.findCommentAndReply.comment.length; i++) {
 	          // 评论楼中楼
-	          _this3.findCommentAndReply.comment[i].editor = {};
-	          _this3.findCommentAndReply.comment[i].page = [];
-	          _this3.findCommentAndReply.comment[i].pageNo = 1;
+	          _this4.findCommentAndReply.comment[i].editor = {};
+	          _this4.findCommentAndReply.comment[i].page = [];
+	          _this4.findCommentAndReply.comment[i].pageNo = 1;
 	          // 计算评论楼中楼回复的总页数
-	          if (_this3.findCommentAndReply.comment[i].totalCount / _data.pageSize <= 1) {
-	            _this3.findCommentAndReply.comment[i].pageCount = 1;
+	          if (_this4.findCommentAndReply.comment[i].totalCount / _data.pageSize <= 1) {
+	            _this4.findCommentAndReply.comment[i].pageCount = 1;
 	          } else {
-	            if (_this3.findCommentAndReply.comment[i].totalCount % _data.pageSize === 0) {
-	              _this3.findCommentAndReply.comment[i].pageCount = _this3.findCommentAndReply.comment[i].totalCount / _data.pageSize;
+	            if (_this4.findCommentAndReply.comment[i].totalCount % _data.pageSize === 0) {
+	              _this4.findCommentAndReply.comment[i].pageCount = _this4.findCommentAndReply.comment[i].totalCount / _data.pageSize;
 	            } else {
-	              _this3.findCommentAndReply.comment[i].pageCount = parseInt(_this3.findCommentAndReply.comment[i].totalCount / _data.pageSize, 10) + 1;
+	              _this4.findCommentAndReply.comment[i].pageCount = parseInt(_this4.findCommentAndReply.comment[i].totalCount / _data.pageSize, 10) + 1;
 	            }
 	          }
-	          for (var j = 1; j <= _this3.findCommentAndReply.comment[i].pageCount; j++) {
-	            _this3.findCommentAndReply.comment[i].page.push(j);
+	          for (var j = 1; j <= _this4.findCommentAndReply.comment[i].pageCount; j++) {
+	            _this4.findCommentAndReply.comment[i].page.push(j);
 	          }
 	        }
 	      });
 	    },
 
 	    saveComment: function saveComment() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var editor = this.$refs.editor.getEditor();
 	      var _data = {
@@ -327,11 +314,11 @@
 	        bookId: this.id };
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveComment, _data, function (response) {
 	        editor.$txt.html('');
-	        _this4.getValueFn();
+	        _this5.getValueFn();
 	      });
 	    },
 	    saveReply: function saveReply(commentId) {
-	      var _this5 = this;
+	      var _this6 = this;
 
 	      // 回复
 	      var editor = {};
@@ -351,8 +338,8 @@
 	        replyContent: editor.$txt.html() };
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveReply, _data, function (response) {
 	        editor.$txt.html('');
-	        _this5.getValueFn();
-	        var This = _this5;
+	        _this6.getValueFn();
+	        var This = _this6;
 	        setTimeout(function () {
 	          This.setPage1(This.findCommentAndReply.comment[index].pageCount, This.commentId);
 	          This.commentId = -1;
@@ -360,25 +347,25 @@
 	      });
 	    },
 	    setAttention: function setAttention() {
-	      var _this6 = this;
+	      var _this7 = this;
 
 	      var _data = {};
 	      _data.receiveId = this.userId;
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrCancelAttention, _data, function (response) {
-	        if (_this6.attention) {
-	          _this6.attention = false;
+	        if (_this7.attention) {
+	          _this7.attention = false;
 	        } else {
-	          _this6.attention = true;
+	          _this7.attention = true;
 	        }
 	      });
 	    },
 	    setCollect: function setCollect() {
-	      var _this7 = this;
+	      var _this8 = this;
 
 	      var _data = {};
 	      _data.bookId = this.bookId;
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrDeleteBookCollect, _data, function (response) {
-	        _this7.getValueFn();
+	        _this8.getValueFn();
 	      });
 	    },
 	    nextWorksFn: function nextWorksFn() {
@@ -400,49 +387,51 @@
 	      }
 	    },
 	    getValueFn: function getValueFn() {
-	      var _this8 = this;
+	      var _this9 = this;
 
 	      var _data = {};
 	      _data.bookId = this.id;
 	      _vueHttp2.default.http(this, 'get', _conf2.default.queryBookDirectory, _data, function (response) {
 	        // 取到数据渲染
-	        _this8.bookCustom = [];
-	        _this8.userHead = response.data.bookCustom.userEntity.userHead;
-	        _this8.bookId = response.data.bookCustom.bookId;
-	        _this8.userId = response.data.bookCustom.userEntity.userId;
-	        _this8.collect = response.data.bookCustom.collect;
-	        _this8.attention = response.data.bookCustom.userEntity.attention;
-	        _this8.bookCustom.push(response.data.bookCustom);
-	        _this8.title = response.data.bookCustom.bookName;
-	        _this8.introduction = response.data.bookCustom.bookIntroduction;
-	        _this8.words = response.data.bookCustom.bookWordCount;
-	        _this8.update = response.data.bookCustom.bookUpdate;
-	        _this8.cursor = response.data.bookCustom.bookHit;
-	        _this8.BookList = response.data.bookCustom.volumeCustomList;
-	        _this8.Booktype = response.data.bookCustom.bookTypeEntityList;
-	        _this8.typeName = response.data.bookCustom.bookTypeName;
-	        _this8.Collection = response.data.bookCustom.bookCollect;
-	        _this8.bookCopperCoins = response.data.bookCustom.bookCopperCoins;
-	        _this8.authorName = response.data.bookCustom.userEntity.userName;
-	        _this8.autograph = response.data.bookCustom.userEntity.information;
+	        _this9.bookCustom = [];
+	        _this9.userHead = response.data.bookCustom.userEntity.userHead;
+	        _this9.bookId = response.data.bookCustom.bookId;
+	        _this9.userId = response.data.bookCustom.userEntity.userId;
+	        _this9.collect = response.data.bookCustom.collect;
+	        _this9.attention = response.data.bookCustom.userEntity.attention;
+	        _this9.bookCustom.push(response.data.bookCustom);
+	        _this9.title = response.data.bookCustom.bookName;
+	        _this9.introduction = response.data.bookCustom.bookIntroduction;
+	        _this9.words = response.data.bookCustom.bookWordCount;
+	        _this9.update = response.data.bookCustom.bookUpdate;
+	        _this9.cursor = response.data.bookCustom.bookHit;
+	        _this9.BookList = response.data.bookCustom.volumeCustomList;
+	        _this9.Booktype = response.data.bookCustom.bookTypeEntityList;
+	        _this9.typeName = response.data.bookCustom.bookTypeName;
+	        _this9.Collection = response.data.bookCustom.bookCollect;
+	        _this9.bookCopperCoins = response.data.bookCustom.bookCopperCoins;
+	        _this9.authorName = response.data.bookCustom.userEntity.userName;
+	        _this9.autograph = response.data.bookCustom.userEntity.information;
 	      });
 	      _vueHttp2.default.http(this, 'get', _conf2.default.findUserOtherBook, _data, function (response) {
 	        // 取到数据渲染
-	        _this8.booktTitle = response.data.userOtherBook;
+	        _this9.booktTitle = response.data.userOtherBook;
 	      });
 	      _data.pageNo = 1;
 	      _data.pageSize = 10;
 	      _data.status = this.commentStatus;
 	      this.getComment(_data);
 	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, _data, function (response) {
-	        _this8.loginFlag = response.data.status.flag;
-	      });
-	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, _data, function (response) {
-	        _this8.payCardAmount = response.data.amount.payCardAmount;
+	        _this9.loginFlag = response.data.status.flag;
 	      });
 	    },
 	    rewardFn: function rewardFn() {
+	      var _this10 = this;
+
 	      this.popup = true;
+	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, _data, function (response) {
+	        _this10.payCardAmount = response.data.amount.payCardAmount;
+	      });
 	    },
 	    numberOne: function numberOne() {
 	      this.amount = 30;
@@ -460,16 +449,25 @@
 	      this.amount = 500;
 	    },
 	    rewardShow: function rewardShow() {
-	      var _this9 = this;
+	      var _this11 = this;
 
 	      this.popup = false;
 	      var _data = {};
 	      _data.amount = this.amount;
 	      _data.bookId = this.bookId;
-	      _vueHttp2.default.http(this, 'get', _conf2.default.cardgive, _data, function (response) {});
-	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, _data, function (response) {
-	        _this9.payCardAmount = response.data.amount.payCardAmount;
+	      _vueHttp2.default.http(this, 'get', _conf2.default.cardgive, _data, function (response) {
+	        if (response.data.code == 200) {
+	          var Utils = _this11.$refs.vueAlert ? _this11.$refs.vueAlert : _this11.$parent.$refs.vueAlert;
+	          Utils.setMessage(false, '打赏成功');
+	          return;
+	        }
 	      });
+	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, _data, function (response) {
+	        _this11.payCardAmount = response.data.amount.payCardAmount;
+	      });
+	    },
+	    rewardShowFn: function rewardShowFn() {
+	      this.popup = false;
 	    }
 	  },
 	  ready: function ready() {
@@ -5129,8 +5127,10 @@
 	PathList.saveAlipay = PathList.rootPath + '/updateAlipay.shtml';
 	// 打赏好人卡  
 	PathList.cardgive = PathList.rootPath + '/card/give.shtml';
-	// 签到获取好人卡
+	// 签到获取好人卡   
 	PathList.cardsign = PathList.rootPath + '/card/sign.shtml';
+	// 钱包日志详情
+	PathList.detail_21 = PathList.rootPath + '/log/detailForCash.shtml';
 
 	exports.default = PathList;
 

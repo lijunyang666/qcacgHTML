@@ -5,8 +5,8 @@
 		<meta charset="UTF-8" />
 		<title>QC文学网-目录页</title>
 		<link rel="stylesheet" href="../css/main_ddfaca9e09.css" />
-		<link rel="stylesheet" href="../css/catalog_4e20cd38b0.css" />
-    <link rel="stylesheet" href="../css/headerOrFooter_69d072ec5f.css" />
+		<link rel="stylesheet" href="../css/catalog_a5fde5daf7.css" />
+    <link rel="stylesheet" href="../css/headerOrFooter_e47ccb1647.css" />
 		<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
 		<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
 	</head>  
@@ -159,9 +159,8 @@
 </div>
 <div class="CommentArea"  v-for="obj in findCommentAndReply.comment">
   <div class="text_user clear">
-    <a href="javascript:;"><img src="../img/sss8.jpg" @load="szxj.loadImg(obj.userHead ? path.rootPath + obj.userHead: '', $event)"/ >
-<!--         <span v-if="obj.sex == '男生'" class="attention-name-sex-Tow"><img src="../../img/sex_001.png" alt="" /></span><span v-if="obj.sex == '女生'" class="attention-name-sex-Tow"><img src="../../img/sex_002.png" alt="" /></span>
--->    </a>
+    <a href="javascript:;"><img class="text_user_img" src="../img/sss8.jpg" @load="szxj.loadImg(obj.userHead ? path.rootPath + obj.userHead: '', $event)"/ >
+    </a>
     <ul class="mes_head">
       <li class="mes_head_user" >
         
@@ -296,7 +295,7 @@
 		</ul>
 	</div>
 				
-				<!--<div class="list">
+				<div class="list">
 					<h3>好人榜</h3>
 					<ul class="list_ul">
 						<li>周</li>
@@ -374,7 +373,7 @@
 						</div>
 					</div>
 					<div id="more"><a>查看更多</a></div>
-				</div>-->
+				</div>
 				<!--<div id="recommed">
 					<h3>同类作品推荐</h3>
 					<ul class="many">
@@ -417,6 +416,7 @@
 	style="position: fixed;top: 35%;bottom: 0px;left: 0px;right: 0px; ">
 	<div class="reward" >
 	  <span class="reward_head">这本书超赞，我要打赏它ლ(°◕‵ƹ′◕ლ)</span>
+	  <img src="../img/false_03.png" @click="rewardShowFn"/>
 		<div class="reward_Num">
 			<label>选择打赏的数量：</label>		
 			<ul>	
@@ -429,6 +429,7 @@
 		</div>	
 		<a class="reward_My">我的好人卡：{{payCardAmount}}</a>
 		<div class="reward_ture" @click="rewardShow">确认</div>
+		<a class="reward_My balala" target="_blank" :href="path.TemprootPath + '/view/user_info.html#!/bill'">>>充值</a>
 	</div>
 </div>
 
@@ -436,7 +437,7 @@
 <link rel="stylesheet" href="../css/wangEditor.min_6c8738c0e8.css" />
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/wangEditor.min.js"></script>
-<script src="../js/main/catalog_283c8e6ca7.js"></script>
+<script src="../js/main/catalog_88243e723c.js"></script>
 <script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
 <script type="text/javascript" id="bdshell_js"></script>
 <script type="text/javascript">
