@@ -56,7 +56,7 @@
 .contribution .bookBlockList .list li{float:left;width:20%;cursor:pointer}
 .contribution .bookBlockList .vertical-img{width:128px;height:174px;margin:0 auto;display:block;margin-top:25px;position:relative;overflow:hidden;margin-bottom:10px}
 .contribution .bookBlockList .vertical-img .cover{width:128px;height:174px;border-radius:6px}
-.contribution .bookBlockList .vertical-img .state_one{width:54px;height:20px;border-radius:0 8px 0 8px;background-color:#00A1D6;position:absolute;top:0;right:0;color:#fff;font-size:10px;text-align:center;line-height:20px;display:none}
+.contribution .bookBlockList .vertical-img .state_one{width:54px;height:20px;border-radius:0 8px 0 8px;background-color:#00A1D6;position:absolute;top:0;right:0;color:#fff;font-size:10px;text-align:center;line-height:20px}
 .contribution .bookBlockList .vertical-img .state_tow{width:54px;height:20px;border-radius:8px 0 0 8px;background-color:#4FC6AA;position:absolute;top:30px;right:0;color:#fff;font-size:10px;text-align:center;line-height:20px;display:none}
 .contribution .bookBlockList .vertical-title{height:36px;width:90px;font-size:12px;text-align:center;margin:0 auto;overflow:hidden;text-overflow:ellipsis;font-family:"微软雅黑"}
 .user_info .user_info_right .user_info_content .contribution .content .catalogue{box-shadow:1px 1px 15px rgba(0,0,0,.3);margin-bottom:26px;padding-top:1px}
@@ -188,7 +188,7 @@
 .up{width:642px;display:inline-block;padding:15px 0 0 10px;height:35px;line-height:35px;position:relative;white-space:nowrap}
 .messageAI .up .up-name{margin:0 0 0 10px;font-size:20px;color:#3db2d8;width:200px;overflow:hidden}
 .up ul{display:inline-block;position:absolute;top:14px;left:210px}
-.up .up-word{margin:0 0 0 90px;font-size:18px;cursor:pointer;float:right}
+.up .up-word{margin:0 0 0 90px;font-size:18px;float:right}
 .centreAI{padding:15px 0 0 10px}
 .centreAI .font{margin:20px 65px 0 5px}
 .centreAI .imgAI1{vertical-align:middle;padding:0 0 0 10px}
@@ -311,10 +311,10 @@
 .amount_span{margin-top:25px;margin-left:52px}
 .exchange_divTow{margin-left:130px;width:65px;height:26px;border:1px solid #E0E0E0;display:inline-block;line-height:26px;text-align:center;cursor:pointer;border-radius:13px;font-family:'幼圆';margin-top:10px}
 .exchange_divTow:hover{color:#fff;background-color:#E0E0E0;transition:all .2s ease;-webkit-transition:all .2s ease}
-.exchange_div_span{margin-left:315px;font-size:12px;font-family:'幼圆';color:#F26A81}
+.exchange_div_span{margin-left:180px;font-size:12px;font-family:'幼圆';color:#F26A81}
 .exchange_divOne{height:12px;margin-bottom:5px}
 .exchange_divTow_spanTow{margin-left:390px;display:inline-block;margin-top:18px;color:#777;cursor:pointer}
-.sign-Block{display:block;position:fixed;top:0;bottom:0;left:0;right:0;width:100%;height:100%;background-color:rgba(0,0,0,.3);z-index:999999}
+.sign-Block{display:block;position:fixed;top:0;bottom:0;left:0;right:0;width:100%;height:100%;background-color:rgba(0,0,0,.3);z-index:999}
 .sign-Block .sign_parent{display:block;position:absolute;top:16%;width:321px;height:614px;left:50%}
 .sign_sub{width:100%;height:100%;position:relative;left:-50%;background-color:#fff;border-radius:8px 8px 8px 8px;background-image:url(../img/sign_01.png);box-shadow:0 3px 3px 3px rgba(0,0,0,.15)}
 .sign_sub .sign_title{text-align:center;padding-top:10px;color:#50baf5;font-size:18px;font-family:"华康少女文字W5(P)";margin-bottom:18px}
@@ -367,3 +367,6 @@
 .isTrueOrFalse_span{display:inline-block;width:400px;min-height:70px;border-bottom:1px solid #E0E0E0;padding:15px 15px 15px 18px;text-indent:30px;font-family:'幼圆';line-height:1.5}
 .isTrueOrFalse_div{width:400px;height:35px;border-bottom:1px solid #E0E0E0;font-family:'幼圆';font-size:17px;line-height:35px;padding-left:25px}
 .isTrueOrFalseDiv{margin-left:95px!important;margin-bottom:10px}
+.detailFn{margin-left:80px!important;width:80px!important}
+.goodFnSev{border-top:none;border-left:none;border-right:none;width:50px}
+.verification_div_pay{padding-top:15px;border-top:1px solid #E0E0E0;padding-left:36px}
