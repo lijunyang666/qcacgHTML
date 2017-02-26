@@ -81,7 +81,7 @@
 	    result: [],
 	    bookInfo: [],
 	    // 分页
-	    page: [],
+	    page: [1],
 	    RequestObj: {
 	      rankList: 0, // 好人 字数 点击
 	      timeRank: 0, // 周 月 总
@@ -4704,7 +4704,7 @@
 	PathList.rootPath = '/Controller';
 	//PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
-	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
 
 	// 登陆的3个请求
