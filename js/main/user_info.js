@@ -5411,7 +5411,7 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	//PathList.rootPath = 'http://192.168.126.40:8080';
+	PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
 	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
@@ -7797,7 +7797,7 @@
 	var updatePass = _vueMin2.default.extend({
 	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li class="active" v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">修改密码</span><span class="titleTwo">essential information</span></div>'
 	  // +'<div class="numberAItwo1"><span class="name1">旧密码：</span><input type="" name="" id="" value="" /></div>'
-	  + '<div class="numberAItwo2"><span class="name1">新密码：</span><input type="text" v-model="passWord" /><span class="remark1">密码由6-16个字符组成，区分大小写（不能是9位一下的纯数字，不能包含空格）</span></div>' + '<div class="numberAItwo3"><span class="name1">确认新密码：</span><input type="password" v-model="passWordConfirm"  /><span class="remark1">密码强度：</span></div>' + '<div class="numberAItwo4"><span class="name1">手机验证：</span><input type="password" v-model="telephoneCode" />' + '<div class="verify" v-if="verifyFlag" @click="showCaptchaObj">发送验证码</div>' + '<div class="verify_no" v-else>{{verifyNumber}}重新发送</div>' + '<div id="popup-captcha"></div>' + '</div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="btn change" @click="submitFn">确认</div></div></div>' + '</div></div></div>',
+	  + '<div class="numberAItwo2"><span class="name1">新密码：</span><input type="password" v-model="passWord" /><span class="remark1">密码由6-16个字符组成，区分大小写（不能是9位一下的纯数字，不能包含空格）</span></div>' + '<div class="numberAItwo3"><span class="name1">确认新密码：</span><input type="password" v-model="passWordConfirm"  /><span class="remark1">密码强度：</span></div>' + '<div class="numberAItwo4"><span class="name1">手机验证：</span><input type="text" v-model="telephoneCode" />' + '<div class="verify" v-if="verifyFlag" @click="showCaptchaObj">发送验证码</div>' + '<div class="verify_no" v-else>{{verifyNumber}}重新发送</div>' + '<div id="popup-captcha"></div>' + '</div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="btn change" @click="submitFn">确认</div></div></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8975,7 +8975,7 @@
 	    WithdrawalsFn: function WithdrawalsFn() {
 	      this.$set('WithdrawalsFlag', false);
 	      var _data = {};
-	      _data.doubleamount = this.doubleamount;
+	      _data.cashAmount = this.doubleamount;
 	      _data.cardAmount = this.cardAmount;
 	      _vueHttp2.default.http(this, 'get', _conf2.default.withdrawals, _data, function (response) {});
 	    },
