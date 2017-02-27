@@ -5413,7 +5413,7 @@
 	PathList.rootPath = '/Controller';
 	//PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
-	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
 
 	// 登陆的3个请求
@@ -6579,7 +6579,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var catalogue = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works_update/\' + id}"><span class="circular"></span><span class="title_name">修改信息</span></li></ul>' + '<div class="content"><div class="catalogue"><div class="catalogue_header"><span>作品目录</span><span>catalogue</span><span class="content_bookTitle"><a :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + bookCustom.bookId">>><b>{{bookCustom.bookName}}</b></a></span></div>' + '<div class="newBookChapter" v-if="newBookChapter"><div class="clearX" v-on:click="newBookChapterClearFn">x</div><h4 class="newBookTitle">请输入卷的标题</h4><div><input type="text" class="inputText" placeholder="第一卷" v-model="volume" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="submitVolumeFn">提交</a></div>' + '<div  class="SubmitAudit" v-if="SubmitAudit"><div class="clearX" v-on:click="SubmitAuditClearFn">x</div><h4 class="newBookTitle">提交审核</h4><div><textarea type="text"  class="inputTextTow" placeholder="我想对编辑说(选填)" v-model="SubmitAuditvolume" /></textarea></div><div class="hr"></div><a :href="path.TemprootPath + \'/view/user_info.html#!/bookBlockList\'" class="btn-addBookChapter" v-on:click="SetSubmitAudit">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookChapter"><div class="clearX" v-on:click="updateVolumeFn">x</div><h4 class="newBookTitle">修改卷的标题</h4><div><input type="text" class="inputText" placeholder="修改卷名称" v-model="updateBookChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateVolumeNameFn">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookContentChapter"><div class="clearX" v-on:click="updateContentFn">x</div><h4 class="newBookTitle">修改章节的名称</h4><div><input type="text" class="inputText" placeholder="修改章节名称" v-model="updateBookContentChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateContentNameFn">提交</a></div>' + '<div class="sign-Block" v-if="SigNing" ><div class="sign_parent"><div class="sign_sub"><p class="sign_title">我要签约</p><p class="sign_headers"><span class="sign_sign"></span>姓名</p><input type="text" class="sign_input" v-model="uname" /><p class="sign_headers"><span class="sign_sign"></span>更新方式</p><form class="sign_form"><label class="sign_label" @click="signbuttomFn" ><input name="sign" type="radio" value="" checked="checked"  />日更</label><label class="sign_label"  @click="SubmitsignbuttomFn" ><input name="sign" type="radio" value="" />月更</label><p class="sign_pp" v-if=" updateType==2 ">*在一个月内，更新一次或者更新多次，所更新的字数的总和要至少达到8万字</p><p class="sign_pp" v-if=" updateType==1 ">*一个月内，必须每日更新，每日更新至少更新2000字，一个月更新字数总和达到6万字</p></form><p class="sign_headers"><span class="sign_sign"></span>联系方式</p><div class="sign_div">      QQ&nbsp;:<input type="text" class="sign_contact" v-model="qq" /></div><div class="sign_div">E-meil&nbsp;:<input type="text" class="sign_contact" v-model="email" /></div><div class="sign_div">手机&nbsp;:<input type="text" class="sign_contact" v-model="phone" /></div><div class="sign_div">住址&nbsp;:<input type="text" class="sign_contact" v-model="address" /></div><div style="clear: both;"></div><p class="sign_headers TowHeadrs"><span class="sign_sign"></span>小说大纲</p><textarea type="text" class="sign_Biginput" v-model="message" /></textarea><div class="sign_btn" @click="isTrueOrFalseFn" >提交申请</div><div class="sign_btnTow" @click="SigNingDownFn" >取消</div><img style="display:none;" src="../img/logo_11.png" class="sign_img" /></div></div></div>' + '<div v-if="isTrueOrFalse" class="isTrueOrFalse isTrueOrFalseTow"><div class="isTrueOrFalse_div">提示</div><span class="isTrueOrFalse_span">请注意认真审核信息是否填写正确，签约后平台将会以此信息为标准，联系作者，如需修改，请联系工作人员。 （*注：如此次申请失败，下次申请时，作品需在原基础上提高2万字数方可再次申请提交）。</span> <div class="moneyRecharge_div isTrueOrFalseDiv"  @click="SigNingUpFn" >确认</div>  <div class="moneyRecharge_div isTrueOrFalseDiv" @click="SubmitisTrueOrFalseFn" >取消</div> </div>' + '<div class="catalogue_list" v-for="obj in volumeCustomList"><div class="list_title"><h4 class="listBlock">{{obj.volumeName}}<span style="font-size:12px; padding-left:5px; font-weight:normal;  ">({{obj.volumeWordCount}})</span></h4>' + '<div class="list_action">' + '<a v-if="$index !== 0" @click="volumeChange(volumeCustomList[$index - 1].volumeId, volumeCustomList[$index].volumeId)" href="javascript:;">前移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">前移</a>' + '<a v-if="$index !== volumeCustomList.length - 1" @click="volumeChange(volumeCustomList[$index].volumeId, volumeCustomList[$index + 1].volumeId)" href="javascript:;">后移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">后移</a>' + '<a href="javascript:;" @click="volumeDelete(volumeCustomList[$index].volumeId)">删除</a>' + '<a href="javascript:;" @click="updateVolumeFn(volumeCustomList[$index].volumeId)">重命名</a>' + '</div></div>' + '<div class="create_chapter"><div class="chapter_header clear"><div class="line" v-for="bookObj in obj.contentEntityList"> <div class="lineIcon"><img src="../img/chapter_icon.jpg" /> <div class="handle_left">' + '<p @click="contentChange(obj.contentEntityList[$index - 1].contentId, obj.contentEntityList[$index].contentId)" v-if="$index !==0"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p @click="contentChange(obj.contentEntityList[$index].contentId, obj.contentEntityList[$index + 1].contentId)"  v-if="$index !== obj.contentEntityList.length - 1"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p @click="contentDelete(bookObj.contentId)"><img src="../img/to_right.jpg"/> 删除章节</p>' + '<p @click="updateContentFn(bookObj.contentId,bookObj.volumeId)"><img src="../img/to_right.jpg" /> 重命名</p>' + '</div></div><span class="span" uid="{{bookObj.volumeId}}"  uid2="{{bookObj.contentId}}" v-link="{path: \'/chapter_edit/\' + bookObj.volumeId + \'_\' +  bookObj.contentId }">{{bookObj.contentTitle}}</span></div><div class="line"><div class="lineIcon"><img src="../img/create_icon.jpg" />              </div>              <span class="span" uid="{{obj.volumeId}}" v-link="{ path: \'/chapter/\' + obj.volumeId }">创建新章节</span></div></div></div></div><div class="chapter_handle"><div class="handle_right"><div><span  v-on:click="newBookChapterFn">新增卷</span>' + '<span v-if="bookReviewStatus == \'已审核\' && bookIsSign == \'0\' "  v-on:click="signingFn"  >申请签约</span>' + '<span v-if="bookReviewStatus == \'已审核\' && bookIsSign == \'2\' "  v-on:click="signingTowFn"  >申请签约</span>' + '<span v-if=" bookReviewStatus == \'未审核\' "  v-on:click="SubmitAuditFn">提交审核</span>' + '<a style="dispaly:none;" :href="path.TemprootPath + \'/view/user_info.html#!/bookBlockList\'"><span>返回</span></a>' + '</div></div></div></div></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works_update/\' + id}"><span class="circular"></span><span class="title_name">修改信息</span></li></ul>' + '<div class="content"><div class="catalogue"><div class="catalogue_header"><span>作品目录</span><span>catalogue</span><span class="content_bookTitle"><a :href="path.TemprootPath + \'/view/catalog.html?bookId=\' + bookCustom.bookId">>><b>{{bookCustom.bookName}}</b></a></span></div>' + '<div class="newBookChapter" v-if="newBookChapter"><div class="clearX" v-on:click="newBookChapterClearFn">x</div><h4 class="newBookTitle">请输入卷的标题</h4><div><input type="text" class="inputText" placeholder="第一卷" v-model="volume" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="submitVolumeFn">提交</a></div>' + '<div  class="SubmitAudit" v-if="SubmitAudit"><div class="clearX" v-on:click="SubmitAuditClearFn">x</div><h4 class="newBookTitle">提交审核</h4><div><textarea type="text"  class="inputTextTow" placeholder="我想对编辑说(选填)" v-model="SubmitAuditvolume" /></textarea></div><div class="hr"></div><a class="btn-addBookChapter" v-on:click="SetSubmitAudit">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookChapter"><div class="clearX" v-on:click="updateVolumeFn">x</div><h4 class="newBookTitle">修改卷的标题</h4><div><input type="text" class="inputText" placeholder="修改卷名称" v-model="updateBookChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateVolumeNameFn">提交</a></div>' + '<div class="newBookChapter" v-if="updateBookContentChapter"><div class="clearX" v-on:click="updateContentFn">x</div><h4 class="newBookTitle">修改章节的名称</h4><div><input type="text" class="inputText" placeholder="修改章节名称" v-model="updateBookContentChapterName" /></div><div class="hr"></div><a href="javascript:;" class="btn-addBookChapter" v-on:click="updateContentNameFn">提交</a></div>' + '<div class="sign-Block" v-if="SigNing" ><div class="sign_parent"><div class="sign_sub"><p class="sign_title">我要签约</p><p class="sign_headers"><span class="sign_sign"></span>姓名</p><input type="text" class="sign_input" v-model="uname" /><p class="sign_headers"><span class="sign_sign"></span>更新方式</p><form class="sign_form"><label class="sign_label" @click="signbuttomFn" ><input name="sign" type="radio" value="" checked="checked"  />日更</label><label class="sign_label"  @click="SubmitsignbuttomFn" ><input name="sign" type="radio" value="" />月更</label><p class="sign_pp" v-if=" updateType==2 ">*在一个月内，更新一次或者更新多次，所更新的字数的总和要至少达到8万字</p><p class="sign_pp" v-if=" updateType==1 ">*一个月内，必须每日更新，每日更新至少更新2000字，一个月更新字数总和达到6万字</p></form><p class="sign_headers"><span class="sign_sign"></span>联系方式</p><div class="sign_div">      QQ&nbsp;:<input type="text" class="sign_contact" v-model="qq" /></div><div class="sign_div">E-meil&nbsp;:<input type="text" class="sign_contact" v-model="email" /></div><div class="sign_div">手机&nbsp;:<input type="text" class="sign_contact" v-model="phone" /></div><div class="sign_div">住址&nbsp;:<input type="text" class="sign_contact" v-model="address" /></div><div style="clear: both;"></div><p class="sign_headers TowHeadrs"><span class="sign_sign"></span>小说大纲</p><textarea type="text" class="sign_Biginput" v-model="message" /></textarea><div class="sign_btn" @click="isTrueOrFalseFn" >提交申请</div><div class="sign_btnTow" @click="SigNingDownFn" >取消</div><img style="display:none;" src="../img/logo_11.png" class="sign_img" /></div></div></div>' + '<div v-if="isTrueOrFalse" class="isTrueOrFalse isTrueOrFalseTow"><div class="isTrueOrFalse_div">提示</div><span class="isTrueOrFalse_span">请注意认真审核信息是否填写正确，签约后平台将会以此信息为标准，联系作者，如需修改，请联系工作人员。 （*注：如此次申请失败，下次申请时，作品需在原基础上提高2万字数方可再次申请提交）。</span> <div class="moneyRecharge_div isTrueOrFalseDiv"  @click="SigNingUpFn" >确认</div>  <div class="moneyRecharge_div isTrueOrFalseDiv" @click="SubmitisTrueOrFalseFn" >取消</div> </div>' + '<div class="catalogue_list" v-for="obj in volumeCustomList"><div class="list_title"><h4 class="listBlock">{{obj.volumeName}}<span style="font-size:12px; padding-left:5px; font-weight:normal;  ">({{obj.volumeWordCount}})</span></h4>' + '<div class="list_action">' + '<a v-if="$index !== 0" @click="volumeChange(volumeCustomList[$index - 1].volumeId, volumeCustomList[$index].volumeId)" href="javascript:;">前移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">前移</a>' + '<a v-if="$index !== volumeCustomList.length - 1" @click="volumeChange(volumeCustomList[$index].volumeId, volumeCustomList[$index + 1].volumeId)" href="javascript:;">后移</a>' + '<a v-else style="color:#cccccc;cursor: not-allowed;" href="javascript:;">后移</a>' + '<a href="javascript:;" @click="volumeDelete(volumeCustomList[$index].volumeId)">删除</a>' + '<a href="javascript:;" @click="updateVolumeFn(volumeCustomList[$index].volumeId)">重命名</a>' + '</div></div>' + '<div class="create_chapter"><div class="chapter_header clear"><div class="line" v-for="bookObj in obj.contentEntityList"> <div class="lineIcon"><img src="../img/chapter_icon.jpg" /> <div class="handle_left">' + '<p @click="contentChange(obj.contentEntityList[$index - 1].contentId, obj.contentEntityList[$index].contentId)" v-if="$index !==0"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节前移</p>' + '<p @click="contentChange(obj.contentEntityList[$index].contentId, obj.contentEntityList[$index + 1].contentId)"  v-if="$index !== obj.contentEntityList.length - 1"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p v-else style="color:#cccccc;cursor: not-allowed;"><img src="../img/to_right.jpg" /> 章节后移</p>' + '<p @click="contentDelete(bookObj.contentId)"><img src="../img/to_right.jpg"/> 删除章节</p>' + '<p @click="updateContentFn(bookObj.contentId,bookObj.volumeId)"><img src="../img/to_right.jpg" /> 重命名</p>' + '</div></div><span class="span" uid="{{bookObj.volumeId}}"  uid2="{{bookObj.contentId}}" v-link="{path: \'/chapter_edit/\' + bookObj.volumeId + \'_\' +  bookObj.contentId }">{{bookObj.contentTitle}}</span></div><div class="line"><div class="lineIcon"><img src="../img/create_icon.jpg" />              </div>              <span class="span" uid="{{obj.volumeId}}" v-link="{ path: \'/chapter/\' + obj.volumeId }">创建新章节</span></div></div></div></div><div class="chapter_handle"><div class="handle_right"><div><span  v-on:click="newBookChapterFn">新增卷</span>' + '<span v-if="bookReviewStatus == \'已审核\' && bookIsSign == \'0\' "  v-on:click="signingFn"  >申请签约</span>' + '<span v-if="bookReviewStatus == \'已审核\' && bookIsSign == \'2\' "  v-on:click="signingTowFn"  >申请签约</span>' + '<span v-if=" bookReviewStatus == \'未审核\' "  v-on:click="SubmitAuditFn">提交审核</span>' + '<a style="dispaly:none;" :href="path.TemprootPath + \'/view/user_info.html#!/bookBlockList\'"><span>返回</span></a>' + '</div></div></div></div></div>' + '</div></div></div>',
 	  data: function data() {
 	    return {
 	      isTrueOrFalse: false,
@@ -6717,6 +6717,8 @@
 	      this.$set('SigNing', false);
 	    },
 	    SigNingUpFn: function SigNingUpFn() {
+	      var _this4 = this;
+
 	      this.$set('SigNing', false);
 	      this.$set('isTrueOrFalse', false);
 	      var _data = {};
@@ -6728,7 +6730,14 @@
 	      _data.phone = this.phone;
 	      _data.address = this.address;
 	      _data.message = this.message;
-	      _vueHttp2.default.http(this, 'post', _conf2.default.userUpdateBookSign, _data, function (response) {});
+	      _vueHttp2.default.http(this, 'post', _conf2.default.userUpdateBookSign, _data, function (response) {
+	        if (response.data.code == 200) {
+	          var Utils = _this4.$refs.vueAlert ? _this4.$refs.vueAlert : _this4.$parent.$refs.vueAlert;
+	          Utils.setMessage(false, '申请成功');
+	          window.location.href = _conf2.default.TemprootPath + '/view/user_info.html#!/bookBlockList';
+	          return;
+	        }
+	      });
 	    },
 	    SubmitAuditvolumeLFn: function SubmitAuditvolumeLFn() {
 	      if (this.SubmitAudit) {
@@ -6757,31 +6766,31 @@
 	      this.$set('isTrueOrFalse', false);
 	    },
 	    updateVolumeNameFn: function updateVolumeNameFn() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var _data = {};
 	      _data.bookId = parseInt(this.id, 10);
 	      _data.volumeName = this.updateBookChapterName;
 	      _data.volumeId = this.updateBookChapterId;
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateVolume, _data, function (response) {
-	        _this4.$set('updateBookChapter', false);
-	        _this4.$set('updateBookChapterId', '');
-	        _this4.$set('updateBookChapterName', '');
-	        _this4.getBookListFn();
+	        _this5.$set('updateBookChapter', false);
+	        _this5.$set('updateBookChapterId', '');
+	        _this5.$set('updateBookChapterName', '');
+	        _this5.getBookListFn();
 	      });
 	    },
 
 	    getBookListFn: function getBookListFn() {
-	      var _this5 = this;
+	      var _this6 = this;
 
 	      var _data = {};
 	      _data.bookId = parseInt(this.id, 10);
 	      _vueHttp2.default.http(this, 'get', _conf2.default.queryBook, _data, function (response) {
 	        console.log(response);
-	        _this5.bookIsSign = response.data.bookCustom.bookIsSign;
-	        _this5.bookReviewStatus = response.data.bookCustom.bookReviewStatus;
-	        _this5.$set('bookCustom', response.data.bookCustom);
-	        _this5.$set('volumeCustomList', response.data.bookCustom.volumeCustomList);
+	        _this6.bookIsSign = response.data.bookCustom.bookIsSign;
+	        _this6.bookReviewStatus = response.data.bookCustom.bookReviewStatus;
+	        _this6.$set('bookCustom', response.data.bookCustom);
+	        _this6.$set('volumeCustomList', response.data.bookCustom.volumeCustomList);
 	      });
 	    },
 	    newBookChapterFn: function newBookChapterFn() {
@@ -6798,7 +6807,7 @@
 	      this.$set('SubmitAudit', false);
 	    },
 	    submitVolumeFn: function submitVolumeFn() {
-	      var _this6 = this;
+	      var _this7 = this;
 
 	      var _data = {};
 	      _data.bookId = parseInt(this.id, 10);
@@ -6806,20 +6815,27 @@
 	      _data.volumeId = '';
 
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateVolume, _data, function (response) {
-	        _this6.$set('newBookChapter', false);
-	        _this6.volume = '';
-	        _this6.getBookListFn();
+	        _this7.$set('newBookChapter', false);
+	        _this7.volume = '';
+	        _this7.getBookListFn();
 	      });
 	    },
 	    SetSubmitAudit: function SetSubmitAudit() {
-	      var _this7 = this;
+	      var _this8 = this;
 
 	      var _data = {};
 	      _data.bookId = parseInt(this.id, 10);
 	      _data.message = this.SubmitAuditvolume;
 	      _vueHttp2.default.http(this, 'post', _conf2.default.userUpdateBookStatus, _data, function (response) {
-	        _this7.$set('SubmitAudit', false);
-	        _this7.getBookListFn();
+	        _this8.$set('SubmitAudit', false);
+	        _this8.getBookListFn();
+	        if (response.data.code !== '200') {
+	          var Utils = _this8.$refs.vueAlert ? _this8.$refs.vueAlert : _this8.$parent.$refs.vueAlert;
+	          Utils.setMessage(true, '提交失败');
+	          return;
+	        } else {
+	          window.location.href = _conf2.default.TemprootPath + '/view/user_info.html#!/bookBlockList';
+	        }
 	      });
 	    }
 	  }
@@ -7009,7 +7025,6 @@
 	      var str = href.substring(href.lastIndexOf('/') + 1, href.length);
 	      this.volumeId = str.substring(0, str.indexOf('_'));
 	      this.contentId = str.substring(str.indexOf('_') + 1, str.length);
-
 	      this.getBookListFn();
 	    }
 	  },
@@ -8907,7 +8922,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var bill = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal Wallet</div><div class="titleBlock_LG">个人账单</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li  v-link="{path: \'/wallet\'}"><span class="circular"></span><span class="title_name">我的钱包</span></li><li  v-link="{path: \'/goodmen\'}"><span class="circular"></span><span class="title_name">我的好人卡</span></li><li class="active" v-link="{path: \'/bill\'}"><span class="circular"></span><span class="title_name">我的账单</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">支付账单</span><span class="titleTwo">pay treasure bills</span></div><div class="pay-head2">    可提现余额</div><div class="pay-b" @click="registrationFn">提现</div><div class="pay-c" @click="exchangeFn">兑换</div><div class="pay-c" @click="moneyRechargeFn">充值</div>' + '<div v-if="goodmenFlag" class="exchange"><span class="exchange_span">请选择兑换数量:</span><ul class="exchange_ul"><li @click="SubmitgoodFn">×100</li><li @click="SubmitgoodFnTow">×500</li><li @click="SubmitgoodFnThr">×1000</li><li @click="SubmitgoodFnFou">×3000</li><li @click="SubmitgoodFnFix">×5000</li><li @click="SubmitgoodFnSix">×10000</li></ul><div class="exchange_divOne"><span class="exchange_div_span ">*注:每1元钱可购买100张好人卡，当前需使用{{ amount/100 }}金额</span></div><div class="verification_div verification_div_pay  ">购买数量：&nbsp<span @click="downMoneyFnThr" class="verification_letf">-</span><input type="text" maxlength=7  v-model="amount" /><span @click="upMoneyFnThr" class="verification_right">+</span></div><div class="exchange_div" style="display:none"><span>使用金额</span><input type="text" readonly="readonly"  maxlength=5 v-model="amount" />元</div><span class="exchange_spanTow">我的余额：{{exchangeableCashAmount}}</span><div class="exchange_divTow" @click="SubmitgoodmenFn">购买</div><div class="exchange_divTow" @click="SubmitgoodmenFnTow">取消</div></div>' + '<div v-if="moneyRecharge" class="moneyRecharge">  <div class="moneyRecharge_header">账户余额充值</div>  <div class="moneyRecharge_name" >昵称&nbsp:<input type="text" v-model="userName" disabled="true" /></div>   <div class="moneyRecharge_name" >账号&nbsp:<input type="text" v-model="telphone " disabled="true"  /></div>   <div class="moneyRecharge_number" >充值金额&nbsp:<input type="" name="" id="" value="" maxlength=5  v-model="amount" maxlenght=5 />元</div>   <div class="moneyRecharge_pay" > <span class="moneyRecharge_choose">支付方式:</span><input type="radio" checked="checked"/><div class="moneyRecharge_img"></div></div>  <div class="moneyRecharge_div moneyRecharge_div_div" @click="rechargeFn" >确认</div>  <div class="moneyRecharge_div moneyRecharge_div_div" @click="SubmitmoneyRechargeFn">取消</div> </div>' + '<div v-show="registration == 1" class="registration"><div class="moneyRecharge_header">提现信息登记</div>  <div class="moneyRecharge_name humanName" >真实姓名&nbsp:<input type="text" v-model="name" /></div>   <div class="moneyRecharge_name payNumber"   >支付宝账号&nbsp:<input type="text" v-model="aliAccount"  /></div>  <div class="moneyRecharge_name payNameTow" >确认支付宝账号&nbsp:<input type="text" v-model="againNumber"  /></div>     <div class="moneyRecharge_name verification" >请输入验证码&nbsp:<input type="text" v-model="inputCode" /><span class="verification_span" @click="showCaptchaObj" v-if="verifyFlag">手机验证</span><div class="verification_spanTow" v-else>{{verifyNumber}}重新发送</div><div id="popup-captcha"></div></div> <span class="registration_div_span">*注意：提现信息提交后将无法直接修改，请仔细检查个人信息，确认填写无误后再提交。</span> <div class="moneyRecharge_div" @click="isTrueOrFalseFn"  >确认</div>  <div class="moneyRecharge_div" @click="SubmitregistrationFn" >取消</div>   </div>' + '<div v-if="WithdrawalsFlag" class="registration registrationTow "><div class="moneyRecharge_header">提现</div> <span class="exchange_spanTow exchange_spanTowTow">我的余额：{{exchangeableCashAmount}}</span>   <div class="verification_div">提取金额：&nbsp<span @click="downMoneyFn" class="verification_letf">-</span><input type="text" readonly="readonly" v-model="doubleamount" /><span @click="upMoneyFn" class="verification_right">+</span></div><span class="exchange_spanTow exchange_spanTowTow amount_span">好人卡数量：{{givenPayCardAmount}}</span>   <div class="verification_div verification_divTow">提取好人卡：&nbsp<span @click="downMoneyFnTow" class="verification_letf">-</span><input type="text"  v-model="cardAmount" /><span @click="upMoneyFnTow" class="verification_right">+</span></div><div class="moneyRecharge_div"  @click="WithdrawalsFn"   >确认</div>  <div class="moneyRecharge_div" @click="WithdrawalsFnTow" >取消</div>   </div>' + '<div v-if="isTrueOrFalse" class="isTrueOrFalse"><div class="isTrueOrFalse_div">提示</div><span class="isTrueOrFalse_span">请注意核对账号信息是否正确，一经核对，不予撤回。是否确认？</span> <div class="moneyRecharge_div isTrueOrFalseDiv" @click="registrationisFlase"  >确认</div>  <div class="moneyRecharge_div isTrueOrFalseDiv" @click="SubmitisTrueOrFalseFn" >取消</div> </div>' + '<div v-if="isTru" class="isTrueOrFalse"><div class="isTrueOrFalse_div">提示</div><span class="isTrueOrFalse_span">充值是否成功</span> <div class="moneyRecharge_div isTrueOrFalseDiv detailFn" @click="detailFn"  >充值成功</div>  <div class="moneyRecharge_div isTrueOrFalseDiv detailFn" @click="SubmitdetailFn" >遇到问题</div> </div>' + '<div class="pay-d">￥{{exchangeableCashAmount}}</div><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="pay-head2">    历史收入</div><div class="pay-number">    ￥{{totalCashAmount}}</div>  <div class="pay-check"><a :href="path.TemprootPath + \'/view/user_info.html#!/wallet\'">查看账单</a></div> <ul class="explain">    提现说明：<li>1.提现申请成功过不可以撤回</li><li>2.提现金额为100的整数倍（单位人民币）</li><li>3.申请成功后，工作人员会在7个工作日内将相应的金额打入指定账户</li></ul></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">Personal Wallet</div><div class="titleBlock_LG">个人账单</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li  v-link="{path: \'/wallet\'}"><span class="circular"></span><span class="title_name">我的钱包</span></li><li  v-link="{path: \'/goodmen\'}"><span class="circular"></span><span class="title_name">我的好人卡</span></li><li class="active" v-link="{path: \'/bill\'}"><span class="circular"></span><span class="title_name">我的账单</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">支付账单</span><span class="titleTwo">pay treasure bills</span></div><div class="pay-head2">    可提现余额</div><div class="pay-b" @click="registrationFn">提现</div><div class="pay-c" @click="exchangeFn">兑换</div><div class="pay-c" @click="moneyRechargeFn">充值</div>' + '<div v-if="goodmenFlag" class="exchange"><span class="exchange_span">请选择兑换数量:</span><ul class="exchange_ul"><li @click="SubmitgoodFn">×100</li><li @click="SubmitgoodFnTow">×500</li><li @click="SubmitgoodFnThr">×1000</li><li @click="SubmitgoodFnFou">×3000</li><li @click="SubmitgoodFnFix">×5000</li><li @click="SubmitgoodFnSix">×10000</li></ul><div class="exchange_divOne"><span class="exchange_div_span ">*注:每1元钱可购买100张好人卡，当前需使用{{ amount/100 }}金额</span></div><div class="verification_div verification_div_pay  ">购买数量：&nbsp<span @click="downMoneyFnThr" class="verification_letf">-</span><input type="text" maxlength=7  v-model="amount" /><span @click="upMoneyFnThr" class="verification_right">+</span></div><div class="exchange_div" style="display:none"><span>使用金额</span><input type="text" readonly="readonly"  maxlength=5 v-model="amount" />元</div><span class="exchange_spanTow">我的余额：{{totalCashAmount}}</span><div class="exchange_divTow" @click="SubmitgoodmenFn">购买</div><div class="exchange_divTow" @click="SubmitgoodmenFnTow">取消</div></div>' + '<div v-if="moneyRecharge" class="moneyRecharge">  <div class="moneyRecharge_header">账户余额充值</div>  <div class="moneyRecharge_name" >昵称&nbsp:<input type="text" v-model="userName" disabled="true" /></div>   <div class="moneyRecharge_name" >账号&nbsp:<input type="text" v-model="telphone " disabled="true"  /></div>   <div class="moneyRecharge_number" >充值金额&nbsp:<input type="" name="" id="" value="" maxlength=5  v-model="amount" maxlenght=5 />元</div>   <div class="moneyRecharge_pay" > <span class="moneyRecharge_choose">支付方式:</span><input type="radio" checked="checked"/><div class="moneyRecharge_img"></div></div>  <div class="moneyRecharge_div moneyRecharge_div_div" @click="rechargeFn" >确认</div>  <div class="moneyRecharge_div moneyRecharge_div_div" @click="SubmitmoneyRechargeFn">取消</div> </div>' + '<div v-show="registration == 1" class="registration"><div class="moneyRecharge_header">提现信息登记</div>  <div class="moneyRecharge_name humanName" >真实姓名&nbsp:<input type="text" v-model="name" /></div>   <div class="moneyRecharge_name payNumber"   >支付宝账号&nbsp:<input type="text" v-model="aliAccount"  /></div>  <div class="moneyRecharge_name payNameTow" >确认支付宝账号&nbsp:<input type="text" v-model="againNumber"  /></div>     <div class="moneyRecharge_name verification" >请输入验证码&nbsp:<input type="text" v-model="inputCode" /><span class="verification_span" @click="showCaptchaObj" v-if="verifyFlag">手机验证</span><div class="verification_spanTow" v-else>{{verifyNumber}}重新发送</div><div id="popup-captcha"></div></div> <span class="registration_div_span">*注意：提现信息提交后将无法直接修改，请仔细检查个人信息，确认填写无误后再提交。</span> <div class="moneyRecharge_div" @click="isTrueOrFalseFn"  >确认</div>  <div class="moneyRecharge_div" @click="SubmitregistrationFn" >取消</div>   </div>' + '<div v-if="WithdrawalsFlag" class="registration registrationTow "><div class="moneyRecharge_header">提现</div> <span class="exchange_spanTow exchange_spanTowTow">我的余额：{{exchangeableCashAmount}}</span>   <div class="verification_div">提取金额：&nbsp<span @click="downMoneyFn" class="verification_letf">-</span><input type="text" readonly="readonly" v-model="doubleamount" /><span @click="upMoneyFn" class="verification_right">+</span></div><span class="exchange_spanTow exchange_spanTowTow amount_span">好人卡数量：{{givenPayCardAmount}}</span>   <div class="verification_div verification_divTow">提取好人卡：&nbsp<span @click="downMoneyFnTow" class="verification_letf">-</span><input type="text"  v-model="cardAmount" /><span @click="upMoneyFnTow" class="verification_right">+</span></div><div class="moneyRecharge_div"  @click="WithdrawalsFn"   >确认</div>  <div class="moneyRecharge_div" @click="WithdrawalsFnTow" >取消</div>   </div>' + '<div v-if="isTrueOrFalse" class="isTrueOrFalse"><div class="isTrueOrFalse_div">提示</div><span class="isTrueOrFalse_span">请注意核对账号信息是否正确，一经核对，不予撤回。是否确认？</span> <div class="moneyRecharge_div isTrueOrFalseDiv" @click="registrationisFlase"  >确认</div>  <div class="moneyRecharge_div isTrueOrFalseDiv" @click="SubmitisTrueOrFalseFn" >取消</div> </div>' + '<div v-if="isTru" class="isTrueOrFalse"><div class="isTrueOrFalse_div">提示</div><span class="isTrueOrFalse_span">充值是否成功</span> <div class="moneyRecharge_div isTrueOrFalseDiv detailFn" @click="detailFn"  >充值成功</div>  <div class="moneyRecharge_div isTrueOrFalseDiv detailFn" @click="SubmitdetailFn" >遇到问题</div> </div>' + '<div class="pay-d">￥{{exchangeableCashAmount}}</div><hr style="border: 1px solid #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="pay-head2">    历史收入</div><div class="pay-number">    ￥0.00</div>  <div class="pay-check"><a :href="path.TemprootPath + \'/view/user_info.html#!/wallet\'">查看账单</a></div> <ul class="explain">    提现说明：<li>1.提现申请成功过不可以撤回</li><li>2.提现金额为100的整数倍（单位人民币）</li><li>3.申请成功后，工作人员会在7个工作日内将相应的金额打入指定账户</li></ul></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -8983,11 +8998,20 @@
 	      }
 	    },
 	    WithdrawalsFn: function WithdrawalsFn() {
+	      var _this = this;
+
 	      this.$set('WithdrawalsFlag', false);
 	      var _data = {};
 	      _data.cashAmount = this.doubleamount;
 	      _data.cardAmount = this.cardAmount;
-	      _vueHttp2.default.http(this, 'get', _conf2.default.withdrawals, _data, function (response) {});
+	      _vueHttp2.default.http(this, 'get', _conf2.default.withdrawals, _data, function (response) {
+	        if (response.data.code == 200) {
+	          var Utils = _this.$refs.vueAlert ? _this.$refs.vueAlert : _this.$parent.$refs.vueAlert;
+	          Utils.setMessage(false, '申请成功');
+	          _this.amountYueFn();
+	          return;
+	        }
+	      });
 	    },
 	    WithdrawalsFnTow: function WithdrawalsFnTow() {
 	      this.$set('WithdrawalsFlag', false);
@@ -9006,7 +9030,7 @@
 	      }
 	    },
 	    getGeetestFn: function getGeetestFn() {
-	      var _this = this;
+	      var _this2 = this;
 
 	      // 获取就极验验证码
 	      _vueHttp2.default.http(this, 'get', _conf2.default.StartCaptchaServlet, {}, function (data) {
@@ -9019,7 +9043,7 @@
 	          product: "popup",
 	          // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
 	          offline: !data.data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-	        }, _this.handlerPopup);
+	        }, _this2.handlerPopup);
 	      });
 	    },
 	    showCaptchaObj: function showCaptchaObj() {
@@ -9054,7 +9078,7 @@
 	      // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
 	    },
 	    registrationisFlase: function registrationisFlase() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      this.$set('registration', 0);
 	      this.$set('isTrueOrFalse', false);
@@ -9065,7 +9089,7 @@
 	      _data.inputCode = this.inputCode;
 	      _vueHttp2.default.http(this, 'get', _conf2.default.saveAlipay, _data, function (response) {
 	        if (response.data.code == 200) {
-	          _this2.$set('WithdrawalsFlag', true);
+	          _this3.$set('WithdrawalsFlag', true);
 	        }
 	      });
 	    },
@@ -9120,23 +9144,39 @@
 	    },
 
 	    SubmitgoodmenFn: function SubmitgoodmenFn() {
-	      this.$set('goodmenFlag', false);
-	      var _data = {};
-	      _data.amount = this.amount;
-	      _vueHttp2.default.http(this, 'get', _conf2.default.buyCard, _data, function (response) {});
+	      var _this4 = this;
+
+	      if (this.amount % 100 !== 0) {
+	        var Utils = this.$refs.vueAlert ? this.$refs.vueAlert : this.$parent.$refs.vueAlert;
+	        Utils.setMessage(true, '购买数量必须是100的倍数');
+	        return;
+	      } else {
+	        this.$set('goodmenFlag', false);
+	        var _data = {};
+	        _data.amount = this.amount / 100;
+	        _vueHttp2.default.http(this, 'get', _conf2.default.buyCard, _data, function (response) {
+	          if (response.data.code == 200) {
+	            var Utils = _this4.$refs.vueAlert ? _this4.$refs.vueAlert : _this4.$parent.$refs.vueAlert;
+	            Utils.setMessage(false, '购买成功');
+	            _this4.amountYueFn();
+	            return;
+	          }
+	        });
+	      }
 	    },
+
 	    SubmitgoodmenFnTow: function SubmitgoodmenFnTow() {
 	      this.$set('goodmenFlag', false);
 	    },
 	    detailFn: function detailFn() {
-	      var _this3 = this;
+	      var _this5 = this;
 
 	      this.$set('isTru', false);
 	      var _data = {};
 	      _data.logId = this.logId;
 	      _vueHttp2.default.http(this, 'get', _conf2.default.detail_21, _data, function (response) {
 	        if (response.data.data.orderStatus !== 1) {
-	          var Utils = _this3.$refs.vueAlert ? _this3.$refs.vueAlert : _this3.$parent.$refs.vueAlert;
+	          var Utils = _this5.$refs.vueAlert ? _this5.$refs.vueAlert : _this5.$parent.$refs.vueAlert;
 	          Utils.setMessage(true, '充值未完成');
 	          return;
 	        }
@@ -9146,27 +9186,32 @@
 	      this.$set('isTru', false);
 	    },
 	    getBookListFn: function getBookListFn() {
-	      var _this4 = this;
+	      var _this6 = this;
 
 	      var _data = {};
 	      _vueHttp2.default.http(this, 'get', _conf2.default.findBookByUser, {}, function (response) {
-	        _this4.$set('bookList', response.data);
+	        _this6.$set('bookList', response.data);
 	      });
 	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
-	        _this4.userName = response.data.status.userName;
-	        _this4.telphone = response.data.status.telphone;
+	        _this6.userName = response.data.status.userName;
+	        _this6.telphone = response.data.status.telphone;
 	      });
-	      _vueHttp2.default.http(this, 'get', _conf2.default.amount, {}, function (response) {
-	        _this4.exchangeableCashAmount = response.data.amount.exchangeableCashAmount;
-	        _this4.totalCashAmount = response.data.amount.exchangeableCashAmount + response.data.amount.unexchangeableCashAmount + response.data.amount.welfareCashAmount;
-	      });
+
 	      _vueHttp2.default.http(this, 'get', _conf2.default.cardamount, {}, function (response) {
-	        _this4.payCardAmount = response.data.amount.payCardAmount;
-	        _this4.givenPayCardAmount = response.data.amount.givenPayCardAmount;
+	        _this6.payCardAmount = response.data.amount.payCardAmount;
+	        _this6.givenPayCardAmount = response.data.amount.givenPayCardAmount;
+	      });
+	    },
+	    amountYueFn: function amountYueFn() {
+	      var _this7 = this;
+
+	      _vueHttp2.default.http(this, 'get', _conf2.default.amount, {}, function (response) {
+	        _this7.exchangeableCashAmount = response.data.amount.exchangeableCashAmount;
+	        _this7.totalCashAmount = response.data.amount.exchangeableCashAmount + response.data.amount.unexchangeableCashAmount + response.data.amount.welfareCashAmount;
 	      });
 	    },
 	    rechargeFn: function rechargeFn() {
-	      var _this5 = this;
+	      var _this8 = this;
 
 	      if (this.amount == '' || this.amount <= 0) {
 	        var Utils = this.$refs.vueAlert ? this.$refs.vueAlert : this.$parent.$refs.vueAlert;
@@ -9180,7 +9225,7 @@
 	      var _data = {};
 	      _data.amount = this.amount;
 	      _vueHttp2.default.http(this, 'get', _conf2.default.recharge, _data, function (response) {
-	        _this5.logId = response.data.logId;
+	        _this8.logId = response.data.logId;
 	        console.log(response);
 	        window.open(response.data.pay_url);
 	      });
@@ -9189,6 +9234,7 @@
 	  ready: function ready() {
 	    this.getBookListFn();
 	    this.getGeetestFn();
+	    this.amountYueFn();
 	  }
 	}); // 钱包-账单
 	exports.default = bill;
