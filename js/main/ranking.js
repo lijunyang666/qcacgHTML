@@ -4702,9 +4702,9 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	//PathList.rootPath = 'http://192.168.126.40:8080';
+	PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
-	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
 
 	// 登陆的3个请求
@@ -4824,6 +4824,8 @@
 	PathList.cardsign = PathList.rootPath + '/card/sign.shtml';
 	// 钱包日志详情
 	PathList.detail_21 = PathList.rootPath + '/log/detailForCash.shtml';
+	// 退出登录
+	PathList.logout = PathList.rootPath + '/logout.shtml';
 
 	exports.default = PathList;
 
@@ -5074,8 +5076,11 @@
 	    },
 	    backLoginFn: function backLoginFn() {
 	      this.loginFlag = false;
-	      localStorage.removeItem('JSESSIONID');
+
 	      window.location.reload();
+	      var _data = {};
+	      _vueHttp2.default.http(this, 'get', _conf2.default.logout, {}, function (response) {});
+	      localStorage.removeItem('JSESSIONID');
 	      // window.location.href = this.path.TemprootPath + '/index.html';
 	    },
 	    setHref: function setHref(v) {
