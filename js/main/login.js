@@ -5500,6 +5500,8 @@
 	PathList.detail_21 = PathList.rootPath + '/log/detailForCash.shtml';
 	// 退出登录
 	PathList.logout = PathList.rootPath + '/logout.shtml';
+	// 回复签约 
+	PathList.userRegainBookSign = PathList.rootPath + '/book//userRegainBookSign.shtml';
 
 	exports.default = PathList;
 
