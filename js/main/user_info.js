@@ -8389,8 +8389,8 @@
 	      var _data = this.RequestObj;
 	      _vueHttp2.default.http(this, 'get', _conf2.default.findCommentAndReplyByReplyUserId, _data, function (response) {
 	        console.log(response);
-	        _this2.$set('bookList', response.data);
-	        _this2.setPageCount(response.data[0].totalPage);
+	        _this2.$set('bookList', response.data.info);
+	        _this2.setPageCount(response.data.totalPage);
 	      });
 	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, {}, function (response) {
 	        _this2.userName = response.data.status.userName;
