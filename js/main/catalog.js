@@ -118,7 +118,7 @@
 	    commentAndReplyTotalCount: '',
 	    replyId: '',
 	    report: false,
-	    reportTypeId: 1,
+	    reportTypeId: '',
 	    reportContent: '',
 	    reportFlag: false,
 	    RequestObj: {
