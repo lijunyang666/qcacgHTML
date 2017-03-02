@@ -284,6 +284,30 @@
 	      this.report = true;
 	      this.replyId = replyId;
 	    },
+	    oneFn: function oneFn() {
+	      this.$set('reportTypeId', 1);
+	    },
+	    towFn: function towFn() {
+	      this.$set('reportTypeId', 2);
+	    },
+	    thrFn: function thrFn() {
+	      this.$set('reportTypeId', 3);
+	    },
+	    fouFn: function fouFn() {
+	      this.$set('reportTypeId', 4);
+	    },
+	    fifFn: function fifFn() {
+	      this.$set('reportTypeId', 5);
+	    },
+	    sixFn: function sixFn() {
+	      this.$set('reportTypeId', 6);
+	    },
+	    sveFn: function sveFn() {
+	      this.$set('reportTypeId', 7);
+	    },
+	    nigFn: function nigFn() {
+	      this.$set('reportTypeId', 8);
+	    },
 	    reportDown: function reportDown() {
 	      var _this3 = this;
 
