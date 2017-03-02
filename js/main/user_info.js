@@ -6686,6 +6686,7 @@
 	    volumeDelete: function volumeDelete(volumeId) {
 	      var This = this;
 	      this.$parent.$refs.vueConfirm.setConfirm('是否删除卷', function () {
+	        var _data = {};
 	        _data.volumeId = volumeId;
 	        _vueHttp2.default.http(this, 'get', _conf2.default.removeVolume, _data, function (response) {
 	          This.getBookListFn();

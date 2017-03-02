@@ -232,3 +232,4 @@
 .bds_qzone{background-image:url(../img/timg_qzone.png)!important;width:50px!important;height:50px!important;padding:0!important;line-height:0!important;margin:0!important;background-position:center!important}
 .bds_tsina{background-image:url(../img/timg_tsina.png)!important;width:50px!important;height:50px!important;padding:0!important;line-height:0!important;margin:0!important;background-position:center!important}
 .bds_sqq{background-image:url(../img/timg_qq.png)!important;width:50px!important;height:50px!important;padding:0!important;line-height:0!important;margin:0!important;background-position:center!important}
+.alert_one{position:fixed;top:25%;left:45%;display:none;filter:alpha(opacity=0);width:150px;height:50px;text-align:center;color:#fff;background-color:#000}

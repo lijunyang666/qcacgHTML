@@ -129,9 +129,58 @@
 	    sex: '',
 	    payCardAmount: 0,
 	    numb: 0,
-	    amount: 0
+	    amount: 0,
+	    stopTime: 0,
+	    curSObj: null,
+	    curOpacity: null
 	  },
 	  methods: {
+	    alertFn: function alertFn() {
+	      this.curSObj = document.getElementsByClassName('alert_one');
+	      this.curSObj.style = 'position: fixed;';
+	      this.curSObj.style = 'top: 25%;';
+	      this.curSObj.style = 'left: 45%;';
+	      this.curSObj.style = 'display: none;';
+	      this.curSObj.style = 'filter: alpha(opacity=0)';
+	      this.curSObj.style = 'width:150px;';
+	      this.curSObj.style = 'height:50px;';
+	      this.curSObj.style = 'text-align:center;';
+	      this.curSObj.style = 'color:white;';
+	      this.curSObj.style = 'background-color:black;';
+	      this.alertTowFn();
+	    },
+	    alertTowFn: function alertTowFn() {
+	      this.curOpacity = 0;
+	      this.curSObj.style.display = '';
+	      alert('a');
+	      this.alertThrFn();
+	    },
+	    alertThrFn: function alertThrFn() {
+	      curOpacity += 5;
+	      this.curSObj.style.opacity = this.curOpacity;
+	      if (curOpacity < 1) {
+	        setTimeout('alertThrFn()', 5);
+	      } else {
+	        stopTime += 10;
+	        if (stopTime < 200) {
+	          setTimeout('alertThrFn()', 5);
+	        } else {
+	          stopTime = 0;
+	          alertFouFn();
+	        }
+	      }
+	      this.curSObj.style = 'top: 27%;';
+	      this.alertFouFn();
+	    },
+	    alertFouFn: function alertFouFn() {
+	      curOpacity -= 5;
+	      if (curOpacity > 0) {
+	        curSObj.style.opacity = curOpacity;
+	        setTimeout('alertFouFn()', 5);
+	      } else {
+	        curSObj.style.display = 'none';
+	      }
+	    },
 	    setreplyFn: function setreplyFn(replyId) {
 	      this.replyId = replyId;
 	    },
@@ -367,6 +416,7 @@
 	      _data.bookId = this.bookId;
 	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrDeleteBookCollect, _data, function (response) {
 	        _this8.getValueFn();
+	        _this8.alertFn();
 	      });
 	    },
 	    nextWorksFn: function nextWorksFn() {
