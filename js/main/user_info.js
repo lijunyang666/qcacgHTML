@@ -207,6 +207,9 @@
 	      var _data = {};
 	      _vueHttp2.default.http(this, 'get', _conf2.default.cardsign, {}, function (response) {});
 	      this.$set('sign', true);
+	      var Utils = this.$refs.vueAlert ? this.$refs.vueAlert : this.$parent.$refs.vueAlert;
+	      Utils.setMessage(false, '签到成功，获得10张好人卡');
+	      return;
 	    },
 	    setShowFlagFn: function setShowFlagFn() {
 	      var _this = this;
@@ -5411,7 +5414,7 @@
 	PathList.TemprootPath = '';
 
 	PathList.rootPath = '/Controller';
-	//PathList.rootPath = 'http://192.168.126.40:8080';
+	PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
 	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
@@ -5958,7 +5961,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var bookBlockList = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li class="active" v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works\'}"><span class="circular"></span><span class="title_name">创建作品</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">轻小说</span><span class="titleTwo">light novel</span></div>' + '<div style="min-height:500px">' + '<ul class="list clear" ><li><div class="vertical-img"><a v-link="{path: \'/works\'}"><img src="../img/90x126.png" class="cover"/></a></div><div class="vertical-title"></div></li><li v-for="obj in bookList"><div class="vertical-img" :style=" obj.bookReviewStatus == \'审核中\' ? \' pointer-events: none;\':\'\' " ><div class="state_one" v-if=" obj.bookReviewStatus == \'审核中\' ">审核中</div><div class="state_tow">连载中</div><img :src="path.rootPath + obj.bookCoverImage" class="cover"  v-link="{path: \'/catalogue/\' + obj.bookId}"  /></div><div class="vertical-title" :style=" obj.bookReviewStatus == \'审核中\' ? \' pointer-events: none;\':\'\' " title="{{obj.bookName}}">{{obj.bookName}}</div></li></ul></div></div> ' + '</div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li class="active" v-link="{path: \'/bookBlockList\'}"><span class="circular"></span><span class="title_name">轻小说</span></li><li v-if="showFlag === 999"><span class="circular"></span><span class="title_name">画集</span></li><li v-link="{path: \'/works\'}"><span class="circular"></span><span class="title_name">创建作品</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">轻小说</span><span class="titleTwo">light novel</span></div>' + '<div style="min-height:500px">' + '<ul class="list clear" ><li><div class="vertical-img"><a v-link="{path: \'/works\'}"><img src="../img/90x126.png" class="cover"/></a></div><div class="vertical-title"></div></li><li v-for="obj in bookList"><div class="vertical-img" :style=" obj.bookReviewStatus == \'审核中\' ? \' pointer-events: none;\':\'\' " @click="submitFn" ><div class="state_one" v-if=" obj.bookReviewStatus == \'审核中\' ">审核中</div><div class="state_tow">连载中</div><img :src="path.rootPath + obj.bookCoverImage" class="cover"  v-link="{path: \'/catalogue/\' + obj.bookId}"  /></div><div class="vertical-title" :style=" obj.bookReviewStatus == \'审核中\' ? \' pointer-events: none;\':\'\' " title="{{obj.bookName}}">{{obj.bookName}}</div></li></ul></div></div> ' + '</div>' + '</div></div></div>',
 	  data: function data() {
 	    return {
 	      bookList: [],
@@ -5972,6 +5975,7 @@
 	    }
 	  },
 	  methods: {
+	    submitFn: function submitFn() {},
 	    getBookListFn: function getBookListFn() {
 	      var _this = this;
 
@@ -6661,7 +6665,7 @@
 	      var _data = {
 	        contentTitle: this.updateBookContentChapterName, // 标题
 	        contentId: this.updateBookContentChapterId };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateContent, _data, function (response) {
+	      _vueHttp2.default.http(this, 'get', _conf2.default.saveOrUpdateContent, _data, function (response) {
 	        _this2.$set('updateBookContentChapter', false);
 	        _this2.$set('updateBookContentChapterId', '');
 	        _this2.$set('updateBookContentChapterVolumeId', '');
@@ -6682,7 +6686,6 @@
 	    volumeDelete: function volumeDelete(volumeId) {
 	      var This = this;
 	      this.$parent.$refs.vueConfirm.setConfirm('是否删除卷', function () {
-	        var _data = {};
 	        _data.volumeId = volumeId;
 	        _vueHttp2.default.http(this, 'get', _conf2.default.removeVolume, _data, function (response) {
 	          This.getBookListFn();
@@ -6711,7 +6714,7 @@
 	    signingTowFn: function signingTowFn() {
 	      var _data = {};
 	      _data.bookId = parseInt(this.id, 10);
-	      _vueHttp2.default.http(this, 'post', _conf2.default.userRegainBookSign, _data, function (response) {});
+	      _vueHttp2.default.http(this, 'get', _conf2.default.userRegainBookSign, _data, function (response) {});
 	    },
 	    SigNingDownFn: function SigNingDownFn() {
 	      this.$set('SigNing', false);
@@ -6772,7 +6775,7 @@
 	      _data.bookId = parseInt(this.id, 10);
 	      _data.volumeName = this.updateBookChapterName;
 	      _data.volumeId = this.updateBookChapterId;
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateVolume, _data, function (response) {
+	      _vueHttp2.default.http(this, 'get', _conf2.default.saveOrUpdateVolume, _data, function (response) {
 	        _this5.$set('updateBookChapter', false);
 	        _this5.$set('updateBookChapterId', '');
 	        _this5.$set('updateBookChapterName', '');
@@ -6814,7 +6817,7 @@
 	      _data.volumeName = this.volume;
 	      _data.volumeId = '';
 
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateVolume, _data, function (response) {
+	      _vueHttp2.default.http(this, 'get', _conf2.default.saveOrUpdateVolume, _data, function (response) {
 	        _this7.$set('newBookChapter', false);
 	        _this7.volume = '';
 	        _this7.getBookListFn();
@@ -6896,7 +6899,7 @@
 	        volumeId: this.id, // 卷id
 	        contentId: null
 	      };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateContent, _data, function (response) {
+	      _vueHttp2.default.http(this, 'get', _conf2.default.saveOrUpdateContent, _data, function (response) {
 	        history.back();
 	      });
 	    },
@@ -7171,7 +7174,7 @@
 
 	// 个人信息-基本信息
 	var info = _vueMin2.default.extend({
-	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution relative">' + '<ul class="nav"><li class="one active" v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li  v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">基本信息</span><span class="titleTwo">essential information</span></div><div class="portrait relative;" :style="loginImg"><span v-if="sex == \'男生\'" class="attention-name-sex attention-name-sexTow"><img src="../../img/sex_003.png" alt="" /></span><span v-if="sex == \'女生\'"  class="attention-name-sex attention-name-sexTow"><img src="../../img/sex_004.png" alt="" /></span>' + '<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container { margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"><img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div  style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clickFileActiveFn">重新选择</div></div><div  style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clearImgFn">取消上传</div></div><div  style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>' + '</div><div class="messageAI"><div class="up clear"><span class="up-name ">{{ userInfoList.userName }}</span><ul><li class="up-word">关注：<a v-if="attention.length !== 0">{{attention.length}}</a><a v-else>0</a></li><li class="up-word">粉丝：<a v-if="attentionTow.length !== 0">{{attentionTow.length}}</a><a v-else>0</a></li><li style="display:none;" class="up-word">好人卡：0</li></ul></div><div class="centreAI"><img class="imgAI1" src="../img/info_09.gif"/><span class="font">注册于{{ szxj.getLocalDate(userInfoList.createDate) }}</span><span>uid:&nbsp;{{ userInfoList.userId }}</span></div><div class="downAI"><span>签名：</span>' + '<input type="text" v-model="userInfoList.information" v-if="inputFlag"  placeholder="最多保存30个字符" style="width:440PX;margin-right:20px;padding-left:10px" />' + '<input type="text" v-model="userInfoList.information" v-else placeholder="请输入个人简介" style="width:440PX;margin-right:20px;padding-left:10px;border: 2px solid rgba(0,0,0,0);" readonly="readonly" />' + '<img src="../img/info_14.jpg" style="cursor:pointer" @click="setInputFlag" /></div></div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="change " @click="clickFileActiveFn">更换头像</div></div>' + '<div class="bookBlockList relative"><div v-if="infoFlag" style="position: absolute;top: 0px;left: 0px;bottom:0px;right: 0px;width: 100%;height: 230px;z-index: 999;"></div><div class="bookBlockList_title"><span class="hr"></span><span class="title">详细信息</span><span class="titleTwo">detailed information</span></div>' + '<div class="nameAI"><span class="name1">昵称：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" v-model="userName" /><span class="remarkAI">注： 修改名称需要600张好人卡</span></div><div class="sexAI"><span class="name1">性别：</span><label class="butt"><input type="radio" checked="checked" name="sex" v-model="userInfoList.sex"  value="男生"  />男</label><label class="butt"><input type="radio" name="sex" value="女生" v-model="userInfoList.sex" />女</label></div>' + '<div class="birthday"><span class="name1">生日：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" placeholder="请选择生日时间" v-model="userInfoList.birthday" index="0" readonly="readonly" style="cursor: pointer;" @click="showDate" />' + '<date-time :type.sync="Datetype" :show.sync="showA" :value.sync="userInfoList.birthday" :x="x" :y="y" :begin="begin" :end="end" :range="range"></date-time>' + '</div><div class="numberAI"><span class="name1">手机号码：</span><input type="text" v-model="userInfoList.telephone" style="border: none;" /><span class="remarkAI">注： 手机号码暂不支持修改</span></div><hr style="width:90%;border: 1px dotted #E1E1E1 ; margin:20px 0 0 5%;"/>' + '<div class="change2 " v-if="infoFlag" @click="setInfoFlag">修改</div><div class="change2 " v-else @click="submitInfoFlag">保存</div></div>' + '</div></div></div>',
+	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution relative">' + '<ul class="nav"><li class="one active" v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li  v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">基本信息</span><span class="titleTwo">essential information</span></div><div class="portrait relative;" :style="loginImg"><span v-if="sex == \'男生\'" class="attention-name-sex attention-name-sexTow"><img src="../../img/sex_003.png" alt="" /></span><span v-if="sex == \'女生\'"  class="attention-name-sex attention-name-sexTow"><img src="../../img/sex_004.png" alt="" /></span>' + '<div v-show="imgFlag" style="top: 100px;left:400px;z-index:99999;background-color: #FFFFFF;width: 335px;height: 360px;box-shadow: 1px 1px 15px rgba(0,0,0,0.3);padding: 50px 50px 40px 70px;position: absolute;"><input type="file" v-el:file style="display: none;" v-on:change="fileUpload" /><style> .cropper-container { margin-left: -116px !important; }</style><div style="position: absolute;top: 50px;left: 50%;width: 232px;height: 232px;"><img id="cropper-img" :src="Imgbase64 !== \'\' ? Imgbase64 : \'../img/232x232.jpg\' " style="width: 100%;height: 100%;border: 1px solid #989898;background-color: #e5e5e5;display: block;margin-left: -116px;"/></div><div style="position: absolute;top: 15px;right:195px;width:84px;font-size: 12px;text-align: center;line-height: 26px;height: 26px;">当前图片</div><div  style="position: absolute;right: 85px;top: 15px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clickFileActiveFn">重新选择</div></div><div  style="position: absolute;right: 85px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><div style="border-radius: 6px;width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="clearImgFn">取消上传</div></div><div  style="position: absolute;right: 180px;top:300px;width: 84px;height: 26px;border-radius: 6px;"><img src="../img/gou.png" style="position: absolute;top: 5px;left: 5px;"/><div style="padding-left: 10px;border-radius: 6px;box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.1);width:84px;font-size: 12px;height: 26px;line-height: 26px;text-align: center;cursor: pointer;" v-on:click="activeImgFn">确认上传</div></div><div style="position: absolute;width:100%;bottom:10px;left: 0px;font-size: 14px;text-align: center;">支持JPG,PNG等格式,图片需小于2M</div></div>' + '</div><div class="messageAI"><div class="up clear"><span class="up-name ">{{ userInfoList.userName }}</span><ul><li class="up-word">关注：<a v-if="attention.length !== 0">{{attention.length}}</a><a v-else>0</a></li><li class="up-word">粉丝：<a v-if="attentionTow.length !== 0">{{attentionTow.length}}</a><a v-else>0</a></li><li style="display:none;" class="up-word">好人卡：0</li></ul></div><div class="centreAI"><img class="imgAI1" src="../img/info_09.gif"/><span class="font">注册于{{ szxj.getLocalDate(userInfoList.createDate) }}</span><span>uid:&nbsp;{{ userInfoList.userId }}</span></div><div class="downAI"><span>签名：</span>' + '<input type="text" v-model="userInfoList.information" v-if="inputFlag"  placeholder="最多保存30个字符" style="width:440PX;margin-right:20px;padding-left:10px" />' + '<input type="text" v-model="userInfoList.information" v-else placeholder="请输入个人简介" style="width:440PX;margin-right:20px;padding-left:10px;border: 2px solid rgba(0,0,0,0);" readonly="readonly" />' + '<img src="../img/info_14.jpg" style="cursor:pointer" @click="setInputFlag" /></div></div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="change " @click="clickFileActiveFn">更换头像</div></div>' + '<div class="bookBlockList relative"><div v-if="infoFlag" style="position: absolute;top: 0px;left: 0px;bottom:0px;right: 0px;width: 100%;height: 230px;z-index: 999;"></div><div class="bookBlockList_title"><span class="hr"></span><span class="title">详细信息</span><span class="titleTwo">detailed information</span></div>' + '<div class="nameAI"><span class="name1">昵称：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" v-model="userName" /><span class="remarkAI">注： 修改名称需要600张好人卡</span></div><div class="sexAI"><span class="name1">性别：</span><label class="butt"><input type="radio"  name="sex" v-model="userInfoList.sex"  value="男生"  />男</label><label class="butt"><input type="radio" name="sex" value="女生" v-model="userInfoList.sex" />女</label></div>' + '<div class="birthday"><span class="name1">生日：</span><input :style="infoFlag ? \'border: 0px;padding-left: 5px;\':\'padding-left: 5px;\'" type="text" placeholder="请选择生日时间" v-model="userInfoList.birthday" index="0" readonly="readonly" style="cursor: pointer;" @click="showDate" />' + '<date-time :type.sync="Datetype" :show.sync="showA" :value.sync="userInfoList.birthday" :x="x" :y="y" :begin="begin" :end="end" :range="range"></date-time>' + '</div><div class="numberAI"><span class="name1">手机号码：</span><input type="text" v-model="userInfoList.telephone" style="border: none;" /><span class="remarkAI">注： 手机号码暂不支持修改</span></div><hr style="width:90%;border: 1px dotted #E1E1E1 ; margin:20px 0 0 5%;"/>' + '<div class="change2 " v-if="infoFlag" @click="setInfoFlag">修改</div><div class="change2 " v-else @click="submitInfoFlag">保存</div></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
@@ -7187,7 +7190,7 @@
 	      loginImg: '',
 	      attention: [],
 	      attentionTow: [],
-	      sex: '',
+	      sex: '男生',
 	      RequestObj: {
 	        status: 0,
 	        pageNo: 1,
@@ -7822,7 +7825,7 @@
 	var updatePass = _vueMin2.default.extend({
 	  template: '<div class="user_info_right"><div class="user_info_title"><div class="titleBlock">contribute</div><div class="titleBlock_LG">个人投稿</div></div><div class="user_info_content"><div class="contribution">' + '<ul class="nav"><li v-link="{path: \'/info\'}"><span class="circular"></span><span class="title_name">我的信息</span></li><li class="active" v-link="{path: \'/updatePass\'}"><span class="circular"></span><span class="title_name">修改密码</span></li></ul>' + '<div class="content"><div class="bookBlockList"><div class="bookBlockList_title"><span class="hr"></span><span class="title">修改密码</span><span class="titleTwo">essential information</span></div>'
 	  // +'<div class="numberAItwo1"><span class="name1">旧密码：</span><input type="" name="" id="" value="" /></div>'
-	  + '<div class="numberAItwo2"><span class="name1">新密码：</span><input type="password" v-model="passWord" /><span class="remark1">密码由6-16个字符组成，区分大小写（不能是9位一下的纯数字，不能包含空格）</span></div>' + '<div class="numberAItwo3"><span class="name1">确认新密码：</span><input type="password" v-model="passWordConfirm"  /><span class="remark1">密码强度：</span></div>' + '<div class="numberAItwo4"><span class="name1">手机验证：</span><input type="text" v-model="telephoneCode" />' + '<div class="verify" v-if="verifyFlag" @click="showCaptchaObj">发送验证码</div>' + '<div class="verify_no" v-else>{{verifyNumber}}重新发送</div>' + '<div id="popup-captcha"></div>' + '</div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="btn change" @click="submitFn">确认</div></div></div>' + '</div></div></div>',
+	  + '<div class="numberAItwo2"><span class="name1">新密码：</span><input type="password" v-model="passWord" /><span class="remark1">密码由6-16个字符组成，区分大小写（不能包含空格）</span></div>' + '<div class="numberAItwo3"><span class="name1">确认新密码：</span><input type="password" v-model="passWordConfirm"  /><span class="remark1">密码强度：</span></div>' + '<div class="numberAItwo4"><span class="name1">手机验证：</span><input type="text" v-model="telephoneCode" />' + '<div class="verify" v-if="verifyFlag" @click="showCaptchaObj">发送验证码</div>' + '<div class="verify_no" v-else>{{verifyNumber}}重新发送</div>' + '<div id="popup-captcha"></div>' + '</div><hr style="border: 1px dotted #E1E1E1; margin:0 0 0 5%;" width="90%" /><div class="btn change" @click="submitFn">确认</div></div></div>' + '</div></div></div>',
 
 	  data: function data() {
 	    return {
