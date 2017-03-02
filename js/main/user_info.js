@@ -5416,7 +5416,7 @@
 	PathList.rootPath = '/Controller';
 	//PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
-	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
 
 	// 登陆的3个请求
@@ -7045,7 +7045,7 @@
 	        volumeId: this.volumeTowId, // 卷id
 	        contentId: this.contentId
 	      };
-	      _vueHttp2.default.http(this, 'post', _conf2.default.saveOrUpdateContent, _data, function (response) {
+	      _vueHttp2.default.http(this, 'get', _conf2.default.saveOrUpdateContent, _data, function (response) {
 	        history.back();
 	      });
 	    },
