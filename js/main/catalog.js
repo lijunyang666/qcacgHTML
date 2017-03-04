@@ -129,58 +129,9 @@
 	    sex: '',
 	    payCardAmount: 0,
 	    numb: 0,
-	    amount: 0,
-	    stopTime: 0,
-	    curSObj: null,
-	    curOpacity: null
+	    amount: 0
 	  },
 	  methods: {
-	    alertFn: function alertFn() {
-	      this.curSObj = document.getElementsByClassName('alert_one');
-	      this.curSObj.style = 'position: fixed;';
-	      this.curSObj.style = 'top: 25%;';
-	      this.curSObj.style = 'left: 45%;';
-	      this.curSObj.style = 'display: none;';
-	      this.curSObj.style = 'filter: alpha(opacity=0)';
-	      this.curSObj.style = 'width:150px;';
-	      this.curSObj.style = 'height:50px;';
-	      this.curSObj.style = 'text-align:center;';
-	      this.curSObj.style = 'color:white;';
-	      this.curSObj.style = 'background-color:black;';
-	      this.alertTowFn();
-	    },
-	    alertTowFn: function alertTowFn() {
-	      this.curOpacity = 0;
-	      this.curSObj.style.display = '';
-	      alert('a');
-	      this.alertThrFn();
-	    },
-	    alertThrFn: function alertThrFn() {
-	      curOpacity += 5;
-	      this.curSObj.style.opacity = this.curOpacity;
-	      if (curOpacity < 1) {
-	        setTimeout('alertThrFn()', 5);
-	      } else {
-	        stopTime += 10;
-	        if (stopTime < 200) {
-	          setTimeout('alertThrFn()', 5);
-	        } else {
-	          stopTime = 0;
-	          alertFouFn();
-	        }
-	      }
-	      this.curSObj.style = 'top: 27%;';
-	      this.alertFouFn();
-	    },
-	    alertFouFn: function alertFouFn() {
-	      curOpacity -= 5;
-	      if (curOpacity > 0) {
-	        curSObj.style.opacity = curOpacity;
-	        setTimeout('alertFouFn()', 5);
-	      } else {
-	        curSObj.style.display = 'none';
-	      }
-	    },
 	    setreplyFn: function setreplyFn(replyId) {
 	      this.replyId = replyId;
 	    },
@@ -5088,7 +5039,7 @@
 	PathList.rootPath = '/Controller';
 	//PathList.rootPath = 'http://192.168.126.40:8080';
 	//PathList.rootPath = 'http://192.168.126.39:8080';
-	PathList.rootPath = 'http://121.196.194.211:8080/Controller';
+	//PathList.rootPath = 'http://121.196.194.211:8080/Controller';
 	//PathList.rootPath = "http://127.0.0.1:7788"
 
 	// 登陆的3个请求
