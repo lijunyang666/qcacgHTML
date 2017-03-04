@@ -348,7 +348,7 @@
 .moneyRecharge_div:hover{color:#fff;background-color:#E0E0E0;transition:all .2s ease;-webkit-transition:all .2s ease}
 .registration{width:510px;height:340px;box-shadow:0 1px 8px rgba(0,0,0,.35);position:fixed;left:40%;top:30%;background-color:#fff;border-radius:8px}
 .registration_div_span{padding-left:25px;font-size:12px;font-family:'幼圆';color:#FA7787;display:block;border-bottom:1px solid #E0E0E0;height:26px}
-.registrationTow{height:355px;margin-left:52px}
+.registrationTow{height:400px;margin-left:52px}
 .verification_divTow{padding-left:52px!important}
 .humanName{margin-left:65px!important}
 .verification{margin-left:35px!important}
@@ -371,3 +371,4 @@
 .goodFnSev{border-top:none;border-left:none;border-right:none;width:50px}
 .verification_div_pay{padding-top:15px;border-top:1px solid #E0E0E0;padding-left:36px}
 .isTrueShow{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.15)}
+.verification_totel{width:510px;height:50px;padding-left:68px;line-height:30px;font-family:'幼圆';font-size:16px;border-bottom:1px solid #E0E0E0;padding-top:10px}

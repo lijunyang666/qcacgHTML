@@ -5825,7 +5825,7 @@
 	      var _data = {};
 	      _vueHttp2.default.http(this, 'get', _conf2.default.logout, {}, function (response) {});
 	      localStorage.removeItem('JSESSIONID');
-	      // window.location.href = this.path.TemprootPath + '/index.html';
+	      window.location.href = this.path.TemprootPath + '/index.html';
 	    },
 	    setHref: function setHref(v) {
 	      location.href = v;
