@@ -25,7 +25,7 @@
 .screen h3{width:285px;height:19px;margin:40px 0 0 18px;font-family:"幼圆";font-size:18px}
 .screen .titile_tow{width:285px;height:19px;margin:40px 0 0 18px;font-family:"幼圆";font-size:16px}
 .works ul{width:252px;height:140px;margin:0 0 0 42px;overflow:hidden;position:relative}
-.button{width:321px;height:10px}
+.button{width:321px;height:10px;padding-top:6px}
 .button img{display:block;float:left}
 .works ul li{width:84px;height:140px;margin:14px 0 0 0;position:absolute}
 .works li img{margin:0 0 10px 0;display:block;width:70px;height:100px;border-radius:4px}
@@ -114,7 +114,7 @@
 .index .text_input .clearr{width:700px;min-height:80px;margin-bottom:40px}
 .index .text_input .clearr .user_head{margin-right:20px;float:left;padding-top:4px}
 .index .text_input .clearr li{float:left}
-.index .text_input .clearr .MessageBtn{width:56px;height:56px;border-radius:6px;background-color:#00A1D6;margin-left:15px;color:#fff;text-align:center;margin-top:2px;cursor:pointer}
+.index .text_input .clearr .MessageBtn{width:56px;height:56px;border-radius:6px;background-color:#00A1D6;margin-left:15px;color:#fff;text-align:center;margin-top:5px;cursor:pointer}
 .index .text_input .clearr .MessageBtn:active{box-shadow:1px 1px 5px 3px rgba(0,0,0,.1) inset}
 .index .text_input .clearr .MessageBtn:hover{background-color:#3DB2D8}
 .index .text_input .clearr .MessageBtn span{width:40px;display:inline-block;height:40px;padding-top:15px;cursor:pointer}
@@ -156,7 +156,7 @@
 .index .text_sort .active{border-bottom:1px solid #00A1D6;height:27px;color:#00A1D6}
 .index .text_sort .text_sort_ul .text_sort_li:hover{color:#00A1D6;width:75px;height:27px;text-align:center;border-bottom:1px solid #00A1D6}
 .index .CommentArea{width:680px}
-.index .CommentArea .hr{border-bottom:1px solid #e5e9ef;width:660px;height:1px;margin-left:100px;margin-top:10px}
+.index .CommentArea .hr{border-bottom:1px solid #e5e9ef;width:661px;height:1px;margin-left:100px;margin-top:10px}
 .index .CommentArea .updata_dispaly{color:#9E9E9E;margin:15px 0 20px 120px;line-height:22px;font-size:13px}
 .index .CommentArea .updata_dispaly span{color:#3DB2D8;cursor:pointer;width:60px;height:22px;display:inline-block;text-align:center}
 .index .CommentArea .updata_dispaly span:hover{color:#00A1D6;background-color:#F0F0F0;border-radius:6px}

@@ -55,12 +55,12 @@
 .contribution .bookBlockList .list{padding:15px 20px}
 .contribution .bookBlockList .list li{float:left;width:20%;cursor:pointer}
 .contribution .bookBlockList .vertical-img{width:128px;height:174px;margin:0 auto;display:block;margin-top:25px;position:relative;overflow:hidden;margin-bottom:10px}
-.contribution .bookBlockList .vertical-img .cover{width:128px;height:174px;border-radius:6px}
+.contribution .bookBlockList .vertical-img .cover{width:124px;height:174px;border-radius:6px}
 .contribution .bookBlockList .vertical-img .state_one{width:54px;height:20px;border-radius:0 8px 0 8px;background-color:#00A1D6;position:absolute;top:0;right:0;color:#fff;font-size:10px;text-align:center;line-height:20px}
 .contribution .bookBlockList .vertical-img .state_tow{width:54px;height:20px;border-radius:8px 0 0 8px;background-color:#4FC6AA;position:absolute;top:30px;right:0;color:#fff;font-size:10px;text-align:center;line-height:20px;display:none}
 .contribution .bookBlockList .vertical-title{height:36px;width:90px;font-size:12px;text-align:center;margin:0 auto;overflow:hidden;text-overflow:ellipsis;font-family:"微软雅黑"}
 .user_info .user_info_right .user_info_content .contribution .content .catalogue{box-shadow:1px 1px 15px rgba(0,0,0,.3);margin-bottom:26px;padding-top:1px}
-.catalogue .content_bookTitle{float:right;margin-top:15px;margin-right:72px;font-size:15px;cursor:pointer}
+.catalogue .content_bookTitle{float:right;margin-top:0;margin-right:72px;font-size:15px;cursor:pointer}
 .catalogue .content_bookTitle a{color:#000}
 .catalogue .content_bookTitle a:visited{color:#000}
 .catalogue .content_bookTitle a:hover{color:#009926;transition:all .2s}
@@ -215,7 +215,7 @@
 .numberAItwo4 .verify:hover{background-color:#00A1D6}
 .numberAItwo4 .verify_no{color:#fff;display:inline-block;background-color:#bcbcc3;text-align:center;width:70px;height:22px;font-size:12px;padding-top:5px;margin-left:20px;border-radius:4px;cursor:pointer}
 .book-navAI .book-navAI_bookid{height:212px;width:128px;margin:10px 20px 0 55px;display:inline-block}
-.book-navAI .book-img{height:174px;width:128px;cursor:pointer;border-radius:6px}
+.book-navAI .book-img{height:174px;width:124px;cursor:pointer;border-radius:6px}
 .book-navAI_bookid .book-name{text-align:center;cursor:pointer;width:128px;height:28px;overflow:hidden;display:inline-block}
 .book-navAI_bookid .book-name a{color:#000}
 .book-navAI_bookid .book-name a:visited{color:#000}
