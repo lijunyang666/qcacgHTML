@@ -129,7 +129,9 @@
 	    sex: '',
 	    payCardAmount: 0,
 	    numb: 0,
-	    amount: 0
+	    amount: 0,
+	    updateCycle: '',
+	    bookIsSign: ''
 	  },
 	  methods: {
 	    setreplyFn: function setreplyFn(replyId) {
@@ -438,6 +440,8 @@
 	        _this9.bookCopperCoins = response.data.bookCustom.bookCopperCoins;
 	        _this9.authorName = response.data.bookCustom.userEntity.userName;
 	        _this9.autograph = response.data.bookCustom.userEntity.information;
+	        _this9.updateCycle = response.data.bookCustom.updateCycle;
+	        _this9.bookIsSign = response.data.bookCustom.bookIsSign;
 	      });
 	      _vueHttp2.default.http(this, 'get', _conf2.default.findUserOtherBook, _data, function (response) {
 	        // 取到数据渲染
@@ -5166,6 +5170,8 @@
 	PathList.logout = PathList.rootPath + '/logout.shtml';
 	// 回复签约 
 	PathList.userRegainBookSign = PathList.rootPath + '/book//userRegainBookSign.shtml';
+	// 历史收入
+	PathList.totalIncome = PathList.rootPath + '/pay/totalIncome.shtml';
 
 	exports.default = PathList;
 

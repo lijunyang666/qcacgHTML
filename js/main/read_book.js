@@ -4924,6 +4924,8 @@
 	PathList.logout = PathList.rootPath + '/logout.shtml';
 	// 回复签约 
 	PathList.userRegainBookSign = PathList.rootPath + '/book//userRegainBookSign.shtml';
+	// 历史收入
+	PathList.totalIncome = PathList.rootPath + '/pay/totalIncome.shtml';
 
 	exports.default = PathList;
 
