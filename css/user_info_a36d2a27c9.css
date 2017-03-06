@@ -252,8 +252,8 @@
 .img-attention-word .attention-word3{padding-left:300px}
 .bookBlockList p{display:line-block;padding:5px 0 0 70px;margin-bottom:10px;width:780px;text-indent:15px;line-height:1.2;min-height:16px;word-wrap:break-word;word-break:normal}
 .bookBlockList p span{color:#169BD5}
-.pay-head{font-size:16px;margin:10px 0 15px 80px}
-.pay-income{width:842px;height:20px;margin:0 0 50px 350px}
+.pay-head{font-size:16px;margin:10px 0 30px 80px}
+.pay-income{width:842px;height:20px;margin:0 0 50px 125px}
 .pay-income li{float:left;font-size:17px;padding-left:10px}
 .pay-incomeTow{width:842px;height:20px;margin:0 0 50px 358px}
 .pay-incomeTow li{float:left;font-size:17px;padding-left:3px}
@@ -270,7 +270,7 @@
 .pay-c:hover{background-color:#00A1D6}
 .pay-d{font-size:24px;margin-left:120px;margin-bottom:15px}
 .pay-number{display:inline-block;font-size:24px;margin:15px 120px 0 120px}
-.pay-check{display:inline-block;width:70px;height:25px;background-color:#3db2d8;border-radius:8px;text-align:center;line-height:25px;font-size:14px;color:#fff;cursor:pointer;margin-left:8px}
+.pay-check{display:inline-block;width:70px;height:25px;background-color:#3db2d8;border-radius:8px;text-align:center;line-height:25px;font-size:14px;color:#fff;cursor:pointer}
 .pay-check a:visited{color:#fff}
 .pay-check:hover{background-color:#00A1D6}
 .explain{margin-left:80px;margin-top:20px}
@@ -332,11 +332,11 @@
 .sign-Block .sign_sub .sign_btnTow{width:95px;height:26px;background-color:#DDD;border-radius:8px;margin-left:25px;font-size:12px;color:#fff;text-align:center;line-height:26px;margin-top:15px;display:inline-block;cursor:pointer;font-family:"华康少女文字W5(P)"}
 .sign-Block .sign_sub .sign_img{width:100px;height:25.5px;margin-top:10px;margin-left:210px}
 .TowHeadrs{margin-top:3px!important}
-.moneyRecharge{width:500px;height:315px;box-shadow:0 1px 8px rgba(0,0,0,.35);position:fixed;left:40%;top:30%;background-color:#fff;border-radius:8px}
+.moneyRecharge{width:500px;height:350px;box-shadow:0 1px 8px rgba(0,0,0,.35);position:fixed;left:40%;top:30%;background-color:#fff;border-radius:8px}
 .moneyRecharge_header{font-size:18px;margin:18px 0 20px 0;font-family:'幼圆';height:30px;border-bottom:1px solid #DEDEDE;line-height:20px;padding-left:15px}
 .moneyRecharge_name{margin-bottom:20px;margin-left:50px;font-family:'幼圆';font-size:15px}
 .moneyRecharge_name input{border-radius:8px;height:26px;width:180px;margin-left:15px;padding-left:15px}
-.moneyRecharge_number{width:500px;height:35px;border-bottom:1px solid #DEDEDE;border-top:1px solid #DEDEDE;margin-bottom:15px;font-family:'幼圆';padding-left:25px;line-height:35px}
+.moneyRecharge_number{width:500px;height:35px;border-bottom:1px solid #DEDEDE;border-top:1px solid #DEDEDE;font-family:'幼圆';padding-left:25px;line-height:35px}
 .moneyRecharge_number:hover{border-bottom:1px solid #00A1D6;border-top:1px solid #00A1D6}
 .moneyRecharge_number input{width:350px;padding-left:300px;border:none}
 .moneyRecharge_pay{width:500px;height:45px}
@@ -371,4 +371,6 @@
 .goodFnSev{border-top:none;border-left:none;border-right:none;width:50px}
 .verification_div_pay{padding-top:15px;border-top:1px solid #E0E0E0;padding-left:36px}
 .isTrueShow{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.15)}
-.verification_totel{width:510px;height:50px;padding-left:68px;line-height:30px;font-family:'幼圆';font-size:16px;border-bottom:1px solid #E0E0E0;padding-top:10px}
+.verification_totel{width:510px;height:50px;padding-left:68px;line-height:30px;font-family:'幼圆';font-size:16px;font-weight:600;border-bottom:1px solid #E0E0E0;padding-top:10px;color:red}
+.moneyRecharge_numberTow{margin-top:0!important;border-top:1px solid rgba(222,222,222,0);margin-bottom:15px}
+.moneyRecharge_numberTow input{width:323px!important;padding-left:273px!important}
