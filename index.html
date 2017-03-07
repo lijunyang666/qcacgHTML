@@ -7,7 +7,7 @@
     <meta name="description" content="QC原创轻小说，一个在二次元盛起的魔法圣殿，拥有魔幻与神奇色彩，为二次元提供轻小说投稿与画师约稿相结合的平台。加入我们，接受契约，用轻松奇幻的文字留下你心中的故事。 ">
 		<title>【QC轻小说】原创轻小说-轻小说投稿-</title>
 		<link rel="stylesheet" href="css/main_ddfaca9e09.css" />
-		<link rel="stylesheet" href="css/index_886ee7d32e.css" />
+		<link rel="stylesheet" href="css/index_3bed878f4f.css" />
 		<link rel="stylesheet" href="css/headerOrFooter_e47ccb1647.css" />
 	</head>
 	<body id="app" v-show="bodyFlag" style="display: none;background-color: #FeFeFe;">
@@ -58,6 +58,7 @@
       <div class="display"> 
        <a target="_blank" :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_L" />
+         <div v-if="obj.bookIsSign ==1 " class="update"><img src="../img/yellowking_02.png" alt="" /></div>
        </a> 
        <a target="_blank" :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
         <div class="hide"> 
@@ -93,6 +94,7 @@
           
            <a class="display" target="_blank" :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
              <img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_S" /> 
+             <div v-if="obj.bookIsSign ==1 " class="update"><img src="../img/yellowking_02.png" alt="" /></div>
              <div class="Small"> 
                   <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
                   <label>{{ obj.author }}</label> 
@@ -116,6 +118,7 @@
        <figure v-for="obj in indexList.allBook" v-if="$index >= 4"  @mouseover="setMouseOut($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_S" /></a> 
+         <div v-if="obj.bookIsSign == 1 " class="update"><img src="../img/yellowking_02.png" alt="" /></div>
          <a target="_blank" :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
           <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
@@ -213,6 +216,7 @@
        <figure v-for="obj in indexList.newBookRecom" v-if="$index < 4" @mouseover="setMouseOutTwo($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_S" /></a> 
+         <div v-if="obj.bookIsSign ==1 " class="update"><img src="../img/yellowking_02.png" alt="" /></div>
          <a target="_blank" :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
           <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
@@ -238,6 +242,7 @@
        <figure v-for="obj in indexList.newBookRecom" v-if="$index >= 4" @mouseover="setMouseOutTwo($index, $event)"> 
         <div class="display"> 
          <a href="javascript:;"><img src="img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" class="details_img bookImg_S" /></a> 
+         <div v-if="obj.bookIsSign ==1 " class="update"><img src="../img/yellowking_02.png" alt="" /></div>
          <a target="_blank" :href="path.TemprootPath + '/view/catalog.html?bookId=' + obj.bookId"> 
          <div class="Small"> 
           <img :src="obj.userHead ? path.rootPath + obj.userHead:''" class="imgHeadPortrait" /> 
@@ -409,6 +414,6 @@
 </div> 
 </div>	
 <myfooter></myfooter>
-<script src="./js/main/indexMain_fb8ba173b2.js"></script>
+<script src="./js/main/indexMain_b520497631.js"></script>
 </body>
 </html>

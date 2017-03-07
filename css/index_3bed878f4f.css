@@ -148,7 +148,7 @@
 .Word_cont a{width:120px;display:inline-block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .index .Word p{width:278px;height:20px;line-height:20px;font-size:10px;text-align:center;background:#efefef;border-radius:4px;overflow:auto;cursor:pointer}
 .index .display{display:block;width:124px;height:174px;position:relative;overflow:hidden;color:#fff;background-color:#eee;border-radius:4px}
-.index .display .details_img{height:174px;width:128px}
+.index .display .details_img{height:174px;width:128px;position:relative}
 .index .display .Small{position:absolute;z-index:1;width:100%;height:100%;top:0;background-color:#000;background-color:rgba(0,0,0,.15);filter:alpha(Opacity=0);padding:10px;opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease;border-radius:4px;color:#FFF}
 .index .display:hover .Small{opacity:1;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}
 .index .display:hover .details_img{-webkit-filter:blur(6px)}
@@ -162,9 +162,11 @@
 .index .Small .Small_ul{position:absolute;bottom:20px;left:15px}
 .index .Small .Small_ul li{height:14px;line-height:14px;width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:10px;font-size:12px;font-weight:600}
 .imgHeadPortrait{height:42px;width:42px;border-radius:64px;margin-top:3px}
-.bookImg_Sl{height:84px;width:60px;border-radius:4px}
-.bookImg_S{width:128px;height:174px;border-radius:4px}
-.bookImg_L{width:157px;height:236px;border-radius:4px}
-.bookImg_X{width:310px;height:435px;border-radius:4px}
+.bookImg_Sl{height:84px;width:60px;border-radius:4px;position:relative}
+.bookImg_S{width:128px;height:174px;border-radius:4px;position:relative}
+.bookImg_L{width:157px;height:236px;border-radius:4px;position:relative}
+.bookImg_X{width:310px;height:435px;border-radius:4px;position:relative}
+.update{width:30px;height:21px;border-radius:4px 0 12px 0;position:absolute;top:0;left:0;background-color:#ffd800}
+.update img{position:absolute;top:2px;left:5px;width:16px;height:16px}
 .white{height:155px}
 .white_sidebar{height:140px}

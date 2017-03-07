@@ -95,7 +95,8 @@
 	      date: 1, // 0 近期 1远期
 	      bookTypeId: '',
 	      pageNo: 1,
-	      pageSize: 7
+	      pageSize: 7,
+	      bookIsSign: ''
 	    },
 	    rankingList: {
 	      copperCoinsList: [],
@@ -214,6 +215,7 @@
 	      _vueHttp2.default.http(this, 'get', _conf2.default.getIndexData, _data, function (response) {
 	        _this2.indexList = response.data;
 	        _this2.theHotList = response.data.theHot;
+
 	        console.log(_this2.indexList);
 	        var dateTime = new Date();
 	        _this2.imgFlag = dateTime.getTime();
