@@ -4,11 +4,11 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<title>QC文学网-排行榜</title>
-  	<link rel="stylesheet" href="../css/ranking_6c47f008ba.css" />
-  	<link rel="stylesheet" href="../css/headerOrFooter_e47ccb1647.css" />
-  	<link rel="stylesheet" href="../css/main_ddfaca9e09.css" />
-  	<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
-  	<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
+  	<link rel="stylesheet" href="../css/ranking.css" />
+  	<link rel="stylesheet" href="../css/headerOrFooter.css" />
+  	<link rel="stylesheet" href="../css/main.css" />
+  	<link rel="stylesheet" href="../css/LOgin.css" />
+  	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
 	</head>
 	<body id="app" v-show="bodyFlag" style="display: none;">
 	  <alert v-ref:vue-alert></alert>
@@ -50,9 +50,13 @@
 	  			<li class="List_li" @click="setTimeRank(2)">总排行</li>
 	  		</ul>
 	  	</div>
-	  	<div class="content_ranking active" v-for="obj in result">
+	  	<div class="content_ranking active" v-for="obj in result">	  	  
 	  		<h1>{{ ($index + 1) + ((RequestObj.pageNo - 1) * 12) }}</h1>
-	  		<a href="javascript:;"><img src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" @click="gotoBook(obj.bookId)"/></a>
+	  		<a href="javascript:;">
+	  		  <img class="img" src="../img/z-imgBj.jpg" @load="szxj.loadImg(obj.bookCoverImage ? path.rootPath + obj.bookCoverImage: '', $event)" @click="gotoBook(obj.bookId)"/>
+	  		  <div v-if="obj.bookIsSign ==1 " class="updateOne"><img  src="../img/sign01_03.png" alt="" /></div>
+	  		</a>
+	  		
 	  		<ul>
 	  			<li><a href="javascript:;" class="content_a" title="{{obj.bookName}}"><span @click="gotoBook(obj.bookId)">{{obj.bookName}}</span></a></li>
 	  			<li style="padding-top: 6px;">作者：{{obj.author}}</li>
@@ -91,6 +95,6 @@
   </div>
 	<myfooter></myfooter>
 	</body>
-<script src="../js/main/ranking_39c4a782a6.js"></script>
+<script src="../js/main/ranking.js"></script>
 
 </html>

@@ -5,10 +5,10 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>QC文学网-登入页</title>
-	<link rel="stylesheet" href="../css/headerOrFooter_e47ccb1647.css" />
-	<link rel="stylesheet" href="../css/main_ddfaca9e09.css" />
-	<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
-	<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
+	<link rel="stylesheet" href="../css/headerOrFooter.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/LOgin.css" />
+	<link rel="stylesheet" href="../css/jquery-ui.min.css" />
 	</head>
 	<body id="app">
 	  <alert v-ref:vue-alert></alert>
@@ -21,16 +21,16 @@
 				<img src="../img/logo-1.png" class="Login_img" style="margin-top: -17px;"/>
 				<p class="line">
 					<input  type="password" style="position: absolute; top: -999px" />
-					<input class="input" name="user" placeholder ="请输入手机号" autocomplete="off"  color="black"/>
+					<input class="input" name="user" placeholder ="请输入手机号" autocomplete="off"  color="black" v-model="telephone"/>
 					<img src="../img/lock-1.png"/>
 				</p>
 				<p class="line">
-					<input class="input" type="password" name="password" placeholder ="请输入密码" autocomplete="off" />
+					<input class="input" type="password" name="password" placeholder ="请输入密码" autocomplete="off" v-model="password" />
 					<img src="../img/lock-png.png"/>
 				</p>
 				<p class="line">
-					<input type="checkbox" checked="checked" class="Login_input"/>
-					<label>记住账号</label>
+					<input type="checkbox"  class="Login_input"/>
+					<label @click="remeberFn">记住账号</label>
 				</p>
 				<div id="popup-captcha"></div>
 				<a class="btn btn_submit a" id="btn-login">登入</a>
@@ -50,5 +50,5 @@
 <script type="text/javascript" src="../lib/jquery-ui.min.js" ></script>
 <script type="text/javascript" src="../lib/jquery.validate.js"></script>
 <script src="http://static.geetest.com/static/tools/gt.js"></script>
-<script src="../js/main/login_a4cd746721.js"></script>
+<script src="../js/main/login.js"></script>
 </html>
