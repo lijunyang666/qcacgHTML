@@ -196,6 +196,7 @@
 	        if (response.data == null) {} else {
 	          _this2.telephone = response.data.data.telephone;
 	          _this2.password = response.data.data.password;
+	          document.getElementsByClassName('Login_input')[0].setAttribute('checked', 'checked');
 	        }
 	      });
 	    },

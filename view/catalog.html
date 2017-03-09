@@ -4,8 +4,8 @@
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta charset="UTF-8" />
 		<title>QC文学网-目录页</title>
-		<link rel="stylesheet" href="../css/main_0b70ba331b.css" />
-		<link rel="stylesheet" href="../css/catalog_ce13f4a02c.css" />
+		<link rel="stylesheet" href="../css/main_8e64e6fdaf.css" />
+		<link rel="stylesheet" href="../css/catalog_3d2d4e3207.css" />
     <link rel="stylesheet" href="../css/headerOrFooter_e47ccb1647.css" />
 		<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
 		<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
@@ -94,7 +94,7 @@
 </div>
 <style>
   .wangEditor-txt {
-    height: 60px !important;
+    min-height: 60px !important;
     max-height: 300px;
     margin-top: 0px !important;
     padding: 5px 10px !important;
@@ -141,7 +141,7 @@
 <div class="text_input">
 	<ul class="clearr">
 		<li class="user_head"><a href="javascript:;">
-		  <img src="../img/sss8.jpg" @load="szxj.loadImg(loginImg ? path.rootPath + loginImg: '', $event)"/></a></li>
+		  <img :src="path.rootPath + userImage " @load="szxj.loadImg(loginImg ? path.rootPath + loginImg: '', $event)"/></a></li>
 
 		<li class="user_msg" v-if="loginFlag" >
 		  <editor :id="'editor_'" v-ref:editor></editor>
@@ -448,7 +448,7 @@
 <link rel="stylesheet" href="../css/wangEditor.min_6c8738c0e8.css" />
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/wangEditor.min.js"></script>
-<script src="../js/main/catalog_843fb95630.js"></script>
+<script src="../js/main/catalog_af5f5cc1be.js"></script>
 <script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
 <script type="text/javascript" id="bdshell_js"></script>
 <script type="text/javascript">

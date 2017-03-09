@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>QC文学网-分类页</title>
-    <link rel="stylesheet" href="../css/main_0b70ba331b.css" />
+    <link rel="stylesheet" href="../css/main_8e64e6fdaf.css" />
     <link rel="stylesheet" href="../css/headerOrFooter_e47ccb1647.css" />
-		<link rel="stylesheet" href="../css/main_0b70ba331b.css" />
+		<link rel="stylesheet" href="../css/main_8e64e6fdaf.css" />
 		<link rel="stylesheet" href="../css/LOgin_45d62b96f8.css" />
 		<link rel="stylesheet" href="../css/jquery-ui.min_619d8a3740.css" />
   </head>
@@ -89,7 +89,7 @@
         			<div class="vertical-img" @click="gotoBook(temp.bookId)">
         			 
         				<img src="../img/z-imgBj.jpg" @load="szxj.loadImg(temp.bookCoverImage ? path.rootPath + temp.bookCoverImage: '', $event)"  class="cover" />
-        				<div v-if="temp.bookIsSign == 1 " class="update"><img src="../img/sign01_03.png" alt="" /></div>
+        				<div v-if="temp.bookIsSign == 1 " class="update_Tow"><img src="../img/sign01_03.png" alt="" /></div>
         				<div class="vertical-img-line">
         					<img :src="path.rootPath + temp.userHeadImg " />
         					<div class="vertical-Author-name vertical-hover">{{temp.author}}</div>

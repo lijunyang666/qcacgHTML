@@ -113,13 +113,14 @@
 .index .text_comment ul li{min-width:30px;float:left}
 .index .text_comment ul li span{color:#00A1D6;font-size:18px;line-height:5px;min-width:10.55px}
 .index .text_input{width:675px;margin:25px 0 0 50px}
-.index .text_input .clearr{width:700px;min-height:80px;margin-bottom:40px}
+.index .text_input .clearr{width:705px;min-height:80px;margin-bottom:40px}
 .index .text_input .clearr .user_head{margin-right:20px;float:left;padding-top:4px}
+.index .text_input .clearr .user_head img{height:54px;width:54px;border-radius:54px}
 .index .text_input .clearr li{float:left}
-.index .text_input .clearr .MessageBtn{width:56px;height:56px;border-radius:6px;background-color:#00A1D6;margin-left:15px;color:#fff;text-align:center;margin-top:5px;cursor:pointer}
+.index .text_input .clearr .MessageBtn{width:60px;height:60px;border-radius:6px;background-color:#00A1D6;margin-left:15px;color:#fff;text-align:center;cursor:pointer}
 .index .text_input .clearr .MessageBtn:active{box-shadow:1px 1px 5px 3px rgba(0,0,0,.1) inset}
 .index .text_input .clearr .MessageBtn:hover{background-color:#3DB2D8}
-.index .text_input .clearr .MessageBtn span{width:40px;display:inline-block;height:40px;padding-top:15px;cursor:pointer}
+.index .text_input .clearr .MessageBtn span{width:40px;display:inline-block;height:40px;padding-top:17px;cursor:pointer}
 .index .text_input .clearr textarea{width:550px;height:60px;border-radius:8px;resize:none}
 .index .CommentArea{width:780px}
 .index .CommentArea .Publish{width:650px;height:90px;margin-left:90px;margin-top:8px}

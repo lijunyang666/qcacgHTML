@@ -131,7 +131,8 @@
 	    numb: 0,
 	    amount: 0,
 	    updateCycle: '',
-	    bookIsSign: ''
+	    bookIsSign: '',
+	    userImage: ''
 	  },
 	  methods: {
 	    setreplyFn: function setreplyFn(replyId) {
@@ -453,6 +454,7 @@
 	      this.getComment(_data);
 	      _vueHttp2.default.http(this, 'get', _conf2.default.getStatus, _data, function (response) {
 	        _this9.loginFlag = response.data.status.flag;
+	        _this9.userImage = response.data.status.userImage;
 	      });
 	    },
 	    rewardFn: function rewardFn() {
