@@ -254,15 +254,17 @@ body{-webkit-user-select:none}
 .bookBlockList p{display:line-block;padding:5px 0 0 70px;margin-bottom:10px;width:780px;text-indent:15px;line-height:1.2;min-height:16px;word-wrap:break-word;word-break:normal}
 .bookBlockList p span{color:#169BD5}
 .pay-head{font-size:16px;margin:10px 0 30px 80px}
+.pay-head span{display:inline-block}
+.pay-head span img{width:16px;height:16px;cursor:pointer;margin-left:10px;vertical-align:bottom}
 .pay-income{width:842px;height:20px;margin:0 0 50px 125px}
 .pay-income li{float:left;font-size:17px;padding-left:10px}
 .pay-incomeTow{width:842px;height:20px;margin:0 0 50px 358px}
 .pay-incomeTow li{float:left;font-size:17px;padding-left:3px}
 .money{width:150px;font-size:18px!important;height:18px}
 .moneyTow{width:142px;font-size:18px!important;height:18px}
-.pay-a{overflow:hidden;color:#777;width:800px;margin:auto;margin-bottom:5px;margin-left:70px}
+.pay-a{overflow:hidden;color:#777;width:800px;margin:auto;margin-bottom:5px;margin-left:15px}
 .pay-a li{float:left;padding-left:120px}
-.table-a{text-align:center;color:#7F7E7E;margin-top:10px;margin-left:125px;min-height:450px}
+.table-a{text-align:center;color:#7F7E7E;margin-top:10px;margin-left:68px;min-height:450px;font-size:13px}
 .table-a tr td{width:150px;height:50px}
 .pay-head2{font-size:20px;margin:20px 0 15px 80px;font-weight:500}
 .pay-b{display:inline-block;width:70px;height:25px;color:#fff;border-radius:8px;background-color:#3db2d8;margin:10px 50px 15px 320px;font-size:15px;text-align:center;line-height:25px;letter-spacing:2px;cursor:pointer}
