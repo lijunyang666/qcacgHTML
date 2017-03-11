@@ -260,8 +260,8 @@ body{-webkit-user-select:none}
 .pay-incomeTow li{float:left;font-size:17px;padding-left:3px}
 .money{width:150px;font-size:18px!important;height:18px}
 .moneyTow{width:142px;font-size:18px!important;height:18px}
-.pay-a{overflow:hidden;color:#777;width:800px;margin:auto;margin-bottom:5px;margin-left:70px}
-.pay-a li{float:left;padding-left:120px}
+.pay-a{overflow:hidden;color:#777;width:800px;margin:auto;margin-bottom:5px;margin-left:24px}
+.pay-a li{float:left;padding-left:70px}
 .table-a{text-align:center;color:#7F7E7E;margin-top:10px;margin-left:125px;min-height:450px}
 .table-a tr td{width:150px;height:50px}
 .pay-head2{font-size:20px;margin:20px 0 15px 80px;font-weight:500}
@@ -376,6 +376,7 @@ body{-webkit-user-select:none}
 .moneyRecharge_numberTow{margin-top:0!important;border-top:1px solid rgba(222,222,222,0);margin-bottom:15px}
 .moneyRecharge_numberTow input{width:323px!important;padding-left:273px!important}
 input::-webkit-inner-spin-button,input::-webkit-outer-spin-button{-webkit-appearance:none!important;margin:0}
-.totle_money{width:90%;border-top:1px solid #E1E1E1;height:35px;text-align:center;padding-left:85px;line-height:35px;margin:0 auto;color:#777}
+.totle_money{width:90%;border-top:1px solid #E1E1E1;height:35px;text-align:center;padding-left:35px;line-height:35px;margin:0 auto;color:#777}
 .totle_money li{float:left;height:35px;width:150px}
 .registration_div_spanTow{padding-left:48px!important;font-size:13px}
+.icon_001{width:18px;height:18px;vertical-align:bottom}
